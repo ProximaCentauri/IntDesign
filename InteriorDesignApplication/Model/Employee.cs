@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Customer : Person
+    public class Employee : Person
     {
         public int Id { get; set; }
-        
+        public DateTime DateHired { get; set; }
     }
 }
