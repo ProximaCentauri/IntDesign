@@ -15,5 +15,9 @@ namespace Model
         public string EmailAddress { get; set; }
         public string ContactNumber { get; set; }
         public int Age { get; set; }
+        public string Gender { get; set; }
+        public string Religion { get; set; }
+        public string BirthPlace { get; set; }
+
     }
 }
