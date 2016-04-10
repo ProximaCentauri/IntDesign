@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Model
 {
     public class Person
-    {
+    {       
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
@@ -18,8 +18,7 @@ namespace Model
         public string Gender { get; set; }
         public string Religion { get; set; }
         public string BirthPlace { get; set; }      
-        public string Status { get; set; }  
-        public Spouse Spouse { get; set; }
-
+        public string Status { get; set; }          
+        public string ValidId { get; set; }        
     }
 }

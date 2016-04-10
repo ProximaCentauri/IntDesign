@@ -15,6 +15,10 @@ namespace Model
        
         public virtual IEnumerable<Dependent> Dependents { get; set; }
 
+        public virtual Bank CustomerBank { get; set; }
+        public virtual Company CustomerCompany { get; set; }        
+
+        public virtual Spouse CustomerSpouse { get; set; }
         public static explicit operator Customer(DbSet<Customer> v)
         {
             throw new NotImplementedException();

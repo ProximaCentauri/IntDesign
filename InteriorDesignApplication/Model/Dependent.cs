@@ -14,7 +14,6 @@ namespace Model
         public int Id { get; set; }
 
         public int CustomerId { get; set; }
-
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
     }
