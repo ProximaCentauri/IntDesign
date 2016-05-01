@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Skin.Properties
+namespace SkinContext.Properties
 {
 
 
