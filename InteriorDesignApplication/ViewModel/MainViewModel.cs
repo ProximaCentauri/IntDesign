@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Model;
+using System.Collections.ObjectModel;
 
 namespace ViewModel
 {
@@ -13,11 +15,52 @@ namespace ViewModel
     {
         public MainViewModel()
         {
+            
+        }
 
+        private IEnumerable<Customer> customers;
+        public IEnumerable<Customer> Customers
+        {
+            get
+            {
+                return new ObservableCollection<Customer>(context.Customers.Include(d => d.Dependents));
+            }
+            set
+            {
+                customers = value;
+                OnPropertyChanged("Customers");
+            }
+        }
+        
+        private IEnumerable<Customer> currentSelectedCustomer;
+        public IEnumerable<Customer> CurrentSelectedCustomer
+        {
+            get
+            {
+                return currentSelectedCustomer;
+            }
+            set
+            {
+                currentSelectedCustomer = value;
+                OnPropertyChanged("CurrentSelectedCustomer");
+            }
+        }
+
+        private IEnumerable<Dependent> dependents;
+        public IEnumerable<Dependent> Dependents
+        { 
+            get
+            {
+                return new ObservableCollection<Customer>(context.Dependents);
+            }
+            set
+            {
+                dependents = value;
+                OnPropertyChanged("Dependents");
+            }
         }
 
         #region INotifyPropertyChanged Implementing
-
         public event PropertyChangedEventHandler PropertyChanged;
                 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -25,11 +68,7 @@ namespace ViewModel
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
-
         #endregion
-
-        #region Event Handlers
-
         public ICommand ActionCommand { get; set; }
 
         public void Dispose()
@@ -39,5 +78,43 @@ namespace ViewModel
         }
 
         private bool dispose;
+        private readonly ManagerDBContext context = new ManagerDBContext();
+    }
+
+    public class RelayCommand : ICommand
+    {
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+        private Action methodToExecute;
+        private Func<bool> canExecuteEvaluator;
+        public RelayCommand(Action methodToExecute, Func<bool> canExecuteEvaluator)
+        {
+            this.methodToExecute = methodToExecute;
+            this.canExecuteEvaluator = canExecuteEvaluator;
+        }
+        public RelayCommand(Action methodToExecute)
+            : this(methodToExecute, null)
+        {
+        }
+        public bool CanExecute(object parameter)
+        {
+            if (this.canExecuteEvaluator == null)
+            {
+                return true;
+            }
+            else
+            {
+                bool result = this.canExecuteEvaluator.Invoke();
+                return result;
+            }
+        }
+        public void Execute(object parameter)
+        {
+            this.methodToExecute.Invoke();
+        }
     }
 }
+

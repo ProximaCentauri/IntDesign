@@ -30,24 +30,6 @@ namespace InteriorDesignApplication
             InitializeComponent();
             DataContext = this;
         }
-        private readonly ManagerDBContext _context = new ManagerDBContext();
-
-        private IEnumerable<Customer> _customers;
-        public IEnumerable<Customer> Customers
-        {
-            get
-            {
-                return new ObservableCollection<Customer>(_context.Customers.Include(d=>d.Dependents));
-            }
-            set
-            {
-                _customers = value;
-                OnPropertyChanged("Customers");
-            }
-        }
-
-        private IEnumerable<Dependent> _dependents;
-        public IEnumerable<Dependent> Dependents { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;        
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
