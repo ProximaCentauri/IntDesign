@@ -55,11 +55,5 @@ namespace InteriorDesignApplication
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }  
-
-
-
     }
-
-    
-
 }
