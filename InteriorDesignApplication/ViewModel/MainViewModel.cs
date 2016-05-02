@@ -60,6 +60,31 @@ namespace ViewModel
             }
         }
 
+        public void AddCustomer(Customer customer)
+        {
+            context.Customers.Add(customer);
+            context.Customers.SaveChanges();
+        }
+
+        public void EditCustomer(Customer customer)
+        {
+            Customer customerToUpdate = context.Customers.SingleOrDefault(x => x.Id == customer.Id);
+            if (null != customerToUpdate)
+            {
+                customerToUpdate.FirstName = customer.FirstName;
+                customerToUpdate.MiddleName = customer.MiddleName;
+                customerToUpdate.LastName = customer.LastName;
+            }
+            context.Customers.SaveChanges();
+        }
+
+        public void DeleteCustomer(Customer customer)
+        {
+            var customerToDelete = context.Customers.SingelOrDefault(x => x.Id == customer.Id);
+            context.Customers.Remove(customerToDelete);
+            context.Customers.SaveChanges();
+        }
+
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
                 
