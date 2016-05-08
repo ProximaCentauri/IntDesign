@@ -29,6 +29,12 @@
     <SolidColorBrush
         x:Key="mainButtonIconColorBrush"
         Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="tabItemBackgroundColorBrush"
+        Color="#7f0000" />
+    <SolidColorBrush
+        x:Key="tabItemSelectedBackgroundColorBrush"
+        Color="#DC002A" />
 
 
     <Color
@@ -51,12 +57,30 @@
         <Setter
             Property="Control.FontSize"
             Value="18" />
+        <Setter 
+            Property="Control.Foreground"
+            Value="White" />
+        
+    </Style>
+
+    <Style
+        x:Key="tabItemFontStyle" 
+        TargetType="{x:Type TextBlock}">
+        <Setter
+            Property="Control.FontSize"
+            Value="18" />
         <Setter
             Property="Control.Foreground"
             Value="White" />
         <Setter
-            Property="Control.BorderThickness"
-            Value="3" />
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Margin"
+            Value="5,0,0,0" />
     </Style>
     <Style
         x:Key="mainHeaderStyle"
@@ -281,9 +305,6 @@
         <Setter
             Property="Height"
             Value="28" />
-        <Setter
-            Property="HorizontalAlignment"
-            Value="Left" />
     </Style>
     <Style
         x:Key="addUserIconStyle"
@@ -306,12 +327,9 @@
         <Setter
             Property="Height"
             Value="28" />
-        <Setter
-            Property="HorizontalAlignment"
-            Value="Left" />
     </Style>
     <Style
-        x:Key="addDependentIconStyle"
+        x:Key="addIconStyle"
         TargetType="Image">
         <Setter
             Property="Source">
@@ -320,20 +338,17 @@
                     <DrawingImage.Drawing>
                         <GeometryDrawing
                             Brush="{StaticResource mainButtonBackgroundColorBrush}"
-                            Geometry="{StaticResource icon-group-add}" />
+                            Geometry="{StaticResource icon-add}" />
                     </DrawingImage.Drawing>
                 </DrawingImage>
             </Setter.Value>
         </Setter>
         <Setter
             Property="Width"
-            Value="18" />
+            Value="14" />
         <Setter
             Property="Height"
-            Value="28" />
-        <Setter
-            Property="HorizontalAlignment"
-            Value="Left" />
+            Value="14" />
     </Style>
     <Style
         x:Key="saveUserDetailIconStyle"
@@ -356,9 +371,6 @@
         <Setter
             Property="Height"
             Value="30" />
-        <Setter
-            Property="HorizontalAlignment"
-            Value="Left" />
     </Style>
     <Style
         x:Key="checkIconStyle"
@@ -381,9 +393,138 @@
         <Setter
             Property="Height"
             Value="18" />
+    </Style>
+    <Style
+        x:Key="personalInfoIconStyle"
+        TargetType="Image">
         <Setter
-            Property="HorizontalAlignment"
-            Value="Left" />
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-user-tie}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="18" />
+        <Setter
+            Property="Height"
+            Value="18" />
+    </Style>
+    <Style
+        x:Key="companyDetailsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-graph-line-up}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="bankDetailsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-bank}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="utilityBillsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-lightbulb}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="titlesIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-map}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="fitOutsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-list-check}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
     </Style>
 
 </ResourceDictionary>

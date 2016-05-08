@@ -121,7 +121,7 @@
                                                 <Setter
                                                     TargetName="Panel"
                                                     Property="Background"
-                                                    Value="#7f0000" />
+                                                    Value="{StaticResource tabItemBackgroundColorBrush}" />
                                             </Trigger>
                                             <Trigger
                                                 Property="IsSelected"
@@ -129,7 +129,7 @@
                                                 <Setter
                                                     TargetName="Panel"
                                                     Property="Background"
-                                                    Value="#DC002A" />
+                                                    Value="{StaticResource tabItemSelectedBackgroundColorBrush}" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
@@ -137,9 +137,17 @@
                             </Setter>
                         </Style>
                     </TabControl.Resources>
-
-                    <TabItem
-                        Header="Personal Information">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Style="{StaticResource personalInfoIconStyle}" />
+                                <TextBlock
+                                    Text="Personal Information"
+                                    Style="{StaticResource tabItemFontStyle}" />
+                            </StackPanel>
+                        </TabItem.Header>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition
@@ -176,11 +184,20 @@
                                 <Grid
                                     Margin="0,0,0,10"
                                     Grid.ColumnSpan="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                            Width="63*" />
+                                        <ColumnDefinition
+                                            Width="50*" />
+                                    </Grid.ColumnDefinitions>
                                     <TextBlock
                                         Text="Identification"
-                                        Style="{StaticResource mainHeaderStyle}" />
+                                        Style="{StaticResource mainHeaderStyle}"
+                                        Grid.ColumnSpan="2" />
                                     <Separator
-                                        Style="{StaticResource mainSeparatorStyle}" />
+                                        Style="{StaticResource mainSeparatorStyle}"
+                                        Grid.ColumnSpan="2"
+                                        Margin="5,0,10,0" />
                                 </Grid>
                                 <Grid
                                     Grid.Row="1"
@@ -399,7 +416,7 @@
                                                 Orientation="Horizontal"
                                                 HorizontalAlignment="Left">
                                                 <Image
-                                                    Style="{StaticResource addDependentIconStyle}" />
+                                                    Style="{StaticResource addIconStyle}" />
                                             </StackPanel>
                                         </Button>
                                     </StackPanel>
@@ -630,8 +647,17 @@
 
                         </Grid>
                     </TabItem>
-                    <TabItem
-                        Header="Company Details">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Style="{StaticResource companyDetailsIconStyle}" />
+                                <TextBlock
+                                    Text="Company Details"
+                                    Style="{StaticResource tabItemFontStyle}" />
+                            </StackPanel>
+                        </TabItem.Header>
                         <Grid
                             Grid.Row="3">
                             <Grid.RowDefinitions>
@@ -770,12 +796,40 @@
                         </Grid>
 
                     </TabItem>
-                    <TabItem
-                        Header="Bank Details">
-                        <StackPanel>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Style="{StaticResource bankDetailsIconStyle}" />
+                                <TextBlock
+                                    Text="Bank Details"
+                                    Style="{StaticResource tabItemFontStyle}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Text="Bank Information"
+                                    Style="{StaticResource mainHeaderStyle}" />
+                                <Button
+                                    Width="40"
+                                    Height="20"
+                                    Style="{StaticResource iconButtonStyle}">
+                                    <StackPanel
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Left">
+                                        <Image
+                                            Style="{StaticResource addIconStyle}" />
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                            <Separator
+                                Style="{StaticResource mainSeparatorStyle}" />
                             <DataGrid
                                 Height="75"
-                                Width="1000">
+                                Width="1000"
+                                Margin="0,10,0,0">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn
                                         Header="Name of Bank"
@@ -796,16 +850,43 @@
                             </DataGrid>
                         </StackPanel>
                     </TabItem>
-                    <TabItem
-                        Header="Utility Bills">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Style="{StaticResource utilityBillsIconStyle}" />
+                                <TextBlock
+                                    Text="Utility Bills"
+                                    Style="{StaticResource tabItemFontStyle}" />
+                            </StackPanel>
+                        </TabItem.Header>
 
                     </TabItem>
-                    <TabItem
-                        Header="Titles">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Style="{StaticResource titlesIconStyle}" />
+                                <TextBlock
+                                    Text="Titles"
+                                    Style="{StaticResource tabItemFontStyle}" />
+                            </StackPanel>
+                        </TabItem.Header>
 
                     </TabItem>
-                    <TabItem
-                        Header="Fit Outs">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Style="{StaticResource fitOutsIconStyle}" />
+                                <TextBlock
+                                    Text="Fit Outs"
+                                    Style="{StaticResource tabItemFontStyle}" />
+                            </StackPanel>
+                        </TabItem.Header>
 
                     </TabItem>
                 </TabControl>
