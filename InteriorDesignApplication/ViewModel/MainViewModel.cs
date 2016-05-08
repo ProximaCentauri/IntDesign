@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Model;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 
 namespace ViewModel
 {
@@ -51,7 +52,7 @@ namespace ViewModel
         { 
             get
             {
-                return new ObservableCollection<Customer>(context.Dependents);
+                return new ObservableCollection<Dependent>(context.Dependents);
             }
             set
             {
@@ -63,7 +64,7 @@ namespace ViewModel
         public void AddCustomer(Customer customer)
         {
             context.Customers.Add(customer);
-            context.Customers.SaveChanges();
+            context.SaveChanges();            
         }
 
         public void EditCustomer(Customer customer)
@@ -75,14 +76,14 @@ namespace ViewModel
                 customerToUpdate.MiddleName = customer.MiddleName;
                 customerToUpdate.LastName = customer.LastName;
             }
-            context.Customers.SaveChanges();
+            context.SaveChanges();
         }
 
         public void DeleteCustomer(Customer customer)
         {
-            var customerToDelete = context.Customers.SingelOrDefault(x => x.Id == customer.Id);
+            var customerToDelete = context.Customers.SingleOrDefault(x => x.Id == customer.Id);
             context.Customers.Remove(customerToDelete);
-            context.Customers.SaveChanges();
+            context.SaveChanges();
         }
 
         #region INotifyPropertyChanged Implementing
