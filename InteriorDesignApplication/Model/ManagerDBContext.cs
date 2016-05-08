@@ -4,19 +4,18 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MySql.Data.Entity;
 
 namespace Model
 {
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class ManagerDBContext : DbContext
     {
-        public ManagerDBContext() 
-            : base("SetupConnectionString")
+        public ManagerDBContext()
+            : base("name=setupConnectionString")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<ManagerDBContext>());
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ManagerDBContext>());
-
-            
         }
 
         public DbSet<Customer> Customers { get; set; }

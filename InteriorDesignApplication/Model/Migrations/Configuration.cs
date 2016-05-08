@@ -26,13 +26,6 @@ namespace Model.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.Customers.AddOrUpdate(
-                d => d.FirstName,
-                new Customer { Id = 1, FirstName = "Julie Ann" });
-            
-            context.Dependents.AddOrUpdate(
-                e=>e.FirstName,
-                new Dependent { Id=1, FirstName="Tristan", CustomerId=1 });
         }
     }
 }
