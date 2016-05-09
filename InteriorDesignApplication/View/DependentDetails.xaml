@@ -1,7 +1,8 @@
 ﻿<Window x:Class="View.DependentDetails"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DependentDetails" Height="200" Width="300">
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="DependentDetails" Height="Auto" Width="300">
     <Window.Resources>
         <ResourceDictionary
             Source="/SkinContent.xaml" />
@@ -34,6 +35,8 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -42,7 +45,7 @@
                             Width="250"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
-                        Text="Name:"
+                        Text="Last Name:"
                         Style="{StaticResource mainLabelTextStyle}"
                         Margin="0,5,5,0"></TextBlock>
                     <TextBox
@@ -52,28 +55,51 @@
                         Margin="0,5,0,0"></TextBox>
                     <TextBlock
                         Grid.Row="1"
-                        Grid.Column="0"
-                        Text="Address:"
+                        Text="First Name:"
                         Style="{StaticResource mainLabelTextStyle}"
                         Margin="0,5,5,0"></TextBlock>
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
                         Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        HorizontalAlignment="Left"
+                        Margin="0,5,0,0"></TextBox>
                     <TextBlock
                         Grid.Row="2"
-                        Grid.Column="0"
-                        Text="Birthdate:"
+                        Text="Middle Name:"
                         Style="{StaticResource mainLabelTextStyle}"
                         Margin="0,5,5,0"></TextBlock>
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
                         Width="200"
+                        HorizontalAlignment="Left"
+                        Margin="0,5,0,0"></TextBox>
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Address:"
+                        Style="{StaticResource mainLabelTextStyle}"
+                        Margin="0,5,5,0"></TextBlock>
+                    <TextBox
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Width="200"
                         Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>                    
+                        HorizontalAlignment="Left"></TextBox>
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Birthdate:"
+                        Style="{StaticResource mainLabelTextStyle}"
+                        Margin="0,5,5,0"></TextBlock>
+                    <DatePicker
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Width="200"
+                        HorizontalAlignment="Left"
+                        SelectedDateFormat="Short"
+                        SelectedDate="{x:Static sys:DateTime.Today}" />
                 </Grid>
             </StackPanel>
         </Grid>

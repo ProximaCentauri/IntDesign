@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:View"
     mc:Ignorable="d"
     Title="MainWindow"
@@ -299,9 +300,10 @@
                                             Text="Birthdate:"
                                             Width="100"
                                             Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
+                                        <DatePicker
                                             Width="150"
-                                            Margin="0,0,10,0"></TextBox>
+                                            SelectedDateFormat="Short"
+                                            SelectedDate="{x:Static sys:DateTime.Today}" />
                                     </StackPanel>
                                 </Grid>
                                 <Grid
@@ -330,17 +332,29 @@
                                             Width="100"
                                             Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                                         <ComboBox
-                                            Name="StatusComboBox"
-                                            Width="70"
-                                            Loaded="StatusComboBox_Loaded" />
+                                            Width="70">
+                                            <ComboBoxItem
+                                                x:Name="Single" 
+                                                Content="Single" 
+                                                IsSelected="True"></ComboBoxItem>
+                                            <ComboBoxItem
+                                                x:Name="Married"
+                                                Content="Married"></ComboBoxItem>
+                                            <ComboBoxItem
+                                                x:Name="Widow"
+                                                Content="Widow"></ComboBoxItem>
+                                        </ComboBox>
                                         <TextBlock
                                             Text="Gender:"
                                             Width="50"
                                             Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                                         <ComboBox
-                                            Name="GenderComboBox"
-                                            Width="70"
-                                            Loaded="GenderComboBox_Loaded" />
+                                            Width="70">
+                                            <ComboBoxItem
+                                                IsSelected="True" Content="Male" />
+                                            <ComboBoxItem
+                                                Content="Female" />
+                                        </ComboBox>
                                     </StackPanel>
                                 </Grid>
                                 <Grid
@@ -356,6 +370,23 @@
                                         <TextBox
                                             Width="150"
                                             Margin="0,0,10,0"></TextBox>
+                                        <StackPanel.Style>
+                                            <Style>
+                                                <Setter
+                                                    Property="StackPanel.Visibility"
+                                                    Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding ElementName=Married, Path=IsSelected}"
+                                                        Value="True">
+                                                        <Setter
+                                                            Property="StackPanel.Visibility"
+                                                            Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </StackPanel.Style>
+                                        
                                     </StackPanel>
                                 </Grid>
                                 <Grid
@@ -371,6 +402,22 @@
                                         <TextBox
                                             Width="180"
                                             Margin="0,0,10,0"></TextBox>
+                                        <StackPanel.Style>
+                                            <Style>
+                                                <Setter
+                                                    Property="StackPanel.Visibility"
+                                                    Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding ElementName=Married, Path=IsSelected}"
+                                                        Value="True">
+                                                        <Setter
+                                                            Property="StackPanel.Visibility"
+                                                            Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </StackPanel.Style>
                                     </StackPanel>
                                 </Grid>
                                 <Grid
@@ -386,7 +433,22 @@
                                         <TextBox
                                             Width="193"
                                             Margin="0,0,10,0"></TextBox>
-
+                                        <StackPanel.Style>
+                                            <Style>
+                                                <Setter
+                                                    Property="StackPanel.Visibility"
+                                                    Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding ElementName=Married, Path=IsSelected}"
+                                                        Value="True">
+                                                        <Setter
+                                                            Property="StackPanel.Visibility"
+                                                            Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </StackPanel.Style>
                                     </StackPanel>
                                 </Grid>
                             </Grid>
