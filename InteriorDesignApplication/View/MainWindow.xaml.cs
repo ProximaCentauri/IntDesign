@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
+using Model;
 
 namespace View
 {
@@ -20,9 +22,11 @@ namespace View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static MainViewModel viewModel = new MainViewModel();
+
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -38,6 +42,5 @@ namespace View
             comboBox.ItemsSource = data;
             comboBox.SelectedIndex = 0;
         }
-
     }
 }
