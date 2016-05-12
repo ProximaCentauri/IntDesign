@@ -49,6 +49,9 @@ namespace View
             customer.FirstName = "Julie Ann";
             customer.LastName = "Lasala";
             customer.Age = 29;
+            Dependent dependent = new Dependent();
+            dependent.FirstName="Tristan Jared";
+            customer.Dependents.Add(dependent);
             _viewModel.AddCustomer(customer);
             
         }

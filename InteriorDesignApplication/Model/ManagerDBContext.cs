@@ -8,14 +8,12 @@ using MySql.Data.Entity;
 using Model.Migrations;
 
 namespace Model
-{
-   // [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+{   
     public class ManagerDBContext : DbContext
     {
         public ManagerDBContext()
             : base("name=setupConnectionString")
-        {
-           // Database.SetInitializer(new CreateDatabaseIfNotExists<ManagerDBContext>());
+        {           
             Database.SetInitializer<ManagerDBContext>(new MigrateDatabaseToLatestVersion<ManagerDBContext, Configuration>());           
         }
 

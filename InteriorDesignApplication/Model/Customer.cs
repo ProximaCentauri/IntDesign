@@ -13,7 +13,7 @@ namespace Model
         [Key]
         public int Id { get; set; }
        
-        public virtual IEnumerable<Dependent> Dependents { get; set; }
+        public virtual ICollection<Dependent> Dependents { get; set; }
 
         public virtual Bank CustomerBank { get; set; }
         public virtual Company CustomerCompany { get; set; }        
@@ -22,6 +22,11 @@ namespace Model
         public static explicit operator Customer(DbSet<Customer> v)
         {
             throw new NotImplementedException();
+        }
+
+        public Customer()
+        {
+            Dependents = new List<Dependent>();
         }
     }
 }
