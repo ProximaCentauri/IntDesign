@@ -22,11 +22,12 @@ namespace View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainViewModel _viewModel = new MainViewModel();
+        private MainViewModel viewModel = new MainViewModel();
 
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            DataContext = viewModel;
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -43,18 +44,22 @@ namespace View
             comboBox.SelectedIndex = 0;
         }
 
-        private void BtnSaveDetails_Click(object sender, RoutedEventArgs e)
-        {
-            Customer customer = new Customer();
-            customer.FirstName = "Julie Ann";
-            customer.LastName = "Lasala";
-            customer.Age = 29;
-            Dependent dependent = new Dependent();
-            dependent.FirstName="Tristan Jared";
-            customer.Dependents.Add(dependent);
-            _viewModel.AddCustomer(customer);
-            
-        }
+        //private void BtnSaveDetails_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //Customer customer = new Customer();
+        //    //customer.FirstName = "Julie Ann";
+        //    //customer.LastName = "Lasala";
+        //    //customer.Age = 29;
+        //    //Dependent dependent = new Dependent();
+        //    //dependent.FirstName="Tristan Jared";
+        //    //customer.Dependents.Add(dependent);
+        //    //viewModel.AddCustomer(customer);
+        //    Customer customer = new Customer();
+        //    customer.FirstName = tbFirstName.Text;
+        //    customer.LastName = tbLastName.Text;
+        //    customer.MiddleName = tbMiddleName.Text;
+        //    viewModel.ActionCommand.Execut
+        //}
       
     }
 }

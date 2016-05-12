@@ -16,13 +16,11 @@
     Width="1024"
     Height="768">
     <Window.Resources>
-        <ResourceDictionary>          
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary
                     Source= "/SkinContent.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        <vwMdl:MainViewModel
-            x:Key="viewModel" />
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -89,7 +87,7 @@
             <DataGrid
                 Width="1000"
                 Name="GridCustomers"
-                ItemsSource="{Binding Customers, Source={StaticResource viewModel}}">
+                ItemsSource="{Binding Customers}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"
@@ -227,7 +225,8 @@
                                             Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                                         <TextBox
                                             Width="150"
-                                            Margin="0,0,10,0"></TextBox>
+                                            Margin="0,0,10,0"
+                                            Name="tbLastName"></TextBox>
                                     </StackPanel>
                                 </Grid>
                                 <Grid
@@ -242,7 +241,8 @@
                                             Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                                         <TextBox
                                             Width="180"
-                                            Margin="0,0,10,0"></TextBox>
+                                            Margin="0,0,10,0"
+                                            Name="tbFirstName"></TextBox>
                                     </StackPanel>
                                 </Grid>
                                 <Grid
@@ -257,7 +257,8 @@
                                             Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                                         <TextBox
                                             Width="194"
-                                            Margin="0,0,10,0"></TextBox>
+                                            Margin="0,0,10,0"
+                                            Name="tbMiddleName"></TextBox>
                                     </StackPanel>
                                 </Grid>
                                 <Grid
@@ -977,8 +978,7 @@
                 Height="50"
                 Margin="0,15,24,15"
                 Style="{StaticResource mainButtonStyle}"
-                Name="BtnSaveDetails"
-                Click="BtnSaveDetails_Click">
+                Name="BtnSaveDetails">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

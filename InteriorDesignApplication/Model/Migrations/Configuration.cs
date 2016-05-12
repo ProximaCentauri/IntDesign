@@ -26,6 +26,11 @@ namespace Model.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Customers.AddOrUpdate(
+                new Customer { LastName = "Doe", FirstName = "John", Age = 29 },
+                new Customer { LastName = "Gray", FirstName = "Jane", Age = 25 },
+                new Customer { LastName = "Reynolds", FirstName = "Ray", Age = 31 }
+                );
         }
 
         
