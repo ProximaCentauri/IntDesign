@@ -64,7 +64,8 @@ namespace ViewModel
         public void AddCustomer(Customer customer)
         {
             context.Customers.Add(customer);
-            context.SaveChanges();            
+            context.SaveChanges();
+            OnPropertyChanged("Customers");
         }
 
         public void EditCustomer(Customer customer)

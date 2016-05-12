@@ -87,7 +87,7 @@
             <DataGrid
                 Width="1000"
                 Name="GridCustomers"
-                ItemsSource="{Binding Customers}">
+                ItemsSource="{Binding Customers, Mode=TwoWay}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"
@@ -978,7 +978,7 @@
                 Height="50"
                 Margin="0,15,24,15"
                 Style="{StaticResource mainButtonStyle}"
-                Name="BtnSaveDetails">
+                Name="BtnSaveDetails" Click="BtnSaveDetails_Click">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
