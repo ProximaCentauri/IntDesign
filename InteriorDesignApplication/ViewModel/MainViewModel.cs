@@ -24,7 +24,8 @@ namespace ViewModel
         {
             get
             {
-                return new ObservableCollection<Customer>(context.Customers.Include(d => d.Dependents));
+                //return new ObservableCollection<Customer>(context.Customers.Include(d => d.Dependents));
+                return new ObservableCollection<Customer>(context.Customers);
             }
             set
             {

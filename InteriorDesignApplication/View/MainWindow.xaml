@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:View"
+    xmlns:vwMdl="clr-namespace:ViewModel;assembly=ViewModel"
     mc:Ignorable="d"
     Title="MainWindow"
     WindowStyle="SingleBorderWindow"
@@ -15,8 +16,14 @@
     Width="1024"
     Height="768">
     <Window.Resources>
-        <ResourceDictionary
-            Source="/SkinContent.xaml" />
+        <ResourceDictionary>          
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source= "/SkinContent.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        <vwMdl:MainViewModel
+            x:Key="viewModel" />
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -80,14 +87,18 @@
         <Grid
             Grid.Row="1">
             <DataGrid
-                Width="1000">
+                Width="1000"
+                Name="GridCustomers"
+                ItemsSource="{Binding Customers, Source={StaticResource viewModel}}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"
-                        Width="250" />
+                        Width="250" 
+                        Binding="{Binding LastName}"/>
                     <DataGridTextColumn
                         Header="First Name"
-                        Width="250" />
+                        Width="250"
+                        Binding="{Binding FirstName}"/>
                     <DataGridTextColumn
                         Header="Address"
                         Width="250" />
@@ -965,7 +976,9 @@
                 Width="150"
                 Height="50"
                 Margin="0,15,24,15"
-                Style="{StaticResource mainButtonStyle}">
+                Style="{StaticResource mainButtonStyle}"
+                Name="BtnSaveDetails"
+                Click="BtnSaveDetails_Click">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ViewModel;
 using Model;
+using ViewModel;
 
 namespace View
 {
@@ -22,7 +22,7 @@ namespace View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static MainViewModel viewModel = new MainViewModel();
+        private MainViewModel _viewModel = new MainViewModel();
 
         public MainWindow()
         {
@@ -42,5 +42,16 @@ namespace View
             comboBox.ItemsSource = data;
             comboBox.SelectedIndex = 0;
         }
+
+        private void BtnSaveDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Customer customer = new Customer();
+            customer.FirstName = "Julie Ann";
+            customer.LastName = "Lasala";
+            customer.Age = 29;
+            _viewModel.AddCustomer(customer);
+            
+        }
+      
     }
 }

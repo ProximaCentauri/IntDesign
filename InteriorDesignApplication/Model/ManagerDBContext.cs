@@ -5,17 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.Entity;
+using Model.Migrations;
 
 namespace Model
 {
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+   // [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class ManagerDBContext : DbContext
     {
         public ManagerDBContext()
             : base("name=setupConnectionString")
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ManagerDBContext>());
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ManagerDBContext>());
+           // Database.SetInitializer(new CreateDatabaseIfNotExists<ManagerDBContext>());
+            Database.SetInitializer<ManagerDBContext>(new MigrateDatabaseToLatestVersion<ManagerDBContext, Configuration>());           
         }
 
         public DbSet<Customer> Customers { get; set; }
