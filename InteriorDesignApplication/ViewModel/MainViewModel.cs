@@ -26,7 +26,7 @@ namespace ViewModel
         {
             get
             {
-                return new ObservableCollection<Customer>(context.Customers.Include(d => d.Dependents));
+                return new ObservableCollection<Customer>(context.CompleteCustomersInfo());
             }
             set
             {
@@ -174,6 +174,16 @@ namespace ViewModel
         {
             this.methodToExecute.Invoke();
         }
+    }
+
+    public static class Extensions
+    {
+        public static IQueryable<Customer> CompleteCustomersInfo(this ManagerDBContext context)
+        {
+            return context.Customers
+                .Include(d => d.Dependents)
+                .Include(e => e.CustomerSpouse);
+        }      
     }
 }
 

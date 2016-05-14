@@ -13,12 +13,22 @@ namespace Model
         public string MiddleName { get; set; }
         public DateTime? BirthDate { get; set; }
         public string EmailAddress { get; set; }
-        public string ContactNumber { get; set; }
+        public string MobileNumber { get; set; }
+        public string LandLineNumber { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
         public string Religion { get; set; }
         public string BirthPlace { get; set; }      
         public string Status { get; set; }          
         public string ValidId { get; set; }        
+        public string Nationality { get; set; }
+        public string NumBuilding { get; set; }
+        public string Street { get; set; }
+        public string VillageDistrict { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }        
+
     }
 }

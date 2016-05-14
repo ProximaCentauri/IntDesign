@@ -27,6 +27,7 @@ namespace Model
         public Customer()
         {
             Dependents = new List<Dependent>();
-        }
+           // CustomerSpouse = new Spouse();
+        }       
     }
 }

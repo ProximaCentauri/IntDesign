@@ -10,9 +10,13 @@ namespace Model
 {
     public class Spouse : Person
     {
-        [Key, ForeignKey("Customer")]
+        [Key]
         public int Id { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        //public int CustomerId { get; set; }
+        //[ForeignKey("CustomerId")]
+        //public virtual Customer Customer { get; set; }
+        [Required]
+        public virtual Customer customer { get; set; }
     }
 }
