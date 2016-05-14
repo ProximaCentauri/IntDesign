@@ -8,9 +8,7 @@ namespace ViewModel
     interface IMainViewModel : INotifyPropertyChanged, IDisposable
     {
         ICommand ActionCommand { get; set; }
-
-      //  void SaveCustomer(Customer customer);
-
+    
         int SelectedIndex { get; set; }
         void EditCustomer(Customer customer);
 
