@@ -19,6 +19,8 @@ namespace ViewModel
 
         }
 
+        public int SelectedIndex { get; set; }
+
         private IEnumerable<Customer> customers;
         public IEnumerable<Customer> Customers
         {
@@ -61,11 +63,19 @@ namespace ViewModel
             }
         }
 
-        public void SaveCustomer(Customer customer)
+        private void SaveCustomer()
         {
-            context.Customers.Add(customer);
-            context.SaveChanges();
-            OnPropertyChanged("Customers");
+            Customer customer = CurrentSelectedCustomer as Customer;
+            if (SelectedIndex == -1)
+            {
+                context.Customers.Add(customer);
+                context.SaveChanges();
+                OnPropertyChanged("Customers");
+            }
+            else
+            {
+
+            }
         }
 
         public void EditCustomer(Customer customer)
@@ -104,21 +114,36 @@ namespace ViewModel
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        #region Action Commands
         public ICommand ActionCommand { get; set; }
 
-        ICommand _cancelCommand;
+        ICommand _addCustomerCommand;
         public ICommand AddCustomerCommand
         {
             get
             {
-                if(_cancelCommand == null)
+                if(_addCustomerCommand == null)
                 {
-                    _cancelCommand = new RelayCommand(AddCustomer);                
+                    _addCustomerCommand = new RelayCommand(AddCustomer);                
                 }
-                return _cancelCommand;
+                return _addCustomerCommand;
             }
         }
-    
+
+        ICommand _saveCustomerCommand;
+        public ICommand SaveCustomerCommand
+        {
+            get
+            {
+                if (_saveCustomerCommand == null)
+                {
+                    _saveCustomerCommand = new RelayCommand(SaveCustomer);
+                }
+                return _saveCustomerCommand;
+            }
+        }
+        #endregion
 
         public void Dispose()
         {

@@ -9,8 +9,9 @@ namespace ViewModel
     {
         ICommand ActionCommand { get; set; }
 
-        void SaveCustomer(Customer customer);
+      //  void SaveCustomer(Customer customer);
 
+        int SelectedIndex { get; set; }
         void EditCustomer(Customer customer);
 
         void DeleteCustomer(Customer customer);

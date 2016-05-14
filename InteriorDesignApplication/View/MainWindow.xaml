@@ -88,7 +88,8 @@
                 Width="1000"
                 Name="GridCustomers"
                 ItemsSource="{Binding Customers}"
-                SelectedItem="{Binding CurrentSelectedCustomer}">
+                SelectedItem="{Binding CurrentSelectedCustomer}"
+                SelectedIndex="{Binding SelectedIndex}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"
@@ -415,7 +416,8 @@
                 Width="150"
                 Height="50"
                 Margin="0,15,24,15"
-                Style="{StaticResource mainButtonStyle}">
+                Style="{StaticResource mainButtonStyle}"
+                Command="{Binding SaveCustomerCommand}">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
