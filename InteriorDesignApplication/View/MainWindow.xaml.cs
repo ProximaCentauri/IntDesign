@@ -45,13 +45,19 @@ namespace View
 
         private void BtnSaveDetails_Click(object sender, RoutedEventArgs e)
         {
-            Customer customer = new Customer();
-            customer.FirstName = tbFirstName.Text;
-            customer.LastName = tbLastName.Text;
-            customer.MiddleName = tbMiddleName.Text;
-            ((MainViewModel)DataContext).AddCustomer(customer);            
-
+            //Customer customer = new Customer();
+            //customer.FirstName = tbFirstName.Text;
+            //customer.LastName = tbLastName.Text;
+            //customer.MiddleName = tbMiddleName.Text;
+            //((MainViewModel)DataContext).AddCustomer(customer);            
         }
 
+
+        //private Customer createCustomer()
+        //{
+        //    Customer customer = new Customer();
+
+        //    return Customer;
+        //}
     }
 }

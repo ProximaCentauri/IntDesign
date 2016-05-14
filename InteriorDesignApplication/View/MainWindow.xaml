@@ -87,7 +87,8 @@
             <DataGrid
                 Width="1000"
                 Name="GridCustomers"
-                ItemsSource="{Binding Customers, Mode=TwoWay}">
+                ItemsSource="{Binding Customers, Mode=TwoWay}"
+                SelectedItem="{Binding CurrentSelectedCustomer}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"
@@ -153,577 +154,14 @@
                     </TabControl.Resources>
                     <TabItem>
                         <TabItem.Header>
-                            <StackPanel
-                                Orientation="Horizontal">
-                                <Image
-                                    Style="{StaticResource personalInfoIconStyle}" />
-                                <TextBlock
-                                    Text="Personal Information"
-                                    Style="{StaticResource tabItemFontStyle}" />
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{StaticResource personalInfoIconStyle}" />
+                                <TextBlock Text="Personal Information"
+                                           Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition
-                                    Height="Auto" />
-                                <RowDefinition
-                                    Height="Auto" />
-                                <RowDefinition
-                                    Height="Auto" />
-                                <RowDefinition
-                                    Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid
-                                Grid.Row="0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="Auto" />
-                                    <ColumnDefinition
-                                        Width="Auto" />
-                                    <ColumnDefinition
-                                        Width="341" />
-                                </Grid.ColumnDefinitions>
-                                <Grid
-                                    Margin="0,0,0,10"
-                                    Grid.ColumnSpan="5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition
-                                            Width="63*" />
-                                        <ColumnDefinition
-                                            Width="50*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock
-                                        Text="Identification"
-                                        Style="{StaticResource mainHeaderStyle}"
-                                        Grid.ColumnSpan="2" />
-                                    <Separator
-                                        Style="{StaticResource mainSeparatorStyle}"
-                                        Grid.ColumnSpan="2"
-                                        Margin="5,0,10,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="0">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Last Name:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="150"
-                                            Margin="0,0,10,0"
-                                            Name="tbLastName"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="1">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="First Name:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="180"
-                                            Margin="0,0,10,0"
-                                            Name="tbFirstName"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="2">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Middle Name:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="194"
-                                            Margin="0,0,10,0"
-                                            Name="tbMiddleName"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="2"
-                                    Grid.Column="0">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Religion:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="150"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="2"
-                                    Grid.Column="1">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Nationality:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="180"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="2"
-                                    Grid.Column="2">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Valid ID:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="194"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="3"
-                                    Grid.Column="0">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Birthdate:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <DatePicker
-                                            Width="150"
-                                            SelectedDateFormat="Short"
-                                            SelectedDate="{x:Static sys:DateTime.Today}" />
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="3"
-                                    Grid.Column="1">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Birthplace:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="180"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="3"
-                                    Grid.Column="2">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Status:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <ComboBox
-                                            Width="70">
-                                            <ComboBoxItem
-                                                x:Name="Single" 
-                                                Content="Single" 
-                                                IsSelected="True"></ComboBoxItem>
-                                            <ComboBoxItem
-                                                x:Name="Married"
-                                                Content="Married"></ComboBoxItem>
-                                            <ComboBoxItem
-                                                x:Name="Widow"
-                                                Content="Widow"></ComboBoxItem>
-                                        </ComboBox>
-                                        <TextBlock
-                                            Text="Gender:"
-                                            Width="50"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <ComboBox
-                                            Width="70">
-                                            <ComboBoxItem
-                                                IsSelected="True" Content="Male" />
-                                            <ComboBoxItem
-                                                Content="Female" />
-                                        </ComboBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="4"
-                                    Grid.Column="0">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Spouse Name:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="150"
-                                            Margin="0,0,10,0"></TextBox>
-                                        <StackPanel.Style>
-                                            <Style>
-                                                <Setter
-                                                    Property="StackPanel.Visibility"
-                                                    Value="Collapsed" />
-                                                <Style.Triggers>
-                                                    <DataTrigger
-                                                        Binding="{Binding ElementName=Married, Path=IsSelected}"
-                                                        Value="True">
-                                                        <Setter
-                                                            Property="StackPanel.Visibility"
-                                                            Value="Visible" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </StackPanel.Style>
-                                        
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="4"
-                                    Grid.Column="1">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Spouse Address:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="180"
-                                            Margin="0,0,10,0"></TextBox>
-                                        <StackPanel.Style>
-                                            <Style>
-                                                <Setter
-                                                    Property="StackPanel.Visibility"
-                                                    Value="Collapsed" />
-                                                <Style.Triggers>
-                                                    <DataTrigger
-                                                        Binding="{Binding ElementName=Married, Path=IsSelected}"
-                                                        Value="True">
-                                                        <Setter
-                                                            Property="StackPanel.Visibility"
-                                                            Value="Visible" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </StackPanel.Style>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="4"
-                                    Grid.Column="2">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Birthdate:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="193"
-                                            Margin="0,0,10,0"></TextBox>
-                                        <StackPanel.Style>
-                                            <Style>
-                                                <Setter
-                                                    Property="StackPanel.Visibility"
-                                                    Value="Collapsed" />
-                                                <Style.Triggers>
-                                                    <DataTrigger
-                                                        Binding="{Binding ElementName=Married, Path=IsSelected}"
-                                                        Value="True">
-                                                        <Setter
-                                                            Property="StackPanel.Visibility"
-                                                            Value="Visible" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </StackPanel.Style>
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-                            <Grid
-                                Grid.Row="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid
-                                    Grid.Row="0">
-                                    <StackPanel
-                                        Orientation="Horizontal">
-                                        <TextBlock
-                                            Text="Dependents Information"
-                                            Width="150"
-                                            Style="{StaticResource mainSubHeaderStyle}"
-                                            Margin="0,10,0,0" />
-                                        <Button
-                                            Width="50"
-                                            Height="20"
-                                            Margin="0,7,0,0"
-                                            Style="{StaticResource iconButtonStyle}">
-                                            <StackPanel
-                                                Orientation="Horizontal"
-                                                HorizontalAlignment="Left">
-                                                <Image
-                                                    Style="{StaticResource addIconStyle}" />
-                                            </StackPanel>
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1">
-                                    <DataGrid
-                                        Height="75"
-                                        Grid.Row="1"
-                                        Width="1000">
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn
-                                                Header="Last Name"
-                                                Width="250" />
-                                            <DataGridTextColumn
-                                                Header="First Name"
-                                                Width="250" />
-                                            <DataGridTextColumn
-                                                Header="Address"
-                                                Width="250" />
-                                            <DataGridTextColumn
-                                                Header="Birthdate"
-                                                Width="250" />
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                </Grid>
-                            </Grid>
-                            <Grid
-                                Grid.Row="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="Auto" />
-                                    <ColumnDefinition
-                                        Width="Auto" />
-                                    <ColumnDefinition
-                                        Width="341" />
-                                </Grid.ColumnDefinitions>
-                                <Grid
-                                    Margin="0,0,0,10"
-                                    Grid.ColumnSpan="5">
-                                    <TextBlock
-                                        Text="Contact Information"
-                                        Style="{StaticResource mainHeaderStyle}" />
-                                    <Separator
-                                        Style="{StaticResource mainSeparatorStyle}" />
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="0">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Mobile Number:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="150"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="1">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Landline Number:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="180"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="2">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Email Address:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="194"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-                            <Grid
-                                Grid.Row="3">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="Auto" />
-                                    <ColumnDefinition
-                                        Width="Auto" />
-                                    <ColumnDefinition
-                                        Width="341" />
-                                </Grid.ColumnDefinitions>
-                                <Grid
-                                    Margin="0,0,0,10"
-                                    Grid.ColumnSpan="5">
-                                    <TextBlock
-                                        Text="Primary Address"
-                                        Style="{StaticResource mainHeaderStyle}" />
-                                    <Separator
-                                        Style="{StaticResource mainSeparatorStyle}" />
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="0">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="No./Building:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="150"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="1">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Street:"
-                                            Width="75"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="180"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="1"
-                                    Grid.Column="2">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Village/District:"
-                                            Width="75"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="261"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="2"
-                                    Grid.Column="0">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="City:"
-                                            Width="100"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="150"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="2"
-                                    Grid.Column="1">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="State:"
-                                            Width="75"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="180"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid
-                                    Grid.Row="2"
-                                    Grid.Column="2">
-                                    <StackPanel
-                                        Orientation="Horizontal"
-                                        Margin="0,0,0,5">
-                                        <TextBlock
-                                            Text="Country:"
-                                            Width="75"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="130"
-                                            Margin="0,0,10,0"></TextBox>
-                                        <TextBlock
-                                            Text="Zip Code:"
-                                            Width="50"
-                                            Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                                        <TextBox
-                                            Width="75"
-                                            Margin="0,0,10,0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-
-                        </Grid>
+                        <local:PersonalInformation DataContext="{Binding CurrentSelectedCustomer}"/>
+                        
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>
@@ -750,7 +188,8 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition
-                                    Width="Auto" />
+                                    Width="80" />
+                                <ColumnDefinition Width="186"/>
                                 <ColumnDefinition
                                     Width="Auto" />
                                 <ColumnDefinition
@@ -758,7 +197,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid
                                 Margin="0,0,0,10"
-                                Grid.ColumnSpan="5">
+                                Grid.ColumnSpan="4">
                                 <TextBlock
                                     Text="Company Information"
                                     Style="{StaticResource mainHeaderStyle}" />
@@ -767,7 +206,7 @@
                             </Grid>
                             <Grid
                                 Grid.Row="1"
-                                Grid.Column="0">
+                                Grid.Column="0" Grid.ColumnSpan="2">
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Margin="0,0,0,5">
@@ -782,7 +221,7 @@
                             </Grid>
                             <Grid
                                 Grid.Row="1"
-                                Grid.Column="1">
+                                Grid.Column="2">
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Margin="0,0,0,5">
@@ -797,7 +236,7 @@
                             </Grid>
                             <Grid
                                 Grid.Row="1"
-                                Grid.Column="2">
+                                Grid.Column="3">
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Margin="0,0,0,5">
@@ -812,7 +251,7 @@
                             </Grid>
                             <Grid
                                 Grid.Row="2"
-                                Grid.Column="0">
+                                Grid.Column="0" Grid.ColumnSpan="2">
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Margin="0,0,0,5">
@@ -827,7 +266,7 @@
                             </Grid>
                             <Grid
                                 Grid.Row="2"
-                                Grid.Column="1">
+                                Grid.Column="2">
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Margin="0,0,0,5">
@@ -842,7 +281,7 @@
                             </Grid>
                             <Grid
                                 Grid.Row="2"
-                                Grid.Column="2">
+                                Grid.Column="3">
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Margin="0,0,0,5">
@@ -857,7 +296,7 @@
                             </Grid>
                             <Grid
                                 Grid.Row="3"
-                                Grid.ColumnSpan="2">
+                                Grid.ColumnSpan="3">
                                 <StackPanel
                                     Orientation="Vertical">
                                     <TextBlock
