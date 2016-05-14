@@ -57,7 +57,8 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                             Name="tbLastName"></TextBox>
+                             Name="tbLastName"
+                             Text="{Binding LastName}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -69,7 +70,8 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
                              Margin="0,0,10,0"
-                             Name="tbFirstName"></TextBox>
+                             Name="tbFirstName"
+                             Text="{Binding FirstName}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -81,7 +83,8 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="194"
                              Margin="0,0,10,0"
-                             Name="tbMiddleName"></TextBox>
+                             Name="tbMiddleName"
+                             Text="{Binding MiddleName}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"
@@ -92,7 +95,8 @@
                                Width="100"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
-                             Margin="0,0,10,0"></TextBox>
+                             Margin="0,0,10,0"
+                             Text="{Binding Religion}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"

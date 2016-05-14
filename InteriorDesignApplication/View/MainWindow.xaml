@@ -87,7 +87,7 @@
             <DataGrid
                 Width="1000"
                 Name="GridCustomers"
-                ItemsSource="{Binding Customers, Mode=TwoWay}"
+                ItemsSource="{Binding Customers}"
                 SelectedItem="{Binding CurrentSelectedCustomer}">
                 <DataGrid.Columns>
                     <DataGridTextColumn

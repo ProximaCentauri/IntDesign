@@ -33,8 +33,8 @@ namespace ViewModel
             }
         }
         
-        private IEnumerable<Customer> currentSelectedCustomer;
-        public IEnumerable<Customer> CurrentSelectedCustomer
+        private Customer currentSelectedCustomer;
+        public Customer CurrentSelectedCustomer
         {
             get
             {
