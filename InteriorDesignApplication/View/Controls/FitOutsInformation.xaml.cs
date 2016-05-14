@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace View.Controls
 {
     /// <summary>
-    /// Interaction logic for BankInformation.xaml
+    /// Interaction logic for FitOutsInformation.xaml
     /// </summary>
-    public partial class BankInformation : UserControl
+    public partial class FitOutsInformation : UserControl
     {
-        public BankInformation()
+        public FitOutsInformation()
         {
             InitializeComponent();
         }

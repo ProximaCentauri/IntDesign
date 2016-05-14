@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View.Controls
+namespace View
 {
     /// <summary>
-    /// Interaction logic for BankInformation.xaml
+    /// Interaction logic for FitOutDetails.xaml
     /// </summary>
-    public partial class BankInformation : UserControl
+    public partial class FitOutDetails : Window
     {
-        public BankInformation()
+        public FitOutDetails()
         {
             InitializeComponent();
         }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="View.PersonalInformation"
+﻿<UserControl x:Class="View.Controls.PersonalInformation"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,7 +11,8 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/SkinContent.xaml" />
+                <ResourceDictionary
+                    Source="/View;component/SkinContent.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -232,8 +233,11 @@
                     <TextBlock Text="Birthdate:"
                                Width="100"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <TextBox Width="193"
-                             Margin="0,0,10,0"></TextBox>
+                    <!--<DatePicker
+                        Width="193"
+                        SelectedDateFormat="Short"
+                        SelectedDate="{x:Static sys:DateTime.Today}" />-->
+
                     <StackPanel.Style>
                         <Style>
                             <Setter Property="StackPanel.Visibility"
@@ -309,10 +313,12 @@
                                Width="150"
                                Style="{StaticResource mainSubHeaderStyle}"
                                Margin="0,10,0,0" />
-                    <Button Width="50"
-                            Height="20"
-                            Margin="0,7,0,0"
-                            Style="{StaticResource iconButtonStyle}">
+                    <Button
+                        Name="addDependent"
+                        Width="50"
+                        Height="20"
+                        Margin="0,7,0,0"
+                        Style="{StaticResource iconButtonStyle}">
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Left">
                             <Image Style="{StaticResource addIconStyle}" />

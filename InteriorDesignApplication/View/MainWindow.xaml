@@ -7,6 +7,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:View"
     xmlns:vwMdl="clr-namespace:ViewModel;assembly=ViewModel"
+    xmlns:viewsControls="clr-namespace:View.Controls"
     mc:Ignorable="d"
     Title="MainWindow"
     WindowStyle="SingleBorderWindow"
@@ -160,7 +161,7 @@
                                            Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-                        <local:PersonalInformation DataContext="{Binding CurrentSelectedCustomer}" />
+                        <viewsControls:PersonalInformation DataContext="{Binding CurrentSelectedCustomer}" />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>
@@ -173,7 +174,7 @@
                                     Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-                        <local:CompanyInformation />
+                        <viewsControls:CompanyInformation />
 
                     </TabItem>
                     <TabItem>
@@ -187,7 +188,7 @@
                                     Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-                        <local:BankInformation />
+                        <viewsControls:BankInformation />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>
@@ -226,7 +227,7 @@
                                     Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-
+                        <viewsControls:FitOutsInformation />
                     </TabItem>
                 </TabControl>
             </Grid>
