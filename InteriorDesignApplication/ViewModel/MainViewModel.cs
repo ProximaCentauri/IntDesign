@@ -69,13 +69,10 @@ namespace ViewModel
             if (SelectedIndex == -1)
             {
                 context.Customers.Add(customer);
-                context.SaveChanges();
-                OnPropertyChanged("Customers");
+                CurrentSelectedCustomer = null;
             }
-            else
-            {
-
-            }
+            context.SaveChanges();
+            OnPropertyChanged("Customers");                       
         }
 
         public void EditCustomer(Customer customer)

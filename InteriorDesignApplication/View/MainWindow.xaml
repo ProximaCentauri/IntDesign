@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     Title="MainWindow"
     WindowStyle="SingleBorderWindow"
-    ResizeMode="CanMinimize"
+    ResizeMode="CanMinimize"    
     Top="0"
     Left="0"
     Width="1024"
@@ -89,7 +89,9 @@
                 Name="GridCustomers"
                 ItemsSource="{Binding Customers}"
                 SelectedItem="{Binding CurrentSelectedCustomer}"
-                SelectedIndex="{Binding SelectedIndex}">
+                SelectedIndex="{Binding SelectedIndex}"
+                CanUserAddRows="False"
+                IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"

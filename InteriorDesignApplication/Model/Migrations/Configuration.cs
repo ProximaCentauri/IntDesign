@@ -27,7 +27,7 @@ namespace Model.Migrations
             //    );
             //
             context.Customers.AddOrUpdate(
-                c => c.FirstName,
+                c => c.LastName,
                 new Customer { LastName = "Doe", FirstName = "John", Age = 29 },
                 new Customer { LastName = "Gray", FirstName = "Jane", Age = 25 },
                 new Customer { LastName = "Reynolds", FirstName = "Ray", Age = 31 }
