@@ -73,19 +73,7 @@ namespace ViewModel
             }
             context.SaveChanges();
             OnPropertyChanged("Customers");                       
-        }
-
-        public void EditCustomer(Customer customer)
-        {
-            Customer customerToUpdate = context.Customers.SingleOrDefault(x => x.Id == customer.Id);
-            if (null != customerToUpdate)
-            {
-                customerToUpdate.FirstName = customer.FirstName;
-                customerToUpdate.MiddleName = customer.MiddleName;
-                customerToUpdate.LastName = customer.LastName;
-            }
-            context.SaveChanges();
-        }
+        }      
 
         public void DeleteCustomer(Customer customer)
         {

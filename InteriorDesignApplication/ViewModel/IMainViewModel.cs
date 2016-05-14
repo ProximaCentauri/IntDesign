@@ -9,8 +9,7 @@ namespace ViewModel
     {
         ICommand ActionCommand { get; set; }
     
-        int SelectedIndex { get; set; }
-        void EditCustomer(Customer customer);
+        int SelectedIndex { get; set; }      
 
         void DeleteCustomer(Customer customer);
     }
