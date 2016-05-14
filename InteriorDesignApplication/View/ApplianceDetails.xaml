@@ -1,7 +1,11 @@
-﻿<Window x:Class="View.ApplianceDetails"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ApplianceDetails" Height="285" Width="320">
+﻿<Window
+    x:Class="View.ApplianceDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ApplianceDetails"
+    Height="285"
+    Width="320" 
+    ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary
             Source="/SkinContent.xaml" />

@@ -1,8 +1,12 @@
-﻿<Window x:Class="View.DependentDetails"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="DependentDetails" Height="Auto" Width="300">
+﻿<Window
+    x:Class="View.DependentDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Title="DependentDetails"
+    Height="270"
+    Width="300"
+    ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary
             Source="/SkinContent.xaml" />

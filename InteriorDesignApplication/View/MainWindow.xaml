@@ -83,7 +83,7 @@
         <Grid
             Grid.Row="1">
             <DataGrid
-                Width="1000"
+                Width="975"
                 Name="GridCustomers"
                 ItemsSource="{Binding Customers}"
                 SelectedItem="{Binding CurrentSelectedCustomer}"
@@ -93,15 +93,18 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"
-                        Width="250" 
+                        Width="150" 
                         Binding="{Binding LastName}"/>
                     <DataGridTextColumn
                         Header="First Name"
-                        Width="250"
+                        Width="150"
                         Binding="{Binding FirstName}"/>
                     <DataGridTextColumn
+                        Header="Mobile Number"
+                        Width="150" />
+                    <DataGridTextColumn
                         Header="Address"
-                        Width="250" />
+                        Width="300" />
                     <DataGridTextColumn
                         Header="Alerts"
                         Width="250" />
@@ -201,7 +204,7 @@
                                     Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-
+                        <viewsControls:UtilityBillInformation />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>

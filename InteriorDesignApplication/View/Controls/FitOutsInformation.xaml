@@ -192,14 +192,14 @@
                 <DataGrid
                     Height="75"
                     Grid.Row="1"
-                    Width="900">
+                    Width="950">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Description"
-                            Width="300" />
+                            Width="325" />
                         <DataGridTextColumn
                             Header="Model #"
-                            Width="200" />
+                            Width="225" />
                         <DataGridTextColumn
                             Header="Quantity"
                             Width="100" />

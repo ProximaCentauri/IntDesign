@@ -1,7 +1,11 @@
-﻿<Window x:Class="View.BankDetails"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="BankDetails" Height="285" Width="310">
+﻿<Window
+    x:Class="View.BankDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="BankDetails"
+    Height="285"
+    Width="310"
+    ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary
             Source="/SkinContent.xaml" />
