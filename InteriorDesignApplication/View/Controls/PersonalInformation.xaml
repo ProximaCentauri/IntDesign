@@ -226,75 +226,32 @@
                     </StackPanel.Style>
                 </StackPanel>
             </Grid>
-            <Grid Grid.Row="4"
-                  Grid.Column="2">
-                <StackPanel Orientation="Horizontal"
-                            Margin="0,0,0,5">
-                    <TextBlock Text="Birthdate:"
-                               Width="100"
-                               Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <!--<DatePicker
-                        Width="193"
+            <Grid
+                Grid.Row="4"
+                Grid.Column="2">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Birthdate:"
+                        Width="100"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <DatePicker
+                        Width="195"
                         SelectedDateFormat="Short"
-                        SelectedDate="{x:Static sys:DateTime.Today}" />-->
-
+                        SelectedDate="{x:Static sys:DateTime.Today}" />
                     <StackPanel.Style>
                         <Style>
-                            <Setter Property="StackPanel.Visibility"
-                                    Value="Collapsed" />
+                            <Setter
+                                Property="StackPanel.Visibility"
+                                Value="Collapsed" />
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=Married, Path=IsSelected}"
-                                             Value="True">
-                                    <Setter Property="StackPanel.Visibility"
-                                            Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </StackPanel.Style>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Row="4"
-                  Grid.Column="1">
-                <StackPanel Orientation="Horizontal"
-                            Margin="0,0,0,5">
-                    <TextBlock Text="Spouse Address:"
-                               Width="100"
-                               Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <TextBox Width="180"
-                             Margin="0,0,10,0"></TextBox>
-                    <StackPanel.Style>
-                        <Style>
-                            <Setter Property="StackPanel.Visibility"
-                                    Value="Collapsed" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=Married, Path=IsSelected}"
-                                             Value="True">
-                                    <Setter Property="StackPanel.Visibility"
-                                            Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </StackPanel.Style>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Row="4"
-                  Grid.Column="2">
-                <StackPanel Orientation="Horizontal"
-                            Margin="0,0,0,5">
-                    <TextBlock Text="Birthdate:"
-                               Width="100"
-                               Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <TextBox Width="193"
-                             Margin="0,0,10,0"></TextBox>
-                    <StackPanel.Style>
-                        <Style>
-                            <Setter Property="StackPanel.Visibility"
-                                    Value="Collapsed" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=Married, Path=IsSelected}"
-                                             Value="True">
-                                    <Setter Property="StackPanel.Visibility"
-                                            Value="Visible" />
+                                <DataTrigger
+                                    Binding="{Binding ElementName=Married, Path=IsSelected}"
+                                    Value="True">
+                                    <Setter
+                                        Property="StackPanel.Visibility"
+                                        Value="Visible" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
