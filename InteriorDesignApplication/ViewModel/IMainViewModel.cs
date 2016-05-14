@@ -9,7 +9,7 @@ namespace ViewModel
     {
         ICommand ActionCommand { get; set; }
 
-        void AddCustomer(Customer customer);
+        void SaveCustomer(Customer customer);
 
         void EditCustomer(Customer customer);
 

@@ -16,7 +16,7 @@ namespace ViewModel
     {
         public MainViewModel()
         {
-            
+
         }
 
         private IEnumerable<Customer> customers;
@@ -24,7 +24,7 @@ namespace ViewModel
         {
             get
             {
-                return new ObservableCollection<Customer>(context.Customers.Include(d => d.Dependents));              
+                return new ObservableCollection<Customer>(context.Customers.Include(d => d.Dependents));
             }
             set
             {
@@ -32,7 +32,7 @@ namespace ViewModel
                 OnPropertyChanged("Customers");
             }
         }
-        
+
         private Customer currentSelectedCustomer;
         public Customer CurrentSelectedCustomer
         {
@@ -49,7 +49,7 @@ namespace ViewModel
 
         private IEnumerable<Dependent> dependents;
         public IEnumerable<Dependent> Dependents
-        { 
+        {
             get
             {
                 return new ObservableCollection<Dependent>(context.Dependents);
@@ -61,7 +61,7 @@ namespace ViewModel
             }
         }
 
-        public void AddCustomer(Customer customer)
+        public void SaveCustomer(Customer customer)
         {
             context.Customers.Add(customer);
             context.SaveChanges();
@@ -87,9 +87,17 @@ namespace ViewModel
             context.SaveChanges();
         }
 
+        // This cancels currently selected customer to clear data in panel
+        private void AddCustomer()
+        {
+            CurrentSelectedCustomer = null;
+            Customer customer = new Customer();
+            CurrentSelectedCustomer = customer;
+        }
+
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
-                
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -97,6 +105,20 @@ namespace ViewModel
         }
         #endregion
         public ICommand ActionCommand { get; set; }
+
+        ICommand _cancelCommand;
+        public ICommand AddCustomerCommand
+        {
+            get
+            {
+                if(_cancelCommand == null)
+                {
+                    _cancelCommand = new RelayCommand(AddCustomer);                
+                }
+                return _cancelCommand;
+            }
+        }
+    
 
         public void Dispose()
         {

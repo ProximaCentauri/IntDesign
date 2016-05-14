@@ -41,23 +41,6 @@ namespace View
             var comboBox = sender as ComboBox;
             comboBox.ItemsSource = data;
             comboBox.SelectedIndex = 0;
-        }
-
-        private void BtnSaveDetails_Click(object sender, RoutedEventArgs e)
-        {
-            //Customer customer = new Customer();
-            //customer.FirstName = tbFirstName.Text;
-            //customer.LastName = tbLastName.Text;
-            //customer.MiddleName = tbMiddleName.Text;
-            //((MainViewModel)DataContext).AddCustomer(customer);            
-        }
-
-
-        //private Customer createCustomer()
-        //{
-        //    Customer customer = new Customer();
-
-        //    return Customer;
-        //}
+        }       
     }
 }
