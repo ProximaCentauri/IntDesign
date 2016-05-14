@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="View.BankInformation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:View"
+    Height="Auto"
+    Width="1024">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="/SkinContent.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel
+            Orientation="Vertical">
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock
+                    Text="Bank Information"
+                    Style="{StaticResource mainHeaderStyle}" />
+                <Button
+                    Width="40"
+                    Height="20"
+                    Style="{StaticResource iconButtonStyle}">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                        <Image
+                            Style="{StaticResource addIconStyle}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <Separator
+                Style="{StaticResource mainSeparatorStyle}" />
+            <DataGrid
+                Height="75"
+                Width="1000"
+                Margin="0,10,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="Name of Bank"
+                        Width="200" />
+                    <DataGridTextColumn
+                        Header="Account Name"
+                        Width="200" />
+                    <DataGridTextColumn
+                        Header="Account Number"
+                        Width="200" />
+                    <DataGridTextColumn
+                        Header="Bank Address"
+                        Width="250" />
+                    <DataGridTextColumn
+                        Header="Swift Code"
+                        Width="150" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>
