@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Windows.Controls.Primitives;
+using View;
 namespace View.Controls
 {
     /// <summary>
@@ -24,5 +25,12 @@ namespace View.Controls
             InitializeComponent();
         }
 
+        private void addDependent_Click(object sender, RoutedEventArgs e)
+        {
+            DependentInformation di = new DependentInformation();
+
+            di.testpopup.IsOpen = true; 
+            
+        }
     }
 }

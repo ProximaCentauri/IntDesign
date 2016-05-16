@@ -46,13 +46,16 @@
                     Style="{StaticResource searchByComboxBoxStyle}"
                     Loaded="ComboBox_Loaded" />
                 <TextBox
+                    Name="SearchTextBlock"
                     Width="250"
                     Style="{StaticResource searchByTextStyle}"
                     Margin="10,0,0,0" />
                 <Button
+                    Name="SearchButton"
                     Width="120"
                     Margin="10,0,0,0"
-                    Style="{StaticResource mainButtonStyle}">
+                    Style="{StaticResource mainButtonStyle}"
+                    Click="SearchButton_Click">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
@@ -63,10 +66,13 @@
                             Style="{StaticResource mainButtonTextStyle}" />
                     </StackPanel>
                 </Button>
-                <Button Width="150"
+                <Button 
+                    Name="AddCustomerButton"
+                    Width="150"
                         Margin="100,0,0,0"
                         Style="{StaticResource mainButtonStyle}"
-                        Command="{Binding AddCustomerCommand}">
+                        Command="{Binding AddCustomerCommand}"
+                        Click="AddCustomerButton_Click">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
@@ -114,7 +120,8 @@
         <Grid
             Grid.Row="2">
             <Grid>
-                <TabControl>
+                <TabControl
+                    Name="MainTabControl">
                     <TabControl.Resources>
                         <Style
                             TargetType="TabItem">
@@ -156,7 +163,8 @@
                             </Setter>
                         </Style>
                     </TabControl.Resources>
-                    <TabItem>
+                    <TabItem
+                        Name="PersonalInfoTab">
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Style="{StaticResource personalInfoIconStyle}" />
