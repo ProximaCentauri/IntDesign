@@ -59,13 +59,12 @@
                             Style="{StaticResource mainButtonTextStyle}" />
                     </StackPanel>
                 </Button>
-                <Button 
+                <Button
                     Name="AddCustomerButton"
                     Width="150"
-                        Margin="100,0,0,0"
-                        Style="{StaticResource mainButtonStyle}"
-                        Command="{Binding AddCustomerCommand}"
-                        Click="AddCustomerButton_Click">
+                    Margin="100,0,0,0"
+                    Style="{StaticResource mainButtonStyle}"
+                    Command="{Binding AddCustomerCommand}">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

@@ -36,7 +36,7 @@ namespace View
             if (e.PropertyName.Equals("PopupView"))
             {
                 PopupControl.ShowPopup(true, viewModel.CurrentPopupView, true);
-            }
+            }            
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)

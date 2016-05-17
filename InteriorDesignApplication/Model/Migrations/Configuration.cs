@@ -9,7 +9,7 @@ namespace Model.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;           
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Model.ManagerDBContext context)
@@ -26,14 +26,18 @@ namespace Model.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
             context.Customers.AddOrUpdate(
                 c => c.LastName,
-                new Customer { LastName = "Doe", FirstName = "John", Age = 29 },
-                new Customer { LastName = "Gray", FirstName = "Jane", Age = 25 },
-                new Customer { LastName = "Reynolds", FirstName = "Ray", Age = 31 }
-                );
-        }
-
-        
+                new Customer { LastName = "Doe", FirstName = "Jane", MiddleName = "Test1" },
+                new Customer { LastName = "Reynolds", FirstName = "Gray", MiddleName = "Test2" },
+                new Customer
+                {
+                    LastName = "Wick",
+                    FirstName = "John",
+                    MiddleName = "Test3",
+                    CustomerSpouse = new Spouse { LastName = "Wick", FirstName = "Mary" }
+                });
+         }
     }
 }
