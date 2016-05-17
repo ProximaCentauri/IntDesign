@@ -7,10 +7,6 @@
     Height="270"
     Width="300"
     ResizeMode="NoResize">
-    <Window.Resources>
-        <ResourceDictionary
-            Source="/SkinContent.xaml" />
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
