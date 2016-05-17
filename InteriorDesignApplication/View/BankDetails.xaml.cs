@@ -11,17 +11,31 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
+using Model.Controls;
 
 namespace View
 {
     /// <summary>
     /// Interaction logic for BankDetails.xaml
     /// </summary>
-    public partial class BankDetails : Window
+    public partial class BankDetails : PopupView
     {
         public BankDetails()
         {
             InitializeComponent();
         }
+
+        private void PopupView_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+        }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = null;
+        }
+
+        IMainViewModel viewModel;
     }
 }

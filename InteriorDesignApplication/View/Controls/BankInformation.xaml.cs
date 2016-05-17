@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View;
+using Model.Controls;
+using ViewModel;
 
 namespace View.Controls
 {
@@ -24,5 +27,27 @@ namespace View.Controls
         {
             InitializeComponent();
         }
+
+        private void addBankDetails_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = new BankDetails();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel = this.DataContext as IMainViewModel;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+        }
+
+        public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("CurrentPopupView"))
+            {
+
+            }
+        }
+
+        IMainViewModel viewModel;
+
     }
 }

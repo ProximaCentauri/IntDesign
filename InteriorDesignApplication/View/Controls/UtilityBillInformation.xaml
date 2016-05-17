@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
              Height="Auto"
-             Width="1024">
+             Width="1024"
+             Loaded="UserControl_Loaded">
     <Grid>
         <StackPanel
             Orientation="Vertical">
@@ -15,8 +16,10 @@
                     Text="Utility Bill Information"
                     Style="{StaticResource mainHeaderStyle}" />
                 <Button
+                    Name="addUtilityBill"
                     Width="40"
                     Height="20"
+                    Click="addUtilityBill_Click"
                     Style="{StaticResource iconButtonStyle}">
                     <StackPanel
                         Orientation="Horizontal"

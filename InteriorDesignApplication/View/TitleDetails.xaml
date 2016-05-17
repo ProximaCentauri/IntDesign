@@ -1,20 +1,42 @@
-﻿<Window
+﻿<c:PopupView
     x:Class="View.TitleDetails"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     Title="TitleDetails"
     Height="300"
-    Width="300"
-    ResizeMode="NoResize">
+    Width="310"
+    Loaded="PopupView_Loaded"
+    Alignment="Center"
+    Background="White"
+    BackgroundType="Shroud">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="Auto"></RowDefinition>
             <RowDefinition
+                Height="Auto"></RowDefinition>
+            <RowDefinition
                 Height="60"></RowDefinition>
         </Grid.RowDefinitions>
+        <Button
+            x:Name="close"
+            Grid.Row="0"
+            Width="30"
+            Height="20"
+            Margin="0,8,5,0"
+            Click="close_Click"
+            Style="{StaticResource iconButtonStyle}"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
+            <StackPanel>
+                <Image
+                    Style="{StaticResource closeIconStyle}" />
+            </StackPanel>
+        </Button>
         <Grid
-            Margin="0,10,0,0">
+            Grid.Row="1"
+            Margin="10,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="21"></RowDefinition>
@@ -118,7 +140,7 @@
             </StackPanel>
         </Grid>
         <Grid
-            Grid.Row="1">
+            Grid.Row="2">
             <Button
                 Width="100"
                 Height="30"
@@ -135,4 +157,4 @@
             </Button>
         </Grid>
     </Grid>
-</Window>
+</c:PopupView>

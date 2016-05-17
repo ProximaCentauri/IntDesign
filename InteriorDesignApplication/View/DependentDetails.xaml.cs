@@ -25,15 +25,16 @@ namespace View
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            viewModel.CurrentPopupView = null;
-        }
-
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
         }
+        
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = null;
+        }
+
         IMainViewModel viewModel;
     }
 }
