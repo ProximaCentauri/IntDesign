@@ -31,7 +31,7 @@ namespace View.Controls
 
         private void addDependent_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CurrentPopupView = new DependentInformation();
+            viewModel.CurrentPopupView = new DependentDetails();
         }
 
         IMainViewModel viewModel;
@@ -39,6 +39,24 @@ namespace View.Controls
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             viewModel = this.DataContext as IMainViewModel;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+        }
+
+        public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("CurrentPopupView"))
+            {
+                if (null == viewModel.CurrentPopupView)
+                {
+                    this.Opacity = 1;
+                    this.Background = Brushes.White;
+                }
+                else
+                {
+                    this.Opacity = .9;
+                    this.Background = Brushes.Gray;
+                }
+            }
         }
     }
 }

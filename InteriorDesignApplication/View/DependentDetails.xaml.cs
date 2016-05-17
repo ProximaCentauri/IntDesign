@@ -11,17 +11,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using ViewModel;
+using Model.Controls;
 namespace View
 {
     /// <summary>
     /// Interaction logic for DependentDetails.xaml
     /// </summary>
-    public partial class DependentDetails : Window
+    public partial class DependentDetails : PopupView
     {
         public DependentDetails()
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = null;
+        }
+
+        private void PopupView_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+        }
+        IMainViewModel viewModel;
     }
 }

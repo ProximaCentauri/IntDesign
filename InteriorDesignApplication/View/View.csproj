@@ -68,9 +68,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\DependentInformation.xaml.cs">
-      <DependentUpon>DependentInformation.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\FitOutsInformation.xaml.cs">
       <DependentUpon>FitOutsInformation.xaml</DependentUpon>
     </Compile>
@@ -102,10 +99,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CompanyInformation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\DependentInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

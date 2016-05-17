@@ -10,7 +10,7 @@
     xmlns:vwMdl="clr-namespace:ViewModel;assembly=ViewModel"
     xmlns:viewsControls="clr-namespace:View.Controls"
     mc:Ignorable="d"
-    Title="MainWindow"
+    Title="Interior Design"
     WindowStyle="SingleBorderWindow"
     ResizeMode="CanMinimize"    
     Top="0"

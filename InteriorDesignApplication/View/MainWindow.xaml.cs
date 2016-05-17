@@ -38,11 +38,13 @@ namespace View
             {
                 if (null == viewModel.CurrentPopupView)
                 {
-                    PopupControl.ShowPopup(false, viewModel.CurrentPopupView, true);
+                    this.GridCustomers.IsEnabled = true;                    
+                    PopupControl.ShowPopup(false, viewModel.CurrentPopupView, false);
                 }
                 else
                 {
-                    PopupControl.ShowPopup(true, viewModel.CurrentPopupView, true);
+                    this.GridCustomers.IsEnabled = false;
+                    PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
                 }                
             }
         }
