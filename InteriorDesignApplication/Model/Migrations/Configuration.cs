@@ -36,6 +36,7 @@ namespace Model.Migrations
                     LastName = "Wick",
                     FirstName = "John",
                     MiddleName = "Test3",
+                    Status = "Married",
                     CustomerSpouse = new Spouse { LastName = "Wick", FirstName = "Mary" }
                 });
          }

@@ -48,7 +48,7 @@ namespace ViewModel
                 currentSelectedCustomer = value;
                 OnPropertyChanged("CurrentSelectedCustomer");
             }
-        }
+        }      
 
         private IEnumerable<Dependent> dependents;
         public IEnumerable<Dependent> Dependents
@@ -80,6 +80,7 @@ namespace ViewModel
 
         private void SaveCustomer()
         {
+
             Customer customer = CurrentSelectedCustomer as Customer;
             if (SelectedIndex == -1 && null != customer.FirstName)
             {
