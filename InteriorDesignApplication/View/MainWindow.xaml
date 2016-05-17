@@ -164,7 +164,7 @@
                                            Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-                        <viewsControls:PersonalInformation DataContext="{Binding CurrentSelectedCustomer}" />
+                        <viewsControls:PersonalInformation />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>

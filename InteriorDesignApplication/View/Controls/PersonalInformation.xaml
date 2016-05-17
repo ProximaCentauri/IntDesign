@@ -50,7 +50,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"                             
-                             Text="{Binding LastName}"></TextBox>
+                             Text="{Binding CurrentSelectedCustomer.LastName}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -61,8 +61,8 @@
                                Width="100"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
-                             Margin="0,0,10,0"                             
-                             Text="{Binding FirstName}"></TextBox>
+                             Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.FirstName}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -73,8 +73,8 @@
                                Width="100"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="194"
-                             Margin="0,0,10,0"                             
-                             Text="{Binding MiddleName}"></TextBox>
+                             Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.MiddleName}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"
@@ -86,7 +86,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                             Text="{Binding Religion}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.Religion}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"
@@ -98,7 +98,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
                              Margin="0,0,10,0"
-                             Text="{Binding Nationality}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.Nationality}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"
@@ -110,7 +110,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="194"
                              Margin="0,0,10,0"
-                             Text="{Binding ValidId}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.ValidId}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="3"
@@ -134,7 +134,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
                              Margin="0,0,10,0"
-                             Text="{Binding BirthPlace}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.BirthPlace}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="3"
@@ -144,8 +144,8 @@
                     <TextBlock Text="Status:"
                                Width="100"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <ComboBox Width="70" 
-                              SelectedValue="{Binding Status}"
+                    <ComboBox Width="70"
+                        SelectedValue="{Binding CurrentSelectedCustomer.Status}"
                               SelectedValuePath="Content">
                         <ComboBoxItem x:Name="Single"
                                       Content="Single"
@@ -158,8 +158,8 @@
                     <TextBlock Text="Gender:"
                                Width="50"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <ComboBox Width="70" 
-                              SelectedValue="{Binding Gender}"
+                    <ComboBox Width="70"
+                        SelectedValue="{Binding CurrentSelectedCustomer.Gender}"
                               SelectedValuePath="Content">
                         <ComboBoxItem IsSelected="True"
                                       Content="Male" />
@@ -176,7 +176,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                             Text="{Binding CustomerSpouse.LastName}">
+                        Text="{Binding CurrentSelectedCustomer.CustomerSpouse.LastName}">
                     </TextBox>
                     <StackPanel.Style>
                         <Style>
@@ -266,7 +266,7 @@
                         Name="addDependent"
                         Width="50"
                         Height="20"
-                        Margin="0,8,0,0"
+                        Margin="0,8,0,0"                        
                         Command="{Binding OpenPopupViewCommand}"                        
                         Style="{StaticResource iconButtonStyle}" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal"
@@ -318,7 +318,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                             Text="{Binding MobileNumber}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.MobileNumber}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -330,7 +330,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
                              Margin="0,0,10,0"
-                             Text="{Binding LandLineNumber}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.LandLineNumber}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -342,7 +342,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="194"
                              Margin="0,0,10,0"
-                             Text="{Binding EmailAddress}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.EmailAddress}"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>
@@ -374,7 +374,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                             Text="{Binding NumBuilding}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.NumBuilding}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -386,7 +386,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
                              Margin="0,0,10,0"
-                             Text="{Binding Street}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.Street}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
@@ -399,7 +399,7 @@
                     <TextBox
                         Width="270"
                         Margin="0,0,10,0"
-                             Text="{Binding VillageDistrict}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.VillageDistrict}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"
@@ -411,7 +411,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                             Text="{Binding City}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.City}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"
@@ -423,7 +423,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
                              Margin="0,0,10,0"
-                             Text="{Binding State}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.State}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2"
@@ -435,13 +435,13 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="130"
                              Margin="0,0,10,0"
-                             Text="{Binding Country}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.Country}"></TextBox>
                     <TextBlock Text="Zip Code:"
                                Width="50"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="75"
                              Margin="0,0,10,0"
-                             Text="{Binding ZipCode}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.ZipCode}"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>
