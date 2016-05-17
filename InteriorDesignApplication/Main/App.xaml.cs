@@ -21,7 +21,7 @@ namespace Main
         {
             Resources.MergedDictionaries.Add(LoadComponent(new Uri("SkinContent;component/SkinContent.xaml", UriKind.Relative)) as ResourceDictionary);
             this.viewModel = new MainViewModel();
-            View.MainWindow main = new View.MainWindow();
+            View.MainWindow main = new View.MainWindow(viewModel);
             main.Show();
         }
 

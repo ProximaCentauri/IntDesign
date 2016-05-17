@@ -22,12 +22,12 @@ namespace View
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {        
-
-        public MainWindow()
+    {
+        public MainWindow() { }
+        public MainWindow(IMainViewModel viewModel)
         {
             InitializeComponent();
-            viewModel = new MainViewModel();
+            this.viewModel = viewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
         }
 
