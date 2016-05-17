@@ -28,6 +28,7 @@ namespace View
         {
             InitializeComponent();
             this.viewModel = viewModel;
+            this.DataContext = viewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
         }
 
