@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
 using ViewModel;
+using Model.Controls;
 
 namespace View
 {
@@ -26,7 +27,16 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            viewModel = new MainViewModel();
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+        }
+
+        public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("PopupView"))
+            {
+                PopupControl.ShowPopup(true, viewModel.CurrentPopupView, true);
+            }
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -52,5 +62,6 @@ namespace View
         {
 
         }
+        IMainViewModel viewModel;
     }
 }

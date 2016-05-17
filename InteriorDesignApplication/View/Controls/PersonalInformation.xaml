@@ -274,9 +274,9 @@
                         Name="addDependent"
                         Width="50"
                         Height="20"
-                        Margin="0,7,0,0"
-                        Click="addDependent_Click"
-                        Style="{StaticResource iconButtonStyle}">
+                        Margin="0,8,0,0"
+                        Command="{Binding OpenPopupViewCommand}"                        
+                        Style="{StaticResource iconButtonStyle}" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Left">
                             <Image Style="{StaticResource addIconStyle}" />

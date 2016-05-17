@@ -11,6 +11,10 @@
         x:Key="fontRegular">Calibri</FontFamily>
     
     <!--color themes-->
+    <Color
+        x:Key="popupShroudGradientStartColor">#B3000000</Color>
+    <Color
+        x:Key="popupShroudGradientStopColor">#00FFFFFF</Color>
     <SolidColorBrush
         x:Key="mainTextColorBrush"
         Color="#737373" />
@@ -525,6 +529,26 @@
         <Setter
             Property="Height"
             Value="20" />
+    </Style>
+
+    <Style
+        x:Key="popupShroudStyle"
+        TargetType="Rectangle">
+        <Setter
+            Property="Fill">
+            <Setter.Value>
+                <LinearGradientBrush
+                    StartPoint="0,0"
+                    EndPoint="0,1">
+                    <GradientStop
+                        Color="{StaticResource popupShroudGradientStartColor}"
+                        Offset="0" />
+                    <GradientStop
+                        Color="{StaticResource popupShroudGradientStopColor}"
+                        Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

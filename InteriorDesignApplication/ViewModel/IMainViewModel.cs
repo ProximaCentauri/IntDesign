@@ -2,15 +2,17 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using Model;
-
+using Model.Controls;
 namespace ViewModel
 {
-    interface IMainViewModel : INotifyPropertyChanged, IDisposable
+    public interface IMainViewModel : INotifyPropertyChanged, IDisposable
     {
         ICommand ActionCommand { get; set; }
     
         int SelectedIndex { get; set; }      
 
         void DeleteCustomer(Customer customer);
+
+        PopupView CurrentPopupView { get; set; }
     }
 }

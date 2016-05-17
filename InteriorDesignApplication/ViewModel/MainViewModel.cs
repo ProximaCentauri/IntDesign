@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using Model;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
+using Model.Controls;
 
 namespace ViewModel
 {
@@ -63,6 +64,20 @@ namespace ViewModel
             }
         }
 
+        private PopupView currentPopupView;
+        public PopupView CurrentPopupView
+        {
+            get
+            {
+                return currentPopupView;
+            }
+            set
+            {
+                currentPopupView = value;
+                OnPropertyChanged("CurrentPopupView");
+            }
+        }
+
         private void SaveCustomer()
         {
             Customer customer = CurrentSelectedCustomer as Customer;
@@ -88,6 +103,11 @@ namespace ViewModel
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
             CurrentSelectedCustomer = customer;
+        }
+
+        private void OpenPopupView()
+        {
+            OnPropertyChanged("PopupView");
         }
 
         #region INotifyPropertyChanged Implementing
@@ -128,6 +148,21 @@ namespace ViewModel
                 return _saveCustomerCommand;
             }
         }
+
+        ICommand openPopupViewCommand;
+        public ICommand OpenPopupViewCommand
+        {
+            get
+            {
+                if (null == openPopupViewCommand)
+                {
+                    
+                    openPopupViewCommand = new RelayCommand(OpenPopupView);
+                }
+                return openPopupViewCommand;
+            }
+        }
+
         #endregion
 
         public void Dispose()

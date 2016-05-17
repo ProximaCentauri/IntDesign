@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteriorDesignApplication", "InteriorDesignApplication\InteriorDesignApplication.csproj", "{EC1FFE02-6D2B-46FB-BDE3-4CD6C16E26C6}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{B1B2E2F1-0C70-44F2-8353-EACAAB90738D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinContext", "SkinContext\SkinContext.csproj", "{24E3CA62-EA91-49D2-B94A-E192F0A37905}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinContent", "SkinContent\SkinContent.csproj", "{24E3CA62-EA91-49D2-B94A-E192F0A37905}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

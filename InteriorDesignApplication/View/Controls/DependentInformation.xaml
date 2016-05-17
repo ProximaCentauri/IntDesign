@@ -1,0 +1,21 @@
+﻿<c:PopupView x:Class="View.Controls.DependentInformation"
+        xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <Grid Name="DependentInfo">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="User Name" Grid.Row="0" Grid.Column="0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="txtName" />
+        <TextBlock Text="word" Grid.Row="1" Grid.Column="0"/>
+
+    </Grid>
+</c:PopupView>

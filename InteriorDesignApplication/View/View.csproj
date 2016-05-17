@@ -67,14 +67,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\DependentInformation.xaml.cs">
+      <DependentUpon>DependentInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FitOutsInformation.xaml.cs">
       <DependentUpon>FitOutsInformation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PopupControl.xaml.cs">
+      <DependentUpon>PopupControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UtilityBillInformation.xaml.cs">
       <DependentUpon>UtilityBillInformation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DependentInformation.xaml.cs">
-      <DependentUpon>DependentInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="FitOutDetails.xaml.cs">
       <DependentUpon>FitOutDetails.xaml</DependentUpon>
@@ -101,7 +104,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\DependentInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\FitOutsInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PopupControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,10 +121,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DependentDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DependentInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,9 +214,9 @@
       <Project>{9c12ee94-5565-4209-b99f-16fc1fd8ad80}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SkinContext\SkinContext.csproj">
+    <ProjectReference Include="..\SkinContent\SkinContent.csproj">
       <Project>{24e3ca62-ea91-49d2-b94a-e192f0a37905}</Project>
-      <Name>SkinContext</Name>
+      <Name>SkinContent</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{b1b2e2f1-0c70-44f2-8353-eacaab90738d}</Project>

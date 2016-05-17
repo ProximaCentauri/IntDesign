@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using View;
+using Model.Controls;
 namespace View.Controls
 {
     /// <summary>
@@ -23,14 +24,6 @@ namespace View.Controls
         public PersonalInformation()
         {
             InitializeComponent();
-        }
-
-        private void addDependent_Click(object sender, RoutedEventArgs e)
-        {
-            DependentInformation di = new DependentInformation();
-
-            di.testpopup.IsOpen = true; 
-            
-        }
+        }        
     }
 }
