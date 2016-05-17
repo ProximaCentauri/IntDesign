@@ -212,14 +212,14 @@ namespace View.Controls
             FrameworkElement control = depObj as FrameworkElement;
             if (control != null)
             {
-                //if (control is TextBlock || control is TextBox || control is Button || control is Grid)
-                //{
-                //    control.IsEnabled = false;
-                //}
-                //else if (control is Canvas)
-                //{
-                //    control.IsEnabled = true;
-                //}             
+                if (control is TextBlock || control is TextBox || control is ComboBox || control is Button || control is TabControl)
+                {
+                    control.IsEnabled = this.currentPopupView == null ? true : false;
+                }
+                else if (control is Canvas)
+                {
+                    control.IsEnabled = true;
+                }             
             }
             int depObjCount = VisualTreeHelper.GetChildrenCount(depObj);
             for (int i = 0; i < depObjCount; i++)
