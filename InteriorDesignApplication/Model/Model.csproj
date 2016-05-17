@@ -60,6 +60,9 @@
     <Compile Include="Appliances.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="Company.cs" />
+    <Compile Include="Controls\DropShadowBorder.xaml.cs">
+      <DependentUpon>DropShadowBorder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PopupView.cs" />
     <Compile Include="Controls\View.cs" />
     <Compile Include="Customer.cs" />
@@ -77,6 +80,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\DropShadowBorder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

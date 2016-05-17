@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Model.Controls;assembly=Model">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary
@@ -12,9 +13,13 @@
 
     <!--color themes-->
     <Color
+        x:Key="pathShadowGradientStartColor">Transparent</Color>
+    <Color
         x:Key="popupShroudGradientStartColor">#B3000000</Color>
     <Color
         x:Key="popupShroudGradientStopColor">#00FFFFFF</Color>
+    <Color
+        x:Key="pathShadowGradientStopColor">#B3000000</Color>
     <SolidColorBrush
         x:Key="mainTextColorBrush"
         Color="#737373" />
@@ -39,7 +44,9 @@
     <SolidColorBrush
         x:Key="tabItemSelectedBackgroundColorBrush"
         Color="#DC002A" />
-
+    <SolidColorBrush
+        x:Key="borderColorBrush"
+        Color="#FFFFFF" />
 
     <Color
         x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
@@ -550,5 +557,83 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style
+        x:Key="pathShadowStyle"
+        TargetType="Path">
+        <Setter
+            Property="Fill">
+            <Setter.Value>
+                <LinearGradientBrush
+                    StartPoint="0,0"
+                    EndPoint="0,1">
+                    <GradientStop
+                        Color="{StaticResource pathShadowGradientStartColor}"
+                        Offset="0" />
+                    <GradientStop
+                        Color="{StaticResource pathShadowGradientStopColor}"
+                        Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Opacity"
+            Value="0.30" />
+        <Setter
+            Property="Margin"
+            Value="4,4,0,0" />
+    </Style>
+    <Style
+        x:Key="pathShadowPopupStyle"
+        TargetType="Path"
+        BasedOn="{StaticResource pathShadowStyle}">
+        <Setter
+            Property="Margin"
+            Value="4,4,0,0" />
+    </Style>
+    <!-- DropShadowBorder Styles-->
+    <Style
+        x:Key="dropShadowStyle"
+        TargetType="controls:DropShadowBorder">
+        <Style.Resources>
+            <Style
+                TargetType="Path">
+                <Setter
+                    Property="Stroke"
+                    Value="{StaticResource borderColorBrush}" />
+                <Setter
+                    Property="StrokeThickness"
+                    Value="0.1" />
+                <Setter
+                    Property="Fill"
+                    Value="{StaticResource borderColorBrush}" />
+                <Setter
+                    Property="Opacity"
+                    Value="1" />
+                <Setter
+                    Property="Stretch"
+                    Value="Fill" />
+            </Style>
+        </Style.Resources>
+        <Setter
+            Property="ShowTip"
+            Value="False" />
+        <Setter
+            Property="TipOffSet"
+            Value="10" />
+        <Setter
+            Property="TipWidth"
+            Value="30" />
+        <Setter
+            Property="TipHeight"
+            Value="20" />
+        <Setter
+            Property="TipAlignment"
+            Value="Top" />
+        <Setter
+            Property="Offset"
+            Value="4" />
+        <Setter
+            Property="ShadowStyle"
+            Value="pathShadowPopupStyle" />
+    </Style>
 </ResourceDictionary>

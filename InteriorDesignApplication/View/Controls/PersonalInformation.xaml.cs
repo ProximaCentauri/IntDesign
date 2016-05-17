@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using View;
 using Model.Controls;
+using ViewModel;
+
 namespace View.Controls
 {
     /// <summary>
@@ -24,6 +26,19 @@ namespace View.Controls
         public PersonalInformation()
         {
             InitializeComponent();
-        }        
+
+        }
+
+        private void addDependent_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = new DependentInformation();
+        }
+
+        IMainViewModel viewModel;
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel = this.DataContext as IMainViewModel;
+        }
     }
 }

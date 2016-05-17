@@ -34,10 +34,17 @@ namespace View
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("PopupView"))
+            if (e.PropertyName.Equals("CurrentPopupView"))
             {
-                PopupControl.ShowPopup(true, viewModel.CurrentPopupView, true);
-            }            
+                if (null == viewModel.CurrentPopupView)
+                {
+                    PopupControl.ShowPopup(false, viewModel.CurrentPopupView, true);
+                }
+                else
+                {
+                    PopupControl.ShowPopup(true, viewModel.CurrentPopupView, true);
+                }                
+            }
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)

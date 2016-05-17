@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model.Controls;
+using ViewModel;
 namespace View.Controls
 {
     /// <summary>
@@ -23,5 +24,19 @@ namespace View.Controls
         {
             InitializeComponent();
         }
+
+        private void PopupView_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;     
+        }
+
+        IMainViewModel viewModel;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = null;
+        }
+
+        
     }
 }

@@ -81,7 +81,7 @@ namespace ViewModel
         private void SaveCustomer()
         {
             Customer customer = CurrentSelectedCustomer as Customer;
-            if (SelectedIndex == -1)
+            if (SelectedIndex == -1 && null != customer.FirstName)
             {
                 context.Customers.Add(customer);
                 CurrentSelectedCustomer = null;
@@ -104,12 +104,7 @@ namespace ViewModel
             Customer customer = new Customer();
             CurrentSelectedCustomer = customer;
         }
-
-        private void OpenPopupView()
-        {
-            OnPropertyChanged("PopupView");
-        }
-
+        
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -146,20 +141,6 @@ namespace ViewModel
                     _saveCustomerCommand = new RelayCommand(SaveCustomer);
                 }
                 return _saveCustomerCommand;
-            }
-        }
-
-        ICommand openPopupViewCommand;
-        public ICommand OpenPopupViewCommand
-        {
-            get
-            {
-                if (null == openPopupViewCommand)
-                {
-                    
-                    openPopupViewCommand = new RelayCommand(OpenPopupView);
-                }
-                return openPopupViewCommand;
             }
         }
 

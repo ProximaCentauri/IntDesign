@@ -41,7 +41,7 @@ namespace View.Controls
                 if (0.0 == this.PopupFrame.Opacity)
                 {
                     this.currentPopupView = popupView;
-                    this.currentPopupView.ControlsToAllowEnableChanged += new EventHandler(CurrentPopupView_ControlsToAllowEnableChanged);
+                    //this.currentPopupView.ControlsToAllowEnableChanged += new EventHandler(CurrentPopupView_ControlsToAllowEnableChanged);
                     if (this.popupRendering)
                     {
                         this.PopupFrame.StopLoading();
