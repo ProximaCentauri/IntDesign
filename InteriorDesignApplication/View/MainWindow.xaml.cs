@@ -76,7 +76,7 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (personalInfo.StatusIndex.SelectedIndex == 1 && personalInfo.SpouseName.Text != String.Empty)
+            if (personalInfo.StatusIndex.Text.Equals("Married") && personalInfo.SpouseName.Text != String.Empty)
             {
                 Spouse spouse = new Spouse();
                 spouse.LastName = personalInfo.SpouseName.Text;

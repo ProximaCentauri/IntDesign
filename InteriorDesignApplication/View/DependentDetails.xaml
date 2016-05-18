@@ -76,7 +76,8 @@
                         Grid.Column="1"
                         Width="200"
                         HorizontalAlignment="Left"
-                        Margin="0,5,0,0"></TextBox>
+                        Margin="0,5,0,0"
+                        Text="{Binding Dependent.LastName}"></TextBox>
                     <TextBlock
                         Grid.Row="1"
                         Text="First Name:"
@@ -87,7 +88,8 @@
                         Grid.Column="1"
                         Width="200"
                         HorizontalAlignment="Left"
-                        Margin="0,5,0,0"></TextBox>
+                        Margin="0,5,0,0"
+                        Text="{Binding Dependent.FirstName}"></TextBox>
                     <TextBlock
                         Grid.Row="2"
                         Text="Middle Name:"
@@ -98,7 +100,8 @@
                         Grid.Column="1"
                         Width="200"
                         HorizontalAlignment="Left"
-                        Margin="0,5,0,0"></TextBox>
+                        Margin="0,5,0,0"
+                        Text="{Binding Dependent.MiddleName}"></TextBox>
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
@@ -110,7 +113,8 @@
                         Grid.Column="1"
                         Width="200"
                         Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        HorizontalAlignment="Left"
+                        Text="{Binding Dependent.City}"></TextBox>
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
@@ -123,7 +127,7 @@
                         Width="200"
                         HorizontalAlignment="Left"
                         SelectedDateFormat="Short"
-                        SelectedDate="{x:Static sys:DateTime.Today}" />
+                        SelectedDate="{x:Static sys:DateTime.Today}"                         />
                 </Grid>
             </StackPanel>
         </Grid>
@@ -132,7 +136,9 @@
             <Button
                 Width="100"
                 Height="30"
-                Style="{StaticResource mainButtonStyle}">
+                Style="{StaticResource mainButtonStyle}"
+                Command="{Binding AddDependentCommand}"
+                Click="Button_Click">
                 <StackPanel
                     Orientation="Horizontal">
                     <Image

@@ -23,11 +23,29 @@ namespace ViewModel
 
         private Spouse CustomerSpouse { get; set; }
 
+        private Dependent newDependent;
+        public Dependent Dependent
+        {
+            get
+            {
+                return newDependent;
+            }
+            set
+            {
+                newDependent = value;
+                OnPropertyChanged("Dependent");
+            }
+        }        
+
         public void CreateEntity(object ob)
         {
             if (ob is Spouse)
             {
                 CustomerSpouse = ob as Spouse;
+            }           
+            else if(ob is Dependent)
+            {
+                Dependent = ob as Dependent;
             }
         }
 
@@ -57,10 +75,10 @@ namespace ViewModel
                 currentSelectedCustomer = value;
                 OnPropertyChanged("CurrentSelectedCustomer");
             }
-        }      
+        }
 
-        private IEnumerable<Dependent> dependents;
-        public IEnumerable<Dependent> Dependents
+        private ICollection<Dependent> dependents;
+        public ICollection<Dependent> Dependents
         {
             get
             {
@@ -100,7 +118,9 @@ namespace ViewModel
                 CurrentSelectedCustomer = null;
             }
             context.SaveChanges();
-            OnPropertyChanged("Customers");                       
+            Dependent = null;
+            OnPropertyChanged("Dependent");
+            OnPropertyChanged("Customers");                 
         }      
 
         public void DeleteCustomer(Customer customer)
@@ -116,8 +136,14 @@ namespace ViewModel
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
             CurrentSelectedCustomer = customer;
-        }       
-        
+        }
+
+        private void AddDependent()
+        {
+            CurrentSelectedCustomer.Dependents.Add(Dependent);
+            OnPropertyChanged("CurrentSelectedCustomer");
+        }   
+
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -155,6 +181,19 @@ namespace ViewModel
                     _saveCustomerCommand = new RelayCommand(SaveCustomer);
                 }
                 return _saveCustomerCommand;
+            }
+        }
+
+        ICommand _addDependentCommand;
+        public ICommand AddDependentCommand
+        {
+            get
+            {
+                if (_addDependentCommand == null)
+                {
+                    _addDependentCommand = new RelayCommand(AddDependent);
+                }
+                return _addDependentCommand;
             }
         }
 

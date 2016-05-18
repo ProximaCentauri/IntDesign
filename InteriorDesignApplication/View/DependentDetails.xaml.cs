@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ViewModel;
 using Model.Controls;
+using Model;
 namespace View
 {
     /// <summary>
@@ -27,7 +28,9 @@ namespace View
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;            
+            this.viewModel.CreateEntity(new Dependent());
+            
         }
         
         private void close_Click(object sender, RoutedEventArgs e)
@@ -36,5 +39,11 @@ namespace View
         }
 
         IMainViewModel viewModel;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = null;
+        }
+        
     }
 }
