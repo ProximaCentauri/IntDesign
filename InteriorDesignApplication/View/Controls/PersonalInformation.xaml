@@ -146,9 +146,11 @@
                     <TextBlock Text="Status:"
                                Width="100"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <ComboBox Width="70"
+                    <ComboBox
+                        Width="70"
                         SelectedValue="{Binding CurrentSelectedCustomer.Status}"
-                              SelectedValuePath="Content">
+                        SelectedValuePath="Content"
+                        Name="StatusIndex">
                         <ComboBoxItem x:Name="Single"
                                       Content="Single"
                                       IsSelected="True"></ComboBoxItem>
@@ -162,7 +164,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <ComboBox Width="70"
                         SelectedValue="{Binding CurrentSelectedCustomer.Gender}"
-                              SelectedValuePath="Content">
+                        SelectedValuePath="Content">
                         <ComboBoxItem IsSelected="True"
                                       Content="Male" />
                         <ComboBoxItem Content="Female" />
@@ -178,7 +180,8 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.CustomerSpouse.LastName}">
+                        Text="{Binding CurrentSelectedCustomer.CustomerSpouse.LastName}"
+                             Name="SpouseName">
                     </TextBox>
                     <StackPanel.Style>
                         <Style>

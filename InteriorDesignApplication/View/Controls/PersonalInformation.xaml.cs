@@ -56,7 +56,8 @@ namespace View.Controls
                 //    this.Opacity = .9;
                 //    this.Background = Brushes.Gray;
                 //}
-            }
+            }                        
         }
+        
     }
 }

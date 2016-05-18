@@ -16,11 +16,20 @@ namespace ViewModel
     public class MainViewModel : IMainViewModel
     {
         public MainViewModel()
-        {
-
+        {            
         }
 
         public int SelectedIndex { get; set; }
+
+        private Spouse CustomerSpouse { get; set; }
+
+        public void CreateEntity(object ob)
+        {
+            if (ob is Spouse)
+            {
+                CustomerSpouse = ob as Spouse;
+            }
+        }
 
         private IEnumerable<Customer> customers;
         public IEnumerable<Customer> Customers
@@ -80,8 +89,11 @@ namespace ViewModel
 
         private void SaveCustomer()
         {
-
             Customer customer = CurrentSelectedCustomer as Customer;
+            if (CustomerSpouse != null)
+            {
+                customer.CustomerSpouse = this.CustomerSpouse;
+            }
             if (SelectedIndex == -1 && null != customer.FirstName)
             {
                 context.Customers.Add(customer);
@@ -104,7 +116,7 @@ namespace ViewModel
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
             CurrentSelectedCustomer = customer;
-        }
+        }       
         
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
@@ -131,7 +143,8 @@ namespace ViewModel
                 return _addCustomerCommand;
             }
         }
-
+       
+        
         ICommand _saveCustomerCommand;
         public ICommand SaveCustomerCommand
         {

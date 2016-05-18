@@ -46,7 +46,7 @@ namespace View
                     this.GridCustomers.IsEnabled = false;
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
                 }                
-            }
+            }            
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -65,7 +65,7 @@ namespace View
         
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            MainTabControl.SelectedIndex = 0;
+            MainTabControl.SelectedIndex = 0;           
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -73,5 +73,15 @@ namespace View
 
         }
         IMainViewModel viewModel;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (personalInfo.StatusIndex.SelectedIndex == 1 && personalInfo.SpouseName.Text != String.Empty)
+            {
+                Spouse spouse = new Spouse();
+                spouse.LastName = personalInfo.SpouseName.Text;
+                viewModel.CreateEntity(spouse);
+            }
+        }
     }
 }
