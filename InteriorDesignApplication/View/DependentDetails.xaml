@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="DependentDetails"
-    Height="270"
-    Width="300"
+    Height="Auto"
+    Width="Auto"
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
@@ -18,10 +18,11 @@
             <RowDefinition
                 Height="Auto"></RowDefinition>
             <RowDefinition
-                Height="60"></RowDefinition>
-            <RowDefinition
-                Height="60"></RowDefinition>
+                Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
+        <Border
+            Style="{StaticResource mainPopupBorderStyle}"
+            Grid.RowSpan="3" />
         <Button
             x:Name="close"
             Grid.Row="0"
@@ -42,13 +43,13 @@
             Margin="10,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition
-                    Height="21"></RowDefinition>
+                    Height="Auto"></RowDefinition>
                 <RowDefinition
                     Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>            
             <TextBlock
                 Text="Dependent Information"
-                Style="{StaticResource mainHeaderStyle}" />
+                Style="{StaticResource popupHeaderTextStyle}" />
             <Separator
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
@@ -64,70 +65,58 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
-                            Width="75"></ColumnDefinition>
+                            Width="125"></ColumnDefinition>
                         <ColumnDefinition
                             Width="250"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Text="Last Name:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Column="1"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        Margin="0,5,0,0"
-                        Text="{Binding Dependent.LastName}"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding Dependent.LastName}" />
                     <TextBlock
                         Grid.Row="1"
                         Text="First Name:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        Margin="0,5,0,0"
-                        Text="{Binding Dependent.FirstName}"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding Dependent.FirstName}" />
                     <TextBlock
                         Grid.Row="2"
                         Text="Middle Name:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        Margin="0,5,0,0"
-                        Text="{Binding Dependent.MiddleName}"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding Dependent.MiddleName}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
                         Text="Address:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="3"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"
-                        Text="{Binding Dependent.City}"></TextBox>
+                        Style="{StaticResource popupAddressTextBoxStyle}"
+                        Text="{Binding Dependent.City}" />
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
                         Text="Birthdate:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <DatePicker
                         Grid.Row="4"
                         Grid.Column="1"
                         Width="200"
+                        Margin="0,5,0,0"
                         HorizontalAlignment="Left"
                         SelectedDateFormat="Short"
-                        SelectedDate="{x:Static sys:DateTime.Today}"                         />
+                        SelectedDate="{x:Static sys:DateTime.Today}"/>
                 </Grid>
             </StackPanel>
         </Grid>
@@ -136,6 +125,7 @@
             <Button
                 Width="100"
                 Height="30"
+                Margin="20"
                 Style="{StaticResource mainButtonStyle}"
                 Command="{Binding AddDependentCommand}"
                 Click="Button_Click">

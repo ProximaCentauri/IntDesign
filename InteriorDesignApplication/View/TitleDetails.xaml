@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     Title="TitleDetails"
-    Height="300"
-    Width="310"
+    Height="Auto"
+    Width="Auto"
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
@@ -17,8 +17,11 @@
             <RowDefinition
                 Height="Auto"></RowDefinition>
             <RowDefinition
-                Height="60"></RowDefinition>
+                Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
+        <Border
+            Style="{StaticResource mainPopupBorderStyle}"
+            Grid.RowSpan="3" />
         <Button
             x:Name="close"
             Grid.Row="0"
@@ -45,7 +48,7 @@
             </Grid.RowDefinitions>
             <TextBlock
                 Text="Title Information"
-                Style="{StaticResource mainHeaderStyle}" />
+                Style="{StaticResource popupHeaderTextStyle}" />
             <Separator
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
@@ -63,79 +66,61 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
-                            Width="90"></ColumnDefinition>
+                            Width="125"></ColumnDefinition>
                         <ColumnDefinition
                             Width="250"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Text="Name of Bank:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Column="1"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        Margin="0,5,0,0"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         Text="Account Name:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="0"
                         Text="Account #:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
                         Text="Branch:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="3"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
                         Text="Address:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="4"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupAddressTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"
                         Text="Swift Code:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="5"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                 </Grid>
             </StackPanel>
         </Grid>
@@ -144,6 +129,7 @@
             <Button
                 Width="100"
                 Height="30"
+                Margin="20"
                 Style="{StaticResource mainButtonStyle}">
                 <StackPanel
                     Orientation="Horizontal"

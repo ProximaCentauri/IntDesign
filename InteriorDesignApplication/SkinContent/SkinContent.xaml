@@ -47,6 +47,9 @@
     <SolidColorBrush
         x:Key="borderColorBrush"
         Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="popupBorderColorBrush"
+        Color="#b2b2b2" />
 
     <Color
         x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
@@ -152,8 +155,61 @@
             Property="TextAlignment"
             Value="Right" />
     </Style>
+    <Style
+        x:Key="mainPopupBorderStyle"
+        TargetType="Border">
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource popupBorderColorBrush}" />
+        <Setter
+            Property="BorderThickness"
+            Value="5" />
+    </Style>
 
     <!-- styles-->
+    <Style
+        x:Key="popupLabelTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainLabelTextStyle}">
+        <Setter
+            Property="FontSize"
+            Value="15" />
+        <Setter
+            Property="Margin"
+            Value="0,5,5,0" />
+    </Style>
+    <Style
+        x:Key="popupHeaderTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainHeaderStyle}">
+        <Setter
+            Property="FontSize"
+            Value="21" />
+    </Style>
+    <Style
+        x:Key="popupTextBoxStyle"
+        TargetType="TextBox">
+        <Setter
+            Property="Width"
+            Value="200" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="Margin"
+            Value="0,5,0,0" />
+    </Style>
+    <Style
+        x:Key="popupAddressTextBoxStyle"
+        TargetType="TextBox"
+        BasedOn="{StaticResource popupTextBoxStyle}">
+        <Setter
+            Property="Height"
+            Value="75" />
+        <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+    </Style>
     <Style
         x:Key="searchByTextStyle"
         TargetType="{x:Type TextBox}"
@@ -558,6 +614,13 @@
         <Setter
             Property="Height"
             Value="20" />
+    </Style>
+    <Style
+        x:Key="popUpBorderStyle"
+        TargetType="Grid">
+        <Setter
+            Property="Background"
+            Value="White" />
     </Style>
 
     <Style

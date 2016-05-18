@@ -5,8 +5,8 @@
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"    
     Title="UtilityBillsDetails"
-    Height="290"
-    Width="390"
+    Height="Auto"
+    Width="Auto"
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
@@ -18,8 +18,11 @@
             <RowDefinition
                 Height="Auto"></RowDefinition>
             <RowDefinition
-                Height="60"></RowDefinition>
+                Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
+        <Border
+            Style="{StaticResource mainPopupBorderStyle}"
+            Grid.RowSpan="3" />
         <Button
             x:Name="close"
             Grid.Row="0"
@@ -40,13 +43,13 @@
             Margin="10,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition
-                    Height="21"></RowDefinition>
+                    Height="Auto"></RowDefinition>
                 <RowDefinition
                     Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock
                 Text="Utility Bill Information"
-                Style="{StaticResource mainHeaderStyle}" />
+                Style="{StaticResource popupHeaderTextStyle}" />
             <Separator
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
@@ -64,21 +67,18 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
-                            Width="120"></ColumnDefinition>
+                            Width="125"></ColumnDefinition>
                         <ColumnDefinition
-                            Width="250"></ColumnDefinition>
+                            Width="275"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Text="Category:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <StackPanel
                         Orientation="Horizontal"
                         Grid.Column="1">
                         <TextBox
-                            Width="200"
-                            HorizontalAlignment="Left"
-                            Margin="0,5,0,0"></TextBox>
+                            Style="{StaticResource popupTextBoxStyle}" />
                         <Button
                             Name="addDependent"
                             Width="50"
@@ -98,22 +98,17 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         Text="Sub-Category:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                     <StackPanel
                         Orientation="Horizontal"
                         Grid.Row="1"
                         Grid.Column="1">
                         <TextBox
-                            Width="200"
-                            HorizontalAlignment="Left"
-                            Margin="0,5,0,0"></TextBox>
+                            Style="{StaticResource popupTextBoxStyle}" />
                         <Button
                             Width="50"
                             Height="20"
@@ -131,32 +126,25 @@
                         Grid.Row="2"
                         Grid.Column="0"
                         Text="Subscriber Name:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
                         Text="Account #:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="3"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
                         Text="Cut-off Date:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <DatePicker
                         Grid.Row="4"
                         Grid.Column="1"
@@ -169,14 +157,11 @@
                         Grid.Row="5"
                         Grid.Column="0"
                         Text="Status:"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Margin="0,5,5,0"></TextBlock>
+                        Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="5"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"></TextBox>
+                        Style="{StaticResource popupTextBoxStyle}" />
                 </Grid>
             </StackPanel>
         </Grid>
@@ -185,6 +170,7 @@
             <Button
                 Width="100"
                 Height="30"
+                Margin="20"
                 Style="{StaticResource mainButtonStyle}">
                 <StackPanel
                     Orientation="Horizontal"
