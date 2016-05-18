@@ -284,12 +284,16 @@
             <Grid Grid.Row="1">
                 <DataGrid Height="75"
                           Grid.Row="1"
-                          Width="900">
+                          Width="900"
+                          ItemsSource="{Binding CurrentSelectedCustomer.Dependents}"
+                          AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Last Name"
-                                            Width="250" />
+                                            Width="250"
+                                            Binding="{Binding LastName}" />
                         <DataGridTextColumn Header="First Name"
-                                            Width="250" />
+                                            Width="250"
+                                            Binding="{Binding FirstName}" />
                         <DataGridTextColumn Header="Address"
                                             Width="250" />
                         <DataGridTextColumn Header="Birthdate"
