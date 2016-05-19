@@ -232,8 +232,8 @@ namespace View.Controls
         {
             if (null != this.currentPopupView)
             {
-                PopupBackground.Visibility = this.currentPopupView.BackgroundType == PopupView.PopupBackgroundType.Darken ? Visibility.Visible : Visibility.Hidden;
-                PopupShroud.Visibility = this.currentPopupView.BackgroundType == PopupView.PopupBackgroundType.Shroud ? Visibility.Visible : Visibility.Hidden;
+                //PopupBackground.Visibility = this.currentPopupView.BackgroundType == PopupView.PopupBackgroundType.Darken ? Visibility.Visible : Visibility.Hidden;
+                //PopupShroud.Visibility = this.currentPopupView.BackgroundType == PopupView.PopupBackgroundType.Shroud ? Visibility.Visible : Visibility.Hidden;
 
                 if (!deferDisable)
                 {

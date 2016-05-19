@@ -16,8 +16,7 @@
     Top="0"
     Left="0"
     Width="1024"
-    Height="768"
-    >
+    Height="840">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -25,7 +24,7 @@
             <RowDefinition
                 Height="150" />
             <RowDefinition
-                Height="435" />
+                Height="500" />
             <RowDefinition
                 Height="Auto" />
         </Grid.RowDefinitions>
@@ -33,6 +32,7 @@
             Margin="5,24,5,5"
             Height="30">
             <StackPanel
+                x:Name="SearchPanel"
                 Orientation="Horizontal">
                 <ComboBox
                     Width="150"
@@ -67,7 +67,8 @@
                     Width="150"
                     Margin="100,0,0,0"
                     Style="{StaticResource mainButtonStyle}"
-                    Command="{Binding AddCustomerCommand}">
+                    Command="{Binding AddCustomerCommand}"
+                    Click="AddCustomerButton_Click">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
@@ -246,6 +247,7 @@
                 Width="150"
                 Height="50"
                 Margin="0,15,24,15"
+                x:Name="SaveButton"
                 Style="{StaticResource mainButtonStyle}"
                 Command="{Binding SaveCustomerCommand}"
                 Click="Button_Click">

@@ -32,7 +32,7 @@
             <Separator
                 Style="{StaticResource mainSeparatorStyle}" />
             <DataGrid
-                Height="75"
+                Height="350"
                 Width="950"
                 Margin="0,10,0,0">
                 <DataGrid.Columns>
