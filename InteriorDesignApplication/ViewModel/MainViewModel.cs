@@ -17,16 +17,19 @@ namespace ViewModel
     public class MainViewModel : IMainViewModel
     {
         public MainViewModel()
-        {            
+        {           
         }
 
         public int SelectedIndex { get; set; }
 
         public string SelectedSearchType { get; set; }
-        public string SelectedSearchValue { get; set; }
-        
-
+        public string SelectedSearchValue { get; set; }       
         private Spouse CustomerSpouse { get; set; }
+
+        public void Load()
+        {
+            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
+        }
 
         private Dependent newDependent;
         public Dependent Dependent
@@ -42,11 +45,7 @@ namespace ViewModel
             }
         }
 
-        public void Load()
-        {
-            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
-        }
-
+     
         public void CreateEntity(object ob)
         {
             if (ob is Spouse)
@@ -63,7 +62,7 @@ namespace ViewModel
         public IEnumerable<Customer> Customers
         {
             get
-            {                
+            {                       
                 return customers;
             }
             set
@@ -87,7 +86,8 @@ namespace ViewModel
                 OnPropertyChanged("Dependents");
             }
         }
-      
+
+
         public ICollection<Dependent> Dependents
         {
             get
@@ -157,12 +157,15 @@ namespace ViewModel
 
         private void SearchCustomer()
         {
-            Customers = null;
-            IQueryable<Customer> results = context.GetCustomersByParam(SelectedSearchType, SelectedSearchValue);
-            if (results != null)
+            IQueryable<Customer> customers = context.GetCustomersByParam(SelectedSearchType, SelectedSearchValue);
+            if(customers != null)
             {
-                Customers = new ObservableCollection<Customer>(results);
-            }                        
+                Customers = new ObservableCollection<Customer>(customers);
+            }
+            else
+            {
+                Customers = null;
+            }
         }
 
         private bool canExecute = true;
@@ -313,20 +316,19 @@ namespace ViewModel
             switch (searchType)
             {
                 case "Last Name":
-                    customers = context.Customers
-                        .Include(d => d.Dependents)
-                .Include(e => e.CustomerSpouse);
+                    customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper() == searchValue.ToUpper());
                     break;
                 case "First Name":
+                    customers = context.CompleteCustomersInfo().Where(p => p.FirstName.ToUpper() == searchValue.ToUpper());
                     break;
                 case "Address":
+                    customers = context.CompleteCustomersInfo().Where(p => p.City.ToUpper() == searchValue.ToUpper());
                     break;
                 case "Phone Number":
+                    customers = context.CompleteCustomersInfo().Where(p => p.MobileNumber == searchValue);
                     break;
                 default:
-                    customers = context.Customers
-                        .Include(d => d.Dependents)
-                .Include(e => e.CustomerSpouse);
+                    customers = context.CompleteCustomersInfo();                  
                     break;
             }
             return customers;

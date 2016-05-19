@@ -29,13 +29,8 @@ namespace View
             InitializeComponent();
             this.viewModel = viewModel;
             this.DataContext = viewModel;
-            viewModel.PropertyChanged += viewModel_PropertyChanged;    
-           this.Loaded += new RoutedEventHandler(MainWindow_Loaded);
-        }        
-
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            viewModel.Load();
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+            viewModel.Load();   
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
