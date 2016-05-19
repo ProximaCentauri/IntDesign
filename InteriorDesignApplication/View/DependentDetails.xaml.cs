@@ -29,13 +29,13 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;            
-            this.viewModel.CreateEntity(new Dependent());
-            
+            this.viewModel.CreateEntity(new Dependent());            
         }
         
         private void close_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = null;
+            
         }
 
         IMainViewModel viewModel;
