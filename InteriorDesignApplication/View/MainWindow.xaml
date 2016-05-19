@@ -12,11 +12,12 @@
     mc:Ignorable="d"
     Title="Interior Design"
     WindowStyle="SingleBorderWindow"
-    ResizeMode="CanMinimize"    
+    ResizeMode="CanMinimize"
     Top="0"
     Left="0"
     Width="1024"
-    Height="768">
+    Height="768"
+    >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -37,18 +38,20 @@
                     Width="150"
                     Margin="10,0,0,0"
                     Style="{StaticResource searchByComboxBoxStyle}"
-                    Loaded="ComboBox_Loaded" />
+                    Loaded="ComboBox_Loaded"
+                    SelectedItem="{Binding SelectedSearchType}"/>
                 <TextBox
                     Name="SearchTextBlock"
                     Width="250"
                     Style="{StaticResource searchByTextStyle}"
+                    Text="{Binding SelectedSearchValue}" 
                     Margin="10,0,0,0" />
                 <Button
                     Name="SearchButton"
                     Width="120"
                     Margin="10,0,0,0"
-                    Style="{StaticResource mainButtonStyle}"
-                    Click="SearchButton_Click">
+                    Style="{StaticResource mainButtonStyle}"                    
+                    Command="{Binding SearchCustomerCommand}">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

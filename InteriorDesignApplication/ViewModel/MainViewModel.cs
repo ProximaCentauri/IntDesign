@@ -22,6 +22,10 @@ namespace ViewModel
 
         public int SelectedIndex { get; set; }
 
+        public string SelectedSearchType { get; set; }
+        public string SelectedSearchValue { get; set; }
+        
+
         private Spouse CustomerSpouse { get; set; }
 
         private Dependent newDependent;
@@ -36,7 +40,12 @@ namespace ViewModel
                 newDependent = value;
                 OnPropertyChanged("Dependent");
             }
-        }        
+        }
+
+        public void Load()
+        {
+            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
+        }
 
         public void CreateEntity(object ob)
         {
@@ -54,8 +63,8 @@ namespace ViewModel
         public IEnumerable<Customer> Customers
         {
             get
-            {
-                return new ObservableCollection<Customer>(context.CompleteCustomersInfo());
+            {                
+                return customers;
             }
             set
             {
@@ -78,13 +87,16 @@ namespace ViewModel
                 OnPropertyChanged("Dependents");
             }
         }
-
-      //  private ICollection<Dependent> dependents;
+      
         public ICollection<Dependent> Dependents
         {
             get
             {
-                return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
+                if(CurrentSelectedCustomer != null)
+                {
+                    return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
+                }
+                return null;                
             }            
         }
         
@@ -141,7 +153,36 @@ namespace ViewModel
             Dependent = null;
             OnPropertyChanged("Dependents");
             OnPropertyChanged("Dependent");
-        }   
+        }
+
+        private void SearchCustomer()
+        {
+            Customers = null;
+            IQueryable<Customer> results = context.GetCustomersByParam(SelectedSearchType, SelectedSearchValue);
+            if (results != null)
+            {
+                Customers = new ObservableCollection<Customer>(results);
+            }                        
+        }
+
+        private bool canExecute = true;
+        public bool CanExecute
+        {
+            get
+            {
+                return this.canExecute;
+            }
+
+            set
+            {
+                if (this.canExecute == value)
+                {
+                    return;
+                }
+
+                this.canExecute = value;
+            }
+        }
 
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
@@ -193,6 +234,19 @@ namespace ViewModel
                     _addDependentCommand = new RelayCommand(AddDependent);
                 }
                 return _addDependentCommand;
+            }
+        }
+        
+        ICommand _searchCustomerCommand;
+        public ICommand SearchCustomerCommand
+        {
+            get
+            {
+                if (_searchCustomerCommand == null)
+                {
+                    _searchCustomerCommand = new RelayCommand(SearchCustomer);
+                }
+                return _searchCustomerCommand;
             }
         }
 
@@ -251,7 +305,32 @@ namespace ViewModel
             return context.Customers
                 .Include(d => d.Dependents)
                 .Include(e => e.CustomerSpouse);
-        }      
+        }
+
+        public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
+        {
+            IQueryable<Customer> customers = null;
+            switch (searchType)
+            {
+                case "Last Name":
+                    customers = context.Customers
+                        .Include(d => d.Dependents)
+                .Include(e => e.CustomerSpouse);
+                    break;
+                case "First Name":
+                    break;
+                case "Address":
+                    break;
+                case "Phone Number":
+                    break;
+                default:
+                    customers = context.Customers
+                        .Include(d => d.Dependents)
+                .Include(e => e.CustomerSpouse);
+                    break;
+            }
+            return customers;
+        }
     }
 }
 
