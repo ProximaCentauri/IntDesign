@@ -9,8 +9,7 @@
     Width="Auto"
     Loaded="PopupView_Loaded"
     Alignment="Center"
-    Background="White"
-    BackgroundType="Darken">
+    Background="White">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition

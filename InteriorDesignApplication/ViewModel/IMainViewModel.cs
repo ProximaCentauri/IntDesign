@@ -9,12 +9,13 @@ namespace ViewModel
     {
         ICommand ActionCommand { get; set; }
     
-        int SelectedIndex { get; set; }
+        int SelectedIndex { get; set; }        
        
         void DeleteCustomer(Customer customer);
 
         void CreateEntity(object obj);
-        
+
+        void Load();
         PopupView CurrentPopupView { get; set; }
     }
 }

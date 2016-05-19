@@ -16,7 +16,8 @@
     Top="0"
     Left="0"
     Width="1024"
-    Height="768">
+    Height="768"
+    >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -32,23 +33,26 @@
             Margin="5,24,5,5"
             Height="30">
             <StackPanel
+                x:Name="SearchPanel"
                 Orientation="Horizontal">
                 <ComboBox
                     Width="150"
                     Margin="10,0,0,0"
                     Style="{StaticResource searchByComboxBoxStyle}"
-                    Loaded="ComboBox_Loaded" />
+                    Loaded="ComboBox_Loaded"
+                    SelectedItem="{Binding SelectedSearchType}"/>
                 <TextBox
                     Name="SearchTextBlock"
                     Width="250"
                     Style="{StaticResource searchByTextStyle}"
+                    Text="{Binding SelectedSearchValue}" 
                     Margin="10,0,0,0" />
                 <Button
                     Name="SearchButton"
                     Width="120"
                     Margin="10,0,0,0"
-                    Style="{StaticResource mainButtonStyle}"
-                    Click="SearchButton_Click">
+                    Style="{StaticResource mainButtonStyle}"                    
+                    Command="{Binding SearchCustomerCommand}">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
@@ -243,6 +247,7 @@
                 Width="150"
                 Height="50"
                 Margin="0,15,24,15"
+                x:Name="SaveButton"
                 Style="{StaticResource mainButtonStyle}"
                 Command="{Binding SaveCustomerCommand}"
                 Click="Button_Click">

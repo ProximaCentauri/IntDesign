@@ -9,6 +9,7 @@
         xmlns:control="clr-namespace:View.Controls"
         Height="Auto"
         Width="1024"
+        Name="PersonalInfoControl"
         Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>

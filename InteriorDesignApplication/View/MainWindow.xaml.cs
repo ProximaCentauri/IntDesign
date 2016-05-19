@@ -29,7 +29,13 @@ namespace View
             InitializeComponent();
             this.viewModel = viewModel;
             this.DataContext = viewModel;
-            viewModel.PropertyChanged += viewModel_PropertyChanged;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;    
+           this.Loaded += new RoutedEventHandler(MainWindow_Loaded);
+        }        
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel.Load();
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -38,12 +44,15 @@ namespace View
             {
                 if (null == viewModel.CurrentPopupView)
                 {
-                    this.GridCustomers.IsEnabled = true;                    
+                    this.GridCustomers.IsEnabled = true;
+                    this.GridCustomers.Opacity = this.MainTabControl.Opacity = this.SaveButton.Opacity = this.SearchPanel.Opacity = 1;
+                    this.Opacity = 1;
                     PopupControl.ShowPopup(false, viewModel.CurrentPopupView, false);
                 }
                 else
                 {
                     this.GridCustomers.IsEnabled = false;
+                    this.GridCustomers.Opacity = this.MainTabControl.Opacity = this.SaveButton.Opacity = this.SearchPanel.Opacity = 0.5;                    
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
                 }                
             }            
@@ -67,11 +76,7 @@ namespace View
         {
             MainTabControl.SelectedIndex = 0;           
         }
-
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+   
         IMainViewModel viewModel;
 
         private void Button_Click(object sender, RoutedEventArgs e)
