@@ -50,6 +50,12 @@
     <SolidColorBrush
         x:Key="popupBorderColorBrush"
         Color="#b2b2b2" />
+    <SolidColorBrush
+        x:Key="mainLinkButtonForegroundColorBrush"
+        Color="#8e8e8e" />
+    <SolidColorBrush
+        x:Key="mainLinkButtonBorderColorBrush"
+        Color="#b7b7b7" />
 
     <Color
         x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
@@ -301,6 +307,57 @@
             Value="6,0,0,0" />
     </Style>
     <Style
+        x:Key="mainLinkButtonStyle"
+        TargetType="Button"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource mainLinkButtonForegroundColorBrush}" />
+        <Setter
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            x:Name="innerBorder"
+                            Background="{TemplateBinding Background}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            BorderBrush="{StaticResource mainLinkButtonBorderColorBrush}"
+                            CornerRadius="2"
+                            BorderThickness="1" />
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger
+                            RoutedEvent="Button.Click">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="innerBorder"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource mainButtonClickBackgroundColorBrush}"
+                                            Duration="0:0:.3"
+                                            FillBehavior="Stop"
+                                            AccelerationRatio="0.3"
+                                            DecelerationRatio="0.7" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
         x:Key="addButtonStyle"
         TargetType="{x:Type TextBlock}"
         BasedOn="{StaticResource mainButtonTextStyle}">
@@ -450,6 +507,28 @@
                         <GeometryDrawing
                             Brush="{StaticResource mainButtonIconColorBrush}"
                             Geometry="{StaticResource icon-user-save}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="30" />
+        <Setter
+            Property="Height"
+            Value="30" />
+    </Style>
+    <Style
+        x:Key="deleteUserIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-remove-account}" />
                     </DrawingImage.Drawing>
                 </DrawingImage>
             </Setter.Value>
