@@ -11,7 +11,7 @@
     xmlns:viewsControls="clr-namespace:View.Controls"
     mc:Ignorable="d"
     Title="Interior Design"
-    WindowStyle="SingleBorderWindow"
+    WindowStyle="SingleBorderWindow"    
     ResizeMode="CanMinimize"    
     Top="0"
     Left="0"
