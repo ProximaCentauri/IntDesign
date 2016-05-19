@@ -296,10 +296,10 @@
                                             Binding="{Binding FirstName}" />
                         <DataGridTextColumn Header="Address"
                                             Width="250" 
-                                            Binding="{Binding Address}"/>
+                                            Binding="{Binding City}"/>
                         <DataGridTextColumn Header="Birthdate"                                            
                                             Width="250" 
-                                            Binding="{Binding Birthdate}"/>
+                                            Binding="{Binding BirthDate}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

@@ -47,8 +47,7 @@ namespace View.Controls
             if (e.PropertyName.Equals("CurrentPopupView"))
             {
                 if (null == viewModel.CurrentPopupView)
-                {
-                    
+                {   
                     this.Background = Brushes.White;
                 }
                 else
@@ -57,7 +56,6 @@ namespace View.Controls
                     this.Background = Brushes.Gray;
                 }
             }                        
-        }
-        
+        }        
     }
 }
