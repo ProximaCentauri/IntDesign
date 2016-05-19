@@ -283,9 +283,9 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <DataGrid Height="75"
+                <DataGrid Height="125"
                           Grid.Row="1"
-                          Width="900"
+                          Width="900"                          
                           ItemsSource="{Binding Dependents}"
                           AutoGenerateColumns="False">
                     <DataGrid.Columns>
