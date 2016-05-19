@@ -11,13 +11,12 @@
     xmlns:viewsControls="clr-namespace:View.Controls"
     mc:Ignorable="d"
     Title="Interior Design"
-    WindowStyle="SingleBorderWindow"    
-    ResizeMode="CanMinimize"    
+    WindowStyle="SingleBorderWindow"
+    ResizeMode="CanMinimize"
     Top="0"
     Left="0"
     Width="1024"
-    Height="830"
-    >
+    Height="840">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -25,7 +24,7 @@
             <RowDefinition
                 Height="150" />
             <RowDefinition
-                Height="Auto" />
+                Height="500" />
             <RowDefinition
                 Height="Auto" />
         </Grid.RowDefinitions>

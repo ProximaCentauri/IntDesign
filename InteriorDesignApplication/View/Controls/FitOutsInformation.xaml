@@ -184,7 +184,7 @@
             <Grid
                 Grid.Row="1">
                 <DataGrid
-                    Height="75"
+                    Height="250"
                     Grid.Row="1"
                     Width="950">
                     <DataGrid.Columns>
