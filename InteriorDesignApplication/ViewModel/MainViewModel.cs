@@ -10,6 +10,7 @@ using Model;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using Model.Controls;
+using System.Windows.Data;
 
 namespace ViewModel
 {
@@ -74,23 +75,19 @@ namespace ViewModel
             {
                 currentSelectedCustomer = value;
                 OnPropertyChanged("CurrentSelectedCustomer");
-            }
-        }
-
-        private ICollection<Dependent> dependents;
-        public ICollection<Dependent> Dependents
-        {
-            get
-            {
-                return new ObservableCollection<Dependent>(context.Dependents);
-            }
-            set
-            {
-                dependents = value;
                 OnPropertyChanged("Dependents");
             }
         }
 
+      //  private ICollection<Dependent> dependents;
+        public ICollection<Dependent> Dependents
+        {
+            get
+            {
+                return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
+            }            
+        }
+        
         private PopupView currentPopupView;
         public PopupView CurrentPopupView
         {
@@ -141,7 +138,9 @@ namespace ViewModel
         private void AddDependent()
         {
             CurrentSelectedCustomer.Dependents.Add(Dependent);
-            OnPropertyChanged("CurrentSelectedCustomer");
+            Dependent = null;
+            OnPropertyChanged("Dependents");
+            OnPropertyChanged("Dependent");
         }   
 
         #region INotifyPropertyChanged Implementing

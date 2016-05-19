@@ -285,7 +285,7 @@
                 <DataGrid Height="75"
                           Grid.Row="1"
                           Width="900"
-                          ItemsSource="{Binding CurrentSelectedCustomer.Dependents}"
+                          ItemsSource="{Binding Dependents}"
                           AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Last Name"
