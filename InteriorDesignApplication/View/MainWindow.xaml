@@ -85,7 +85,7 @@
                 Name="GridCustomers"
                 ItemsSource="{Binding Customers}"
                 SelectedItem="{Binding CurrentSelectedCustomer}"
-                SelectedIndex="{Binding SelectedIndex}"
+                SelectedIndex="{Binding SelectedIndex}"                
                 CanUserAddRows="False"
                 IsReadOnly="True"
                 AutoGenerateColumns="False">
