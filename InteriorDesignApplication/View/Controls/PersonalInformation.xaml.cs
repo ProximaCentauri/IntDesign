@@ -46,18 +46,16 @@ namespace View.Controls
         {
             if (e.PropertyName.Equals("CurrentPopupView"))
             {
-                //if (null == viewModel.CurrentPopupView)
-                //{
-                //    this.Opacity = 1;
-                //    this.Background = Brushes.White;
-                //}
-                //else
-                //{
-                //    this.Opacity = .9;
-                //    this.Background = Brushes.Gray;
-                //}
+                if (null == viewModel.CurrentPopupView)
+                {   
+                    this.Background = Brushes.White;
+                }
+                else
+                {
+                    this.Opacity = .9;
+                    this.Background = Brushes.Gray;
+                }
             }                        
-        }
-        
+        }        
     }
 }

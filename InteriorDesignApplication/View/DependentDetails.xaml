@@ -116,7 +116,7 @@
                         Margin="0,5,0,0"
                         HorizontalAlignment="Left"
                         SelectedDateFormat="Short"
-                        SelectedDate="{x:Static sys:DateTime.Today}"/>
+                        SelectedDate="{Binding Dependent.BirthDate}"/>
                 </Grid>
             </StackPanel>
         </Grid>

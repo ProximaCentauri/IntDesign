@@ -295,9 +295,11 @@
                                             Width="250"
                                             Binding="{Binding FirstName}" />
                         <DataGridTextColumn Header="Address"
-                                            Width="250" />
-                        <DataGridTextColumn Header="Birthdate"
-                                            Width="250" />
+                                            Width="250" 
+                                            Binding="{Binding City}"/>
+                        <DataGridTextColumn Header="Birthdate"                                            
+                                            Width="250" 
+                                            Binding="{Binding BirthDate}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
