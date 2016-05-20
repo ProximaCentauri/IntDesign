@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,10 @@ namespace Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
+        
+        [Column(TypeName="Date")]
         public DateTime? BirthDate { get; set; }
+
         public string EmailAddress { get; set; }
         public string MobileNumber { get; set; }
         public string LandLineNumber { get; set; }

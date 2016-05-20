@@ -125,7 +125,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <DatePicker Width="150"
                                 SelectedDateFormat="Short"
-                                SelectedDate="{x:Static sys:DateTime.Today}" />
+                                SelectedDate="{Binding CurrentSelectedCustomer.BirthDate}" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="3"
@@ -299,7 +299,7 @@
                                             Width="250" 
                                             Binding="{Binding City}"/>
                         <DataGridTextColumn Header="Birthdate"                                            
-                                            Width="250" 
+                                            Width="250"                                             
                                             Binding="{Binding BirthDate}"/>
                     </DataGrid.Columns>
                 </DataGrid>
