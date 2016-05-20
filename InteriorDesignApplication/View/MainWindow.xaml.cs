@@ -80,6 +80,8 @@ namespace View
             {
                 Spouse spouse = new Spouse();
                 spouse.LastName = personalInfo.SpouseName.Text;
+                spouse.BirthDate = personalInfo.SpouseBirthDate.SelectedDate;
+                spouse.City = personalInfo.SpouseAddress.Text;
                 viewModel.CreateEntity(spouse);
             }
         }

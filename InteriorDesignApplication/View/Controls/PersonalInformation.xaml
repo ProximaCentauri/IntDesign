@@ -181,7 +181,7 @@
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="150"
                              Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.CustomerSpouse.LastName}"
+                             Text="{Binding CurrentSelectedCustomer.CustomerSpouse.LastName}"
                              Name="SpouseName">
                     </TextBox>
                     <StackPanel.Style>
@@ -208,7 +208,9 @@
                                Width="100"
                                Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox Width="180"
-                             Margin="0,0,10,0"></TextBox>
+                             Margin="0,0,10,0"
+                             Name="SpouseAddress"
+                             Text="{Binding CurrentSelectedCustomer.CustomerSpouse.City}"></TextBox>
                     <StackPanel.Style>
                         <Style>
                             <Setter Property="StackPanel.Visibility"
@@ -237,7 +239,8 @@
                     <DatePicker
                         Width="195"
                         SelectedDateFormat="Short"
-                        SelectedDate="{x:Static sys:DateTime.Today}" />
+                        SelectedDate="{Binding CurrentSelectedCustomer.CustomerSpouse.BirthDate}" 
+                        Name="SpouseBirthDate"/>
                     <StackPanel.Style>
                         <Style>
                             <Setter
