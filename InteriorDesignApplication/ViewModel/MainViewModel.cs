@@ -316,19 +316,22 @@ namespace ViewModel
             switch (searchType)
             {
                 case "Last Name":
-                    customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper() == searchValue.ToUpper());
+                    customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().StartsWith(searchValue.ToUpper()));
                     break;
                 case "First Name":
-                    customers = context.CompleteCustomersInfo().Where(p => p.FirstName.ToUpper() == searchValue.ToUpper());
+                    customers = context.CompleteCustomersInfo().Where(p => p.FirstName.ToUpper().StartsWith(searchValue.ToUpper()));
                     break;
                 case "Address":
-                    customers = context.CompleteCustomersInfo().Where(p => p.City.ToUpper() == searchValue.ToUpper());
+                    customers = context.CompleteCustomersInfo().Where(p => p.City.ToUpper().StartsWith(searchValue.ToUpper()));
                     break;
                 case "Phone Number":
-                    customers = context.CompleteCustomersInfo().Where(p => p.MobileNumber == searchValue);
+                    customers = context.CompleteCustomersInfo().Where(p => p.MobileNumber.StartsWith(searchValue.ToUpper()));
                     break;
-                default:
-                    customers = context.CompleteCustomersInfo();                  
+                case "Search By:":
+                    if (searchValue == null || searchValue.Trim() == string.Empty)
+                    {
+                        customers = context.CompleteCustomersInfo();
+                    }
                     break;
             }
             return customers;
