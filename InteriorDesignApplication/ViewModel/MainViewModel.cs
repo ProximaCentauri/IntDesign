@@ -26,7 +26,7 @@ namespace ViewModel
         public string SelectedSearchValue { get; set; }       
         private Spouse CustomerSpouse { get; set; }
 
-        public void Load()
+        public void LoadCustomers()
         {
             Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
         }
@@ -116,7 +116,7 @@ namespace ViewModel
 
         private void SaveCustomer()
         {
-            Customer customer = CurrentSelectedCustomer as Customer;
+            Customer customer = CurrentSelectedCustomer as Customer;            
             if (CustomerSpouse != null)
             {
                 customer.CustomerSpouse = this.CustomerSpouse;
@@ -125,11 +125,12 @@ namespace ViewModel
             {
                 context.Customers.Add(customer);
                 CurrentSelectedCustomer = null;
-            }
+            }            
             context.SaveChanges();
             Dependent = null;
+            
             OnPropertyChanged("Dependent");
-            OnPropertyChanged("Customers");                 
+            LoadCustomers();           
         }      
 
         public void DeleteCustomer(Customer customer)

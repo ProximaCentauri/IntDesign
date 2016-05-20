@@ -17,6 +17,7 @@ namespace Model
             Database.SetInitializer<ManagerDBContext>(new MigrateDatabaseToLatestVersion<ManagerDBContext, Configuration>());           
         }
 
+
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Dependent> Dependents { get; set; }
         public DbSet Company { get; set; }

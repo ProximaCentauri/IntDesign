@@ -32,7 +32,32 @@ namespace Model
         public string City { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
-        public string ZipCode { get; set; }        
+        public string ZipCode { get; set; }
 
+        [NotMapped]        
+        public string Address
+        {
+            get
+            {
+                return NumBuilding + " " +
+                    Street + " " +
+                    VillageDistrict + " " +
+                    City + " " +
+                    State + " " +
+                    Country + " " +
+                    ZipCode + " ";
+            }            
+        }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " +
+                    MiddleName + " " +
+                    LastName;
+            }
+        }
     }
 }

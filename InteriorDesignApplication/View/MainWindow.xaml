@@ -108,7 +108,8 @@
                         Binding="{Binding MobileNumber}"/>
                     <DataGridTextColumn
                         Header="Address"
-                        Width="300" />
+                        Width="300" 
+                        Binding="{Binding Address}"/>
                     <DataGridTextColumn
                         Header="Alerts"
                         Width="250" />

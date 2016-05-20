@@ -30,7 +30,7 @@ namespace View
             this.viewModel = viewModel;
             this.DataContext = viewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
-            viewModel.Load();   
+            viewModel.LoadCustomers();   
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
