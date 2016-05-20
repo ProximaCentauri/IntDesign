@@ -11,8 +11,6 @@ namespace ViewModel
     
         int SelectedIndex { get; set; }        
        
-        void DeleteCustomer(Customer customer);
-
         void CreateEntity(object obj);
 
         void LoadCustomers();

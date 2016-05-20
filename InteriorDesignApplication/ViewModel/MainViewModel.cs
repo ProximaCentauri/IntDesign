@@ -133,11 +133,13 @@ namespace ViewModel
             LoadCustomers();           
         }      
 
-        public void DeleteCustomer(Customer customer)
+        public void DeleteCustomer()
         {
-            var customerToDelete = context.Customers.SingleOrDefault(x => x.Id == customer.Id);
-            context.Customers.Remove(customerToDelete);
+            context.Customers.Remove(CurrentSelectedCustomer);
             context.SaveChanges();
+            CurrentSelectedCustomer = null;            
+            OnPropertyChanged("CurrentSelectedCustomer");
+            LoadCustomers();
         }
 
         // This cancels currently selected customer to clear data in panel
@@ -251,6 +253,19 @@ namespace ViewModel
                     _searchCustomerCommand = new RelayCommand(SearchCustomer);
                 }
                 return _searchCustomerCommand;
+            }
+        }
+
+        ICommand _deleteCustomerCommand;
+        public ICommand DeleteCustomerCommand
+        {
+            get
+            {
+                if (_deleteCustomerCommand == null)
+                {
+                    _deleteCustomerCommand = new RelayCommand(DeleteCustomer);
+                }
+                return _deleteCustomerCommand;
             }
         }
 
