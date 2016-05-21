@@ -56,6 +56,9 @@
     <SolidColorBrush
         x:Key="mainLinkButtonBorderColorBrush"
         Color="#b7b7b7" />
+    <SolidColorBrush
+        x:Key="photoImageBackgroundColorBrush"
+        Color="#ad2d2d" />
 
     <Color
         x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
@@ -583,6 +586,28 @@
         <Setter
             Property="Height"
             Value="18" />
+    </Style>
+    <Style
+        x:Key="userImageIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource photoImageBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-user-tie}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="120" />
+        <Setter
+            Property="Height"
+            Value="80" />
     </Style>
     <Style
         x:Key="companyDetailsIconStyle"
