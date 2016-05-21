@@ -52,7 +52,10 @@
         Color="#b2b2b2" />
     <SolidColorBrush
         x:Key="mainLinkButtonForegroundColorBrush"
-        Color="#8e8e8e" />
+        Color="#717171" />
+    <SolidColorBrush
+        x:Key="mainLinkButtonBackgroundColorBrush"
+        Color="#fafafa" />
     <SolidColorBrush
         x:Key="mainLinkButtonBorderColorBrush"
         Color="#b7b7b7" />
@@ -318,7 +321,7 @@
             Value="{StaticResource mainLinkButtonForegroundColorBrush}" />
         <Setter
             Property="Background"
-            Value="Transparent" />
+            Value="{StaticResource mainLinkButtonBackgroundColorBrush}" />
         <Setter
             Property="Template">
             <Setter.Value>

@@ -398,7 +398,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <DataGrid
-                    Height="125"
+                    Height="90"
                     HorizontalAlignment="Left"
                     Width="935"
                     Margin="24,0,0,0"
