@@ -57,11 +57,9 @@ namespace View
         {
             List<string> data = new List<string>();
             data.Add("Search By: All");
-            data.Add("Name(Last/First)");
-            data.Add("First Name");
-            data.Add("Last Name");
+            data.Add("First/Last Name");
             data.Add("Address");
-            data.Add("Phone Number");
+            data.Add("Company Name");
 
             var comboBox = sender as ComboBox;
             comboBox.ItemsSource = data;

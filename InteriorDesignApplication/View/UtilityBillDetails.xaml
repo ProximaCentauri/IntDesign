@@ -57,13 +57,15 @@
                 Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -156,10 +158,28 @@
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"
-                        Text="Status:"
+                        Text="Billing Statement:"
                         Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Row="5"
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />
+                    <TextBlock
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Text="Receipt:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />
+                    <TextBlock
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Text="Status:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Row="7"
                         Grid.Column="1"
                         Style="{StaticResource popupTextBoxStyle}" />
                 </Grid>

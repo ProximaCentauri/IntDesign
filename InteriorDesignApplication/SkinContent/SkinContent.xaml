@@ -88,7 +88,7 @@
         TargetType="{x:Type TextBlock}">
         <Setter
             Property="Control.FontSize"
-            Value="18" />
+            Value="17" />
         <Setter
             Property="Control.Foreground"
             Value="White" />
@@ -693,6 +693,50 @@
         <Setter
             Property="Height"
             Value="20" />
+    </Style>
+    <Style
+        x:Key="paymentSchemeIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-money}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="deleteEntryIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-delete}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="18" />
+        <Setter
+            Property="Height"
+            Value="18" />
     </Style>
     <Style
         x:Key="popUpBorderStyle"

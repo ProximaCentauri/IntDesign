@@ -10,8 +10,12 @@
     Width="1024"
     Loaded="UserControl_Loaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <StackPanel
-            Orientation="Vertical">
+            Grid.Row="0">
             <StackPanel
                 Orientation="Horizontal">
                 <TextBlock
@@ -32,11 +36,19 @@
                 </Button>
             </StackPanel>
             <Separator
+                Margin="0,-5,0,0"
                 Style="{StaticResource mainSeparatorStyle}" />
-            <DataGrid
-                Height="250"
-                Width="950"
-                Margin="0,10,0,0">
+        </StackPanel>
+        <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid
+                    Height="250"
+                    Width="950"
+                    HorizontalAlignment="Left"
+                    Margin="10,0,0,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Name of Bank"
@@ -55,6 +67,23 @@
                         Width="150" />
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+            <Button
+                x:Name="deleteEntry"
+                Width="30"
+                Height="30"
+                Grid.Column="1"
+                Style="{StaticResource iconButtonStyle}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left">
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+                    <Image
+                        Style="{StaticResource deleteEntryIconStyle}" />
+                </StackPanel>
+            </Button>
+        </Grid>
+            
+        
     </Grid>
 </UserControl>
