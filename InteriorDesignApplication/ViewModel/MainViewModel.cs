@@ -329,25 +329,30 @@ namespace ViewModel
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
         {
             IQueryable<Customer> customers = null;
+            
             switch (searchType)
             {
+                case "Name(Last/First)":
+                    customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    if(customers.Count() == 0)
+                    {
+                        customers = context.CompleteCustomersInfo().Where(p => p.FirstName.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    }
+                    break;
                 case "Last Name":
-                    customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().StartsWith(searchValue.ToUpper()));
+                    customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().Contains(searchValue.Trim().ToUpper()));
                     break;
                 case "First Name":
-                    customers = context.CompleteCustomersInfo().Where(p => p.FirstName.ToUpper().StartsWith(searchValue.ToUpper()));
+                    customers = context.CompleteCustomersInfo().Where(p => p.FirstName.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
                     break;
                 case "Address":
-                    customers = context.CompleteCustomersInfo().Where(p => p.City.ToUpper().StartsWith(searchValue.ToUpper()));
+                    customers = context.CompleteCustomersInfo().Where(p => p.City.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
                     break;
                 case "Phone Number":
-                    customers = context.CompleteCustomersInfo().Where(p => p.MobileNumber.StartsWith(searchValue.ToUpper()));
+                    customers = context.CompleteCustomersInfo().Where(p => p.MobileNumber.Contains(searchValue.Trim().ToUpper()));
                     break;
-                case "Search By:":
-                    if (searchValue == null || searchValue.Trim() == string.Empty)
-                    {
-                        customers = context.CompleteCustomersInfo();
-                    }
+                case "Search By: All":
+                    customers = context.CompleteCustomersInfo();
                     break;
             }
             return customers;

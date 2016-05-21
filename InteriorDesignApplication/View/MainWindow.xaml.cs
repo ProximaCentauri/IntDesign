@@ -56,7 +56,8 @@ namespace View
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             List<string> data = new List<string>();
-            data.Add("Search By:");
+            data.Add("Search By: All");
+            data.Add("Name(Last/First)");
             data.Add("First Name");
             data.Add("Last Name");
             data.Add("Address");
@@ -84,6 +85,12 @@ namespace View
                 spouse.City = personalInfo.SpouseAddress.Text;
                 viewModel.CreateEntity(spouse);
             }
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTextBlock.Focus();
+            SearchTextBlock.Select(0, SearchTextBlock.Text.Length);
         }
     }
 }

@@ -41,7 +41,7 @@
                     Loaded="ComboBox_Loaded"
                     SelectedItem="{Binding SelectedSearchType}"/>
                 <TextBox
-                    Name="SearchTextBlock"
+                    x:Name="SearchTextBlock"
                     Width="250"
                     Style="{StaticResource searchByTextStyle}"
                     Text="{Binding SelectedSearchValue}" 
@@ -51,7 +51,8 @@
                     Width="120"
                     Margin="10,0,0,0"
                     Style="{StaticResource mainButtonStyle}"                    
-                    Command="{Binding SearchCustomerCommand}">
+                    Command="{Binding SearchCustomerCommand}"
+                    Click="SearchButton_Click">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
