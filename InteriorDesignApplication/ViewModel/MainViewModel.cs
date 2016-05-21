@@ -329,12 +329,12 @@ namespace ViewModel
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
         {
             IQueryable<Customer> customers = null;
-            
+
             switch (searchType)
             {
                 case "Name(Last/First)":
                     customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().Contains(searchValue.Trim().ToUpper()));
-                    if(customers.Count() == 0)
+                    if (customers.Count() == 0)
                     {
                         customers = context.CompleteCustomersInfo().Where(p => p.FirstName.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
                     }
@@ -346,7 +346,7 @@ namespace ViewModel
                     customers = context.CompleteCustomersInfo().Where(p => p.FirstName.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
                     break;
                 case "Address":
-                    customers = context.CompleteCustomersInfo().Where(p => p.City.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    customers = GetCustomersByAddress(context, searchValue, 0);
                     break;
                 case "Phone Number":
                     customers = context.CompleteCustomersInfo().Where(p => p.MobileNumber.Contains(searchValue.Trim().ToUpper()));
@@ -354,6 +354,35 @@ namespace ViewModel
                 case "Search By: All":
                     customers = context.CompleteCustomersInfo();
                     break;
+            }
+            return customers;
+        }
+
+        private static IQueryable<Customer> GetCustomersByAddress(this ManagerDBContext context, string searchValue, int counter)
+        {
+            IQueryable<Customer> customers = null;
+            string[] address = { "Street", "VillageDistrict", "City", "State", "Country" };
+            switch (address[counter])
+            {
+                case "Street":
+                    customers = context.CompleteCustomersInfo().Where(p => p.Street.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    break;
+                case "VillageDistrict":
+                    customers = context.CompleteCustomersInfo().Where(p => p.VillageDistrict.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    break;
+                case "City":
+                    customers = context.CompleteCustomersInfo().Where(p => p.City.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    break;
+                case "State":
+                    customers = context.CompleteCustomersInfo().Where(p => p.State.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    break;
+                case "Country":
+                    customers = context.CompleteCustomersInfo().Where(p => p.Country.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    break;
+            }
+            if (customers.Count() == 0 && counter < address.Length-1)
+            {                
+                customers = GetCustomersByAddress(context, searchValue, counter+1);
             }
             return customers;
         }
