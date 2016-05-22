@@ -52,6 +52,7 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
                         Width="150"
+                        Text="{Binding CurrentSelectedCustomer.Company.Name}"
                         Margin="0,0,10,0"></TextBox>
                 </StackPanel>
             </Grid>
@@ -82,6 +83,7 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
                         Width="180"
+                        Text="{Binding CurrentSelectedCustomer.Company.ContactNumber}"
                         Margin="0,0,10,0"></TextBox>
                 </StackPanel>
             </Grid>
@@ -98,6 +100,7 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
                         Width="150"
+                        Text="{Binding CurrentSelectedCustomer.Company.Website}"
                         Margin="0,0,10,0"></TextBox>
                 </StackPanel>
             </Grid>
@@ -113,6 +116,7 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
                         Width="180"
+                        Text="{Binding CurrentSelectedCustomer.Company.EmailAddress}"
                         Margin="0,0,10,0"></TextBox>
                 </StackPanel>
             </Grid>
@@ -128,6 +132,7 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
                         Width="180"
+                        Text="{Binding CurrentSelectedCustomer.Company.FacebookPage}"
                         Margin="0,0,10,0"></TextBox>
                 </StackPanel>
             </Grid>

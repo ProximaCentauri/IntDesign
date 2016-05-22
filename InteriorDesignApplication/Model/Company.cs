@@ -19,7 +19,7 @@ namespace Model
         public string ContactNumber { get; set; }
         public string EmailAddress { get; set; }
         public string OptionalInformation { get; set; }
-
+        public string FacebookPage { get; set; }
         public virtual Customer Customer { get; set; }
     }
 }

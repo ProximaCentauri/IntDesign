@@ -25,6 +25,7 @@ namespace ViewModel
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }       
         private Spouse CustomerSpouse { get; set; }
+        private Company CustomerCompany { get; set; }
 
         public void LoadCustomers()
         {
@@ -156,6 +157,7 @@ namespace ViewModel
             Dependent = null;
             OnPropertyChanged("Dependents");
             OnPropertyChanged("Dependent");
+            
         }
 
         private void SearchCustomer()
@@ -332,12 +334,15 @@ namespace ViewModel
 
             switch (searchType)
             {
-                case "Name(Last/First)":
+                case "First/Last Name":
                     customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().Contains(searchValue.Trim().ToUpper()));
                     if (customers.Count() == 0)
                     {
                         customers = context.CompleteCustomersInfo().Where(p => p.FirstName.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
                     }
+                    break;
+                case "Company Name":
+                    customers = context.CompleteCustomersInfo().Where(p => p.CustomerCompany.Name.ToUpper().Contains(searchValue.Trim().ToUpper()));
                     break;
                 case "Last Name":
                     customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().Contains(searchValue.Trim().ToUpper()));
