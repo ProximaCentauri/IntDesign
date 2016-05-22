@@ -357,9 +357,12 @@ namespace ViewModel
         private static IQueryable<Customer> GetCustomersByAddress(this ManagerDBContext context, string searchValue, int counter)
         {
             IQueryable<Customer> customers = null;
-            string[] address = { "Street", "VillageDistrict", "City", "State", "Country" };
+            string[] address = { "Unit Number", "Street", "VillageDistrict", "City", "State", "Country" };
             switch (address[counter])
             {
+                case "Unit Number":
+                    customers = context.CompleteCustomersInfo().Where(p => p.NumBuilding.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
+                    break;
                 case "Street":
                     customers = context.CompleteCustomersInfo().Where(p => p.Street.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
                     break;
