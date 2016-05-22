@@ -344,17 +344,8 @@ namespace ViewModel
                 case "Company Name":
                     customers = context.CompleteCustomersInfo().Where(p => p.CustomerCompany.Name.ToUpper().Contains(searchValue.Trim().ToUpper()));
                     break;
-                case "Last Name":
-                    customers = context.CompleteCustomersInfo().Where(p => p.LastName.ToUpper().Contains(searchValue.Trim().ToUpper()));
-                    break;
-                case "First Name":
-                    customers = context.CompleteCustomersInfo().Where(p => p.FirstName.Trim().ToUpper().Contains(searchValue.Trim().ToUpper()));
-                    break;
                 case "Address":
                     customers = GetCustomersByAddress(context, searchValue, 0);
-                    break;
-                case "Phone Number":
-                    customers = context.CompleteCustomersInfo().Where(p => p.MobileNumber.Contains(searchValue.Trim().ToUpper()));
                     break;
                 case "Search By: All":
                     customers = context.CompleteCustomersInfo();
