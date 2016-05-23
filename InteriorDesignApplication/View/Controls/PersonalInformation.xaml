@@ -406,7 +406,9 @@
                     Width="935"
                     Margin="24,0,0,0"
                     ItemsSource="{Binding Dependents}"
-                    AutoGenerateColumns="False">
+                    SelectedItem="{Binding CurrentSelectedDependent}"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Last Name"
@@ -433,7 +435,8 @@
                     Grid.Column="1"
                     Style="{StaticResource iconButtonStyle}"
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left"
+                    Command="{Binding DeleteDependentCommand}">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

@@ -45,8 +45,7 @@ namespace ViewModel
                 OnPropertyChanged("Dependent");
             }
         }
-
-     
+       
         public void CreateEntity(object ob)
         {
             if (ob is Spouse)
@@ -88,6 +87,19 @@ namespace ViewModel
             }
         }
 
+        private Dependent currentSelectedDependent;
+        public Dependent CurrentSelectedDependent
+        {
+            get
+            {
+                return currentSelectedDependent;
+            }
+            set
+            {
+                currentSelectedDependent = value;
+                OnPropertyChanged("CurrentSelectedDependent");                
+            }
+        }
 
         public ICollection<Dependent> Dependents
         {
@@ -126,7 +138,8 @@ namespace ViewModel
             {
                 context.Customers.Add(customer);
                 CurrentSelectedCustomer = null;
-            }            
+            }
+            
             context.SaveChanges();
             Dependent = null;
             
@@ -157,8 +170,15 @@ namespace ViewModel
             CurrentSelectedCustomer.Dependents.Add(Dependent);
             Dependent = null;
             OnPropertyChanged("Dependents");
-            OnPropertyChanged("Dependent");
-            
+            OnPropertyChanged("Dependent");            
+        }
+
+        private void DeleteDependent()
+        {
+            CurrentSelectedCustomer.Dependents.Remove(CurrentSelectedDependent);
+            context.Entry(CurrentSelectedDependent).State = EntityState.Deleted;
+            CurrentSelectedDependent = null;
+            OnPropertyChanged("Dependents");            
         }
 
         private void SearchCustomer()
@@ -272,6 +292,18 @@ namespace ViewModel
             }
         }
 
+        ICommand _deleteDependentCommand;
+        public ICommand DeleteDependentCommand
+        {
+            get
+            {
+                if (_deleteDependentCommand == null)
+                {
+                    _deleteDependentCommand = new RelayCommand(DeleteDependent);
+                }
+                return _deleteDependentCommand;
+            }
+        }
         #endregion
 
         public void Dispose()
