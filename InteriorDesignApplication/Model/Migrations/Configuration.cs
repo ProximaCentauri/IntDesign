@@ -27,18 +27,6 @@ namespace Model.Migrations
             //    );
             //
 
-            context.Customers.AddOrUpdate(
-                c => c.LastName,
-                new Customer { LastName = "Doe", FirstName = "Jane", MiddleName = "Test1" },
-                new Customer { LastName = "Reynolds", FirstName = "Gray", MiddleName = "Test2" },
-                new Customer
-                {
-                    LastName = "Wick",
-                    FirstName = "John",
-                    MiddleName = "Test3",
-                    Status = "Married",
-                    CustomerSpouse = new Spouse { LastName = "Wick", FirstName = "Mary" }
-                });
          }
     }
 }

@@ -149,6 +149,7 @@ namespace ViewModel
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
             CurrentSelectedCustomer = customer;
+            SelectedIndex = -1;            
         }
 
         private void AddDependent()
