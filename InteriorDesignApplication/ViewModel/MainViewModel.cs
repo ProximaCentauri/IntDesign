@@ -31,6 +31,22 @@ namespace ViewModel
         {
             Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
         }
+        
+        public void CreateEntity(object ob)
+        {
+            if (ob is Spouse)
+            {
+                CustomerSpouse = ob as Spouse;
+            }           
+            else if(ob is Dependent)
+            {
+                Dependent = ob as Dependent;
+            }
+            else if(ob is Utility)
+            {
+                Utility = ob as Utility;
+            }
+        }
 
         private Dependent newDependent;
         public Dependent Dependent
@@ -45,18 +61,20 @@ namespace ViewModel
                 OnPropertyChanged("Dependent");
             }
         }
-       
-        public void CreateEntity(object ob)
+
+        private Utility newUtility;
+        public Utility Utility
         {
-            if (ob is Spouse)
+            get
             {
-                CustomerSpouse = ob as Spouse;
-            }           
-            else if(ob is Dependent)
-            {
-                Dependent = ob as Dependent;
+                return newUtility;
             }
-        }
+            set
+            {
+                newUtility = value;
+                OnPropertyChanged("Utility");
+            }
+        }              
 
         private IEnumerable<Customer> customers;
         public IEnumerable<Customer> Customers
@@ -101,6 +119,20 @@ namespace ViewModel
             }
         }
 
+        private Utility currentSelectedUtility;
+        public Utility CurrentSelectedUtility
+        {
+            get
+            {
+                return currentSelectedUtility;
+            }
+            set
+            {
+                currentSelectedUtility = value;
+                OnPropertyChanged("CurrentSelectedUtility");
+            }
+        }
+
         public ICollection<Dependent> Dependents
         {
             get
@@ -111,6 +143,18 @@ namespace ViewModel
                 }
                 return null;                
             }            
+        }
+
+        public ICollection<Utility> Utilities
+        {
+            get
+            {
+                if (CurrentSelectedCustomer != null)
+                {
+                    return new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
+                }
+                return null;
+            }  
         }
         
         private PopupView currentPopupView;
@@ -127,6 +171,7 @@ namespace ViewModel
             }
         }
 
+        #region Actions
         private void SaveCustomer()
         {
             Customer customer = CurrentSelectedCustomer as Customer;            
@@ -194,24 +239,22 @@ namespace ViewModel
             }
         }
 
-        private bool canExecute = true;
-        public bool CanExecute
+        private void AddUtility()
         {
-            get
-            {
-                return this.canExecute;
-            }
-
-            set
-            {
-                if (this.canExecute == value)
-                {
-                    return;
-                }
-
-                this.canExecute = value;
-            }
+            CurrentSelectedCustomer.Utilities.Add(Utility);
+            Utility = null;
+            OnPropertyChanged("Utilities");
+            OnPropertyChanged("Utility");
         }
+
+        private void DeleteUtility()
+        {
+            CurrentSelectedCustomer.Utilities.Remove(CurrentSelectedUtility);
+            context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;
+            CurrentSelectedUtility = null;
+            OnPropertyChanged("Utilities");
+        }
+        #endregion
 
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
@@ -302,6 +345,32 @@ namespace ViewModel
                     _deleteDependentCommand = new RelayCommand(DeleteDependent);
                 }
                 return _deleteDependentCommand;
+            }
+        }
+
+        ICommand _addUtilityCommand;
+        public ICommand AddUtilityCommand
+        {
+            get
+            {
+                if (_addUtilityCommand == null)
+                {
+                    _addUtilityCommand = new RelayCommand(AddUtility);
+                }
+                return _addUtilityCommand;
+            }
+        }
+
+        ICommand _deleteUtilityCommand;
+        public ICommand DeleteUtilityCommand
+        {
+            get
+            {
+                if (_deleteUtilityCommand == null)
+                {
+                    _deleteUtilityCommand = new RelayCommand(DeleteUtility);
+                }
+                return _deleteUtilityCommand;
             }
         }
         #endregion

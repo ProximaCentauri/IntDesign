@@ -132,7 +132,8 @@
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding Utility.AccountName}"/>
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
@@ -141,7 +142,8 @@
                     <TextBox
                         Grid.Row="3"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding Utility.AccountId}"/>
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
@@ -154,7 +156,7 @@
                         Margin="0,5,0,0"
                         SelectedDateFormat="Long"
                         HorizontalAlignment="Left"
-                        SelectedDate="{x:Static sys:DateTime.Today}" />
+                        SelectedDate="{Binding Utility.CutoffDate}"/>
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"
@@ -163,7 +165,8 @@
                     <TextBox
                         Grid.Row="5"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}" 
+                        Text="{Binding Utility.BillStatement}"/>
                     <TextBlock
                         Grid.Row="6"
                         Grid.Column="0"
@@ -172,7 +175,8 @@
                     <TextBox
                         Grid.Row="6"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}" 
+                        Text="{Binding Utility.Receipt}"/>
                     <TextBlock
                         Grid.Row="7"
                         Grid.Column="0"
@@ -181,7 +185,9 @@
                     <TextBox
                         Grid.Row="7"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}" 
+                        IsReadOnly="True"
+                        Text="{Binding Utility.Status}"/>
                 </Grid>
             </StackPanel>
         </Grid>
@@ -191,7 +197,9 @@
                 Width="100"
                 Height="30"
                 Margin="20"
-                Style="{StaticResource mainButtonStyle}">
+                Style="{StaticResource mainButtonStyle}"
+                Command="{Binding AddUtilityCommand}"
+                Click="Button_Click">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

@@ -13,6 +13,9 @@ namespace Model
         [Key]
         public int Id { get; set; }
 
+        public virtual UtilityCategory Category { get; set; }
+        public virtual UtilitySubCategory SubCategory { get; set; }
+
         public string AccountName { get; set; }
         public string AccountId { get; set; }
 
@@ -22,5 +25,9 @@ namespace Model
         public string BillStatement { get; set; }
         public string Receipt { get; set; }
         public string Status { get; set; }
+
+        public int CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
+        public virtual Customer Customer { get; set; }
     }
 }

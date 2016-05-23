@@ -27,7 +27,7 @@
                     Width="40"
                     Height="20"
                     Click="addUtilityBill_Click"
-                    Style="{StaticResource iconButtonStyle}">
+                    Style="{StaticResource iconButtonStyle}">                    
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
@@ -51,26 +51,36 @@
             <DataGrid
                 Height="350"
                 Width="950"
-                Margin="10,0,0,0">
+                Margin="10,0,0,0"
+                ItemsSource="{Binding Utilities}"
+                SelectedItem="{Binding CurrentSelectedUtility}"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Category"
-                        Width="150" />
+                        Width="150" 
+                        Binding="{Binding Category.Name}"/>
                     <DataGridTextColumn
                         Header="Sub-category"
-                        Width="150" />
+                        Width="150"
+                        Binding="{Binding SubCategory.Name}"/>
                     <DataGridTextColumn
                         Header="Account Name"
-                        Width="250" />
+                        Width="250"
+                        Binding="{Binding AccountName}"/>
                     <DataGridTextColumn
                         Header="Account #"
-                        Width="150" />
+                        Width="150"
+                        Binding="{Binding AccountId}"/>
                     <DataGridTextColumn
                         Header="Cut-off Date"
-                        Width="125" />
+                        Width="125" 
+                        Binding="{Binding CutoffDate}"/>
                     <DataGridTextColumn
                         Header="Status"
-                        Width="125" />
+                        Width="125"
+                        Binding="{Binding Status}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button
@@ -80,7 +90,8 @@
                 Grid.Column="1"
                 Style="{StaticResource iconButtonStyle}"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Command="{Binding DeleteUtilityCommand}">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
