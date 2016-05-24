@@ -171,9 +171,7 @@
                     <TextBlock
                         Text="Birthdate:"
                         Width="85"
-                        Style="{StaticResource mainLabelTextStyle}"
-                        Height="24"
-                        VerticalAlignment="Bottom"></TextBlock>
+                        Style="{StaticResource mainLabelTextStyle}" />
                     <DatePicker
                         Width="150"
                         SelectedDateFormat="Short"

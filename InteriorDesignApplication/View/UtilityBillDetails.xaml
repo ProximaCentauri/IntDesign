@@ -39,6 +39,8 @@
             </StackPanel>
         </Button>
         <Grid
+            Name="utilityFormPanel"
+            Visibility="Visible"
             Grid.Row="1"
             Margin="10,0,0,0">
             <Grid.RowDefinitions>
@@ -74,18 +76,19 @@
                             Width="275"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
-                        Text="Category:"
+                        Text="Bill Type:"
                         Style="{StaticResource popupLabelTextStyle}" />
                     <StackPanel
                         Orientation="Horizontal"
                         Grid.Column="1">
-                        <TextBox
-                            Style="{StaticResource popupTextBoxStyle}" />
+                        <ComboBox
+                            Style="{StaticResource popupComboBoxStyle}" />
                         <Button
-                            Name="addDependent"
+                            Name="addBillType"
                             Width="50"
                             Height="20"
                             Margin="0,7,0,0"
+                            Click="addBillType_Click"
                             Style="{StaticResource iconButtonStyle}">
                             <StackPanel
                                 Orientation="Horizontal"
@@ -99,22 +102,20 @@
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="Sub-Category:"
+                        Text="Company Name:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
                     <StackPanel
                         Orientation="Horizontal"
                         Grid.Row="1"
                         Grid.Column="1">
-                        <TextBox
-                            Style="{StaticResource popupTextBoxStyle}" />
+                        <ComboBox
+                            Style="{StaticResource popupComboBoxStyle}" />
                         <Button
+                            Name="addCompanyName"
                             Width="50"
                             Height="20"
                             Margin="0,7,0,0"
+                            Click="addCompanyName_Click"
                             Style="{StaticResource iconButtonStyle}">
                             <StackPanel
                                 Orientation="Horizontal"
@@ -192,24 +193,124 @@
             </StackPanel>
         </Grid>
         <Grid
-            Grid.Row="2">
-            <Button
-                Width="100"
-                Height="30"
-                Margin="20"
-                Style="{StaticResource mainButtonStyle}"
-                Command="{Binding AddUtilityCommand}"
-                Click="Button_Click">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource checkIconStyle}" />
+            Name="addBillTypePanel"
+            Visibility="Collapsed"
+            Grid.Row="1"
+            Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Text="Add Bill Type"
+                Style="{StaticResource popupHeaderTextStyle}" />
+            <Separator
+                Style="{StaticResource mainSeparatorStyle}" />
+            <StackPanel
+                Orientation="Vertical"
+                Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="125"></ColumnDefinition>
+                        <ColumnDefinition
+                            Width="275"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>                  
                     <TextBlock
-                        Text="Add"
-                        Style="{StaticResource addButtonStyle}" />
-                </StackPanel>
-            </Button>
+                        Grid.Column="0"
+                        Text="Bill Type:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />                    
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid
+            Name="addCompanyNamePanel"
+            Visibility="Collapsed"
+            Grid.Row="1"
+            Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Text="Add Company Name"
+                Style="{StaticResource popupHeaderTextStyle}" />
+            <Separator
+                Style="{StaticResource mainSeparatorStyle}" />
+            <StackPanel
+                Orientation="Vertical"
+                Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="125"></ColumnDefinition>
+                        <ColumnDefinition
+                            Width="275"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Bill Type:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <ComboBox
+                        Grid.Column="1"
+                        Style="{StaticResource popupComboBoxStyle}" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Company Name:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid
+            Grid.Row="2">
+            <StackPanel
+                Orientation="Horizontal"
+                Margin="0,20,0,20"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <Button
+                    Name="cancelButton"
+                    Visibility="Collapsed"
+                    Width="100"
+                    Height="30"
+                    Margin="0,0,24,0"
+                    Click="cancelButton_Click"
+                    Content="Cancel"
+                    Style="{StaticResource mainLinkButtonStyle}">                    
+                </Button>
+                <Button
+                    Width="100"
+                    Height="30"
+                    Style="{StaticResource mainButtonStyle}"
+                    Command="{Binding AddUtilityCommand}"
+                    Click="Button_Click">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                        <Image
+                            Style="{StaticResource checkIconStyle}" />
+                        <TextBlock
+                            Text="Add"
+                            Style="{StaticResource addButtonStyle}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </c:PopupView>

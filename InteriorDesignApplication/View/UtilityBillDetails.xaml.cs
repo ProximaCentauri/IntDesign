@@ -44,5 +44,23 @@ namespace View
         {
             viewModel.CurrentPopupView = null;
         }
+
+        private void addBillType_Click(object sender, RoutedEventArgs e)
+        {
+            this.utilityFormPanel.Visibility = this.addCompanyNamePanel.Visibility= Visibility.Collapsed;
+            this.cancelButton.Visibility = this.addBillTypePanel.Visibility = Visibility.Visible;
+        }
+
+        private void addCompanyName_Click(object sender, RoutedEventArgs e)
+        {
+            this.utilityFormPanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
+            this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Visible;
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.cancelButton.Visibility =  this.addCompanyNamePanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
+            this.utilityFormPanel.Visibility = Visibility.Visible;
+        }
     }
 }

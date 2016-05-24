@@ -223,6 +223,19 @@
             Value="Wrap" />
     </Style>
     <Style
+        x:Key="popupComboBoxStyle"
+        TargetType="ComboBox">
+        <Setter
+            Property="Width"
+            Value="200" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="Margin"
+            Value="0,5,0,0" />
+    </Style>
+    <Style
         x:Key="searchByTextStyle"
         TargetType="{x:Type TextBox}"
         BasedOn="{StaticResource mainFontRegular}">
