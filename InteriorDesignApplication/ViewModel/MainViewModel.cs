@@ -149,7 +149,7 @@ namespace ViewModel
             }            
         }
 
-        public ICollection<Utility> Utilities
+        public IEnumerable<Utility> Utilities
         {
             get
             {
@@ -159,6 +159,34 @@ namespace ViewModel
                 }
                 return null;
             }  
+        }
+
+        private IEnumerable<UtilityBillType> utilityBillTypes;
+        public IEnumerable<UtilityBillType> UtilityBillTypes
+        {
+            get
+            {
+                return utilityBillTypes;
+            }
+            set
+            {
+                utilityBillTypes = value;
+                OnPropertyChanged("UtilityBillTypes");
+            }
+        }
+
+        private IEnumerable<UtilityCompany> utilityCompanies;
+        public IEnumerable<UtilityCompany> UtilityCompanies
+        {
+            get
+            {
+                return utilityCompanies;
+            }
+            set
+            {
+                utilityCompanies = value;
+                OnPropertyChanged("UtilityCompanies");
+            }
         }
         
         private PopupView currentPopupView;

@@ -82,7 +82,7 @@
                         Orientation="Horizontal"
                         Grid.Column="1">
                         <ComboBox
-                            Style="{StaticResource popupComboBoxStyle}" />
+                            Style="{StaticResource popupComboBoxStyle}"/>
                         <Button
                             Name="addBillType"
                             Width="50"
@@ -224,7 +224,8 @@
                         Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />                    
+                        Style="{StaticResource popupTextBoxStyle}" 
+                        Text="{Binding UtilityBill}"/>                    
                 </Grid>
             </StackPanel>
         </Grid>
