@@ -10,8 +10,10 @@ namespace Model
 {
     public class Company
     {
-        [Key, ForeignKey("Customer")]
+        [Key]
+        [ForeignKey("Customer")]
         public int Id { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public string Name { get; set; }
         public string Address { get; set; }
@@ -19,7 +21,6 @@ namespace Model
         public string ContactNumber { get; set; }
         public string EmailAddress { get; set; }
         public string OptionalInformation { get; set; }
-        public string FacebookPage { get; set; }
-        public virtual Customer Customer { get; set; }
+        public string FacebookPage { get; set; }        
     }
 }

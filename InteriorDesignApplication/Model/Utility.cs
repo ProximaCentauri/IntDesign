@@ -13,8 +13,8 @@ namespace Model
         [Key]
         public int Id { get; set; }
 
-        public virtual UtilityCategory Category { get; set; }
-        public virtual UtilitySubCategory SubCategory { get; set; }
+        public virtual UtilityBillType BillType { get; set; }
+        public virtual UtilityCompany UtilityCompany { get; set; }
 
         public string AccountName { get; set; }
         public string AccountId { get; set; }

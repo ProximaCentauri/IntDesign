@@ -183,11 +183,16 @@ namespace ViewModel
             {
                 customer.CustomerSpouse = this.CustomerSpouse;
             }
+            if (CustomerCompany != null)
+            {
+                //AddCompany(); 
+                customer.CustomerCompany = this.CustomerCompany;
+            }
             
             if (SelectedIndex == -1 && null != customer.FirstName)
             {
                 context.Customers.Add(customer);
-                AddCompany();            
+                           
                 CurrentSelectedCustomer = null;
             }
             
@@ -453,7 +458,8 @@ namespace ViewModel
         {
             return context.Customers
                 .Include(d => d.Dependents)
-                .Include(e => e.CustomerSpouse);
+                .Include(e => e.CustomerSpouse)
+                .Include(f => f.CustomerCompany);
         }
 
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)

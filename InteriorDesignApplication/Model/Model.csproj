@@ -76,8 +76,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spouse.cs" />
     <Compile Include="Utility.cs" />
-    <Compile Include="UtilityCategory.cs" />
-    <Compile Include="UtilitySubCategory.cs" />
+    <Compile Include="UtilityBillType.cs" />
+    <Compile Include="UtilityCompany.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
