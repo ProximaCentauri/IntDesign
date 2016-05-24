@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
+using Model.Controls;
+using Model;        
 
 namespace View.Controls
 {
@@ -24,5 +27,13 @@ namespace View.Controls
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel = this.DataContext as IMainViewModel;
+            this.viewModel.CreateEntity(new Company());   
+        }
+
+        IMainViewModel viewModel;
     }
 }

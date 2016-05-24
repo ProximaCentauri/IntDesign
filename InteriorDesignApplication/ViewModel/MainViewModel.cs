@@ -46,6 +46,10 @@ namespace ViewModel
             {
                 Utility = ob as Utility;
             }
+            else if (ob is Company)
+            {
+                CustomerCompany = ob as Company;
+            }
         }
 
         private Dependent newDependent;
@@ -179,9 +183,11 @@ namespace ViewModel
             {
                 customer.CustomerSpouse = this.CustomerSpouse;
             }
+            
             if (SelectedIndex == -1 && null != customer.FirstName)
             {
                 context.Customers.Add(customer);
+                AddCompany();            
                 CurrentSelectedCustomer = null;
             }
             
@@ -224,6 +230,13 @@ namespace ViewModel
             context.Entry(CurrentSelectedDependent).State = EntityState.Deleted;
             CurrentSelectedDependent = null;
             OnPropertyChanged("Dependents");            
+        }
+
+        private void AddCompany()
+        {
+            currentSelectedCustomer.CustomerCompany = CustomerCompany;
+            CustomerCompany = null;
+            OnPropertyChanged("Company");
         }
 
         private void SearchCustomer()
@@ -306,6 +319,19 @@ namespace ViewModel
                     _addDependentCommand = new RelayCommand(AddDependent);
                 }
                 return _addDependentCommand;
+            }
+        }
+
+        ICommand _addCompanyCommand;
+        public ICommand AddCompanyCommand
+        {
+            get
+            {
+                if (_addCompanyCommand == null)
+                {
+                    _addCompanyCommand = new RelayCommand(AddCompany);
+                }
+                return _addCompanyCommand;
             }
         }
         
