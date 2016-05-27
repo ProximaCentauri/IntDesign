@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+    xmlns:helpers="clr-namespace:Model.Helpers;assembly=Model"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"    
     Title="UtilityBillsDetails"
     Height="Auto"
@@ -10,8 +11,12 @@
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
-    BackgroundType="Shroud">
+    BackgroundType="Shroud">   
     <Grid>
+        <Grid.Resources>
+            <helpers:UtilityStatusConverter
+                x:Key="UtilityStatusConverter"/>            
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="Auto"></RowDefinition>
@@ -154,7 +159,7 @@
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
-                        Text="Cut-off Date:"
+                        Text="Cut-off Date:"                        
                         Style="{StaticResource popupLabelTextStyle}" />
                     <DatePicker
                         Grid.Row="4"
@@ -192,9 +197,11 @@
                     <TextBox
                         Grid.Row="7"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" 
+                        Style="{StaticResource popupTextBoxStyle}"
                         IsReadOnly="True"
-                        Text="{Binding Utility.Status}"/>
+                        Text="{Binding Utility.Status}"
+                        Name="UtilityStatus"/>
+
                 </Grid>
             </StackPanel>
         </Grid>
