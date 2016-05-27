@@ -14,5 +14,10 @@ namespace Model
         public string Name { get; set; }
 
         public virtual ICollection<UtilityCompany> UtilityCompanies { get; set; }
+
+        public UtilityBillType()
+        {
+            UtilityCompanies = new List<UtilityCompany>();            
+        } 
     }
 }

@@ -19,30 +19,35 @@ namespace ViewModel
         public MainViewModel()
         {           
         }
-
-        public int SelectedIndex { get; set; }
-
-        public string SelectedSearchType { get; set; }
-        public string SelectedSearchValue { get; set; }       
-        private Spouse CustomerSpouse { get; set; }
-        private Company CustomerCompany { get; set; }
-
-        public void LoadCustomers()
-        {
-            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
-        }
         
+        
+        public void LoadEntities()
+        {
+            LoadCustomers();
+            LoadUtilityBillTypes();                                           
+        }
+
+        private void LoadCustomers()
+        {
+            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());           
+        }
+
+        private void LoadUtilityBillTypes()
+        {
+            UtilityBillTypes = new ObservableCollection<UtilityBillType>(context.GetAllUtilityBillTypes());     
+        }
+
         public void CreateEntity(object ob)
         {
             if (ob is Spouse)
             {
                 CustomerSpouse = ob as Spouse;
-            }           
-            else if(ob is Dependent)
+            }
+            else if (ob is Dependent)
             {
                 Dependent = ob as Dependent;
             }
-            else if(ob is Utility)
+            else if (ob is Utility)
             {
                 Utility = ob as Utility;
             }
@@ -50,8 +55,36 @@ namespace ViewModel
             {
                 CustomerCompany = ob as Company;
             }
+            else if (ob is UtilityBillType)
+            {
+                UtilityBillType = ob as UtilityBillType;
+            }
+            else if (ob is UtilityCompany)
+            {
+                UtilityCompany = ob as UtilityCompany;
+            }
         }
 
+        private PopupView currentPopupView;
+        public PopupView CurrentPopupView
+        {
+            get
+            {
+                return currentPopupView;
+            }
+            set
+            {
+                currentPopupView = value;
+                OnPropertyChanged("CurrentPopupView");
+            }
+        }
+
+        #region Personal Information
+        public int SelectedIndex { get; set; }
+        public string SelectedSearchType { get; set; }
+        public string SelectedSearchValue { get; set; }
+        private Spouse CustomerSpouse { get; set; }        
+                        
         private Dependent newDependent;
         public Dependent Dependent
         {
@@ -64,21 +97,7 @@ namespace ViewModel
                 newDependent = value;
                 OnPropertyChanged("Dependent");
             }
-        }
-
-        private Utility newUtility;
-        public Utility Utility
-        {
-            get
-            {
-                return newUtility;
-            }
-            set
-            {
-                newUtility = value;
-                OnPropertyChanged("Utility");
-            }
-        }              
+        }                 
 
         private IEnumerable<Customer> customers;
         public IEnumerable<Customer> Customers
@@ -106,6 +125,7 @@ namespace ViewModel
                 currentSelectedCustomer = value;
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
+                OnPropertyChanged("Utilities");
             }
         }
 
@@ -123,6 +143,34 @@ namespace ViewModel
             }
         }
 
+        public ICollection<Dependent> Dependents
+        {
+            get
+            {
+                if (CurrentSelectedCustomer != null)
+                {
+                    return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
+                }
+                return null;
+            }
+        }
+        #endregion
+        
+        #region Utilities
+        private Utility newUtility;
+        public Utility Utility
+        {
+            get
+            {
+                return newUtility;
+            }
+            set
+            {
+                newUtility = value;
+                OnPropertyChanged("Utility");
+            }
+        }     
+
         private Utility currentSelectedUtility;
         public Utility CurrentSelectedUtility
         {
@@ -135,19 +183,7 @@ namespace ViewModel
                 currentSelectedUtility = value;
                 OnPropertyChanged("CurrentSelectedUtility");
             }
-        }
-
-        public ICollection<Dependent> Dependents
-        {
-            get
-            {
-                if(CurrentSelectedCustomer != null)
-                {
-                    return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
-                }
-                return null;                
-            }            
-        }
+        }        
 
         public IEnumerable<Utility> Utilities
         {
@@ -161,8 +197,37 @@ namespace ViewModel
             }  
         }
 
-        private IEnumerable<UtilityBillType> utilityBillTypes;
-        public IEnumerable<UtilityBillType> UtilityBillTypes
+        private UtilityBillType currentSelectedUtilityBillType;
+        public UtilityBillType CurrentSelectedUtilityBillType
+        {
+            get
+            {
+                return currentSelectedUtilityBillType;
+            }
+            set
+            {
+                currentSelectedUtilityBillType = value;
+                OnPropertyChanged("CurrentSelectedUtilityBillType");
+                OnPropertyChanged("UtilityCompanies");
+            }
+        }
+
+        private UtilityBillType newUtilityBillType;
+        public UtilityBillType UtilityBillType
+        {
+            get
+            {
+                return newUtilityBillType;
+            }
+            set
+            {
+                newUtilityBillType = value;
+                OnPropertyChanged("UtilityBillType");
+            }
+        }
+
+        private ICollection<UtilityBillType> utilityBillTypes;
+        public ICollection<UtilityBillType> UtilityBillTypes
         {
             get
             {
@@ -174,34 +239,51 @@ namespace ViewModel
                 OnPropertyChanged("UtilityBillTypes");
             }
         }
-
-        private IEnumerable<UtilityCompany> utilityCompanies;
-        public IEnumerable<UtilityCompany> UtilityCompanies
-        {
-            get
-            {
-                return utilityCompanies;
-            }
-            set
-            {
-                utilityCompanies = value;
-                OnPropertyChanged("UtilityCompanies");
-            }
-        }
         
-        private PopupView currentPopupView;
-        public PopupView CurrentPopupView
+        public ICollection<UtilityCompany> UtilityCompanies
         {
             get
             {
-                return currentPopupView;
+                if (CurrentSelectedUtilityBillType != null)
+                {
+                    return new ObservableCollection<UtilityCompany>(CurrentSelectedUtilityBillType.UtilityCompanies);
+                }
+                return null;
+            }            
+        }
+
+        private UtilityCompany currentSelectedUtilityCompany;
+        public UtilityCompany CurrentSelectedUtilityCompany
+        {
+            get
+            {
+                return currentSelectedUtilityCompany;
             }
             set
             {
-                currentPopupView = value;
-                OnPropertyChanged("CurrentPopupView");
+                currentSelectedUtilityCompany = value;
+                OnPropertyChanged("CurrentSelectedUtilityCompany");
             }
         }
+
+        private UtilityCompany newUtilityCompany;
+        public UtilityCompany UtilityCompany
+        {
+            get
+            {
+                return newUtilityCompany;
+            }
+            set
+            {
+                newUtilityCompany = value;
+                OnPropertyChanged("UtilityCompany");
+            }
+        }
+        #endregion
+
+        
+
+        private Company CustomerCompany { get; set; }
 
         #region Actions
         private void SaveCustomer()
@@ -211,32 +293,27 @@ namespace ViewModel
             {
                 customer.CustomerSpouse = this.CustomerSpouse;
             }
-            if (CustomerCompany != null)
-            {
-                //AddCompany(); 
-                customer.CustomerCompany = this.CustomerCompany;
-            }
+            //if (CustomerCompany != null)
+            //{                
+            //    customer.CustomerCompany = this.CustomerCompany;
+            //}
             
             if (SelectedIndex == -1 && null != customer.FirstName)
             {
-                context.Customers.Add(customer);
-                           
+                context.Customers.Add(customer);                           
                 CurrentSelectedCustomer = null;
             }
             
             context.SaveChanges();
-            Dependent = null;
-            
-            OnPropertyChanged("Dependent");
-            LoadCustomers();           
+            Dependent = null;                        
+            LoadEntities();           
         }      
 
         public void DeleteCustomer()
         {
             context.Customers.Remove(CurrentSelectedCustomer);
             context.SaveChanges();
-            CurrentSelectedCustomer = null;            
-            OnPropertyChanged("CurrentSelectedCustomer");
+            CurrentSelectedCustomer = null;                        
             LoadCustomers();
         }
 
@@ -253,8 +330,7 @@ namespace ViewModel
         {
             CurrentSelectedCustomer.Dependents.Add(Dependent);
             Dependent = null;
-            OnPropertyChanged("Dependents");
-            OnPropertyChanged("Dependent");            
+            OnPropertyChanged("Dependents");                    
         }
 
         private void DeleteDependent()
@@ -287,10 +363,34 @@ namespace ViewModel
 
         private void AddUtility()
         {
-            CurrentSelectedCustomer.Utilities.Add(Utility);
-            Utility = null;
-            OnPropertyChanged("Utilities");
-            OnPropertyChanged("Utility");
+            if (UtilityBillType != null && !UtilityBillType.Name.Trim().Equals(string.Empty))
+            {
+                if (!UtilityBillTypes.Contains(UtilityBillType))
+                {
+                    UtilityBillTypes.Add(UtilityBillType);
+                    CurrentSelectedUtilityBillType = UtilityBillType;
+                }                
+                UtilityBillType = null;                                             
+            }
+            else if ((UtilityCompany != null && !UtilityCompany.Name.Trim().Equals(string.Empty))
+                && CurrentSelectedUtilityBillType != null)
+            {
+                if (!CurrentSelectedUtilityBillType.UtilityCompanies.Contains(UtilityCompany))
+                {
+                    CurrentSelectedUtilityBillType.UtilityCompanies.Add(UtilityCompany);
+                    CurrentSelectedUtilityCompany = UtilityCompany;                
+                }
+                UtilityCompany = null;                
+                OnPropertyChanged("UtilityCompanies");                
+            }
+            else if (CurrentSelectedUtilityBillType != null && CurrentSelectedUtilityCompany != null)
+            {
+                Utility.BillType = CurrentSelectedUtilityBillType;
+                Utility.UtilityCompany = CurrentSelectedUtilityCompany;
+                CurrentSelectedCustomer.Utilities.Add(Utility);
+                Utility = null;
+                OnPropertyChanged("Utilities");           
+            }            
         }
 
         private void DeleteUtility()
@@ -299,7 +399,7 @@ namespace ViewModel
             context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;
             CurrentSelectedUtility = null;
             OnPropertyChanged("Utilities");
-        }
+        }        
         #endregion
 
         #region INotifyPropertyChanged Implementing
@@ -444,6 +544,7 @@ namespace ViewModel
         private readonly ManagerDBContext context = new ManagerDBContext();
     }
 
+    #region RelayCommand
     public class RelayCommand : ICommand
     {
         public event EventHandler CanExecuteChanged
@@ -479,7 +580,9 @@ namespace ViewModel
             this.methodToExecute.Invoke();
         }
     }
+    #endregion
 
+    #region DBContext Queries
     public static class Extensions
     {
         public static IQueryable<Customer> CompleteCustomersInfo(this ManagerDBContext context)
@@ -487,7 +590,8 @@ namespace ViewModel
             return context.Customers
                 .Include(d => d.Dependents)
                 .Include(e => e.CustomerSpouse)
-                .Include(f => f.CustomerCompany);
+                .Include(f => f.CustomerCompany)
+                .Include(g => g.Utilities);
         }
 
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
@@ -547,6 +651,14 @@ namespace ViewModel
             }
             return customers;
         }
+
+        public static IQueryable<UtilityBillType> GetAllUtilityBillTypes(this ManagerDBContext context)
+        {
+            return context.UtilityBillTypes
+                .Include(d => d.UtilityCompanies);
+        }        
     }
+    #endregion
+
 }
 

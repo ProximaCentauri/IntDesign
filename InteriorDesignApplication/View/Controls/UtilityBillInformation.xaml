@@ -58,13 +58,13 @@
                 CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn
-                        Header="Category"
+                        Header="Bill Type"
                         Width="150" 
-                        Binding="{Binding Category.Name}"/>
+                        Binding="{Binding BillType.Name}"/>
                     <DataGridTextColumn
-                        Header="Sub-category"
+                        Header="Company"
                         Width="150"
-                        Binding="{Binding SubCategory.Name}"/>
+                        Binding="{Binding UtilityCompany.Name}"/>
                     <DataGridTextColumn
                         Header="Account Name"
                         Width="250"

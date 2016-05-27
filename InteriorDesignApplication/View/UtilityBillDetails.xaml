@@ -82,7 +82,10 @@
                         Orientation="Horizontal"
                         Grid.Column="1">
                         <ComboBox
-                            Style="{StaticResource popupComboBoxStyle}"/>
+                            Style="{StaticResource popupComboBoxStyle}"
+                            ItemsSource="{Binding UtilityBillTypes}"
+                            DisplayMemberPath="Name"
+                            SelectedValue="{Binding CurrentSelectedUtilityBillType}"/>
                         <Button
                             Name="addBillType"
                             Width="50"
@@ -109,7 +112,10 @@
                         Grid.Row="1"
                         Grid.Column="1">
                         <ComboBox
-                            Style="{StaticResource popupComboBoxStyle}" />
+                            Style="{StaticResource popupComboBoxStyle}" 
+                            ItemsSource="{Binding UtilityCompanies}"
+                            DisplayMemberPath="Name"
+                            SelectedValue="{Binding CurrentSelectedUtilityCompany}"/>
                         <Button
                             Name="addCompanyName"
                             Width="50"
@@ -196,7 +202,8 @@
             Name="addBillTypePanel"
             Visibility="Collapsed"
             Grid.Row="1"
-            Margin="10,0,0,0">
+            Margin="10,0,0,0"
+            IsVisibleChanged="AddBillTypePanel_VisibleChanged">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="Auto" />
@@ -224,8 +231,9 @@
                         Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" 
-                        Text="{Binding UtilityBill}"/>                    
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding UtilityBillType.Name}"
+                        Name="UtilityBillTypeInput"/>                    
                 </Grid>
             </StackPanel>
         </Grid>
@@ -233,7 +241,8 @@
             Name="addCompanyNamePanel"
             Visibility="Collapsed"
             Grid.Row="1"
-            Margin="10,0,0,0">
+            Margin="10,0,0,0"
+            IsVisibleChanged="AddCompanyPanel_VisibleChanged">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="Auto" />
@@ -265,7 +274,11 @@
                         Style="{StaticResource popupLabelTextStyle}" />
                     <ComboBox
                         Grid.Column="1"
-                        Style="{StaticResource popupComboBoxStyle}" />
+                        Style="{StaticResource popupComboBoxStyle}"
+                        ItemsSource="{Binding UtilityBillTypes}"
+                        DisplayMemberPath="Name"
+                        SelectedValue="{Binding CurrentSelectedUtilityBillType}" 
+                        Name="CompanyUtilityBillTypeSelection"/>
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
@@ -274,7 +287,9 @@
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}" 
+                        Text="{Binding UtilityCompany.Name}"
+                        Name="UtilityCompanyInput"/>
                 </Grid>
             </StackPanel>
         </Grid>
@@ -300,7 +315,7 @@
                     Height="30"
                     Style="{StaticResource mainButtonStyle}"
                     Command="{Binding AddUtilityCommand}"
-                    Click="Button_Click">
+                    Click="Button_Click">                    
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

@@ -30,7 +30,7 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
-            this.viewModel.CreateEntity(new Utility());   
+            this.viewModel.CreateEntity(new Utility());            
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -41,8 +41,16 @@ namespace View
         IMainViewModel viewModel;
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            viewModel.CurrentPopupView = null;
+        {            
+            if (this.addBillTypePanel.Visibility == Visibility.Visible ||
+                this.addCompanyNamePanel.Visibility == Visibility.Visible)
+            {                  
+                ShowUtilityFormPanel();
+            }           
+            else if (this.utilityFormPanel.Visibility == Visibility.Visible)
+            {                
+                viewModel.CurrentPopupView = null;
+            }          
         }
 
         private void addBillType_Click(object sender, RoutedEventArgs e)
@@ -59,8 +67,29 @@ namespace View
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.cancelButton.Visibility =  this.addCompanyNamePanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
+            ShowUtilityFormPanel();
+        }
+
+        private void ShowUtilityFormPanel()
+        {
+            this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.utilityFormPanel.Visibility = Visibility.Visible;
+        }
+
+        private void AddBillTypePanel_VisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue)
+            {
+                viewModel.CreateEntity(new UtilityBillType());
+            }
+        }
+
+        private void AddCompanyPanel_VisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue)
+            {
+                viewModel.CreateEntity(new UtilityCompany());
+            }
         }
     }
 }
