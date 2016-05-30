@@ -90,21 +90,7 @@ namespace ViewModel
         public int SelectedIndex { get; set; }
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
-        private Spouse CustomerSpouse { get; set; }
-
-        private Bank newBank;
-        public Bank CustomerBank
-        {
-            get
-            {
-                return newBank;
-            }
-            set
-            {
-                newBank = value;
-                OnPropertyChanged("Bank");
-            }
-        }
+        private Spouse CustomerSpouse { get; set; }        
 
         private Dependent newDependent;
         public Dependent Dependent
@@ -176,21 +162,7 @@ namespace ViewModel
                 OnPropertyChanged("CurrentSelectedDependent");
             }
         }
-
-        private Bank currentSelectedBank;
-        public Bank CurrentSelectedBank
-        {
-            get
-            {
-                return currentSelectedBank;
-            }
-            set
-            {
-                currentSelectedBank = value;
-                OnPropertyChanged("CurrentSelectedBank");
-            }
-        }
-
+       
         public ICollection<Dependent> Dependents
         {
             get
@@ -216,6 +188,47 @@ namespace ViewModel
                 OnPropertyChanged("CustomerImageSource");
             }
         }
+
+        private Bank newBank;
+        public Bank CustomerBank
+        {
+            get
+            {
+                return newBank;
+            }
+            set
+            {
+                newBank = value;
+                OnPropertyChanged("Bank");
+            }
+        }
+
+        private Bank currentSelectedBank;
+        public Bank CurrentSelectedBank
+        {
+            get
+            {
+                return currentSelectedBank;
+            }
+            set
+            {
+                currentSelectedBank = value;
+                OnPropertyChanged("CurrentSelectedBank");
+            }
+        }
+
+        public ICollection<Bank> Banks
+        {
+            get
+            {
+                if (CurrentSelectedCustomer != null)
+                {
+                    return new ObservableCollection<Bank>(CurrentSelectedCustomer.Banks);
+                }
+                return null;
+            }
+        }
+
         #endregion
 
         #region Utilities
@@ -245,19 +258,7 @@ namespace ViewModel
                 currentSelectedUtility = value;
                 OnPropertyChanged("CurrentSelectedUtility");
             }
-        }
-
-        public ICollection<Bank> Banks
-        {
-            get
-            {
-                if (CurrentSelectedCustomer != null)
-                {
-                    return new ObservableCollection<Bank>(CurrentSelectedCustomer.Banks);
-                }
-                return null;
-            }
-        }
+        }       
 
         private IEnumerable<Utility> utilities;
         public IEnumerable<Utility> Utilities
@@ -413,10 +414,7 @@ namespace ViewModel
             {
                 customer.CustomerCompany = this.CustomerCompany;
             }
-            if (null != CustomerBank)
-            {
-                customer.CustomerBank = this.CustomerBank;
-            }
+            
             if (CustomerImageSource != null)
             {
                 customer.ImageSourceLocation = CustomerImageSource.ToString();
@@ -427,7 +425,6 @@ namespace ViewModel
                 CurrentSelectedCustomer = null;
             }
             
-
             context.SaveChanges();
             Dependent = null;
             CustomerCompany = null;
@@ -455,8 +452,8 @@ namespace ViewModel
         private void AddBank()
         {
             CurrentSelectedCustomer.Banks.Add(CustomerBank);
-            OnPropertyChanged("Banks");
-            OnPropertyChanged("Bank");
+            CustomerBank = null;
+            OnPropertyChanged("Banks");                      
         }
 
         private void AddDependent()
@@ -753,10 +750,10 @@ namespace ViewModel
         {
             return context.Customers
                 .Include(d => d.Dependents)
-                .Include(d => d.Banks)
-                .Include(e => e.CustomerSpouse)
-                .Include(f => f.CustomerCompany)
-                .Include(g => g.Utilities);
+                .Include(e => e.Banks)
+                .Include(f => f.CustomerSpouse)
+                .Include(g => g.CustomerCompany)
+                .Include(h => h.Utilities);
         }
 
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
@@ -820,7 +817,7 @@ namespace ViewModel
         public static IQueryable<UtilityBillType> GetAllUtilityBillTypes(this ManagerDBContext context)
         {
             return context.UtilityBillTypes
-                .Include(d => d.UtilityCompanies);
+               .Include(d => d.UtilityCompanies);
         }
 
         public static IEnumerable<Utility> GetUtilityWithAlerts(this ManagerDBContext context, Customer currentSelectedCustomer)
