@@ -25,7 +25,7 @@ namespace Model
 
         public string BillStatement { get; set; }
         public string Receipt { get; set; }
-       
+
 
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
@@ -36,8 +36,18 @@ namespace Model
         {
             get
             {
-                return UtilityStatusHelper.GetUtilityStatusText(CutoffDate, !String.IsNullOrEmpty(Receipt));
-            }           
+                return UtilityHelper.GetUtilityStatusText(CutoffDate, !String.IsNullOrEmpty(Receipt));
+            }
         }
+
+        [NotMapped]
+        public int DaysDue
+        {
+            get
+            {
+                return UtilityHelper.GetUtilityDaysDue(CutoffDate);
+            }
+        }
+    
     }
 }

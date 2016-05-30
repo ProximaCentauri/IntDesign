@@ -90,5 +90,10 @@ namespace View
             SearchTextBlock.Focus();
             SearchTextBlock.Select(0, SearchTextBlock.Text.Length);
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainTabControl.SelectedIndex = 3;
+        }
     }
 }

@@ -107,13 +107,22 @@
                         Header="Company Name"
                         Width="150"
                         Binding="{Binding MobileNumber}"/>
-                    <DataGridTextColumn
-                        Header="Address"
-                        Width="300" 
-                        Binding="{Binding Address}"/>
-                    <DataGridTextColumn
-                        Header="Alerts"
-                        Width="250" />
+                    <DataGridTextColumn Header="Address"
+                                        Width="300"
+                                        Binding="{Binding Address}" />
+                    <DataGridTemplateColumn Header="Alerts"
+                                            Width="250">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Hyperlink Command="{Binding Path=DataContext.ShowUtilityAlertsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                               Click="Hyperlink_Click">
+                                        <TextBlock Text="{Binding Alerts}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

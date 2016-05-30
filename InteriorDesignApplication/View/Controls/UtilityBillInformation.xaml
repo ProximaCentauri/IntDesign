@@ -59,7 +59,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Bill Type"
-                        Width="150" 
+                        Width="150"
                         Binding="{Binding BillType.Name}"/>
                     <DataGridTextColumn
                         Header="Company"
