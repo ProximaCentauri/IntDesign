@@ -124,7 +124,10 @@ namespace ViewModel
             set
             {
                 currentSelectedCustomer = value;
-                Utilities = CurrentSelectedCustomer.Utilities; 
+                if (currentSelectedCustomer != null)
+                {
+                    Utilities = CurrentSelectedCustomer.Utilities;
+                }                
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
                 OnPropertyChanged("Utilities");
