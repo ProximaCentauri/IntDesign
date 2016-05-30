@@ -38,7 +38,9 @@ namespace Model
         {
             get
             {                
-                return UtilityHelper.GetUtilityAlerts(Utilities.Where(p => !p.Status.Contains("Paid")));
+                return UtilityHelper.GetUtilityAlerts(Utilities
+                    .Where(u => !u.Status.Contains("Paid"))
+                    .Where(u => u.DaysDue <= 5));
             }
         }      
 

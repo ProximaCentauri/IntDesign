@@ -64,8 +64,7 @@ namespace Model.Helpers
 
         public static string GetUtilityAlerts(IEnumerable<Utility> utilities)
         {
-            string alert = string.Empty;
-            utilities = utilities.Where(u => u.DaysDue <= 3);
+            string alert = string.Empty;            
             if (utilities.Count() > 0)
             {
                 alert = "You have unpaid bills";
