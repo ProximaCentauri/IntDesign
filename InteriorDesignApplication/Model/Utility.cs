@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.Helpers;
 
 namespace Model
 {
@@ -24,10 +25,19 @@ namespace Model
 
         public string BillStatement { get; set; }
         public string Receipt { get; set; }
-        public string Status { get; set; }
+       
 
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
+
+        [NotMapped]
+        public string Status
+        {
+            get
+            {
+                return UtilityStatusHelper.GetUtilityStatusText(CutoffDate, !String.IsNullOrEmpty(Receipt));
+            }           
+        }
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ViewModel;
 using Model.Controls;
 using Model;
+using Model.Helpers;
 
 namespace View
 {
@@ -90,6 +91,6 @@ namespace View
             {
                 viewModel.CreateEntity(new UtilityCompany());
             }
-        }
+        }        
     }
 }

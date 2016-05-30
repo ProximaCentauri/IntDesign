@@ -10,6 +10,7 @@ using Model;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using Model.Controls;
+using Model.Helpers;
 using System.Windows.Data;
 
 namespace ViewModel
@@ -17,24 +18,24 @@ namespace ViewModel
     public class MainViewModel : IMainViewModel
     {
         public MainViewModel()
-        {           
+        {
         }
-        
-        
+
+
         public void LoadEntities()
         {
             LoadCustomers();
-            LoadUtilityBillTypes();                                           
+            LoadUtilityBillTypes();
         }
 
         private void LoadCustomers()
         {
-            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());           
+            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
         }
 
         private void LoadUtilityBillTypes()
         {
-            UtilityBillTypes = new ObservableCollection<UtilityBillType>(context.GetAllUtilityBillTypes());     
+            UtilityBillTypes = new ObservableCollection<UtilityBillType>(context.GetAllUtilityBillTypes());
         }
 
         public void CreateEntity(object ob)
@@ -83,8 +84,8 @@ namespace ViewModel
         public int SelectedIndex { get; set; }
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
-        private Spouse CustomerSpouse { get; set; }        
-                        
+        private Spouse CustomerSpouse { get; set; }
+
         private Dependent newDependent;
         public Dependent Dependent
         {
@@ -97,13 +98,13 @@ namespace ViewModel
                 newDependent = value;
                 OnPropertyChanged("Dependent");
             }
-        }                 
+        }
 
         private IEnumerable<Customer> customers;
         public IEnumerable<Customer> Customers
         {
             get
-            {                       
+            {
                 return customers;
             }
             set
@@ -139,7 +140,7 @@ namespace ViewModel
             set
             {
                 currentSelectedDependent = value;
-                OnPropertyChanged("CurrentSelectedDependent");                
+                OnPropertyChanged("CurrentSelectedDependent");
             }
         }
 
@@ -155,7 +156,7 @@ namespace ViewModel
             }
         }
         #endregion
-        
+
         #region Utilities
         private Utility newUtility;
         public Utility Utility
@@ -169,7 +170,7 @@ namespace ViewModel
                 newUtility = value;
                 OnPropertyChanged("Utility");
             }
-        }     
+        }
 
         private Utility currentSelectedUtility;
         public Utility CurrentSelectedUtility
@@ -183,7 +184,7 @@ namespace ViewModel
                 currentSelectedUtility = value;
                 OnPropertyChanged("CurrentSelectedUtility");
             }
-        }        
+        }
 
         public IEnumerable<Utility> Utilities
         {
@@ -194,7 +195,7 @@ namespace ViewModel
                     return new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
                 }
                 return null;
-            }  
+            }
         }
 
         private UtilityBillType currentSelectedUtilityBillType;
@@ -239,7 +240,7 @@ namespace ViewModel
                 OnPropertyChanged("UtilityBillTypes");
             }
         }
-        
+
         public ICollection<UtilityCompany> UtilityCompanies
         {
             get
@@ -249,7 +250,7 @@ namespace ViewModel
                     return new ObservableCollection<UtilityCompany>(CurrentSelectedUtilityBillType.UtilityCompanies);
                 }
                 return null;
-            }            
+            }
         }
 
         private UtilityCompany currentSelectedUtilityCompany;
@@ -279,9 +280,49 @@ namespace ViewModel
                 OnPropertyChanged("UtilityCompany");
             }
         }
+
+        private DateTime? utilityCutOffDate;
+        public DateTime? UtilityCutoffDate
+        {
+            get
+            {
+                return utilityCutOffDate;
+            }
+            set
+            {
+                utilityCutOffDate = value;
+                OnPropertyChanged("Utility");
+                OnPropertyChanged("UtilityCutoffDate");
+                OnPropertyChanged("UtilityStatus");
+            }
+        }
+
+        private string utilityReceipt;
+        public string UtilityReceipt
+        {
+            get
+            {
+                return utilityReceipt;
+            }
+            set
+            {
+                utilityReceipt = value;
+                OnPropertyChanged("Utility");
+                OnPropertyChanged("UtilityReceipt");
+                OnPropertyChanged("UtilityStatus");
+            }
+        }
+
+        public string UtilityStatus
+        {
+            get
+            {
+                return UtilityStatusHelper.GetUtilityStatusText(UtilityCutoffDate, !String.IsNullOrEmpty(UtilityReceipt));
+            }
+        }
         #endregion
 
-        
+
 
         private Company CustomerCompany { get; set; }
 
@@ -370,7 +411,8 @@ namespace ViewModel
                     UtilityBillTypes.Add(UtilityBillType);
                     CurrentSelectedUtilityBillType = UtilityBillType;
                 }                
-                UtilityBillType = null;                                             
+                UtilityBillType = null;
+                OnPropertyChanged("UtilityBillTypes");
             }
             else if ((UtilityCompany != null && !UtilityCompany.Name.Trim().Equals(string.Empty))
                 && CurrentSelectedUtilityBillType != null)
@@ -387,9 +429,17 @@ namespace ViewModel
             {
                 Utility.BillType = CurrentSelectedUtilityBillType;
                 Utility.UtilityCompany = CurrentSelectedUtilityCompany;
-                CurrentSelectedCustomer.Utilities.Add(Utility);
+                Utility.Receipt = UtilityReceipt;
+                Utility.CutoffDate = UtilityCutoffDate;
+                CurrentSelectedCustomer.Utilities.Add(Utility);                
+                OnPropertyChanged("Utilities");
+
+                // set properties to null
                 Utility = null;
-                OnPropertyChanged("Utilities");           
+                currentSelectedUtilityBillType = null;
+                CurrentSelectedUtilityCompany = null;
+                UtilityCutoffDate = null;
+                UtilityReceipt = null;
             }            
         }
 

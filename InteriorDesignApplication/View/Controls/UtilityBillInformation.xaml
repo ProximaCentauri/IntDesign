@@ -51,7 +51,7 @@
             <DataGrid
                 Height="350"
                 Width="950"
-                Margin="10,0,0,0"
+                Margin="11,0,0,0"
                 ItemsSource="{Binding Utilities}"
                 SelectedItem="{Binding CurrentSelectedUtility}"
                 AutoGenerateColumns="False"

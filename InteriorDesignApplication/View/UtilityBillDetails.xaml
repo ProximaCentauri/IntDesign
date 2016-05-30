@@ -11,12 +11,8 @@
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
-    BackgroundType="Shroud">   
+    BackgroundType="Shroud">
     <Grid>
-        <Grid.Resources>
-            <helpers:UtilityStatusConverter
-                x:Key="UtilityStatusConverter"/>            
-        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="Auto"></RowDefinition>
@@ -161,14 +157,13 @@
                         Grid.Column="0"
                         Text="Cut-off Date:"                        
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <DatePicker
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
-                        SelectedDateFormat="Long"
-                        HorizontalAlignment="Left"
-                        SelectedDate="{Binding Utility.CutoffDate}"/>
+                    <DatePicker Grid.Row="4"
+                                Grid.Column="1"
+                                Width="200"
+                                Margin="0,5,0,0"
+                                SelectedDateFormat="Long"
+                                HorizontalAlignment="Left"
+                                SelectedDate="{Binding UtilityCutoffDate}" />
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"
@@ -187,21 +182,20 @@
                     <TextBox
                         Grid.Row="6"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" 
-                        Text="{Binding Utility.Receipt}"/>
+                        Style="{StaticResource popupTextBoxStyle}"
+                             Text="{Binding UtilityReceipt}"/>
                     <TextBlock
                         Grid.Row="7"
                         Grid.Column="0"
                         Text="Status:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
-                        Grid.Row="7"
-                        Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}"
-                        IsReadOnly="True"
-                        Text="{Binding Utility.Status}"
-                        Name="UtilityStatus"/>
-
+                    <TextBox Grid.Row="7"
+                             Grid.Column="1"
+                             Style="{StaticResource popupTextBoxStyle}"
+                             IsReadOnly="False"
+                             Text="{Binding UtilityStatus, Mode=OneWay}"
+                             Name="UtilityStatus">
+                    </TextBox>
                 </Grid>
             </StackPanel>
         </Grid>
