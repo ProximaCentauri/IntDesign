@@ -20,8 +20,8 @@ namespace Model
         public string AccountName { get; set; }
         public string AccountId { get; set; }
 
-        [Column(TypeName = "Date")]
-        public DateTime? CutoffDate { get; set; }
+        [Column(TypeName = "Date")]       
+        public DateTime? CutoffDate { get; set; }       
 
         public string BillStatement { get; set; }
         public string Receipt { get; set; }

@@ -58,7 +58,7 @@
                                         Binding="{Binding AccountId}" />
                     <DataGridTextColumn Header="Cut-off Date"
                                         Width="125"
-                                        Binding="{Binding CutoffDate}" />
+                                        Binding="{Binding CutoffDate, StringFormat=\{0:MM/dd/yyyy\}}" />
                     <DataGridTextColumn Header="Status"
                                         Width="125"
                                         IsReadOnly="True"

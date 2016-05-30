@@ -423,7 +423,7 @@
                         <DataGridTextColumn
                             Header="Birthdate"
                             Width="200"
-                            Binding="{Binding BirthDate}" />
+                            Binding="{Binding BirthDate, StringFormat=\{0:MM/dd/yyyy\}}" />
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button
