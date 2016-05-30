@@ -397,8 +397,7 @@ namespace ViewModel
             {
                 context.Customers.Add(customer);
                 CurrentSelectedCustomer = null;
-            }
-            
+            }           
 
             context.SaveChanges();
             Dependent = null;
