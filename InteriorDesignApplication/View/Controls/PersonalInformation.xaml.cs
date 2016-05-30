@@ -15,6 +15,7 @@ using System.Windows.Controls.Primitives;
 using View;
 using Model.Controls;
 using ViewModel;
+using Microsoft.Win32;
 
 namespace View.Controls
 {
@@ -55,6 +56,13 @@ namespace View.Controls
                     this.Opacity = 0.5;
                 }
             }                        
-        }        
+        }
+        private void CustomerImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            Nullable<bool> result = dlg.ShowDialog();
+            this.viewModel.CustomerImageSource = new BitmapImage(new Uri(dlg.FileName));
+        }
     }
 }

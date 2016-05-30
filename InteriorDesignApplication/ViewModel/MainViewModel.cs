@@ -12,6 +12,8 @@ using System.Data.Entity;
 using Model.Controls;
 using Model.Helpers;
 using System.Windows.Data;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ViewModel
 {
@@ -145,6 +147,14 @@ namespace ViewModel
                 if (currentSelectedCustomer != null)
                 {
                     Utilities = CurrentSelectedCustomer.Utilities;
+                    if (currentSelectedCustomer.ImageSourceLocation != null)
+                    {
+                        CustomerImageSource = new BitmapImage(new Uri(currentSelectedCustomer.ImageSourceLocation));
+                    }
+                    else
+                    {
+                        CustomerImageSource = null;
+                    }
                 }                
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
@@ -190,6 +200,20 @@ namespace ViewModel
                     return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
                 }
                 return null;
+            }
+        }
+
+        private ImageSource customerImageSource;
+        public ImageSource CustomerImageSource
+        {
+            get
+            {
+                return customerImageSource;
+            }
+            set
+            {
+                customerImageSource = value;
+                OnPropertyChanged("CustomerImageSource");
             }
         }
         #endregion
@@ -392,6 +416,10 @@ namespace ViewModel
             if (null != CustomerBank)
             {
                 customer.CustomerBank = this.CustomerBank;
+            }
+            if (CustomerImageSource != null)
+            {
+                customer.ImageSourceLocation = CustomerImageSource.ToString();
             }
             if (SelectedIndex == -1 && null != customer.FirstName)
             {
