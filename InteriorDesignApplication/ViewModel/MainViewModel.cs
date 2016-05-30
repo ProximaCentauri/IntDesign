@@ -191,12 +191,7 @@ namespace ViewModel
         public IEnumerable<Utility> Utilities
         {
             get
-            {
-                //if (CurrentSelectedCustomer != null)
-                //{
-                //    return new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
-                //}
-                //return null;
+            {                
                 return utilities;
             }
             set
@@ -440,7 +435,7 @@ namespace ViewModel
                 Utility.Receipt = UtilityReceipt;
                 Utility.CutoffDate = UtilityCutoffDate;
                 CurrentSelectedCustomer.Utilities.Add(Utility);
-                OnPropertyChanged("Utilities");
+                Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);                
 
                 // set properties to null
                 Utility = null;
@@ -455,8 +450,8 @@ namespace ViewModel
         {
             CurrentSelectedCustomer.Utilities.Remove(CurrentSelectedUtility);
             context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;
-            CurrentSelectedUtility = null;
-            OnPropertyChanged("Utilities");
+            Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
+            CurrentSelectedUtility = null;            
         }
 
         private void ShowUtilityAlerts()

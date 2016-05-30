@@ -1,102 +1,81 @@
-﻿<UserControl
-    x:Class="View.Controls.UtilityBillInformation"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    mc:Ignorable="d"
-    Height="Auto"
-    Width="1024"
-    Loaded="UserControl_Loaded">
+﻿<UserControl x:Class="View.Controls.UtilityBillInformation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Height="Auto"
+             Width="1024"
+             Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition
-                Height="30" />
-            <RowDefinition
-                Height="Auto" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel
-            Grid.Row="0">
-            <StackPanel
-                Orientation="Horizontal">
-                <TextBlock
-                    Text="Utility Bill Information"
-                    Style="{StaticResource mainHeaderStyle}" />
-                <Button
-                    Name="addUtilityBill"
-                    Width="40"
-                    Height="20"
-                    Click="addUtilityBill_Click"
-                    Style="{StaticResource iconButtonStyle}">                    
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource addIconStyle}" />
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Utility Bill Information"
+                           Style="{StaticResource mainHeaderStyle}" />
+                <Button Name="addUtilityBill"
+                        Width="40"
+                        Height="20"
+                        Click="addUtilityBill_Click"
+                        Style="{StaticResource iconButtonStyle}">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <Image Style="{StaticResource addIconStyle}" />
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <Separator
-                Margin="0,-5,0,0"
-                Style="{StaticResource mainSeparatorStyle}" />
+            <Separator Margin="0,-5,0,0"
+                       Style="{StaticResource mainSeparatorStyle}" />
         </StackPanel>
-        <Grid
-            Grid.Row="1">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="Auto" />
-                <ColumnDefinition
-                    Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <DataGrid
-                Height="350"
-                Width="950"
-                Margin="11,0,0,0"
-                ItemsSource="{Binding Utilities}"
-                SelectedItem="{Binding CurrentSelectedUtility}"
-                AutoGenerateColumns="False"
-                CanUserAddRows="False">
+            <DataGrid Height="350"
+                      Width="950"
+                      Margin="12,0,0,0"
+                      ItemsSource="{Binding Utilities}"
+                      SelectedItem="{Binding CurrentSelectedUtility}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      HorizontalAlignment="Left">
                 <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Header="Bill Type"
-                        Width="150"
-                        Binding="{Binding BillType.Name}"/>
-                    <DataGridTextColumn
-                        Header="Company"
-                        Width="150"
-                        Binding="{Binding UtilityCompany.Name}"/>
-                    <DataGridTextColumn
-                        Header="Account Name"
-                        Width="250"
-                        Binding="{Binding AccountName}"/>
-                    <DataGridTextColumn
-                        Header="Account #"
-                        Width="150"
-                        Binding="{Binding AccountId}"/>
-                    <DataGridTextColumn
-                        Header="Cut-off Date"
-                        Width="125" 
-                        Binding="{Binding CutoffDate}"/>
-                    <DataGridTextColumn
-                        Header="Status"
-                        Width="125"
-                        Binding="{Binding Status}"/>
+                    <DataGridTextColumn Header="Bill Type"
+                                        Width="150"
+                                        Binding="{Binding BillType.Name}" />
+                    <DataGridTextColumn Header="Company"
+                                        Width="150"
+                                        Binding="{Binding UtilityCompany.Name}" />
+                    <DataGridTextColumn Header="Account Name"
+                                        Width="250"
+                                        Binding="{Binding AccountName}" />
+                    <DataGridTextColumn Header="Account #"
+                                        Width="150"
+                                        Binding="{Binding AccountId}" />
+                    <DataGridTextColumn Header="Cut-off Date"
+                                        Width="125"
+                                        Binding="{Binding CutoffDate}" />
+                    <DataGridTextColumn Header="Status"
+                                        Width="125"
+                                        IsReadOnly="True"
+                                        Binding="{Binding Status}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <Button
-                x:Name="deleteEntry"
-                Width="30"
-                Height="30"
-                Grid.Column="1"
-                Style="{StaticResource iconButtonStyle}"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Left"
-                Command="{Binding DeleteUtilityCommand}">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource deleteEntryIconStyle}" />
+            <Button x:Name="deleteEntry"
+                    Width="30"
+                    Height="30"
+                    Grid.Column="1"
+                    Style="{StaticResource iconButtonStyle}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Command="{Binding DeleteUtilityCommand}">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left">
+                    <Image Style="{StaticResource deleteEntryIconStyle}" />
                 </StackPanel>
             </Button>
         </Grid>
