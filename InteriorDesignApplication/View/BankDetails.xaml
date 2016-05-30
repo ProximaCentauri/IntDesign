@@ -75,7 +75,9 @@
                         Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding CustomerBank.Name}"
+                        Name="BankName"/>
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
@@ -84,7 +86,9 @@
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Text="{Binding CustomerBank.AccountName}"
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Name="AccountName"/>
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="0"
@@ -93,7 +97,9 @@
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Text="{Binding CustomerBank.AccountNumber}"
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Name="AccountNo"/>
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
@@ -102,7 +108,9 @@
                     <TextBox
                         Grid.Row="3"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Text="{Binding CustomerBank.Branch}"
+                        Style="{StaticResource popupTextBoxStyle}" 
+                        Name="Branch"/>
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
@@ -111,7 +119,9 @@
                     <TextBox
                         Grid.Row="4"
                         Grid.Column="1"
-                        Style="{StaticResource popupAddressTextBoxStyle}" />
+                        Text="{Binding CustomerBank.Address}"
+                        Style="{StaticResource popupAddressTextBoxStyle}"
+                        Name="Address"/>
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"
@@ -120,7 +130,9 @@
                     <TextBox
                         Grid.Row="5"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Text="{Binding CustomerBank.SwitfCode}"
+                        Style="{StaticResource popupTextBoxStyle}" 
+                        Name="SwiftCode"/>
                 </Grid>
             </StackPanel>
         </Grid>
@@ -130,7 +142,9 @@
                 Width="100"
                 Height="30"
                 Margin="20"
-                Style="{StaticResource mainButtonStyle}">
+                Command="{Binding AddBankCommand}"
+                Style="{StaticResource mainButtonStyle}"
+                Click="Button_Click">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

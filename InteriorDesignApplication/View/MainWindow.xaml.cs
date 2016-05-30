@@ -81,8 +81,17 @@ namespace View
                 spouse.LastName = personalInfo.SpouseName.Text;
                 spouse.BirthDate = personalInfo.SpouseBirthDate.SelectedDate;
                 spouse.City = personalInfo.SpouseAddress.Text;
-                viewModel.CreateEntity(spouse);
+                viewModel.CreateEntity(spouse);                
             }
+            Company company = new Company();
+            company.Name = CompanyInfo.CompanyName.Text;
+            company.Address = CompanyInfo.Address.Text;
+            company.EmailAddress = CompanyInfo.EmailAddress.Text;
+            company.ContactNumber = CompanyInfo.ContactNumber.Text;
+            company.OptionalInformation = CompanyInfo.Notes.Text;
+            company.Website = CompanyInfo.Website.Text;
+            company.FacebookPage = CompanyInfo.FacebookPage.Text;
+            viewModel.CreateEntity(company);
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

@@ -64,6 +64,10 @@ namespace ViewModel
             {
                 UtilityCompany = ob as UtilityCompany;
             }
+            else if (ob is Bank)
+            {
+                CustomerBank = ob as Bank;
+            }
         }
 
         private PopupView currentPopupView;
@@ -85,6 +89,20 @@ namespace ViewModel
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
         private Spouse CustomerSpouse { get; set; }
+
+        private Bank newBank;
+        public Bank CustomerBank
+        {
+            get
+            {
+                return newBank;
+            }
+            set
+            {
+                newBank = value;
+                OnPropertyChanged("Bank");
+            }
+        }
 
         private Dependent newDependent;
         public Dependent Dependent
@@ -131,6 +149,7 @@ namespace ViewModel
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
                 OnPropertyChanged("Utilities");
+                OnPropertyChanged("Banks");
             }
         }
 
@@ -145,6 +164,20 @@ namespace ViewModel
             {
                 currentSelectedDependent = value;
                 OnPropertyChanged("CurrentSelectedDependent");
+            }
+        }
+
+        private Bank currentSelectedBank;
+        public Bank CurrentSelectedBank
+        {
+            get
+            {
+                return currentSelectedBank;
+            }
+            set
+            {
+                currentSelectedBank = value;
+                OnPropertyChanged("CurrentSelectedBank");
             }
         }
 
@@ -187,6 +220,18 @@ namespace ViewModel
             {
                 currentSelectedUtility = value;
                 OnPropertyChanged("CurrentSelectedUtility");
+            }
+        }
+
+        public ICollection<Bank> Banks
+        {
+            get
+            {
+                if (CurrentSelectedCustomer != null)
+                {
+                    return new ObservableCollection<Bank>(CurrentSelectedCustomer.Banks);
+                }
+                return null;
             }
         }
 
@@ -340,19 +385,25 @@ namespace ViewModel
             {
                 customer.CustomerSpouse = this.CustomerSpouse;
             }
-            //if (CustomerCompany != null)
-            //{                
-            //    customer.CustomerCompany = this.CustomerCompany;
-            //}
-
+            if (CustomerCompany != null)
+            {
+                customer.CustomerCompany = this.CustomerCompany;
+            }
+            if (null != CustomerBank)
+            {
+                customer.CustomerBank = this.CustomerBank;
+            }
             if (SelectedIndex == -1 && null != customer.FirstName)
             {
                 context.Customers.Add(customer);
                 CurrentSelectedCustomer = null;
             }
+            
 
             context.SaveChanges();
             Dependent = null;
+            CustomerCompany = null;
+            CustomerBank = null;
             LoadEntities();
         }
 
@@ -373,6 +424,13 @@ namespace ViewModel
             SelectedIndex = -1;
         }
 
+        private void AddBank()
+        {
+            CurrentSelectedCustomer.Banks.Add(CustomerBank);
+            OnPropertyChanged("Banks");
+            OnPropertyChanged("Bank");
+        }
+
         private void AddDependent()
         {
             CurrentSelectedCustomer.Dependents.Add(Dependent);
@@ -386,13 +444,6 @@ namespace ViewModel
             context.Entry(CurrentSelectedDependent).State = EntityState.Deleted;
             CurrentSelectedDependent = null;
             OnPropertyChanged("Dependents");
-        }
-
-        private void AddCompany()
-        {
-            currentSelectedCustomer.CustomerCompany = CustomerCompany;
-            CustomerCompany = null;
-            OnPropertyChanged("Company");
         }
 
         private void SearchCustomer()
@@ -525,19 +576,20 @@ namespace ViewModel
             }
         }
 
-        ICommand _addCompanyCommand;
-        public ICommand AddCompanyCommand
+        ICommand _addBankCommand;
+        public ICommand AddBankCommand
         {
             get
             {
-                if (_addCompanyCommand == null)
+                if (_addBankCommand == null)
                 {
-                    _addCompanyCommand = new RelayCommand(AddCompany);
+                    _addBankCommand = new RelayCommand(AddBank);
                 }
-                return _addCompanyCommand;
+                return _addBankCommand;
             }
         }
 
+        
         ICommand _searchCustomerCommand;
         public ICommand SearchCustomerCommand
         {
@@ -673,6 +725,7 @@ namespace ViewModel
         {
             return context.Customers
                 .Include(d => d.Dependents)
+                .Include(d => d.Banks)
                 .Include(e => e.CustomerSpouse)
                 .Include(f => f.CustomerCompany)
                 .Include(g => g.Utilities);

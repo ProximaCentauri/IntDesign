@@ -54,7 +54,8 @@
                     <TextBox
                         Width="150"
                         Text="{Binding CurrentSelectedCustomer.CustomerCompany.Name}"
-                        Margin="0,0,10,0"></TextBox>
+                        Margin="0,0,10,0"
+                        Name="CompanyName"/>
                 </StackPanel>
             </Grid>
             <Grid
@@ -69,7 +70,9 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
                         Width="180"
-                        Margin="0,0,10,0"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.CustomerCompany.Address}"
+                        Margin="0,0,10,0"
+                        Name="Address"/>
                 </StackPanel>
             </Grid>
             <Grid
@@ -81,11 +84,13 @@
                     <TextBlock
                         Text="Contact Number:"
                         Width="100"
-                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                        Style="{StaticResource mainLabelTextStyle}" 
+                        />
                     <TextBox
                         Width="180"
                         Text="{Binding CurrentSelectedCustomer.CustomerCompany.ContactNumber}"
-                        Margin="0,0,10,0"></TextBox>
+                        Margin="0,0,10,0" 
+                        Name="ContactNumber"/>
                 </StackPanel>
             </Grid>
             <Grid
@@ -102,7 +107,8 @@
                     <TextBox
                         Width="150"
                         Text="{Binding CurrentSelectedCustomer.CustomerCompany.Website}"
-                        Margin="0,0,10,0"></TextBox>
+                        Margin="0,0,10,0" 
+                        Name="Website"/>
                 </StackPanel>
             </Grid>
             <Grid
@@ -118,7 +124,8 @@
                     <TextBox
                         Width="180"
                         Text="{Binding CurrentSelectedCustomer.CustomerCompany.EmailAddress}"
-                        Margin="0,0,10,0"></TextBox>
+                        Margin="0,0,10,0" 
+                        Name="EmailAddress"/>
                 </StackPanel>
             </Grid>
             <Grid
@@ -134,7 +141,8 @@
                     <TextBox
                         Width="180"
                         Text="{Binding CurrentSelectedCustomer.CustomerCompany.FacebookPage}"
-                        Margin="0,0,10,0"></TextBox>
+                        Margin="0,0,10,0" 
+                        Name="FacebookPage"/>
                 </StackPanel>
             </Grid>
             <Grid
@@ -151,7 +159,8 @@
                     <TextBox
                         Width="Auto"
                         Text="{Binding CurrentSelectedCustomer.CustomerCompany.OptionalInformation}"
-                        Height="250" />
+                        Height="250"
+                        Name="Notes"/>
                 </StackPanel>
             </Grid>
         </Grid>

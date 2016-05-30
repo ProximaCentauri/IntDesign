@@ -19,6 +19,7 @@ namespace Model
         public virtual Company CustomerCompany { get; set; }        
         public virtual Spouse CustomerSpouse { get; set; }
 
+        public virtual ICollection<Bank> Banks { get; set; }
         public virtual ICollection<Dependent> Dependents { get; set; }
         public virtual ICollection<Utility> Utilities { get; set; }
 
@@ -28,7 +29,8 @@ namespace Model
         }
 
         public Customer()
-        {            
+        {
+            Banks = new List<Bank>();
             Dependents = new List<Dependent>();
             Utilities = new List<Utility>();
         }

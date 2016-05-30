@@ -30,10 +30,10 @@ namespace View.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            viewModel = this.DataContext as IMainViewModel;
-            this.viewModel.CreateEntity(new Company());   
+            //viewModel = this.DataContext as IMainViewModel;
+            //this.viewModel.CreateEntity(new Company());   
         }
 
-        IMainViewModel viewModel;
+        //IMainViewModel viewModel;
     }
 }
