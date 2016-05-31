@@ -14,6 +14,9 @@ using Model.Helpers;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
 
 namespace ViewModel
 {
@@ -400,31 +403,38 @@ namespace ViewModel
         #region Actions
         private void SaveCustomer()
         {
-            Customer customer = CurrentSelectedCustomer as Customer;
-            if (CustomerSpouse != null)
+            try
             {
-                customer.CustomerSpouse = this.CustomerSpouse;
-            }
+                Customer customer = CurrentSelectedCustomer as Customer;
+                if (CustomerSpouse != null)
+                {
+                    customer.CustomerSpouse = this.CustomerSpouse;
+                }
 
-            // avoid saving null customer company in db; company name required
-            if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
-            {
-                customer.CustomerCompany = null;
+                // avoid saving null customer company in db; company name required
+                if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
+                {
+                    customer.CustomerCompany = null;
+                }
+                if (CustomerImageSource != null)
+                {
+                    customer.ImageSourceLocation = CustomerImageSource.ToString();
+                }
+                if (SelectedIndex == -1 && null != customer.FirstName)
+                {
+                    context.Customers.Add(customer);
+                    CurrentSelectedCustomer = null;
+                }
+
+                context.SaveChanges();
+                Dependent = null;
+                CustomerBank = null;
+                LoadEntities();
             }
-            if (CustomerImageSource != null)
-            {
-                customer.ImageSourceLocation = CustomerImageSource.ToString();
+            catch (DbUpdateConcurrencyException ex)
+            {                
+                ex.Entries.Single().Reload();
             }
-            if (SelectedIndex == -1 && null != customer.FirstName)
-            {
-                context.Customers.Add(customer);
-                CurrentSelectedCustomer = null;
-            }
-            
-            context.SaveChanges();
-            Dependent = null;           
-            CustomerBank = null;
-            LoadEntities();
         }
 
         public void DeleteCustomer()
