@@ -62,7 +62,10 @@ namespace View.Controls
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             Nullable<bool> result = dlg.ShowDialog();
-            this.viewModel.CustomerImageSource = new BitmapImage(new Uri(dlg.FileName));
+            if (!String.IsNullOrEmpty(dlg.FileName))
+            {
+                this.viewModel.CustomerImageSource = new BitmapImage(new Uri(dlg.FileName));
+            }
         }
     }
 }
