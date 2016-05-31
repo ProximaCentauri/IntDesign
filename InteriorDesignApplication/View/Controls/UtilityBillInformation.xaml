@@ -20,10 +20,24 @@
                         Width="40"
                         Height="20"
                         Click="addUtilityBill_Click"
-                        Style="{StaticResource iconButtonStyle}">
+                        Style="{StaticResource iconButtonStyle}"
+                        Command="{Binding CreateUtilityCommand}">
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Left">
                         <Image Style="{StaticResource addIconStyle}" />
+                    </StackPanel>
+                </Button>
+                <Button Name="editUtilityBill"
+                    Width="40"
+                    Height="20"
+                    Click="editUtilityBill_Click"
+                    Style="{StaticResource iconButtonStyle}"
+                    Command="{Binding EditUtilityCommand}">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                        <Image
+                            Style="{StaticResource addIconStyle}" />
                     </StackPanel>
                 </Button>
             </StackPanel>

@@ -32,6 +32,7 @@ namespace ViewModel
             LoadCustomers();
             LoadUtilityBillTypes();
             CurrentSelectedCustomer = null;
+            Utilities = null;
             SelectedIndex = -1;
         }
 
@@ -422,8 +423,7 @@ namespace ViewModel
                 }
                 if (SelectedIndex == -1 && null != customer.FirstName)
                 {
-                    context.Customers.Add(customer);
-                    CurrentSelectedCustomer = null;
+                    context.Customers.Add(customer);                   
                 }
 
                 context.SaveChanges();
@@ -490,6 +490,13 @@ namespace ViewModel
             }
         }
 
+        private void CreateUtility()
+        {
+            CurrentSelectedUtility = null;
+            Utility utility = new Utility();
+            CurrentSelectedUtility = utility;            
+        }
+
         private void AddUtility()
         {
             if (UtilityBillType != null && !UtilityBillType.Name.Trim().Equals(string.Empty))
@@ -515,20 +522,40 @@ namespace ViewModel
             }
             else if (CurrentSelectedUtilityBillType != null && CurrentSelectedUtilityCompany != null)
             {
-                Utility.BillType = CurrentSelectedUtilityBillType;
-                Utility.UtilityCompany = CurrentSelectedUtilityCompany;
-                Utility.Receipt = UtilityReceipt;
-                Utility.CutoffDate = UtilityCutoffDate;
-                CurrentSelectedCustomer.Utilities.Add(Utility);
+                CurrentSelectedUtility.BillType = CurrentSelectedUtilityBillType;
+                CurrentSelectedUtility.UtilityCompany = CurrentSelectedUtilityCompany;
+                CurrentSelectedUtility.Receipt = UtilityReceipt;
+                CurrentSelectedUtility.CutoffDate = UtilityCutoffDate;
+                CurrentSelectedCustomer.Utilities.Add(CurrentSelectedUtility);
                 Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);                
 
                 // set properties to null
                 Utility = null;
                 currentSelectedUtilityBillType = null;
                 CurrentSelectedUtilityCompany = null;
+                CurrentSelectedUtility = null;
                 UtilityCutoffDate = null;
                 UtilityReceipt = null;
             }
+        }
+
+        private void EditUpdateUtility()
+        {
+            if (CurrentSelectedUtility != null)
+            {
+                CurrentSelectedUtility.Receipt = UtilityReceipt;
+                CurrentSelectedUtility.CutoffDate = UtilityCutoffDate;
+                context.Entry(CurrentSelectedUtility).State = EntityState.Modified;
+            }
+        }
+
+        private void EditUtility()
+        {
+            if (CurrentSelectedUtility != null)
+            {
+                UtilityCutoffDate = CurrentSelectedUtility.CutoffDate;
+                UtilityReceipt = CurrentSelectedUtility.Receipt;
+            }            
         }
 
         private void DeleteUtility()
@@ -550,6 +577,13 @@ namespace ViewModel
             {
                 Utilities = null;
             }           
+        }
+
+        private void CloseUtility()
+        {
+            CurrentSelectedUtility = null;
+            UtilityCutoffDate = null;
+            UtilityReceipt = null;
         }
 
         private void DeleteBank()
@@ -680,6 +714,19 @@ namespace ViewModel
             }
         }
 
+        ICommand _editUpdateUtilityCommand;
+        public ICommand EditUpdateUtilityCommand
+        {
+            get
+            {
+                if (_editUpdateUtilityCommand == null)
+                {
+                    _editUpdateUtilityCommand = new RelayCommand(EditUpdateUtility);
+                }
+                return _editUpdateUtilityCommand;
+            }
+        }
+
         ICommand _deleteUtilityCommand;
         public ICommand DeleteUtilityCommand
         {
@@ -692,6 +739,48 @@ namespace ViewModel
                 return _deleteUtilityCommand;
             }
         }
+        
+        ICommand _createUtilityCommand;
+        public ICommand CreateUtilityCommand
+        {
+            get
+            {
+                if (_createUtilityCommand == null)
+                {
+                    _createUtilityCommand = new RelayCommand(CreateUtility);
+                }
+                return _createUtilityCommand;
+            }
+        }
+
+        ICommand _editUtilityCommand;
+        public ICommand EditUtilityCommand
+        {
+            get
+            {
+                if (_editUtilityCommand == null)
+                {
+                    _editUtilityCommand = new RelayCommand(EditUtility);
+                }
+                return _editUtilityCommand;
+            }
+        }
+
+        ICommand _closeUtilityCommand;
+        public ICommand CloseUtilityCommand
+        {
+            get
+            {
+                if (_closeUtilityCommand == null)
+                {
+                    _closeUtilityCommand = new RelayCommand(CloseUtility);
+                }
+                return _closeUtilityCommand;
+            }
+        }
+
+
+
 
         ICommand _showUtilityAlertsCommand;
         public ICommand ShowUtilityAlertsCommand

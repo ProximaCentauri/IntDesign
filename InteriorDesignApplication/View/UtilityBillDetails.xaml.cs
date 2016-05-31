@@ -23,14 +23,24 @@ namespace View
     /// </summary>
     public partial class UtilityBillDetails : PopupView
     {
-        public UtilityBillDetails()
+        private string view = string.Empty;
+        public UtilityBillDetails(string _view)
         {
             InitializeComponent();
+            view = _view;
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            if (view == "edit")
+            {
+                this.AddSaveButtonLabel.Text = "Save";
+            }
+            else
+            {
+                this.AddSaveButtonLabel.Text = "Add";
+            }
             this.viewModel.CreateEntity(new Utility());            
         }
 
@@ -49,7 +59,16 @@ namespace View
         IMainViewModel viewModel;
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {            
+        {
+            if (view == "add")
+            {
+                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCommand"));
+            }
+            else
+            {
+                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
+            }
+
             if (this.addBillTypePanel.Visibility == Visibility.Visible ||
                 this.addCompanyNamePanel.Visibility == Visibility.Visible)
             {                  
@@ -58,7 +77,7 @@ namespace View
             else if (this.utilityFormPanel.Visibility == Visibility.Visible)
             {                
                 viewModel.CurrentPopupView = null;
-            }          
+            }              
         }
 
         private void addBillType_Click(object sender, RoutedEventArgs e)

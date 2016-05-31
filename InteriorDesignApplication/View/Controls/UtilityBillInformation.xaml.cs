@@ -30,7 +30,7 @@ namespace View.Controls
 
         private void addUtilityBill_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CurrentPopupView = new UtilityBillDetails();
+            viewModel.CurrentPopupView = new UtilityBillDetails("add");
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -47,7 +47,16 @@ namespace View.Controls
             }
         }
 
+        private void editUtilityBill_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = new UtilityBillDetails("edit");
+        }
+
+        
+
         IMainViewModel viewModel;
+
+       
         
     }
 }
