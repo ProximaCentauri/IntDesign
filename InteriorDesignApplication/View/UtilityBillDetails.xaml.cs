@@ -36,7 +36,14 @@ namespace View
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CurrentPopupView = null;
+            if (this.utilityFormPanel.Visibility == Visibility.Visible)
+            {
+                viewModel.CurrentPopupView = null;
+            }
+            else
+            {
+                ShowUtilityFormPanel();
+            }
         }
 
         IMainViewModel viewModel;
