@@ -70,8 +70,6 @@ namespace View
         {
             MainTabControl.SelectedIndex = 0;           
         }
-   
-        IMainViewModel viewModel;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -82,16 +80,7 @@ namespace View
                 spouse.BirthDate = personalInfo.SpouseBirthDate.SelectedDate;
                 spouse.City = personalInfo.SpouseAddress.Text;
                 viewModel.CreateEntity(spouse);                
-            }
-            Company company = new Company();
-            company.Name = CompanyInfo.CompanyName.Text;
-            company.Address = CompanyInfo.Address.Text;
-            company.EmailAddress = CompanyInfo.EmailAddress.Text;
-            company.ContactNumber = CompanyInfo.ContactNumber.Text;
-            company.OptionalInformation = CompanyInfo.Notes.Text;
-            company.Website = CompanyInfo.Website.Text;
-            company.FacebookPage = CompanyInfo.FacebookPage.Text;
-            viewModel.CreateEntity(company);
+            }            
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -104,5 +93,7 @@ namespace View
         {
             this.MainTabControl.SelectedIndex = 3;
         }
+
+        IMainViewModel viewModel;
     }
 }

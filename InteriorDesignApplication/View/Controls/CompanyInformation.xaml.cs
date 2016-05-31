@@ -26,14 +26,6 @@ namespace View.Controls
         public CompanyInformation()
         {
             InitializeComponent();
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //viewModel = this.DataContext as IMainViewModel;
-            //this.viewModel.CreateEntity(new Company());   
-        }
-
-        //IMainViewModel viewModel;
+        }        
     }
 }

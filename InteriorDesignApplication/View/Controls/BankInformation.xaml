@@ -83,7 +83,8 @@
                 Grid.Column="1"
                 Style="{StaticResource iconButtonStyle}"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Command="{Binding DeleteBankCommand}">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

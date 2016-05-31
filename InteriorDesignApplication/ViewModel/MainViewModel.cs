@@ -25,14 +25,16 @@ namespace ViewModel
 
 
         public void LoadEntities()
-        {
+        {            
             LoadCustomers();
             LoadUtilityBillTypes();
+            CurrentSelectedCustomer = null;
+            SelectedIndex = -1;
         }
 
         private void LoadCustomers()
         {
-            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
+            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());           
         }
 
         private void LoadUtilityBillTypes()
@@ -53,11 +55,7 @@ namespace ViewModel
             else if (ob is Utility)
             {
                 Utility = ob as Utility;
-            }
-            else if (ob is Company)
-            {
-                CustomerCompany = ob as Company;
-            }
+            }            
             else if (ob is UtilityBillType)
             {
                 UtilityBillType = ob as UtilityBillType;
@@ -90,7 +88,7 @@ namespace ViewModel
         public int SelectedIndex { get; set; }
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
-        private Spouse CustomerSpouse { get; set; }        
+        private Spouse CustomerSpouse { get; set; }       
 
         private Dependent newDependent;
         public Dependent Dependent
@@ -145,7 +143,7 @@ namespace ViewModel
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
                 OnPropertyChanged("Utilities");
-                OnPropertyChanged("Banks");
+                OnPropertyChanged("Banks");                
             }
         }
 
@@ -397,10 +395,7 @@ namespace ViewModel
             }
         }
         #endregion
-
-
-
-        private Company CustomerCompany { get; set; }
+       
 
         #region Actions
         private void SaveCustomer()
@@ -410,11 +405,12 @@ namespace ViewModel
             {
                 customer.CustomerSpouse = this.CustomerSpouse;
             }
-            if (CustomerCompany != null)
+
+            // avoid saving null customer company in db; company name required
+            if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
             {
-                customer.CustomerCompany = this.CustomerCompany;
+                customer.CustomerCompany = null;
             }
-            
             if (CustomerImageSource != null)
             {
                 customer.ImageSourceLocation = CustomerImageSource.ToString();
@@ -426,8 +422,7 @@ namespace ViewModel
             }
             
             context.SaveChanges();
-            Dependent = null;
-            CustomerCompany = null;
+            Dependent = null;           
             CustomerBank = null;
             LoadEntities();
         }
@@ -445,6 +440,7 @@ namespace ViewModel
         {
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
+            customer.CustomerCompany = new Company();
             CurrentSelectedCustomer = customer;
             SelectedIndex = -1;
         }
@@ -546,6 +542,13 @@ namespace ViewModel
             }           
         }
 
+        private void DeleteBank()
+        {
+            CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
+            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
+            CurrentSelectedBank = null;
+            OnPropertyChanged("Banks");
+        }
         #endregion
 
         #region INotifyPropertyChanged Implementing
@@ -690,6 +693,19 @@ namespace ViewModel
                     _showUtilityAlertsCommand = new RelayCommand(ShowUtilityAlerts);
                 }
                 return _showUtilityAlertsCommand;
+            }
+        }
+
+        ICommand _deleteBankCommand;
+        public ICommand DeleteBankCommand
+        {
+            get
+            {
+                if (_deleteBankCommand == null)
+                {
+                    _deleteBankCommand = new RelayCommand(DeleteBank);
+                }
+                return _deleteBankCommand;
             }
         }
 
