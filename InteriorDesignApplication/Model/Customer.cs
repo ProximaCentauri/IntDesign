@@ -14,8 +14,7 @@ namespace Model
     {
         [Key]
         public int Id { get; set; }
-                       
-        public virtual Bank CustomerBank { get; set; }
+                              
         public virtual Company CustomerCompany { get; set; }        
         public virtual Spouse CustomerSpouse { get; set; }
 

@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Model;
 using Model.Controls;
+using System.Windows.Media;
+
 namespace ViewModel
 {
     public interface IMainViewModel : INotifyPropertyChanged, IDisposable
@@ -15,5 +17,6 @@ namespace ViewModel
 
         void LoadEntities();        
         PopupView CurrentPopupView { get; set; }
+        ImageSource CustomerImageSource { get; set; }
     }
 }

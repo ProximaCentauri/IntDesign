@@ -56,19 +56,24 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Name of Bank"
-                        Width="150" />
+                        Width="150" 
+                        Binding="{Binding Name }"/>
                     <DataGridTextColumn
                         Header="Account Name"
-                        Width="200" />
+                        Width="200" 
+                        Binding="{Binding AccountName}"/>
                     <DataGridTextColumn
                         Header="Account Number"
-                        Width="200" />
+                        Width="200" 
+                        Binding="{Binding AccountNumber}"/>
                     <DataGridTextColumn
                         Header="Bank Address"
-                        Width="250" />
+                        Width="250" 
+                        Binding="{Binding Address}"/>
                     <DataGridTextColumn
                         Header="Swift Code"
-                        Width="150" />
+                        Width="150" 
+                        Binding="{Binding SwiftCode}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button
@@ -78,7 +83,8 @@
                 Grid.Column="1"
                 Style="{StaticResource iconButtonStyle}"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Command="{Binding DeleteBankCommand}">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

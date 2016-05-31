@@ -12,6 +12,11 @@ using System.Data.Entity;
 using Model.Controls;
 using Model.Helpers;
 using System.Windows.Data;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
 
 namespace ViewModel
 {
@@ -23,14 +28,16 @@ namespace ViewModel
 
 
         public void LoadEntities()
-        {
+        {            
             LoadCustomers();
             LoadUtilityBillTypes();
+            CurrentSelectedCustomer = null;
+            SelectedIndex = -1;
         }
 
         private void LoadCustomers()
         {
-            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());
+            Customers = new ObservableCollection<Customer>(context.CompleteCustomersInfo());           
         }
 
         private void LoadUtilityBillTypes()
@@ -51,11 +58,7 @@ namespace ViewModel
             else if (ob is Utility)
             {
                 Utility = ob as Utility;
-            }
-            else if (ob is Company)
-            {
-                CustomerCompany = ob as Company;
-            }
+            }            
             else if (ob is UtilityBillType)
             {
                 UtilityBillType = ob as UtilityBillType;
@@ -88,21 +91,7 @@ namespace ViewModel
         public int SelectedIndex { get; set; }
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
-        private Spouse CustomerSpouse { get; set; }
-
-        private Bank newBank;
-        public Bank CustomerBank
-        {
-            get
-            {
-                return newBank;
-            }
-            set
-            {
-                newBank = value;
-                OnPropertyChanged("Bank");
-            }
-        }
+        private Spouse CustomerSpouse { get; set; }       
 
         private Dependent newDependent;
         public Dependent Dependent
@@ -145,11 +134,19 @@ namespace ViewModel
                 if (currentSelectedCustomer != null)
                 {
                     Utilities = CurrentSelectedCustomer.Utilities;
+                    if (currentSelectedCustomer.ImageSourceLocation != null)
+                    {
+                        CustomerImageSource = new BitmapImage(new Uri(currentSelectedCustomer.ImageSourceLocation));
+                    }
+                    else
+                    {
+                        CustomerImageSource = null;
+                    }
                 }                
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
                 OnPropertyChanged("Utilities");
-                OnPropertyChanged("Banks");
+                OnPropertyChanged("Banks");                
             }
         }
 
@@ -164,6 +161,46 @@ namespace ViewModel
             {
                 currentSelectedDependent = value;
                 OnPropertyChanged("CurrentSelectedDependent");
+            }
+        }
+       
+        public ICollection<Dependent> Dependents
+        {
+            get
+            {
+                if (CurrentSelectedCustomer != null)
+                {
+                    return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
+                }
+                return null;
+            }
+        }
+
+        private ImageSource customerImageSource;
+        public ImageSource CustomerImageSource
+        {
+            get
+            {
+                return customerImageSource;
+            }
+            set
+            {
+                customerImageSource = value;
+                OnPropertyChanged("CustomerImageSource");
+            }
+        }
+
+        private Bank newBank;
+        public Bank CustomerBank
+        {
+            get
+            {
+                return newBank;
+            }
+            set
+            {
+                newBank = value;
+                OnPropertyChanged("Bank");
             }
         }
 
@@ -181,17 +218,18 @@ namespace ViewModel
             }
         }
 
-        public ICollection<Dependent> Dependents
+        public ICollection<Bank> Banks
         {
             get
             {
                 if (CurrentSelectedCustomer != null)
                 {
-                    return new ObservableCollection<Dependent>(CurrentSelectedCustomer.Dependents);
+                    return new ObservableCollection<Bank>(CurrentSelectedCustomer.Banks);
                 }
                 return null;
             }
         }
+
         #endregion
 
         #region Utilities
@@ -221,19 +259,7 @@ namespace ViewModel
                 currentSelectedUtility = value;
                 OnPropertyChanged("CurrentSelectedUtility");
             }
-        }
-
-        public ICollection<Bank> Banks
-        {
-            get
-            {
-                if (CurrentSelectedCustomer != null)
-                {
-                    return new ObservableCollection<Bank>(CurrentSelectedCustomer.Banks);
-                }
-                return null;
-            }
-        }
+        }       
 
         private IEnumerable<Utility> utilities;
         public IEnumerable<Utility> Utilities
@@ -372,38 +398,43 @@ namespace ViewModel
             }
         }
         #endregion
-
-
-
-        private Company CustomerCompany { get; set; }
+       
 
         #region Actions
         private void SaveCustomer()
         {
-            Customer customer = CurrentSelectedCustomer as Customer;
-            if (CustomerSpouse != null)
+            try
             {
-                customer.CustomerSpouse = this.CustomerSpouse;
-            }
-            if (CustomerCompany != null)
-            {
-                customer.CustomerCompany = this.CustomerCompany;
-            }
-            if (null != CustomerBank)
-            {
-                customer.CustomerBank = this.CustomerBank;
-            }
-            if (SelectedIndex == -1 && null != customer.FirstName)
-            {
-                context.Customers.Add(customer);
-                CurrentSelectedCustomer = null;
-            }           
+                Customer customer = CurrentSelectedCustomer as Customer;
+                if (CustomerSpouse != null)
+                {
+                    customer.CustomerSpouse = this.CustomerSpouse;
+                }
 
-            context.SaveChanges();
-            Dependent = null;
-            CustomerCompany = null;
-            CustomerBank = null;
-            LoadEntities();
+                // avoid saving null customer company in db; company name required
+                if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
+                {
+                    customer.CustomerCompany = null;
+                }
+                if (CustomerImageSource != null)
+                {
+                    customer.ImageSourceLocation = CustomerImageSource.ToString();
+                }
+                if (SelectedIndex == -1 && null != customer.FirstName)
+                {
+                    context.Customers.Add(customer);
+                    CurrentSelectedCustomer = null;
+                }
+
+                context.SaveChanges();
+                Dependent = null;
+                CustomerBank = null;
+                LoadEntities();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {                
+                ex.Entries.Single().Reload();
+            }
         }
 
         public void DeleteCustomer()
@@ -419,6 +450,7 @@ namespace ViewModel
         {
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
+            customer.CustomerCompany = new Company();
             CurrentSelectedCustomer = customer;
             SelectedIndex = -1;
         }
@@ -426,8 +458,8 @@ namespace ViewModel
         private void AddBank()
         {
             CurrentSelectedCustomer.Banks.Add(CustomerBank);
-            OnPropertyChanged("Banks");
-            OnPropertyChanged("Bank");
+            CustomerBank = null;
+            OnPropertyChanged("Banks");                      
         }
 
         private void AddDependent()
@@ -520,6 +552,13 @@ namespace ViewModel
             }           
         }
 
+        private void DeleteBank()
+        {
+            CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
+            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
+            CurrentSelectedBank = null;
+            OnPropertyChanged("Banks");
+        }
         #endregion
 
         #region INotifyPropertyChanged Implementing
@@ -667,6 +706,19 @@ namespace ViewModel
             }
         }
 
+        ICommand _deleteBankCommand;
+        public ICommand DeleteBankCommand
+        {
+            get
+            {
+                if (_deleteBankCommand == null)
+                {
+                    _deleteBankCommand = new RelayCommand(DeleteBank);
+                }
+                return _deleteBankCommand;
+            }
+        }
+
         #endregion
 
         public void Dispose()
@@ -724,10 +776,10 @@ namespace ViewModel
         {
             return context.Customers
                 .Include(d => d.Dependents)
-                .Include(d => d.Banks)
-                .Include(e => e.CustomerSpouse)
-                .Include(f => f.CustomerCompany)
-                .Include(g => g.Utilities);
+                .Include(e => e.Banks)
+                .Include(f => f.CustomerSpouse)
+                .Include(g => g.CustomerCompany)
+                .Include(h => h.Utilities);
         }
 
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
@@ -791,7 +843,7 @@ namespace ViewModel
         public static IQueryable<UtilityBillType> GetAllUtilityBillTypes(this ManagerDBContext context)
         {
             return context.UtilityBillTypes
-                .Include(d => d.UtilityCompanies);
+               .Include(d => d.UtilityCompanies);
         }
 
         public static IEnumerable<Utility> GetUtilityWithAlerts(this ManagerDBContext context, Customer currentSelectedCustomer)

@@ -606,24 +606,29 @@
     <Style
         x:Key="userImageIconStyle"
         TargetType="Image">
-        <Setter
-            Property="Source">
-            <Setter.Value>
-                <DrawingImage>
-                    <DrawingImage.Drawing>
-                        <GeometryDrawing
-                            Brush="{StaticResource photoImageBackgroundColorBrush}"
-                            Geometry="{StaticResource icon-user-tie}" />
-                    </DrawingImage.Drawing>
-                </DrawingImage>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Source"
+                Value="{Binding DataContext.CustomerImageSource, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
         <Setter
             Property="Width"
             Value="115" />
         <Setter
             Property="Height"
             Value="115" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding DataContext.CustomerImageSource, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                         Value="{x:Null}">
+                <Setter Property="Source">
+                    <Setter.Value>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="{StaticResource photoImageBackgroundColorBrush}"
+                                                 Geometry="{StaticResource icon-user-tie}" />
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
     <Style
         x:Key="companyDetailsIconStyle"
