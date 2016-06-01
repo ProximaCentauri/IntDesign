@@ -37,7 +37,7 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
                         <Image
-                            Style="{StaticResource addIconStyle}" />
+                            Style="{StaticResource editIconStyle}" />
                     </StackPanel>
                 </Button>
             </StackPanel>

@@ -520,6 +520,28 @@
             Value="14" />
     </Style>
     <Style
+        x:Key="editIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-edit}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="13" />
+        <Setter
+            Property="Height"
+            Value="13" />
+    </Style>
+    <Style
         x:Key="closeIconStyle"
         TargetType="Image">
         <Setter
