@@ -402,12 +402,14 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <DataGrid
+                    Name="gridDependents"
                     Height="90"
                     HorizontalAlignment="Left"
                     Width="935"
                     Margin="24,0,0,0"
                     ItemsSource="{Binding Dependents}"
                     SelectedItem="{Binding CurrentSelectedDependent}"
+                    SelectionChanged="gridDependents_SelectionChanged"
                     AutoGenerateColumns="False"
                     CanUserAddRows="False">
                     <DataGrid.Columns>
@@ -431,6 +433,7 @@
                 </DataGrid>
                 <Button
                     x:Name="deleteEntry"
+                    Visibility="Collapsed"
                     Width="30"
                     Height="30"
                     Grid.Column="1"

@@ -46,7 +46,14 @@ namespace View.Controls
 
         private void addPayment_Click(object sender, RoutedEventArgs e)
         {
+            deleteEntry.Visibility = System.Windows.Visibility.Collapsed;
             viewModel.CurrentPopupView = new PaymentDetails();
+        }
+
+        private void gridPayments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(gridPayments.SelectedIndex >= 0)
+                deleteEntry.Visibility = System.Windows.Visibility.Visible;
         }
     }
 }

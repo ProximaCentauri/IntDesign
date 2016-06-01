@@ -170,21 +170,41 @@
                         Grid.Column="0"
                         Text="Billing Statement:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <StackPanel
                         Grid.Row="5"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding CurrentSelectedUtility.BillStatement}"/>
+                        Orientation="Horizontal">
+                        <TextBox
+                            Style="{StaticResource popupTextBoxStyle}"
+                            Text="{Binding CurrentSelectedUtility.BillStatement}" />
+                        <Button
+                            Name="browseBilling"
+                            Width="50"
+                            Height="22"
+                            Margin="8,4,0,0"
+                            Content="Browse"
+                            Click="browseBilling_Click" />
+                    </StackPanel>
                     <TextBlock
                         Grid.Row="6"
                         Grid.Column="0"
                         Text="Receipt:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <StackPanel
                         Grid.Row="6"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}"
-                             Text="{Binding UtilityReceipt}"/>
+                        Orientation="Horizontal">
+                        <TextBox
+                            Style="{StaticResource popupTextBoxStyle}"
+                            Text="{Binding UtilityReceipt}" />
+                        <Button
+                            Name="browseReceipt"
+                            Width="50"
+                            Height="22"
+                            Margin="8,4,0,0"
+                            Content="Browse" 
+                            Click="browseReceipt_Click" />
+                    </StackPanel>
                     <TextBlock
                         Grid.Row="7"
                         Grid.Column="0"

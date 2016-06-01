@@ -30,6 +30,7 @@ namespace View.Controls
 
         private void addUtilityBill_Click(object sender, RoutedEventArgs e)
         {
+            deleteEntry.Visibility = editUtilityBill.Visibility = System.Windows.Visibility.Collapsed;
             viewModel.CurrentPopupView = new UtilityBillDetails("add");
         }
 
@@ -52,11 +53,13 @@ namespace View.Controls
             viewModel.CurrentPopupView = new UtilityBillDetails("edit");
         }
 
-        
+        private void GridUtilityBills_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(GridUtilityBills.SelectedIndex >= 0)
+                deleteEntry.Visibility = editUtilityBill.Visibility = System.Windows.Visibility.Visible;
+        }
+
 
         IMainViewModel viewModel;
-
-       
-        
     }
 }

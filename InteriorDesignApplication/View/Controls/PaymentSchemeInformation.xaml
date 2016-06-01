@@ -143,9 +143,11 @@
                         Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <DataGrid
+                    Name="gridPayments"
                     Height="250"
                     Width="700"
                     HorizontalAlignment="Left"
+                    SelectionChanged="gridPayments_SelectionChanged"
                     Margin="10,0,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn
@@ -164,6 +166,7 @@
                 </DataGrid>
                 <Button
                     x:Name="deleteEntry"
+                    Visibility="Collapsed"
                     Width="30"
                     Height="30"
                     Grid.Column="1"

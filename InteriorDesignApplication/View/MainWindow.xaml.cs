@@ -68,7 +68,8 @@ namespace View
         
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            MainTabControl.SelectedIndex = 0;           
+            MainTabControl.SelectedIndex = 0;
+            DeleteButton.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -87,6 +88,7 @@ namespace View
         {
             SearchTextBlock.Focus();
             SearchTextBlock.Select(0, SearchTextBlock.Text.Length);
+            DeleteButton.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
@@ -99,6 +101,12 @@ namespace View
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new DeleteConfirmationPopup();
+        }
+
+        private void GridCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(GridCustomers.SelectedIndex >= 0)
+                DeleteButton.Visibility = System.Windows.Visibility.Visible;
         }
     }
 }

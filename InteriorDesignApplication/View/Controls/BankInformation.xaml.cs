@@ -30,6 +30,7 @@ namespace View.Controls
 
         private void addBankDetails_Click(object sender, RoutedEventArgs e)
         {
+            deleteEntry.Visibility = System.Windows.Visibility.Collapsed;
             viewModel.CurrentPopupView = new BankDetails();
         }
 
@@ -48,6 +49,12 @@ namespace View.Controls
         }
 
         IMainViewModel viewModel;
+
+        private void gridBanks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(gridBanks.SelectedIndex >= 0)
+                deleteEntry.Visibility = System.Windows.Visibility.Visible;
+        }
 
     }
 }

@@ -90,7 +90,8 @@
                 Name="GridCustomers"
                 ItemsSource="{Binding Customers}"
                 SelectedItem="{Binding CurrentSelectedCustomer}"
-                SelectedIndex="{Binding SelectedIndex}"                
+                SelectedIndex="{Binding SelectedIndex}"    
+                SelectionChanged="GridCustomers_SelectionChanged"
                 CanUserAddRows="False"
                 IsReadOnly="True"
                 AutoGenerateColumns="False">
@@ -283,6 +284,7 @@
                 Margin="20,7,0,0"
                 HorizontalAlignment="Left"
                 x:Name="DeleteButton"
+                Visibility="Collapsed"
                 Style="{StaticResource mainLinkButtonStyle}"
                 Click="DeleteButton_Click"
                 Command="{Binding DeleteCustomerCommand}">

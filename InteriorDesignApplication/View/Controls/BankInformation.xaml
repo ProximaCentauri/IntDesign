@@ -45,6 +45,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <DataGrid
+                    Name="gridBanks"
                     Height="250"
                     Width="950"
                     HorizontalAlignment="Left"
@@ -52,6 +53,7 @@
                     CanUserAddRows="False"
                     ItemsSource="{Binding Banks}"
                     SelectedItem="{Binding CurrentSelectedBank}"
+                    SelectionChanged="gridBanks_SelectionChanged"
                     Margin="10,0,0,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn
@@ -78,6 +80,7 @@
             </DataGrid>
             <Button
                 x:Name="deleteEntry"
+                Visibility="Collapsed"
                 Width="30"
                 Height="30"
                 Grid.Column="1"

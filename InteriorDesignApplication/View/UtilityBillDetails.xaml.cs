@@ -15,6 +15,7 @@ using ViewModel;
 using Model.Controls;
 using Model;
 using Model.Helpers;
+using Microsoft.Win32;
 
 namespace View
 {
@@ -116,6 +117,26 @@ namespace View
             if ((bool)e.NewValue)
             {
                 viewModel.CreateEntity(new UtilityCompany());
+            }
+        }
+
+        private void browseBilling_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (!String.IsNullOrEmpty(dlg.FileName))
+            {
+            }
+        }
+
+        private void browseReceipt_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (!String.IsNullOrEmpty(dlg.FileName))
+            {
             }
         }        
     }

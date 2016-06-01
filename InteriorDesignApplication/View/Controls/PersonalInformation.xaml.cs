@@ -32,6 +32,7 @@ namespace View.Controls
 
         private void addDependent_Click(object sender, RoutedEventArgs e)
         {
+            deleteEntry.Visibility = System.Windows.Visibility.Collapsed;
             viewModel.CurrentPopupView = new DependentDetails();
         }
 
@@ -67,5 +68,12 @@ namespace View.Controls
                 this.viewModel.CustomerImageSource = new BitmapImage(new Uri(dlg.FileName));
             }
         }
+
+        private void gridDependents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (gridDependents.SelectedIndex >= 0)
+                deleteEntry.Visibility = System.Windows.Visibility.Visible;
+        }
+
     }
 }
