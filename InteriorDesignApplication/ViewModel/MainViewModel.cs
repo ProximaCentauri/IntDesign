@@ -27,10 +27,21 @@ namespace ViewModel
         }
 
 
-        public void LoadEntities()
+        public void InitializeAndLoadEntities()
+        {
+            LoadEntities();
+            InitializeEntities();
+        }
+
+
+        private void LoadEntities()
         {            
             LoadCustomers();
-            LoadUtilityBillTypes();
+            LoadUtilityBillTypes();            
+        }
+
+        private void InitializeEntities()
+        {
             CurrentSelectedCustomer = null;
             Utilities = null;
             SelectedIndex = -1;
@@ -135,6 +146,10 @@ namespace ViewModel
                 if (currentSelectedCustomer != null)
                 {
                     Utilities = CurrentSelectedCustomer.Utilities;
+                    if (currentSelectedCustomer.CustomerCompany == null)
+                    {
+                        currentSelectedCustomer.CustomerCompany = new Company();
+                    }
                     if (currentSelectedCustomer.ImageSourceLocation != null)
                     {
                         CustomerImageSource = new BitmapImage(new Uri(currentSelectedCustomer.ImageSourceLocation));
@@ -143,6 +158,7 @@ namespace ViewModel
                     {
                         CustomerImageSource = null;
                     }
+                    
                 }                
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");

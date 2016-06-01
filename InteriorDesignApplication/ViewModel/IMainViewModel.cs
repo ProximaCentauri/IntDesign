@@ -15,7 +15,7 @@ namespace ViewModel
        
         void CreateEntity(object obj);
 
-        void LoadEntities();        
+        void InitializeAndLoadEntities();        
         PopupView CurrentPopupView { get; set; }
         ImageSource CustomerImageSource { get; set; }
     }
