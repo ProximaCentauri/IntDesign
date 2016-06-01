@@ -17,11 +17,12 @@ using System.Windows.Media.Imaging;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
-
+using log4net;
 namespace ViewModel
 {
     public class MainViewModel : IMainViewModel
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public MainViewModel()
         {
         }
@@ -422,7 +423,8 @@ namespace ViewModel
         {
             try
             {
-                Customer customer = CurrentSelectedCustomer as Customer;               
+                Customer customer = CurrentSelectedCustomer as Customer;
+                Log.InfoFormat("Saving customer:{0} {1}...", customer.FirstName, customer.LastName);
                 customer.CustomerSpouse = this.CustomerSpouse;
                 // avoid saving null customer company in db; company name required
                 if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
@@ -443,15 +445,18 @@ namespace ViewModel
                 CustomerBank = null;
                 CustomerSpouse = null;
                 LoadEntities();
+                Log.Info("Successfully save the customer");
             }
             catch (DbUpdateConcurrencyException ex)
             {                
                 ex.Entries.Single().Reload();
+                Log.ErrorFormat("Error in saving customer. ", ex.ToString());
             }
         }
 
         public void DeleteCustomer()
         {
+            Log.InfoFormat("Deleting customer:{0} {1}", CurrentSelectedCustomer.FirstName, CurrentSelectedCustomer.LastName);
             context.Customers.Remove(CurrentSelectedCustomer);
             context.SaveChanges();
             CurrentSelectedCustomer = null;
