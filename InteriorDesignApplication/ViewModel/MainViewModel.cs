@@ -422,12 +422,8 @@ namespace ViewModel
         {
             try
             {
-                Customer customer = CurrentSelectedCustomer as Customer;
-                if (CustomerSpouse != null)
-                {
-                    customer.CustomerSpouse = this.CustomerSpouse;
-                }
-
+                Customer customer = CurrentSelectedCustomer as Customer;               
+                customer.CustomerSpouse = this.CustomerSpouse;
                 // avoid saving null customer company in db; company name required
                 if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
                 {
@@ -445,6 +441,7 @@ namespace ViewModel
                 context.SaveChanges();
                 Dependent = null;
                 CustomerBank = null;
+                CustomerSpouse = null;
                 LoadEntities();
             }
             catch (DbUpdateConcurrencyException ex)

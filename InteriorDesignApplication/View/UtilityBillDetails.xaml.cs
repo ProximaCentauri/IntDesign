@@ -35,7 +35,7 @@ namespace View
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             if (view == "edit")
             {
-                this.AddSaveButtonLabel.Text = "Save";
+                this.AddSaveButtonLabel.Text = "Update";
             }
             else
             {
