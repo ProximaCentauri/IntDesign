@@ -510,6 +510,8 @@ namespace ViewModel
         {
             CurrentSelectedUtility = null;
             Utility utility = new Utility();
+            UtilityReceipt = null;
+            UtilityCutoffDate = null;
             CurrentSelectedUtility = utility;            
         }
 
@@ -559,9 +561,12 @@ namespace ViewModel
         {
             if (CurrentSelectedUtility != null)
             {
+                CurrentSelectedUtility.BillType = CurrentSelectedUtilityBillType;
+                CurrentSelectedUtility.UtilityCompany = CurrentSelectedUtilityCompany;
                 CurrentSelectedUtility.Receipt = UtilityReceipt;
                 CurrentSelectedUtility.CutoffDate = UtilityCutoffDate;
                 context.Entry(CurrentSelectedUtility).State = EntityState.Modified;
+                Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
             }
         }
 
@@ -569,6 +574,8 @@ namespace ViewModel
         {
             if (CurrentSelectedUtility != null)
             {
+                CurrentSelectedUtilityBillType = CurrentSelectedUtility.BillType;
+                CurrentSelectedUtilityCompany = CurrentSelectedUtility.UtilityCompany;
                 UtilityCutoffDate = CurrentSelectedUtility.CutoffDate;
                 UtilityReceipt = CurrentSelectedUtility.Receipt;
             }            
