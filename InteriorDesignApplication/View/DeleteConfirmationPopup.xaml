@@ -1,0 +1,60 @@
+﻿<c:PopupView
+    x:Class="View.DeleteConfirmationPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+    Title="DeleteConfirmationPopup"
+    mc:Ignorable="d"
+    Height="300"
+    Width="300"
+    Loaded="PopupView_Loaded"
+    Alignment="Center"
+    Background="White"
+    BackgroundType="Shroud">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="0">
+            <TextBlock
+                Text="Are you sure you want to delete?" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button
+                Width="100"
+                Height="30"
+                x:Name="cancelButton"
+                Style="{StaticResource mainLinkButtonStyle}">
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+                    <Image
+                        Style="{StaticResource deleteUserIconStyle}" />
+                    <TextBlock
+                        Text="Cancel"
+                        Style="{StaticResource mainButtonTextStyle}" />
+                </StackPanel>
+            </Button>
+            <Button
+                Grid.Column="1"
+                Width="100"
+                Height="30"
+                x:Name="deleteButton"
+                Style="{StaticResource mainButtonStyle}">
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+                    <Image
+                        Style="{StaticResource saveUserDetailIconStyle}" />
+                    <TextBlock
+                        Text="Delete"
+                        Style="{StaticResource mainButtonTextStyle}" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</c:PopupView>

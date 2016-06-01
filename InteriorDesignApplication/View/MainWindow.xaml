@@ -284,6 +284,7 @@
                 HorizontalAlignment="Left"
                 x:Name="DeleteButton"
                 Style="{StaticResource mainLinkButtonStyle}"
+                Click="DeleteButton_Click"
                 Command="{Binding DeleteCustomerCommand}">
                 <StackPanel
                     Orientation="Horizontal"

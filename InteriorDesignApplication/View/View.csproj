@@ -80,11 +80,17 @@
     <Compile Include="Controls\UtilityBillInformation.xaml.cs">
       <DependentUpon>UtilityBillInformation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeleteConfirmationPopup.xaml.cs">
+      <DependentUpon>DeleteConfirmationPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FitOutDetails.xaml.cs">
       <DependentUpon>FitOutDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="PaymentDetails.xaml.cs">
       <DependentUpon>PaymentDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaveNotificationPopup.xaml.cs">
+      <DependentUpon>SaveNotificationPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="TitleDetails.xaml.cs">
       <DependentUpon>TitleDetails.xaml</DependentUpon>
@@ -121,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\UtilityBillInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteConfirmationPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +174,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Controls\PersonalInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaveNotificationPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

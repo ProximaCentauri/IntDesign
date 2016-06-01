@@ -95,5 +95,10 @@ namespace View
         }
 
         IMainViewModel viewModel;
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup();
+        }
     }
 }
