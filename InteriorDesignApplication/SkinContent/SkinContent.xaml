@@ -212,6 +212,32 @@
             Value="0,5,0,0" />
     </Style>
     <Style
+        x:Key="popupConfirmationTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainHeaderStyle}">
+        <Setter
+            Property="FontSize"
+            Value="24" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="TextAlignment"
+            Value="Center" />
+        <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+        <Setter
+            Property="Foreground"
+            Value="Gray" />
+        <Setter
+            Property="Margin"
+            Value="10" />
+    </Style>
+    <Style
         x:Key="popupAddressTextBoxStyle"
         TargetType="TextBox"
         BasedOn="{StaticResource popupTextBoxStyle}">
@@ -651,6 +677,28 @@
         <Setter
             Property="Height"
             Value="20" />
+    </Style>
+    <Style
+        x:Key="saveDetailsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-check-mark}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="50" />
+        <Setter
+            Property="Height"
+            Value="50" />
     </Style>
     <Style
         x:Key="bankDetailsIconStyle"

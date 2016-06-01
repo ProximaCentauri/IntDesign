@@ -12,17 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
+using Model.Controls;
 
 namespace View
 {
     /// <summary>
     /// Interaction logic for SaveNotificationPopup.xaml
     /// </summary>
-    public partial class SaveNotificationPopup : Page
+    public partial class SaveNotificationPopup : PopupView
     {
         public SaveNotificationPopup()
         {
             InitializeComponent();
         }
+
+        private void PopupView_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+        }
+
+        IMainViewModel viewModel;
     }
 }

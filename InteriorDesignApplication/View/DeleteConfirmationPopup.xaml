@@ -7,7 +7,7 @@
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     Title="DeleteConfirmationPopup"
     mc:Ignorable="d"
-    Height="300"
+    Height="Auto"
     Width="300"
     Loaded="PopupView_Loaded"
     Alignment="Center"
@@ -15,45 +15,38 @@
     BackgroundType="Shroud">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
+        <Border
+            Style="{StaticResource mainPopupBorderStyle}"
+            Grid.RowSpan="2" />
+        <TextBlock
+            Style="{StaticResource popupConfirmationTextStyle}"
+            Text="Are you sure you want to delete?" />
         <StackPanel
-            Grid.Row="0">
-            <TextBlock
-                Text="Are you sure you want to delete?" />
-        </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
             <Button
                 Width="100"
                 Height="30"
                 x:Name="cancelButton"
                 Style="{StaticResource mainLinkButtonStyle}">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource deleteUserIconStyle}" />
-                    <TextBlock
-                        Text="Cancel"
-                        Style="{StaticResource mainButtonTextStyle}" />
-                </StackPanel>
+                <TextBlock
+                    Text="Cancel"
+                    Style="{StaticResource mainButtonTextStyle}" />
             </Button>
             <Button
                 Grid.Column="1"
                 Width="100"
                 Height="30"
+                Margin="24,0,0,0"
                 x:Name="deleteButton"
                 Style="{StaticResource mainButtonStyle}">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource saveUserDetailIconStyle}" />
-                    <TextBlock
-                        Text="Delete"
-                        Style="{StaticResource mainButtonTextStyle}" />
-                </StackPanel>
+                <TextBlock
+                    Text="Delete"
+                    Style="{StaticResource mainButtonTextStyle}" />
             </Button>
         </StackPanel>
     </Grid>
