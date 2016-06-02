@@ -16,6 +16,7 @@ using View;
 using Model.Controls;
 using ViewModel;
 using Microsoft.Win32;
+using Model;
 
 namespace View.Controls
 {
@@ -73,6 +74,12 @@ namespace View.Controls
         {
             if (gridDependents.SelectedIndex >= 0)
                 deleteEntry.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void deleteEntry_Click(object sender, RoutedEventArgs e)
+        {
+            
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup("test");
         }
 
     }

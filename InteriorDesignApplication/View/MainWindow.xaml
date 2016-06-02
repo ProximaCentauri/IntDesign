@@ -16,6 +16,7 @@
     Top="0"
     Left="0"
     Icon="HouseholdInterior.ico"
+    Loaded="Window_Loaded"
     Width="1024"
     Height="768">
     <Grid>
@@ -36,10 +37,12 @@
                 x:Name="SearchPanel"
                 Orientation="Horizontal">
                 <ComboBox
+                    Name="searchComboBox"
                     Width="150"
                     Margin="10,0,0,0"
                     Style="{StaticResource searchByComboxBoxStyle}"
                     Loaded="ComboBox_Loaded"
+                    SelectionChanged="searchComboBox_SelectionChanged"
                     SelectedItem="{Binding SelectedSearchType}"/>
                 <TextBox
                     x:Name="SearchTextBlock"
