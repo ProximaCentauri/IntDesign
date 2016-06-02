@@ -71,7 +71,7 @@ namespace View.Controls
             string entryInfo = string.Empty;
             this.viewModel.CommandParameter = "DeleteUtilityBill";
             Utility utilityInfo = GridUtilityBills.SelectedItem as Utility;
-            entryInfo = utilityInfo.BillType.Name + " - " + utilityInfo.UtilityCompany + " with account number: " + utilityInfo.AccountId;
+            entryInfo = utilityInfo.BillType.Name + " bill (" + utilityInfo.UtilityCompany.Name + ") with account number: " + utilityInfo.AccountId;
             viewModel.CurrentPopupView = new DeleteConfirmationPopup(entryInfo);
         }
 

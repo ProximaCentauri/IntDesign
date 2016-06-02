@@ -64,7 +64,7 @@ namespace View
             {
                 deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteCustomerCommand"));
             }
-            else if (viewModel.CommandParameter.Equals("DeleteDepedendent"))
+            else if (viewModel.CommandParameter.Equals("DeleteDependent"))
             {
                 deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteDependentCommand"));
             }
