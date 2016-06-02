@@ -34,6 +34,16 @@
                             Style="{StaticResource addIconStyle}" />
                     </StackPanel>
                 </Button>
+                <Button
+                    Name="editBankInfo"
+                    Visibility="Collapsed"
+                    Width="40"
+                    Height="20"
+                    Click="editBankInfo_Click"
+                    Style="{StaticResource iconButtonStyle}">
+                    <Image
+                        Style="{StaticResource editIconStyle}" />
+                </Button>
             </StackPanel>
             <Separator
                 Margin="0,-5,0,0"
@@ -51,6 +61,7 @@
                     HorizontalAlignment="Left"
                     AutoGenerateColumns="False"
                     CanUserAddRows="False"
+                    IsReadOnly="True"
                     ItemsSource="{Binding Banks}"
                     SelectedItem="{Binding CurrentSelectedBank}"
                     SelectionChanged="gridBanks_SelectionChanged"

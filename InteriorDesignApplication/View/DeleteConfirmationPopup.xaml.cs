@@ -32,10 +32,15 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
-            if (viewModel.CommandParameter.Equals("CustomerDelete"))
+            if (viewModel.CommandParameter.Equals("DeleteCustomer"))
             {
-                entryValueText.Text = String.Format("Are you sure you want to delete: {0} {1} ", viewModel.CurrentSelectedCustomer.FirstName, viewModel.CurrentSelectedCustomer.LastName);
-            }            
+                entryValueText.Text = String.Format("Are you sure you want to delete customer: {0} ?", entryValue);
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteDependent"))
+            {
+                entryValueText.Text = String.Format("Are you sure you want to delete dependent: {0}? ", entryValue);
+            }   
+      
         }
 
         IMainViewModel viewModel;
@@ -47,9 +52,13 @@ namespace View
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (viewModel.CommandParameter.Equals("CustomerDelete"))
+            if (viewModel.CommandParameter.Equals("DeleteCustomer"))
             {
                 deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteCustomerCommand"));
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteDepedendent"))
+            {
+                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteDependentCommand"));
             }
             
             viewModel.CurrentPopupView = null;

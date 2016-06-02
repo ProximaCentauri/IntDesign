@@ -78,8 +78,10 @@ namespace View.Controls
 
         private void deleteEntry_Click(object sender, RoutedEventArgs e)
         {
+            this.viewModel.CommandParameter = "DeleteDependent";
+            Dependent customerDependent = gridDependents.SelectedItem as Dependent;
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(customerDependent.FullName);
             
-            viewModel.CurrentPopupView = new DeleteConfirmationPopup("test");
         }
 
     }

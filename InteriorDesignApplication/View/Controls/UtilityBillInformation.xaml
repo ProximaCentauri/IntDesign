@@ -44,12 +44,8 @@
                     Click="editUtilityBill_Click"
                     Style="{StaticResource iconButtonStyle}"
                     Command="{Binding EditUtilityCommand}">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource editIconStyle}" />
-                    </StackPanel>
+                    <Image
+                        Style="{StaticResource editIconStyle}" />
                 </Button>
             </StackPanel>
             <Separator

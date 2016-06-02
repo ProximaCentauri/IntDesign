@@ -142,15 +142,16 @@
                 Width="100"
                 Height="30"
                 Margin="20"
-                Command="{Binding AddBankCommand}"
                 Style="{StaticResource mainButtonStyle}"
                 Click="Button_Click">
                 <StackPanel
+                    Name="AddSaveBankBtn"
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
                     <Image
                         Style="{StaticResource checkIconStyle}" />
                     <TextBlock
+                        Name="AddSaveButtonLabel"
                         Text="Add"
                         Style="{StaticResource addButtonStyle}" />
                 </StackPanel>

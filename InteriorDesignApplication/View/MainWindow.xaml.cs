@@ -103,8 +103,8 @@ namespace View
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            this.viewModel.CommandParameter = "CustomerDelete";
-            viewModel.CurrentPopupView = new DeleteConfirmationPopup(personalInfo.Name);
+            this.viewModel.CommandParameter = "DeleteCustomer";
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(viewModel.CurrentSelectedCustomer.FullName);
         }
 
         private void GridCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
