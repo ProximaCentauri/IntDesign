@@ -33,6 +33,12 @@ namespace View
             viewModel.InitializeAndLoadEntities();            
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.MainTabControl.IsEnabled = this.SaveButton.IsEnabled = false;
+            this.MainTabControl.Opacity = this.SaveButton.Opacity = 0.50;
+        }
+
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName.Equals("CurrentPopupView"))
@@ -70,7 +76,7 @@ namespace View
         {
             MainTabControl.SelectedIndex = 0;
             MainTabControl.IsEnabled = true;
-            personalInfo.CustomerImageBtn.Opacity = SaveButton.Opacity = 1;
+            this.MainTabControl.Opacity = this.SaveButton.Opacity = 1;
             DeleteButton.Visibility = System.Windows.Visibility.Collapsed;
         }
 
@@ -112,7 +118,7 @@ namespace View
             if (GridCustomers.SelectedIndex >= 0)
             {
                 MainTabControl.IsEnabled = true;
-                personalInfo.CustomerImageBtn.Opacity = SaveButton.Opacity = 1;
+                this.MainTabControl.Opacity = this.SaveButton.Opacity = 1;
                 DeleteButton.Visibility = System.Windows.Visibility.Visible;
             }
         }
@@ -128,10 +134,5 @@ namespace View
                 SearchTextBlock.IsEnabled = true;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            MainTabControl.IsEnabled = SaveButton.IsEnabled = false;
-            personalInfo.CustomerImageBtn.Opacity = SaveButton.Opacity = 0.50;   
-        }
     }
 }
