@@ -36,9 +36,9 @@
                 Click="cancelButton_Click">
                 <TextBlock
                     Text="Cancel"
-                    Style="{StaticResource mainButtonTextStyle}" />
+                    Style="{StaticResource noIconButtonStyle}" />
             </Button>
-            <Button Grid.Column="1"
+            <Button 
                     Width="100"
                     Height="30"
                     Margin="24,0,0,0"
@@ -48,7 +48,7 @@
                     Command="{Binding DeleteCustomerCommand}">
                 <TextBlock
                     Text="Delete"
-                    Style="{StaticResource mainButtonTextStyle}" />
+                    Style="{StaticResource noIconButtonStyle}" />
             </Button>
         </StackPanel>
     </Grid>

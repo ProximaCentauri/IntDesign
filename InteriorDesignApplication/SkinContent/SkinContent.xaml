@@ -343,7 +343,7 @@
         TargetType="TextBlock">
         <Setter
             Property="HorizontalAlignment"
-            Value="Right" />
+            Value="Center" />
         <Setter
             Property="VerticalAlignment"
             Value="Center" />
@@ -449,6 +449,14 @@
             Property="HorizontalAlignment"
             Value="Center" />
 
+    </Style>
+    <Style
+        x:Key="noIconButtonStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainButtonTextStyle}">
+        <Setter
+            Property="Margin"
+            Value="0,0,0,0" />
     </Style>
 
 

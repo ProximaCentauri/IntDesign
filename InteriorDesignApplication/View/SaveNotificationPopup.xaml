@@ -19,10 +19,12 @@
                 Height="100" />
             <RowDefinition
                 Height="80" />
+            <RowDefinition
+                Height="80" />
         </Grid.RowDefinitions>
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
-            Grid.RowSpan="2" />
+            Grid.RowSpan="3" />
         <TextBlock
             Style="{StaticResource popupConfirmationTextStyle}"
             Text="Details are successfully saved" />
@@ -30,5 +32,16 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             Style="{StaticResource saveDetailsIconStyle}" />
+        <Button
+            Grid.Row="2"
+            Width="100"
+            Height="30"
+            x:Name="okButton"
+            Click="okButton_Click"
+            Style="{StaticResource mainButtonStyle}">
+            <TextBlock
+                Text="OK"
+                Style="{StaticResource noIconButtonStyle}" />
+        </Button>
     </Grid>
 </c:PopupView>

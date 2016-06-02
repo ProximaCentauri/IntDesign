@@ -32,6 +32,11 @@ namespace View
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
         }
 
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = null;
+        }
+
         IMainViewModel viewModel;
     }
 }
