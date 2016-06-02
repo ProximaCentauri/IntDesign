@@ -79,11 +79,7 @@ namespace ViewModel
             else if (ob is UtilityCompany)
             {
                 UtilityCompany = ob as UtilityCompany;
-            }
-            else if (ob is Bank)
-            {
-                CustomerBank = ob as Bank;
-            }
+            }            
         }
 
         private PopupView currentPopupView;
@@ -208,21 +204,7 @@ namespace ViewModel
                 OnPropertyChanged("CustomerImageSource");
             }
         }
-
-        private Bank newBank;
-        public Bank CustomerBank
-        {
-            get
-            {
-                return newBank;
-            }
-            set
-            {
-                newBank = value;
-                OnPropertyChanged("Bank");
-            }
-        }
-
+       
         private Bank currentSelectedBank;
         public Bank CurrentSelectedBank
         {
@@ -442,8 +424,7 @@ namespace ViewModel
                 }
 
                 context.SaveChanges();
-                Dependent = null;
-                CustomerBank = null;
+                Dependent = null;                
                 CustomerSpouse = null;
                 LoadEntities();
                 Log.Info("Successfully save the customer");
@@ -452,7 +433,7 @@ namespace ViewModel
             {                
                 ex.Entries.Single().Reload();
                 Log.ErrorFormat("Error in saving customer. ", ex.ToString());
-            }
+            }            
         }
 
         public void DeleteCustomer()
@@ -472,13 +453,6 @@ namespace ViewModel
             customer.CustomerCompany = new Company();
             CurrentSelectedCustomer = customer;
             SelectedIndex = -1;
-        }
-
-        private void AddBank()
-        {
-            CurrentSelectedCustomer.Banks.Add(CustomerBank);
-            CustomerBank = null;
-            OnPropertyChanged("Banks");                      
         }
 
         private void AddDependent()
@@ -509,12 +483,40 @@ namespace ViewModel
             }
         }
 
+        private void CreateBank()
+        {
+            CurrentSelectedBank = null;
+            Bank customerBank = new Bank();
+            CurrentSelectedBank = customerBank;
+        }
+
+        private void AddBank()
+        {
+            CurrentSelectedCustomer.Banks.Add(CurrentSelectedBank);
+            context.Entry(CurrentSelectedBank).State = EntityState.Added;
+            CurrentSelectedBank = null;       
+            OnPropertyChanged("Banks");                      
+        }
+
+        private void EditUpdateBank()
+        {
+            if (CurrentSelectedBank != null)
+            {               
+                if (context.Entry(CurrentSelectedBank).State != EntityState.Added)
+                {
+                    context.Entry(CurrentSelectedBank).State = EntityState.Modified;
+                }                
+            }
+        }       
+
         private void CreateUtility()
         {
             CurrentSelectedUtility = null;
             Utility utility = new Utility();
             UtilityReceipt = null;
             UtilityCutoffDate = null;
+            CurrentSelectedUtilityBillType = null;
+            CurrentSelectedUtilityCompany = null;
             CurrentSelectedUtility = utility;            
         }
 
@@ -548,8 +550,10 @@ namespace ViewModel
                 CurrentSelectedUtility.Receipt = UtilityReceipt;
                 CurrentSelectedUtility.CutoffDate = UtilityCutoffDate;
                 CurrentSelectedCustomer.Utilities.Add(CurrentSelectedUtility);
-                Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);                
+                context.Entry(CurrentSelectedUtility).State = EntityState.Added;
+                Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
 
+                
                 // set properties to null
                 Utility = null;
                 currentSelectedUtilityBillType = null;
@@ -568,7 +572,10 @@ namespace ViewModel
                 CurrentSelectedUtility.UtilityCompany = CurrentSelectedUtilityCompany;
                 CurrentSelectedUtility.Receipt = UtilityReceipt;
                 CurrentSelectedUtility.CutoffDate = UtilityCutoffDate;
-                context.Entry(CurrentSelectedUtility).State = EntityState.Modified;
+                if (context.Entry(CurrentSelectedUtility).State != EntityState.Added)
+                {
+                    context.Entry(CurrentSelectedUtility).State = EntityState.Modified;
+                }                
                 Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
             }
         }
@@ -587,7 +594,10 @@ namespace ViewModel
         private void DeleteUtility()
         {
             CurrentSelectedCustomer.Utilities.Remove(CurrentSelectedUtility);
-            context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;
+            if (context.Entry(CurrentSelectedUtility).State != EntityState.Added)
+            {
+                context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;
+            }            
             Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
             CurrentSelectedUtility = null;            
         }
@@ -615,7 +625,10 @@ namespace ViewModel
         private void DeleteBank()
         {
             CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
-            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
+            if (context.Entry(CurrentSelectedBank).State != EntityState.Added)
+            {
+                context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
+            }
             CurrentSelectedBank = null;
             OnPropertyChanged("Banks");
         }
@@ -827,6 +840,32 @@ namespace ViewModel
                     _deleteBankCommand = new RelayCommand(DeleteBank);
                 }
                 return _deleteBankCommand;
+            }
+        }
+
+        ICommand _createBankCommand;
+        public ICommand CreateBankCommand
+        {
+            get
+            {
+                if (_createBankCommand == null)
+                {
+                    _createBankCommand = new RelayCommand(CreateBank);
+                }
+                return _createBankCommand;
+            }
+        }
+
+        ICommand _editUpdateBankCommand;
+        public ICommand EditUpdateBankCommand
+        {
+            get
+            {
+                if (_editUpdateBankCommand == null)
+                {
+                    _editUpdateBankCommand = new RelayCommand(EditUpdateBank);
+                }
+                return _editUpdateBankCommand;
             }
         }
 

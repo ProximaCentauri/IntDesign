@@ -26,7 +26,8 @@
                     Width="40"
                     Height="20"
                     Click="addBankDetails_Click"
-                    Style="{StaticResource iconButtonStyle}">
+                    Style="{StaticResource iconButtonStyle}"
+                    Command="{Binding CreateBankCommand}">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

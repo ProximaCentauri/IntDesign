@@ -39,8 +39,7 @@ namespace View
             else
             {
                 this.AddSaveButtonLabel.Text = "Add";
-            }
-            viewModel.CreateEntity(new Bank());
+            }            
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -59,7 +58,7 @@ namespace View
             }
             else
             {
-
+                this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateBankCommand"));
             }
 
             viewModel.CurrentPopupView = null;

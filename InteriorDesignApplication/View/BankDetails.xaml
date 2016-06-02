@@ -76,7 +76,7 @@
                     <TextBox
                         Grid.Column="1"
                         Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding CustomerBank.Name}"
+                        Text="{Binding CurrentSelectedBank.Name}"
                         Name="BankName"/>
                     <TextBlock
                         Grid.Row="1"
@@ -86,7 +86,7 @@
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Text="{Binding CustomerBank.AccountName}"
+                        Text="{Binding CurrentSelectedBank.AccountName}"
                         Style="{StaticResource popupTextBoxStyle}"
                         Name="AccountName"/>
                     <TextBlock
@@ -97,7 +97,7 @@
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
-                        Text="{Binding CustomerBank.AccountNumber}"
+                             Text="{Binding CurrentSelectedBank.AccountNumber}"
                         Style="{StaticResource popupTextBoxStyle}"
                         Name="AccountNo"/>
                     <TextBlock
@@ -108,7 +108,7 @@
                     <TextBox
                         Grid.Row="3"
                         Grid.Column="1"
-                        Text="{Binding CustomerBank.Branch}"
+                        Text="{Binding CurrentSelectedBank.Branch}"
                         Style="{StaticResource popupTextBoxStyle}" 
                         Name="Branch"/>
                     <TextBlock
@@ -119,7 +119,7 @@
                     <TextBox
                         Grid.Row="4"
                         Grid.Column="1"
-                        Text="{Binding CustomerBank.Address}"
+                        Text="{Binding CurrentSelectedBank.Address}"
                         Style="{StaticResource popupAddressTextBoxStyle}"
                         Name="Address"/>
                     <TextBlock
@@ -130,7 +130,7 @@
                     <TextBox
                         Grid.Row="5"
                         Grid.Column="1"
-                        Text="{Binding CustomerBank.SwiftCode}"
+                        Text="{Binding CurrentSelectedBank.SwiftCode}"
                         Style="{StaticResource popupTextBoxStyle}" 
                         Name="SwiftCode"/>
                 </Grid>

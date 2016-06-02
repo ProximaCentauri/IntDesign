@@ -41,8 +41,7 @@ namespace View
             else
             {
                 this.AddSaveButtonLabel.Text = "Add";
-            }
-            this.viewModel.CreateEntity(new Utility());            
+            }                     
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
