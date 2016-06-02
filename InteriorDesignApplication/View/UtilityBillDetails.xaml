@@ -84,13 +84,15 @@
                         Orientation="Horizontal"
                         Grid.Column="1">
                         <ComboBox
+                            Name="billType"
                             Style="{StaticResource popupComboBoxStyle}"
                             ItemsSource="{Binding UtilityBillTypes}"
                             DisplayMemberPath="Name"
-                            SelectedValue="{Binding CurrentSelectedUtilityBillType}"/>
+                            SelectedValue="{Binding CurrentSelectedUtilityBillType}" 
+                            SelectionChanged="billType_SelectionChanged"/>
                         <Button
                             Name="addBillType"
-                            Width="50"
+                            Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addBillType_Click"
@@ -100,6 +102,21 @@
                                 HorizontalAlignment="Left">
                                 <Image
                                     Style="{StaticResource addIconStyle}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Name="editBillType"
+                            Visibility="Collapsed"
+                            Width="30"
+                            Height="20"
+                            Margin="0,7,0,0"
+                            Click="editBillType_Click"
+                            Style="{StaticResource iconButtonStyle}">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                                <Image
+                                    Style="{StaticResource editIconStyle}" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -114,13 +131,15 @@
                         Grid.Row="1"
                         Grid.Column="1">
                         <ComboBox
+                            Name="utilityCompanyName"
                             Style="{StaticResource popupComboBoxStyle}" 
                             ItemsSource="{Binding UtilityCompanies}"
                             DisplayMemberPath="Name"
-                            SelectedValue="{Binding CurrentSelectedUtilityCompany}"/>
+                            SelectedValue="{Binding CurrentSelectedUtilityCompany}" 
+                            SelectionChanged="utilityCompanyName_SelectionChanged" />
                         <Button
                             Name="addCompanyName"
-                            Width="50"
+                            Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addCompanyName_Click"
@@ -130,6 +149,21 @@
                                 HorizontalAlignment="Left">
                                 <Image
                                     Style="{StaticResource addIconStyle}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Name="editCompanyName"
+                            Visibility="Collapsed"
+                            Width="30"
+                            Height="20"
+                            Margin="0,7,0,0"
+                            Click="editCompanyName_Click"
+                            Style="{StaticResource iconButtonStyle}">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                                <Image
+                                    Style="{StaticResource editIconStyle}" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -235,6 +269,7 @@
                     Height="Auto" />
             </Grid.RowDefinitions>
             <TextBlock
+                Name="billTypeHeader"
                 Text="Add Bill Type"
                 Style="{StaticResource popupHeaderTextStyle}" />
             <Separator
@@ -274,6 +309,7 @@
                     Height="Auto" />
             </Grid.RowDefinitions>
             <TextBlock
+                Name="companyNameHeader"
                 Text="Add Company Name"
                 Style="{StaticResource popupHeaderTextStyle}" />
             <Separator

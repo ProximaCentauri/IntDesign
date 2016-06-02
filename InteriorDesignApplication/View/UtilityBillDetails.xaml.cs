@@ -140,6 +140,32 @@ namespace View
             {
                 UtilityReceiptTxt.Text = dlg.FileName;
             }
+        }
+
+        private void editBillType_Click(object sender, RoutedEventArgs e)
+        {
+            this.utilityFormPanel.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Collapsed;
+            this.cancelButton.Visibility = this.addBillTypePanel.Visibility = Visibility.Visible;
+            billTypeHeader.Text = "Edit Bill Type";
+            this.AddSaveButtonLabel.Text = "Update";
+        }
+
+        private void editCompanyName_Click(object sender, RoutedEventArgs e)
+        {
+            this.utilityFormPanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
+            this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Visible;
+            companyNameHeader.Text = "Edit Company Name";
+            this.AddSaveButtonLabel.Text = "Update";
+        }
+
+        private void billType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            editBillType.Visibility = Visibility.Visible;
+        }
+
+        private void utilityCompanyName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            editCompanyName.Visibility = Visibility.Visible;
         }        
     }
 }
