@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using View;
 using Model.Controls;
 using ViewModel;
+using Model;
 
 namespace View.Controls
 {
@@ -60,6 +61,15 @@ namespace View.Controls
         }
 
         IMainViewModel viewModel;
+
+        private void deleteEntry_Click(object sender, RoutedEventArgs e)
+        {
+            string bankInfo = string.Empty;
+            this.viewModel.CommandParameter = "DeleteBankInfo";
+            Bank selectedBank = gridBanks.SelectedItem as Bank;
+            bankInfo = selectedBank.Name + " with account number: " + selectedBank.AccountNumber;
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(bankInfo);
+        }
 
     }
 }

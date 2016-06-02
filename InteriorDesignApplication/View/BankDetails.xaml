@@ -139,13 +139,13 @@
         <Grid
             Grid.Row="2">
             <Button
+                Name="AddSaveBankBtn"
                 Width="100"
                 Height="30"
                 Margin="20"
                 Style="{StaticResource mainButtonStyle}"
                 Click="Button_Click">
                 <StackPanel
-                    Name="AddSaveBankBtn"
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
                     <Image

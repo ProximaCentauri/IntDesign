@@ -98,7 +98,7 @@
                 Style="{StaticResource iconButtonStyle}"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
-                Command="{Binding DeleteBankCommand}">
+                Click="deleteEntry_Click">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

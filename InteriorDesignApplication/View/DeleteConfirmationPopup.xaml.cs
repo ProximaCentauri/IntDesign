@@ -39,6 +39,14 @@ namespace View
             else if (viewModel.CommandParameter.Equals("DeleteDependent"))
             {
                 entryValueText.Text = String.Format("Are you sure you want to delete dependent: {0}? ", entryValue);
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteBankInfo"))
+            {
+                entryValueText.Text = String.Format("Are you sure you want to delete bank info: {0}? ", entryValue);
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteUtilityBill"))
+            {
+                entryValueText.Text = String.Format("Are you sure you want to delete utility info: {0}? ", entryValue);
             }   
       
         }
@@ -59,6 +67,14 @@ namespace View
             else if (viewModel.CommandParameter.Equals("DeleteDepedendent"))
             {
                 deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteDependentCommand"));
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteBankInfo"))
+            {
+                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteBankCommand"));
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteUtilityBill"))
+            {
+                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteUtilityCommand"));
             }
             
             viewModel.CurrentPopupView = null;

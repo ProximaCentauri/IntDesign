@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using View;
 using Model.Controls;
 using ViewModel;
+using Model;
 
 namespace View.Controls
 {
@@ -65,7 +66,17 @@ namespace View.Controls
             }
         }
 
+        private void deleteEntry_Click(object sender, RoutedEventArgs e)
+        {
+            string entryInfo = string.Empty;
+            this.viewModel.CommandParameter = "DeleteUtilityBill";
+            Utility utilityInfo = GridUtilityBills.SelectedItem as Utility;
+            entryInfo = utilityInfo.BillType.Name + " - " + utilityInfo.UtilityCompany + " with account number: " + utilityInfo.AccountId;
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(entryInfo);
+        }
 
         IMainViewModel viewModel;
+
+
     }
 }
