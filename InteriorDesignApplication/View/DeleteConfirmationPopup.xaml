@@ -22,7 +22,7 @@
             Style="{StaticResource mainPopupBorderStyle}"
             Grid.RowSpan="2" />
         <TextBlock
-            Name="entryValueText"
+            x:Name="entryValueText"
             Style="{StaticResource popupConfirmationTextStyle}" />
         <StackPanel
             Grid.Row="1"
@@ -44,8 +44,7 @@
                     Margin="24,0,0,0"
                     x:Name="deleteButton"
                     Style="{StaticResource mainButtonStyle}"
-                    Click="deleteButton_Click"
-                    Command="{Binding DeleteCustomerCommand}">
+                    Click="deleteButton_Click">
                 <TextBlock
                     Text="Delete"
                     Style="{StaticResource noIconButtonStyle}" />

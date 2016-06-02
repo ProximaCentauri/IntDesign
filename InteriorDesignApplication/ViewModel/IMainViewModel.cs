@@ -18,5 +18,9 @@ namespace ViewModel
         void InitializeAndLoadEntities();        
         PopupView CurrentPopupView { get; set; }
         ImageSource CustomerImageSource { get; set; }
+        string CommandParameter { get; set; }
+        Customer CurrentSelectedCustomer { get; set; }
+
+
     }
 }

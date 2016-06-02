@@ -31,8 +31,11 @@ namespace View
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;    
-            entryValueText.Text = String.Format("Are you sure you want to delete: {0} ", entryValueText);
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            if (viewModel.CommandParameter.Equals("CustomerDelete"))
+            {
+                entryValueText.Text = String.Format("Are you sure you want to delete: {0} {1} ", viewModel.CurrentSelectedCustomer.FirstName, viewModel.CurrentSelectedCustomer.LastName);
+            }            
         }
 
         IMainViewModel viewModel;
@@ -43,7 +46,12 @@ namespace View
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
-        {           
+        {
+            if (viewModel.CommandParameter.Equals("CustomerDelete"))
+            {
+                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteCustomerCommand"));
+            }
+            
             viewModel.CurrentPopupView = null;
         }
     }

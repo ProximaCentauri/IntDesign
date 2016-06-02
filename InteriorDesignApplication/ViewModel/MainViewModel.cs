@@ -102,6 +102,7 @@ namespace ViewModel
 
         #region Personal Information
         public int SelectedIndex { get; set; }
+        public string CommandParameter { get; set; }
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
         private Spouse CustomerSpouse { get; set; }       
@@ -803,10 +804,6 @@ namespace ViewModel
                 return _closeUtilityCommand;
             }
         }
-
-
-
-
         ICommand _showUtilityAlertsCommand;
         public ICommand ShowUtilityAlertsCommand
         {
