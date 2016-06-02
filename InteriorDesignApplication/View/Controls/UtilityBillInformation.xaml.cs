@@ -55,8 +55,14 @@ namespace View.Controls
 
         private void GridUtilityBills_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(GridUtilityBills.SelectedIndex >= 0)
+            if (GridUtilityBills.SelectedIndex >= 0)
+            {
                 deleteEntry.Visibility = editUtilityBill.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                deleteEntry.Visibility = editUtilityBill.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
 
 
