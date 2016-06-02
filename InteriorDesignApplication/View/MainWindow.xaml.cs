@@ -81,7 +81,8 @@ namespace View
                 spouse.BirthDate = personalInfo.SpouseBirthDate.SelectedDate;
                 spouse.City = personalInfo.SpouseAddress.Text;
                 viewModel.CreateEntity(spouse);                
-            }            
+            }
+            viewModel.CurrentPopupView = new SaveNotificationPopup();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

@@ -23,7 +23,7 @@
             Grid.RowSpan="2" />
         <TextBlock
             Style="{StaticResource popupConfirmationTextStyle}"
-            Text="Are you sure you want to delete?" />
+            Text="{Binding CurrentSelectedCustomer.FullName, StringFormat=Are you sure you want to delete customer : {0}?}" />
         <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Center"

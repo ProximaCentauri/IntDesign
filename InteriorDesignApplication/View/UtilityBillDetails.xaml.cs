@@ -123,20 +123,22 @@ namespace View
         private void browseBilling_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|Pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
             Nullable<bool> result = dlg.ShowDialog();
             if (!String.IsNullOrEmpty(dlg.FileName))
             {
+                BillStatementTxt.Text = dlg.FileName;                
             }
         }
 
         private void browseReceipt_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|Pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
             Nullable<bool> result = dlg.ShowDialog();
             if (!String.IsNullOrEmpty(dlg.FileName))
             {
+                UtilityReceiptTxt.Text = dlg.FileName;
             }
         }        
     }

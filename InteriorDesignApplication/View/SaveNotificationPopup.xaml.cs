@@ -29,7 +29,7 @@ namespace View
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
         }
 
         IMainViewModel viewModel;

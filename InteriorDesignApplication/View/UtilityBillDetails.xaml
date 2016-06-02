@@ -176,7 +176,8 @@
                         Orientation="Horizontal">
                         <TextBox
                             Style="{StaticResource popupTextBoxStyle}"
-                            Text="{Binding CurrentSelectedUtility.BillStatement}" />
+                            Text="{Binding CurrentSelectedUtility.BillStatement}"
+                                 Name="BillStatementTxt" />
                         <Button
                             Name="browseBilling"
                             Width="50"
@@ -196,7 +197,8 @@
                         Orientation="Horizontal">
                         <TextBox
                             Style="{StaticResource popupTextBoxStyle}"
-                            Text="{Binding UtilityReceipt}" />
+                            Text="{Binding UtilityReceipt}"
+                            Name="UtilityReceiptTxt"/>
                         <Button
                             Name="browseReceipt"
                             Width="50"
