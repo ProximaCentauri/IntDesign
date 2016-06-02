@@ -108,8 +108,12 @@ namespace View
 
         private void GridCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(GridCustomers.SelectedIndex >= 0)
+            if (GridCustomers.SelectedIndex >= 0)
+            {
+                MainTabControl.IsEnabled = true;
+                personalInfo.CustomerImageBtn.Opacity = SaveButton.Opacity = 1;
                 DeleteButton.Visibility = System.Windows.Visibility.Visible;
+            }
         }
 
         private void searchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
