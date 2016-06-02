@@ -115,7 +115,7 @@
                     <DataGridTextColumn
                         Header="Address"
                         Width="300" 
-                        Binding="{Binding CustomerCompany.Address}"/>
+                        Binding="{Binding Address}"/>
                     <DataGridTemplateColumn 
                         Header="Alerts"
                         Width="250">
