@@ -75,9 +75,9 @@ namespace View
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 0;
-            MainTabControl.IsEnabled = true;
-            this.MainTabControl.Opacity = this.SaveButton.Opacity = 1;
-            DeleteButton.Visibility = System.Windows.Visibility.Collapsed;
+            MainTabControl.IsEnabled = SaveButton.IsEnabled = true;
+            MainTabControl.Opacity = SaveButton.Opacity = 1;
+            DeleteButton.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -97,7 +97,7 @@ namespace View
         {
             SearchTextBlock.Focus();
             SearchTextBlock.Select(0, SearchTextBlock.Text.Length);
-            DeleteButton.Visibility = System.Windows.Visibility.Collapsed;
+            DeleteButton.Visibility = Visibility.Collapsed;
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
@@ -117,9 +117,9 @@ namespace View
         {
             if (GridCustomers.SelectedIndex >= 0)
             {
-                MainTabControl.IsEnabled = true;
-                this.MainTabControl.Opacity = this.SaveButton.Opacity = 1;
-                DeleteButton.Visibility = System.Windows.Visibility.Visible;
+                MainTabControl.IsEnabled = SaveButton.IsEnabled = true;
+                MainTabControl.Opacity = SaveButton.Opacity = 1;
+                DeleteButton.Visibility = Visibility.Visible;
             }
         }
 
