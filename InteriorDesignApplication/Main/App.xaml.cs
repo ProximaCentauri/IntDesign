@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using View;
-using Model.Controls;
-using Model;
 using ViewModel;
 using log4net;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace Main
+namespace InteriorDesign
 {
     /// <summary>
     /// Interaction logic for App.xaml
