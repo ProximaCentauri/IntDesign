@@ -278,17 +278,15 @@
                 <ColumnDefinition
                     Width="512" />
             </Grid.ColumnDefinitions>
-            <Button
-                Grid.Column="0"
-                Width="180"
-                Height="50"
-                Margin="20,7,0,0"
-                HorizontalAlignment="Left"
-                x:Name="DeleteButton"
-                Visibility="Collapsed"
-                Style="{StaticResource mainLinkButtonStyle}"
-                Click="DeleteButton_Click"
-                Command="{Binding DeleteCustomerCommand}">
+            <Button Grid.Column="0"
+                    Width="180"
+                    Height="50"
+                    Margin="20,7,0,0"
+                    HorizontalAlignment="Left"
+                    x:Name="DeleteButton"
+                    Visibility="Collapsed"
+                    Style="{StaticResource mainLinkButtonStyle}"
+                    Click="DeleteButton_Click">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">

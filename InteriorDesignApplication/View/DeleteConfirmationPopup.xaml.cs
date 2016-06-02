@@ -29,9 +29,19 @@ namespace View
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
         }
 
         IMainViewModel viewModel;
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = null;
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {           
+            viewModel.CurrentPopupView = null;
+        }
     }
 }
