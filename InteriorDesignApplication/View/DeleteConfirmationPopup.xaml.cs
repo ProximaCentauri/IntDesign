@@ -21,15 +21,18 @@ namespace View
     /// Interaction logic for DeleteConfirmationPopup.xaml
     /// </summary>
     public partial class DeleteConfirmationPopup : PopupView
-    {        
-        public DeleteConfirmationPopup()
+    {
+        string entryValue = string.Empty;
+        public DeleteConfirmationPopup(string _entryValue)
         {
-            InitializeComponent();            
+            InitializeComponent();
+            entryValue = _entryValue;
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;            
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;    
+            entryValueText.Text = String.Format("Are you sure you want to delete: {0} ", entryValueText);
         }
 
         IMainViewModel viewModel;

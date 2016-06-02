@@ -69,6 +69,8 @@ namespace View
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 0;
+            MainTabControl.IsEnabled = true;
+            personalInfo.CustomerImageBtn.Opacity = SaveButton.Opacity = 1;
             DeleteButton.Visibility = System.Windows.Visibility.Collapsed;
         }
 
@@ -101,13 +103,30 @@ namespace View
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CurrentPopupView = new DeleteConfirmationPopup();
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(personalInfo.Name);
         }
 
         private void GridCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(GridCustomers.SelectedIndex >= 0)
                 DeleteButton.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void searchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (searchComboBox.SelectedIndex == 0)
+            {
+                SearchTextBlock.Text = string.Empty;
+                SearchTextBlock.IsEnabled = false;
+            }
+            else
+                SearchTextBlock.IsEnabled = true;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.IsEnabled = SaveButton.IsEnabled = false;
+            personalInfo.CustomerImageBtn.Opacity = SaveButton.Opacity = 0.50;   
         }
     }
 }
