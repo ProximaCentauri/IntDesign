@@ -80,24 +80,30 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Bill Type"
-                        Width="150"
+                        Width="80"
                         Binding="{Binding BillType.Name}" />
                     <DataGridTextColumn
                         Header="Company"
-                        Width="150"
+                        Width="90"
                         Binding="{Binding UtilityCompany.Name}" />
                     <DataGridTextColumn
                         Header="Account Name"
-                        Width="250"
+                        Width="160"
                         Binding="{Binding AccountName}" />
                     <DataGridTextColumn
                         Header="Account #"
-                        Width="150"
+                        Width="130"
                         Binding="{Binding AccountId}" />
                     <DataGridTextColumn
+                        Header="Billing Statement"
+                        Width="135" />
+                    <DataGridTextColumn
                         Header="Cut-off Date"
-                        Width="125"
+                        Width="90"
                         Binding="{Binding CutoffDate, StringFormat=\{0:MM/dd/yyyy\}}" />
+                    <DataGridTextColumn
+                        Header="Official Receipt"
+                        Width="135" />
                     <DataGridTextColumn
                         Header="Status"
                         Width="125"

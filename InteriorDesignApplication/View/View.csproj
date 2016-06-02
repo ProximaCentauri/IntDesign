@@ -78,6 +78,9 @@
     <Compile Include="Controls\PopupControl.xaml.cs">
       <DependentUpon>PopupControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TitleInformation.xaml.cs">
+      <DependentUpon>TitleInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UtilityBillInformation.xaml.cs">
       <DependentUpon>UtilityBillInformation.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PopupControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TitleInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

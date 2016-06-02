@@ -62,6 +62,9 @@
     <SolidColorBrush
         x:Key="photoImageBackgroundColorBrush"
         Color="#ad2d2d" />
+    <SolidColorBrush
+        x:Key="confirmationTextForegroundColorBrush"
+        Color="#616161" />
 
     <Color
         x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
@@ -232,10 +235,10 @@
             Value="Wrap" />
         <Setter
             Property="Foreground"
-            Value="Gray" />
+            Value="{StaticResource confirmationTextForegroundColorBrush}" />
         <Setter
             Property="Margin"
-            Value="10" />
+            Value="15,10" />
     </Style>
     <Style
         x:Key="popupAddressTextBoxStyle"

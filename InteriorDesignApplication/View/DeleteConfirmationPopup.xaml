@@ -15,7 +15,7 @@
     BackgroundType="Shroud">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="130" MaxHeight="200"/>
+            <RowDefinition MinHeight="130" MaxHeight="300"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Border

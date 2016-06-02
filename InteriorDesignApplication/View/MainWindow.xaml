@@ -242,7 +242,7 @@
                                     Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-
+                        <viewsControls:TitleInformation />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>
