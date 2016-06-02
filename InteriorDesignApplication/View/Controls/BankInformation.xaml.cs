@@ -52,7 +52,14 @@ namespace View.Controls
         private void gridBanks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (gridBanks.SelectedIndex >= 0)
+            {
                 editBankInfo.Visibility = deleteEntry.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                editBankInfo.Visibility = deleteEntry.Visibility = Visibility.Collapsed;
+            }
+            
         }
 
         private void editBankInfo_Click(object sender, RoutedEventArgs e)
