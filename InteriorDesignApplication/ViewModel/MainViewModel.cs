@@ -502,10 +502,7 @@ namespace ViewModel
         {
             if (CurrentSelectedBank != null)
             {               
-                if (context.Entry(CurrentSelectedBank).State != EntityState.Added)
-                {
-                    context.Entry(CurrentSelectedBank).State = EntityState.Modified;
-                }                
+                context.Entry(CurrentSelectedBank).State = EntityState.Modified;                
             }
         }       
 
@@ -572,10 +569,7 @@ namespace ViewModel
                 CurrentSelectedUtility.UtilityCompany = CurrentSelectedUtilityCompany;
                 CurrentSelectedUtility.Receipt = UtilityReceipt;
                 CurrentSelectedUtility.CutoffDate = UtilityCutoffDate;
-                if (context.Entry(CurrentSelectedUtility).State != EntityState.Added)
-                {
-                    context.Entry(CurrentSelectedUtility).State = EntityState.Modified;
-                }                
+                context.Entry(CurrentSelectedUtility).State = EntityState.Modified;                
                 Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
             }
         }
@@ -594,10 +588,7 @@ namespace ViewModel
         private void DeleteUtility()
         {
             CurrentSelectedCustomer.Utilities.Remove(CurrentSelectedUtility);
-            if (context.Entry(CurrentSelectedUtility).State != EntityState.Added)
-            {
-                context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;
-            }            
+            context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;         
             Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
             CurrentSelectedUtility = null;            
         }
@@ -625,10 +616,7 @@ namespace ViewModel
         private void DeleteBank()
         {
             CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
-            if (context.Entry(CurrentSelectedBank).State != EntityState.Added)
-            {
-                context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
-            }
+            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;            
             CurrentSelectedBank = null;
             OnPropertyChanged("Banks");
         }
