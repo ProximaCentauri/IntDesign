@@ -31,7 +31,7 @@ namespace View.Controls
 
         private void addBankDetails_Click(object sender, RoutedEventArgs e)
         {
-            deleteEntry.Visibility = System.Windows.Visibility.Collapsed;
+            deleteEntry.Visibility = Visibility.Collapsed;
             viewModel.CurrentPopupView = new BankDetails("add");
         }
 

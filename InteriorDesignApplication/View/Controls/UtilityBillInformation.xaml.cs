@@ -31,7 +31,7 @@ namespace View.Controls
 
         private void addUtilityBill_Click(object sender, RoutedEventArgs e)
         {
-            deleteEntry.Visibility = editUtilityBill.Visibility = System.Windows.Visibility.Collapsed;
+            deleteEntry.Visibility = editUtilityBill.Visibility = Visibility.Collapsed;
             viewModel.CurrentPopupView = new UtilityBillDetails("add");
         }
 
@@ -57,13 +57,10 @@ namespace View.Controls
         private void GridUtilityBills_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (GridUtilityBills.SelectedIndex >= 0)
-            {
-                deleteEntry.Visibility = editUtilityBill.Visibility = System.Windows.Visibility.Visible;
-            }
+                deleteEntry.Visibility = editUtilityBill.Visibility = Visibility.Visible;
             else
-            {
-                deleteEntry.Visibility = editUtilityBill.Visibility = System.Windows.Visibility.Collapsed;
-            }
+                deleteEntry.Visibility = editUtilityBill.Visibility = Visibility.Collapsed;
+
         }
 
         private void deleteEntry_Click(object sender, RoutedEventArgs e)

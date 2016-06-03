@@ -33,7 +33,7 @@ namespace View.Controls
 
         private void addDependent_Click(object sender, RoutedEventArgs e)
         {
-            deleteEntry.Visibility = System.Windows.Visibility.Collapsed;
+            deleteEntry.Visibility = Visibility.Collapsed;
             viewModel.CurrentPopupView = new DependentDetails();
         }
 
@@ -73,7 +73,9 @@ namespace View.Controls
         private void gridDependents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (gridDependents.SelectedIndex >= 0)
-                deleteEntry.Visibility = System.Windows.Visibility.Visible;
+                deleteEntry.Visibility = Visibility.Visible;
+            else
+                deleteEntry.Visibility = Visibility.Collapsed;
         }
 
         private void deleteEntry_Click(object sender, RoutedEventArgs e)

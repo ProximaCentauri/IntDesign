@@ -30,7 +30,7 @@ namespace View.Controls
 
         private void addAppliance_Click(object sender, RoutedEventArgs e)
         {
-            deleteEntry.Visibility = System.Windows.Visibility.Collapsed;
+            deleteEntry.Visibility = Visibility.Collapsed;
             viewModel.CurrentPopupView = new ApplianceDetails();
         }
 
@@ -53,7 +53,9 @@ namespace View.Controls
         private void gridAppliances_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(gridAppliances.SelectedIndex >= 0)
-                deleteEntry.Visibility = System.Windows.Visibility.Visible;
+                deleteEntry.Visibility = Visibility.Visible;
+            else
+                deleteEntry.Visibility = Visibility.Collapsed;
         }
     }
 }
