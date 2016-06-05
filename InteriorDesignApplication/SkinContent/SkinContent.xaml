@@ -70,6 +70,9 @@
     <SolidColorBrush
         x:Key="confirmationTextForegroundColorBrush"
         Color="#616161" />
+    <SolidColorBrush
+        x:Key="userImageBackgroundColorBrush"
+        Color="#FFFFFF" />
 
     <Color
         x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
@@ -477,6 +480,13 @@
         <Setter
             Property="Margin"
             Value="0,0,0,0" />
+    </Style>
+    <Style
+        x:Key="userImageButtonStyle"
+        TargetType="Button">
+        <Setter
+            Property="Background"
+            Value="{StaticResource userImageBackgroundColorBrush}" />
     </Style>
 
 

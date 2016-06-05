@@ -349,10 +349,12 @@
                 VerticalAlignment="Center">
                 <Border BorderBrush="{StaticResource mainLinkButtonBorderColorBrush}"
                         BorderThickness="1">
-                    <Button Name="CustomerImageBtn"
-                            Height="115"
-                            Width="115"
-                            Click="CustomerImageBtn_Click">
+                    <Button
+                        Name="CustomerImageBtn"
+                        Height="115"
+                        Width="115"
+                        Click="CustomerImageBtn_Click"
+                        Style="{StaticResource userImageButtonStyle}">
                         <Image Style="{StaticResource userImageIconStyle}" />
                     </Button>
                 </Border>

@@ -70,12 +70,15 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Dependent.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="FitOut.cs" />
     <Compile Include="Helpers\UtilityHelper.cs" />
     <Compile Include="ManagerDBContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spouse.cs" />
+    <Compile Include="Title.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="UtilityBillType.cs" />
     <Compile Include="UtilityCompany.cs" />
