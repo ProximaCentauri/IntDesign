@@ -30,6 +30,14 @@ namespace View.Controls
             InitializeComponent();
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel = this.DataContext as IMainViewModel;
+
+            if(viewModel.CurrentSelectedCustomer != null)
+                addressInfo.Text = viewModel.CurrentSelectedCustomer.Address;
+        }
+
         private void browseBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -40,5 +48,7 @@ namespace View.Controls
                 
             }
         }
+
+        IMainViewModel viewModel;
     }
 }

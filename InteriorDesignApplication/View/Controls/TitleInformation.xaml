@@ -7,7 +7,8 @@
     xmlns:local="clr-namespace:View"
     mc:Ignorable="d"
     Height="Auto"
-    Width="1024">
+    Width="1024"
+    Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -50,9 +51,9 @@
                     Width="100"
                     Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                 <TextBox
-                    Width="502"
+                    Name="addressInfo"
                     IsEnabled="False"
-                    Text="{Binding CurrentSelectedCustomer.NumBuilding}"
+                    Width="502"
                     Margin="0,0,10,0" />
             </StackPanel>
         </Grid>
