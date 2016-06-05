@@ -1,17 +1,19 @@
-﻿<UserControl x:Class="View.Controls.FitOutsInformation"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             mc:Ignorable="d"
-             xmlns:local="clr-namespace:View"
-             Height="Auto"
-             Width="1024"
-             Loaded="UserControl_Loaded">
+﻿<UserControl
+    x:Class="View.Controls.FitOutsInformation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:View"
+    Height="Auto"
+    Width="1024"
+    Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition
+                Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid
@@ -146,7 +148,7 @@
                         Text="{Binding ValidId}"></TextBox>
                 </StackPanel>
             </Grid>
-            
+
         </Grid>
         <Grid
             Grid.Row="1">
@@ -170,6 +172,7 @@
                         Width="50"
                         Height="20"
                         Margin="0,7,0,0"
+                        Command="{Binding CreateApplianceCommand}"
                         Click="addAppliance_Click"
                         Style="{StaticResource iconButtonStyle}">
                         <StackPanel
@@ -185,7 +188,9 @@
                 Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="Auto" />
+                        Width="186" />
+                    <ColumnDefinition
+                        Width="775" />
                     <ColumnDefinition
                         Width="Auto" />
                 </Grid.ColumnDefinitions>
@@ -196,23 +201,33 @@
                     Height="250"
                     Grid.Row="0"
                     Width="950"
-                    SelectionChanged="gridAppliances_SelectionChanged">
+                    CanUserAddRows="False"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Appliances}"
+                    SelectedItem="{Binding CurrentSelectedAppliance}"
+                    SelectionChanged="gridAppliances_SelectionChanged"
+                    Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Description"
-                            Width="325" />
+                            Width="325"
+                            Binding="{Binding Description}" />
                         <DataGridTextColumn
                             Header="Model #"
-                            Width="225" />
+                            Width="225"
+                            Binding="{Binding ModelNumber}" />
                         <DataGridTextColumn
                             Header="Quantity"
-                            Width="100" />
+                            Width="100"
+                            Binding="{Binding Quantity}" />
                         <DataGridTextColumn
-                            Header="Warranty Status"
-                            Width="150" />
+                            Header="Warranty End Date"
+                            Width="150"
+                            Binding="{Binding WarrantyEndDate}" />
                         <DataGridTextColumn
                             Header="Receipt"
-                            Width="250" />
+                            Width="250"
+                            Binding="{Binding Receipt}" />
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button
@@ -220,10 +235,11 @@
                     Visibility="Collapsed"
                     Width="30"
                     Height="30"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     Style="{StaticResource iconButtonStyle}"
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left"
+                    Margin="0,110,-29,110">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

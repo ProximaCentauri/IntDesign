@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ViewModel;
 using Model.Controls;
+using Model;
 
 namespace View
 {
@@ -37,5 +38,11 @@ namespace View
         }
 
         IMainViewModel viewModel;
+
+        private void AddSaveApplianceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("AddApplianceCommand"));
+            viewModel.CurrentPopupView = null;
+        }
     }
 }

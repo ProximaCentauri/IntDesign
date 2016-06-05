@@ -79,7 +79,8 @@ namespace ViewModel
             else if (ob is UtilityCompany)
             {
                 UtilityCompany = ob as UtilityCompany;
-            }            
+            }     
+            
         }
 
         private PopupView currentPopupView;
@@ -161,7 +162,8 @@ namespace ViewModel
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
                 OnPropertyChanged("Utilities");
-                OnPropertyChanged("Banks");                
+                OnPropertyChanged("Banks");
+                OnPropertyChanged("Appliances");
             }
         }
 
@@ -504,8 +506,9 @@ namespace ViewModel
             {               
                 context.Entry(CurrentSelectedBank).State = EntityState.Modified;                
             }
-        }       
+        }
 
+        
         private void CreateUtility()
         {
             CurrentSelectedUtility = null;
@@ -620,6 +623,52 @@ namespace ViewModel
             CurrentSelectedBank = null;
             OnPropertyChanged("Banks");
         }
+        #endregion
+
+        #region Appliance
+        private Appliance currentSelectedAppliance;
+        public Appliance CurrentSelectedAppliance
+        {
+            get
+            {
+                return currentSelectedAppliance;
+            }
+            set
+            {
+                currentSelectedAppliance = value;
+                OnPropertyChanged("CurrentSelectedAppliance");
+            }
+        }
+
+        private IEnumerable<Appliance> appliances;
+        public IEnumerable<Appliance> Appliances
+        {
+            get
+            {
+                return appliances;
+            }
+            set
+            {
+                appliances = value;
+                OnPropertyChanged("Appliances");
+            }
+        }
+
+        private void CreateAppliance()
+        {
+            CurrentSelectedAppliance = null;
+            Appliance customerAppliance = new Appliance();
+            CurrentSelectedAppliance = customerAppliance;
+        }
+
+        private void AddAppliance()
+        {
+            CurrentSelectedCustomer.Appliances.Add(CurrentSelectedAppliance);
+            context.Entry(CurrentSelectedAppliance).State = EntityState.Added;
+            CurrentSelectedAppliance = null;
+            OnPropertyChanged("Appliances");
+        }
+
         #endregion
 
         #region INotifyPropertyChanged Implementing
@@ -857,6 +906,32 @@ namespace ViewModel
             }
         }
 
+        ICommand _createApplianceCommand;
+        public ICommand CreateApplianceCommand
+        {
+            get
+            {
+                if (_createApplianceCommand == null)
+                {
+                    _createApplianceCommand = new RelayCommand(CreateAppliance);
+                }
+                return _createApplianceCommand;
+            }
+        }
+
+        ICommand _addApplianceCommand;
+        public ICommand AddApplianceCommand
+        {
+            get
+            {
+                if (_addApplianceCommand == null)
+                {
+                    _addApplianceCommand = new RelayCommand(AddAppliance);
+                }
+                return _addApplianceCommand;
+            }
+        }
+
         #endregion
 
         public void Dispose()
@@ -917,7 +992,8 @@ namespace ViewModel
                 .Include(e => e.Banks)
                 .Include(f => f.CustomerSpouse)
                 .Include(g => g.CustomerCompany)
-                .Include(h => h.Utilities);
+                .Include(h => h.Utilities)
+                .Include(i => i.Appliances);
         }
 
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)

@@ -9,7 +9,7 @@ using Model.Helpers;
 
 namespace Model
 {
-    public class Appliances
+    public class Appliance
     {
         [Key]
         public int Id { get; set; }

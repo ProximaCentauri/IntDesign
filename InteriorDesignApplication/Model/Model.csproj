@@ -59,7 +59,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appliances.cs" />
+    <Compile Include="Appliance.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Controls\DropShadowBorder.xaml.cs">
