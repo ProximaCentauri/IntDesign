@@ -35,8 +35,7 @@ namespace View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.MainTabControl.IsEnabled = this.SaveButton.IsEnabled = false;
-            this.MainTabControl.Opacity = this.SaveButton.Opacity = 0.50;
+            enableCustomerFormPanel(false);
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -74,9 +73,7 @@ namespace View
         
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            MainTabControl.SelectedIndex = 0;
-            MainTabControl.IsEnabled = SaveButton.IsEnabled = true;
-            MainTabControl.Opacity = SaveButton.Opacity = 1;
+            enableCustomerFormPanel(true);
             DeleteButton.Visibility = Visibility.Collapsed;
         }
 
@@ -98,14 +95,20 @@ namespace View
             SearchTextBlock.Focus();
             SearchTextBlock.Select(0, SearchTextBlock.Text.Length);
             DeleteButton.Visibility = Visibility.Collapsed;
+            if(GridCustomers.SelectedIndex < 0)
+            {
+                enableCustomerFormPanel(false);
+            }
+            else
+            {
+                enableCustomerFormPanel(true);
+            }
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             this.MainTabControl.SelectedIndex = 3;
         }
-
-        IMainViewModel viewModel;
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -117,9 +120,13 @@ namespace View
         {
             if (GridCustomers.SelectedIndex >= 0)
             {
-                MainTabControl.IsEnabled = SaveButton.IsEnabled = true;
-                MainTabControl.Opacity = SaveButton.Opacity = 1;
                 DeleteButton.Visibility = Visibility.Visible;
+                enableCustomerFormPanel(true);
+            }
+            else
+            {
+                DeleteButton.Visibility = Visibility.Collapsed;
+                enableCustomerFormPanel(false);
             }
         }
 
@@ -133,6 +140,24 @@ namespace View
             else
                 SearchTextBlock.IsEnabled = true;
         }
+
+        private void enableCustomerFormPanel(bool enable)
+        {
+            if(enable)
+            {
+                MainTabControl.IsEnabled = SaveButton.IsEnabled = true;
+                MainTabControl.SelectedIndex = 0;
+                MainTabControl.Opacity = 1;
+            }
+            else
+            {
+                MainTabControl.IsEnabled = SaveButton.IsEnabled = false;
+                MainTabControl.SelectedIndex = 0;
+                MainTabControl.Opacity = 0.50;
+            }
+        }
+
+        IMainViewModel viewModel;
 
     }
 }
