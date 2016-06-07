@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteriorDesign", "InteriorDesign\InteriorDesign.csproj", "{7A78ED24-87CE-44DC-94E3-ECCCA5911F8E}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{B1B2E2F1-0C70-44F2-8353-EACAAB90738D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinContent", "SkinContent\SkinContent.csproj", "{24E3CA62-EA91-49D2-B94A-E192F0A37905}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IntDesign", "..\Installer\IntDesign\IntDesign\IntDesign.vdproj", "{66D5FB1D-FCA8-474A-B801-45421A278417}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{24E3CA62-EA91-49D2-B94A-E192F0A37905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24E3CA62-EA91-49D2-B94A-E192F0A37905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24E3CA62-EA91-49D2-B94A-E192F0A37905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D5FB1D-FCA8-474A-B801-45421A278417}.Debug|Any CPU.ActiveCfg = Debug
+		{66D5FB1D-FCA8-474A-B801-45421A278417}.Debug|Any CPU.Build.0 = Debug
+		{66D5FB1D-FCA8-474A-B801-45421A278417}.Release|Any CPU.ActiveCfg = Release
+		{66D5FB1D-FCA8-474A-B801-45421A278417}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
