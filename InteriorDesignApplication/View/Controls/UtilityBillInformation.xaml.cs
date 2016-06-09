@@ -79,6 +79,11 @@ namespace View.Controls
 
         }
 
+        private void OfficialReceiptLink_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
     }
 }

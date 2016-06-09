@@ -13,7 +13,7 @@ namespace Model.Helpers
             string status = string.Empty;            
             try
             {
-                if (!cutoffDate.HasValue)
+                if (!cutoffDate.HasValue && !withReceipt)
                 {
                     return status;
                 }

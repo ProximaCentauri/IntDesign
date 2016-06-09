@@ -114,9 +114,22 @@
                         Header="Cut-off Date"
                         Width="90"
                         Binding="{Binding CutoffDate, StringFormat=\{0:MM/dd/yyyy\}}" />
-                    <DataGridTextColumn
+                    <DataGridTemplateColumn
                         Header="Official Receipt"
-                        Width="135" />
+                        Width="135">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Hyperlink
+                                        Name="OfficialReceiptLink"
+                                        Click="OfficialReceiptLink_Click">
+                                        <TextBlock
+                                            Text="{Binding Receipt}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>                   
                     <DataGridTextColumn
                         Header="Status"
                         Width="125"
