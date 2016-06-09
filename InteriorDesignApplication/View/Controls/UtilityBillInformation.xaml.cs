@@ -16,6 +16,7 @@ using View;
 using Model.Controls;
 using ViewModel;
 using Model;
+using System.Diagnostics;
 
 namespace View.Controls
 {
@@ -74,14 +75,14 @@ namespace View.Controls
 
         IMainViewModel viewModel;
 
-        private void BillStatementLink_Click(object sender, RoutedEventArgs e)
-        {
-
+        private void BillStatementLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {            
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));          
         }
 
-        private void OfficialReceiptLink_Click(object sender, RoutedEventArgs e)
+        private void OfficialReceiptLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri)); 
         }
 
 

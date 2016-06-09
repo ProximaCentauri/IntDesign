@@ -102,9 +102,11 @@
                                 <TextBlock>
                                     <Hyperlink
                                         Name="BillStatementLink"
-                                        Click="BillStatementLink_Click">
+                                        RequestNavigate="BillStatementLink_RequestNavigate"
+                                        NavigateUri="{Binding BillStatement}">
                                         <TextBlock
-                                            Text="{Binding BillStatement}" />
+                                            Text="{Binding BillStatement}"
+                                            Name="BillStatementTxt"/>
                                     </Hyperlink>
                                 </TextBlock>
                             </DataTemplate>
@@ -122,7 +124,8 @@
                                 <TextBlock>
                                     <Hyperlink
                                         Name="OfficialReceiptLink"
-                                        Click="OfficialReceiptLink_Click">
+                                        RequestNavigate="OfficialReceiptLink_RequestNavigate"
+                                        NavigateUri="{Binding Receipt}">
                                         <TextBlock
                                             Text="{Binding Receipt}" />
                                     </Hyperlink>
