@@ -291,7 +291,7 @@
                     <TextBox
                         Grid.Column="1"
                         Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding UtilityBillType.Name}"
+                        Text="{Binding CurrentSelectedUtilityBillType.Name}"
                         Name="UtilityBillTypeInput"/>                    
                 </Grid>
             </StackPanel>
@@ -347,8 +347,8 @@
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" 
-                        Text="{Binding UtilityCompany.Name}"
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding CurrentSelectedUtilityCompany.Name}"
                         Name="UtilityCompanyInput"/>
                 </Grid>
             </StackPanel>

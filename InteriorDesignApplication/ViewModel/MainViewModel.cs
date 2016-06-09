@@ -511,39 +511,17 @@ namespace ViewModel
         
         private void CreateUtility()
         {
-            CurrentSelectedUtility = null;
-            Utility utility = new Utility();
+            CurrentSelectedUtility = null;            
             UtilityReceipt = null;
             UtilityCutoffDate = null;
-            CurrentSelectedUtilityBillType = null;
-            CurrentSelectedUtilityCompany = null;
-            CurrentSelectedUtility = utility;            
+            CurrentSelectedUtilityBillType = new UtilityBillType();
+            CurrentSelectedUtilityCompany = new UtilityCompany();
+            CurrentSelectedUtility = new Utility();            
         }
 
         private void AddUtility()
         {
-            if (UtilityBillType != null && !UtilityBillType.Name.Trim().Equals(string.Empty))
-            {
-                if (!UtilityBillTypes.Contains(UtilityBillType))
-                {
-                    UtilityBillTypes.Add(UtilityBillType);
-                    CurrentSelectedUtilityBillType = UtilityBillType;
-                }
-                UtilityBillType = null;
-                OnPropertyChanged("UtilityBillTypes");
-            }
-            else if ((UtilityCompany != null && !UtilityCompany.Name.Trim().Equals(string.Empty))
-                && CurrentSelectedUtilityBillType != null)
-            {
-                if (!CurrentSelectedUtilityBillType.UtilityCompanies.Contains(UtilityCompany))
-                {
-                    CurrentSelectedUtilityBillType.UtilityCompanies.Add(UtilityCompany);
-                    CurrentSelectedUtilityCompany = UtilityCompany;
-                }
-                UtilityCompany = null;
-                OnPropertyChanged("UtilityCompanies");
-            }
-            else if (CurrentSelectedUtilityBillType != null && CurrentSelectedUtilityCompany != null)
+            if (CurrentSelectedUtilityBillType != null && CurrentSelectedUtilityCompany != null)
             {
                 CurrentSelectedUtility.BillType = CurrentSelectedUtilityBillType;
                 CurrentSelectedUtility.UtilityCompany = CurrentSelectedUtilityCompany;
@@ -561,6 +539,31 @@ namespace ViewModel
                 CurrentSelectedUtility = null;
                 UtilityCutoffDate = null;
                 UtilityReceipt = null;
+            }
+        }
+
+        private void AddUtilityBillType()
+        {
+            if (CurrentSelectedUtilityBillType != null && !CurrentSelectedUtilityBillType.Name.Trim().Equals(string.Empty))
+            {
+                if (!UtilityBillTypes.Contains(CurrentSelectedUtilityBillType))
+                {
+                    UtilityBillTypes.Add(CurrentSelectedUtilityBillType);
+                }                
+                OnPropertyChanged("UtilityBillTypes");
+            }
+        }
+
+        private void AddUtilityCompany()
+        {
+            if ((CurrentSelectedUtilityCompany != null && !CurrentSelectedUtilityCompany.Name.Trim().Equals(string.Empty))
+                && CurrentSelectedUtilityBillType != null)
+            {
+                if (!CurrentSelectedUtilityBillType.UtilityCompanies.Contains(CurrentSelectedUtilityCompany))
+                {
+                    CurrentSelectedUtilityBillType.UtilityCompanies.Add(CurrentSelectedUtilityCompany);
+                }
+                OnPropertyChanged("UtilityCompanies");
             }
         }
 
@@ -787,6 +790,32 @@ namespace ViewModel
                     _addUtilityCommand = new RelayCommand(AddUtility);
                 }
                 return _addUtilityCommand;
+            }
+        }
+
+        ICommand _addUtilityBillTypeCommand;
+        public ICommand AddUtilityBillTypeCommand
+        {
+            get
+            {
+                if (_addUtilityBillTypeCommand == null)
+                {
+                    _addUtilityBillTypeCommand = new RelayCommand(AddUtilityBillType);
+                }
+                return _addUtilityBillTypeCommand;
+            }
+        }
+
+        ICommand _addUtilityCompanyCommand;
+        public ICommand AddUtilityCompanyCommand
+        {
+            get
+            {
+                if (_addUtilityCompanyCommand == null)
+                {
+                    _addUtilityCompanyCommand = new RelayCommand(AddUtilityCompany);
+                }
+                return _addUtilityCompanyCommand;
             }
         }
 

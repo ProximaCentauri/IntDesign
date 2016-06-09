@@ -60,24 +60,29 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (view == "add")
+            if (this.utilityFormPanel.Visibility == Visibility.Visible)
             {
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCommand"));
-            }
-            else
-            {
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
-            }
-
-            if (this.addBillTypePanel.Visibility == Visibility.Visible ||
-                this.addCompanyNamePanel.Visibility == Visibility.Visible)
-            {                  
-                ShowUtilityFormPanel();
-            }           
-            else if (this.utilityFormPanel.Visibility == Visibility.Visible)
-            {                
+                if (view == "add")
+                {
+                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCommand"));
+                }
+                else if (view == "edit")
+                {
+                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
+                }
                 viewModel.CurrentPopupView = null;
-            }              
+            }
+            else if (this.addBillTypePanel.Visibility == Visibility.Visible)
+            {
+                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityBillTypeCommand"));
+                ShowUtilityFormPanel();
+            }
+            else if (this.addCompanyNamePanel.Visibility == Visibility.Visible)
+            {
+                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCompanyCommand"));
+                ShowUtilityFormPanel();
+            }
+                                   
         }
 
         private void addBillType_Click(object sender, RoutedEventArgs e)
