@@ -15,7 +15,9 @@ namespace InteriorDesign
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            log4net.GlobalContext.Properties["LogFileName"] = System.IO.Directory.GetCurrentDirectory() + "\\log\\IntDesign";
+            string dir = System.IO.Directory.GetCurrentDirectory();
+            string finalDir = dir.Substring(0, dir.LastIndexOf('\\'));
+            log4net.GlobalContext.Properties["LogFileName"] = finalDir + "\\log\\IntDesign";
             log4net.Config.XmlConfigurator.Configure();
             Resources.MergedDictionaries.Add(LoadComponent(new Uri("SkinContent;component/SkinContent.xaml", UriKind.Relative)) as ResourceDictionary);
             Log.Info("Startup Application...");
