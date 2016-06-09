@@ -74,6 +74,11 @@ namespace View.Controls
 
         IMainViewModel viewModel;
 
+        private void BillStatementLink_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
     }
 }

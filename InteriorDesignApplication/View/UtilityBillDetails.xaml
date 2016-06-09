@@ -210,7 +210,7 @@
                         Orientation="Horizontal">
                         <TextBox
                             Style="{StaticResource popupTextBoxStyle}"
-                            Text="{Binding CurrentSelectedUtility.BillStatement}"
+                            Text="{Binding CurrentSelectedUtility.BillStatement, UpdateSourceTrigger=PropertyChanged}"
                                  Name="BillStatementTxt" />
                         <Button
                             Name="browseBilling"
@@ -231,7 +231,7 @@
                         Orientation="Horizontal">
                         <TextBox
                             Style="{StaticResource popupTextBoxStyle}"
-                            Text="{Binding UtilityReceipt}"
+                            Text="{Binding UtilityReceipt, UpdateSourceTrigger=PropertyChanged}"
                             Name="UtilityReceiptTxt"/>
                         <Button
                             Name="browseReceipt"
@@ -249,8 +249,8 @@
                     <TextBox Grid.Row="7"
                              Grid.Column="1"
                              Style="{StaticResource popupTextBoxStyle}"
-                             IsReadOnly="False"
-                             Text="{Binding UtilityStatus, Mode=OneWay}"
+                             IsReadOnly="True"
+                             Text="{Binding UtilityStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Name="UtilityStatus">
                     </TextBox>
                 </Grid>

@@ -94,9 +94,22 @@
                         Header="Account #"
                         Width="130"
                         Binding="{Binding AccountId}" />
-                    <DataGridTextColumn
+                    <DataGridTemplateColumn
                         Header="Billing Statement"
-                        Width="135" />
+                        Width="135">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Hyperlink
+                                        Name="BillStatementLink"
+                                        Click="BillStatementLink_Click">
+                                        <TextBlock
+                                            Text="{Binding BillStatement}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn
                         Header="Cut-off Date"
                         Width="90"
