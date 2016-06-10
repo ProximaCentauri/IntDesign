@@ -515,7 +515,8 @@ namespace ViewModel
                 if (!UtilityBillTypes.Contains(CurrentSelectedUtilityBillType))
                 {
                     UtilityBillTypes.Add(CurrentSelectedUtilityBillType);
-                }                
+                }
+                OnPropertyChanged("CurrentSelectedUtilityBillType");
                 OnPropertyChanged("UtilityBillTypes");
             }
         }
@@ -529,6 +530,7 @@ namespace ViewModel
                 {
                     CurrentSelectedUtilityBillType.UtilityCompanies.Add(CurrentSelectedUtilityCompany);
                 }
+                OnPropertyChanged("CurrentSelectedUtilityCompany");
                 OnPropertyChanged("UtilityCompanies");
             }
         }
