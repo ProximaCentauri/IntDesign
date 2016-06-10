@@ -2,8 +2,10 @@
     x:Class="View.Controls.CompanyInformation"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"    
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     mc:Ignorable="d"
     xmlns:local="clr-namespace:View"
     Height="Auto"
@@ -134,12 +136,29 @@
                 <TextBlock
                     Text="Facebook Page:"
                     Width="100"
-                    Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                <TextBox
+                    Style="{StaticResource mainLabelTextStyle}"/>
+                <controls:HyperlinkTextbox
                     Width="180"
                     Text="{Binding CurrentSelectedCustomer.CustomerCompany.FacebookPage}"
                     Margin="0,0,10,0"
-                    Name="FacebookPage" />
+                    Name="FacebookPage">                    
+                    <controls:HyperlinkTextbox.Style>
+                        <Style TargetType="{x:Type controls:HyperlinkTextbox}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasValidURI, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:HyperlinkTextbox}}}" Value="True">
+                                    <Setter Property="TextDecorations" Value="Underline"/>
+                                    <Setter Property="Foreground" Value="#FF2A6DCD"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </controls:HyperlinkTextbox.Style>
+                </controls:HyperlinkTextbox>
+                <!--<TextBox
+                    Width="180"
+                    Text="{Binding CurrentSelectedCustomer.CustomerCompany.FacebookPage}"
+                    Margin="0,0,10,0"
+                    Name="FacebookPage" />-->
+                
             </StackPanel>
         </Grid>
         <Grid
