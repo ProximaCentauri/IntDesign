@@ -24,7 +24,7 @@ namespace View
     /// </summary>
     public partial class UtilityBillDetails : PopupView
     {
-        private string view = string.Empty;
+        private string view = string.Empty;        
         public UtilityBillDetails(string _view)
         {
             InitializeComponent();
@@ -107,22 +107,7 @@ namespace View
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.utilityFormPanel.Visibility = Visibility.Visible;
         }
-
-        private void AddBillTypePanel_VisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue)
-            {
-                viewModel.CreateEntity(new UtilityBillType());
-            }
-        }
-
-        private void AddCompanyPanel_VisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue)
-            {
-                viewModel.CreateEntity(new UtilityCompany());
-            }
-        }
+      
 
         private void browseBilling_Click(object sender, RoutedEventArgs e)
         {
@@ -131,7 +116,15 @@ namespace View
             Nullable<bool> result = dlg.ShowDialog();
             if (!String.IsNullOrEmpty(dlg.FileName))
             {
-                BillStatementTxt.Text = dlg.FileName;                
+                if (validateFileAttachment(dlg.SafeFileName, "bill"))
+                {
+                    BillStatementTxt.Text = dlg.FileName;
+                }
+                else
+                {
+                    BillStatementTxt.Text = string.Empty;
+                    // show popup here
+                }
             }
         }
 
@@ -142,7 +135,15 @@ namespace View
             Nullable<bool> result = dlg.ShowDialog();
             if (!String.IsNullOrEmpty(dlg.FileName))
             {
-                UtilityReceiptTxt.Text = dlg.FileName;
+                if (validateFileAttachment(dlg.SafeFileName, "receipt"))
+                {
+                    UtilityReceiptTxt.Text = dlg.FileName;
+                }
+                else
+                {
+                    UtilityReceiptTxt.Text = string.Empty;
+                    //show pop-up here
+                }
             }
         }
 
@@ -171,5 +172,30 @@ namespace View
         {
             editCompanyName.Visibility = Visibility.Visible;
         }        
+
+        private bool validateFileAttachment(string filename, string attachmentType)
+        {
+            bool isValid = false;
+            if (!String.IsNullOrEmpty(filename))
+            {
+                string[] names = filename.Split('_');                
+                if (names.Count() == 4)
+                {
+                    isValid = true;
+                    if (!names[0].Equals(utilityCompanyName.Text)
+                                || !names[1].Equals(AccountIdTxt.Text)
+                                || !names[2].Equals(UtilityCutoffDateTxt.SelectedDate.Value.ToString("MMddyyyy"))
+                                || !names[3].ToLower().Remove(names[3].IndexOf('.')).Equals(attachmentType.ToLower()))
+                    {
+                        isValid = false;
+                    }                     
+                }
+                else
+                {
+                    isValid = false;
+                }
+            }            
+            return isValid;
+        }
     }
 }
