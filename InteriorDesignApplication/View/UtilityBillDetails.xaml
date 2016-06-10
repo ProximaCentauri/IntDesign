@@ -185,6 +185,7 @@
                     <TextBox
                         Grid.Row="3"
                         Grid.Column="1"
+                        Name="AccountIdTxt"
                         Style="{StaticResource popupTextBoxStyle}"
                         Text="{Binding CurrentSelectedUtility.AccountId}"/>
                     <TextBlock
@@ -198,6 +199,7 @@
                                 Margin="0,5,0,0"
                                 SelectedDateFormat="Long"
                                 HorizontalAlignment="Left"
+                                Name="UtilityCutoffDateTxt"
                                 SelectedDate="{Binding UtilityCutoffDate}" />
                     <TextBlock
                         Grid.Row="5"
