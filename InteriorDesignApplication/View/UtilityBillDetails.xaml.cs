@@ -107,22 +107,7 @@ namespace View
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.utilityFormPanel.Visibility = Visibility.Visible;
         }
-
-        private void AddBillTypePanel_VisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue)
-            {
-                viewModel.CreateEntity(new UtilityBillType());
-            }
-        }
-
-        private void AddCompanyPanel_VisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue)
-            {
-                viewModel.CreateEntity(new UtilityCompany());
-            }
-        }
+      
 
         private void browseBilling_Click(object sender, RoutedEventArgs e)
         {

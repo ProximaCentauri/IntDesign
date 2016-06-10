@@ -71,15 +71,7 @@ namespace ViewModel
             else if (ob is Utility)
             {
                 Utility = ob as Utility;
-            }            
-            else if (ob is UtilityBillType)
-            {
-                UtilityBillType = ob as UtilityBillType;
-            }
-            else if (ob is UtilityCompany)
-            {
-                UtilityCompany = ob as UtilityCompany;
-            }     
+            }                           
             
         }
 
@@ -292,20 +284,7 @@ namespace ViewModel
                 OnPropertyChanged("UtilityCompanies");
             }
         }
-
-        private UtilityBillType newUtilityBillType;
-        public UtilityBillType UtilityBillType
-        {
-            get
-            {
-                return newUtilityBillType;
-            }
-            set
-            {
-                newUtilityBillType = value;
-                OnPropertyChanged("UtilityBillType");
-            }
-        }
+        
 
         private ICollection<UtilityBillType> utilityBillTypes;
         public ICollection<UtilityBillType> UtilityBillTypes
@@ -347,20 +326,7 @@ namespace ViewModel
             }
         }
 
-        private UtilityCompany newUtilityCompany;
-        public UtilityCompany UtilityCompany
-        {
-            get
-            {
-                return newUtilityCompany;
-            }
-            set
-            {
-                newUtilityCompany = value;
-                OnPropertyChanged("UtilityCompany");
-            }
-        }
-
+        
         private DateTime? utilityCutOffDate;
         public DateTime? UtilityCutoffDate
         {
@@ -534,7 +500,7 @@ namespace ViewModel
                 
                 // set properties to null
                 Utility = null;
-                currentSelectedUtilityBillType = null;
+                CurrentSelectedUtilityBillType = null;
                 CurrentSelectedUtilityCompany = null;
                 CurrentSelectedUtility = null;
                 UtilityCutoffDate = null;
