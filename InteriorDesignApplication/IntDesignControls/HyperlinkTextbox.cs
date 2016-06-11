@@ -40,15 +40,15 @@ namespace IntDesignControls
         private void UpdateStyle(HyperlinkTextbox textBox)
         {
             TextDecorationCollection myCollection = new TextDecorationCollection();
-            TextDecoration myStrikeThrough = new TextDecoration();
-            myStrikeThrough.Location = TextDecorationLocation.Underline;
+            TextDecoration underLine = new TextDecoration();
+            underLine.Location = TextDecorationLocation.Underline;
 
             // Set the solid color brush.
-            myStrikeThrough.Pen = new Pen(Brushes.Red, 2);
-            myStrikeThrough.PenThicknessUnit = TextDecorationUnit.FontRecommended;
+            underLine.Pen = new Pen(Brushes.Red, 2);
+            underLine.PenThicknessUnit = TextDecorationUnit.FontRecommended;
 
             // Set the underline decoration to the text block.
-            myCollection.Add(myStrikeThrough);
+            myCollection.Add(underLine);
             textBox.TextDecorations = myCollection;
             textBox.Foreground = Brushes.Blue;
         }
