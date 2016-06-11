@@ -149,6 +149,10 @@ namespace ViewModel
                     {
                         currentSelectedCustomer.TitleInfo = new Title();
                     }
+                    if(currentSelectedCustomer.FitOut == null)
+                    {
+                        currentSelectedCustomer.FitOut = new FitOut();
+                    }
                     else
                     {
                         CustomerImageSource = null;
@@ -424,6 +428,7 @@ namespace ViewModel
             Customer customer = new Customer();
             customer.CustomerCompany = new Company();
             customer.TitleInfo = new Title();
+            customer.FitOut = new FitOut();
             CurrentSelectedCustomer = customer;
             SelectedIndex = -1;
         }
@@ -996,7 +1001,8 @@ namespace ViewModel
                 .Include(g => g.CustomerCompany)
                 .Include(h => h.Utilities)
                 .Include(i => i.Appliances)
-                .Include(j => j.TitleInfo);
+                .Include(j => j.TitleInfo)
+                .Include(k => k.FitOut);
         }
 
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
