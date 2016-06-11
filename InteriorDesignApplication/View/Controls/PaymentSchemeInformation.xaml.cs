@@ -57,5 +57,14 @@ namespace View.Controls
             else
                 deleteEntry.Visibility = Visibility.Collapsed;
         }
+
+        private void TotalPayment_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double unitCost = Convert.ToDouble(UnitCost.Text.ToString());
+            double totalPayment = Convert.ToDouble(TotalPayment.Text.ToString());
+            double balance = unitCost - totalPayment;
+
+            Balance.Text = string.Format("{0:0.00}", balance.ToString());
+        }
     }
 }

@@ -145,6 +145,10 @@ namespace ViewModel
                     {
                         CustomerImageSource = new BitmapImage(new Uri(currentSelectedCustomer.ImageSourceLocation));
                     }
+                    if(currentSelectedCustomer.TitleInfo == null)
+                    {
+                        currentSelectedCustomer.TitleInfo = new Title();
+                    }
                     else
                     {
                         CustomerImageSource = null;
@@ -419,6 +423,7 @@ namespace ViewModel
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
             customer.CustomerCompany = new Company();
+            customer.TitleInfo = new Title();
             CurrentSelectedCustomer = customer;
             SelectedIndex = -1;
         }
@@ -990,7 +995,8 @@ namespace ViewModel
                 .Include(f => f.CustomerSpouse)
                 .Include(g => g.CustomerCompany)
                 .Include(h => h.Utilities)
-                .Include(i => i.Appliances);
+                .Include(i => i.Appliances)
+                .Include(j => j.TitleInfo);
         }
 
         public static IQueryable<Customer> GetCustomersByParam(this ManagerDBContext context, string searchType, string searchValue)
