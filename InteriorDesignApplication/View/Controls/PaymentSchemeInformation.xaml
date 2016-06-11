@@ -100,7 +100,8 @@
                     <TextBox
                         Width="194"
                         Margin="0,0,10,0"
-                        Name="Balance"></TextBox>
+                        IsReadOnly="True"
+                        Name="Balance" />
                 </StackPanel>
             </Grid>
         </Grid>
