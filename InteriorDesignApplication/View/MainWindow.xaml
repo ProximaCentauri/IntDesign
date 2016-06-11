@@ -114,19 +114,25 @@
                         Binding="{Binding CustomerCompany.Name}"/>
                     <DataGridTextColumn
                         Header="Address"
-                        Width="300" 
+                        Width="350" 
                         Binding="{Binding Address}"/>
                     <DataGridTemplateColumn 
                         Header="Alerts"
-                        Width="250">
+                        Width="200">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock>
-                                         <Hyperlink Command="{Binding Path=DataContext.ShowUtilityAlertsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                                                    Click="Hyperlink_Click">
-                                            <TextBlock Text="{Binding Alerts}" />
+                                <StackPanel
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="5,0,0,0">
+                                         <Hyperlink
+                                            Command="{Binding Path=DataContext.ShowUtilityAlertsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                            Click="Hyperlink_Click">
+                                            <TextBlock
+                                                Text="{Binding Alerts}" />
                                         </Hyperlink>
                                     </TextBlock>
+                                </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

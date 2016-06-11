@@ -893,6 +893,28 @@
             Value="18" />
     </Style>
     <Style
+        x:Key="alertIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-clock-alert}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="18" />
+        <Setter
+            Property="Height"
+            Value="18" />
+    </Style>
+    <Style
         x:Key="popUpBorderStyle"
         TargetType="Grid">
         <Setter
