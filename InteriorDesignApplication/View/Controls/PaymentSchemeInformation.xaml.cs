@@ -60,14 +60,17 @@ namespace View.Controls
 
         private void TotalPayment_TextChanged(object sender, TextChangedEventArgs e)
         {
-            double unitCost = 0;
-            double totalPayment = 0;
-            double balance = 0;
+            string unitCostText = UnitCost.Text;
+            string totalPaymentText = TotalPayment.Text;
 
-            if(UnitCost.Text != string.Empty || TotalPayment.Text != string.Empty)
+            if (unitCostText != string.Empty && totalPaymentText != string.Empty)
             {
-                unitCost = Convert.ToDouble(UnitCost.Text);
-                totalPayment = Convert.ToDouble(TotalPayment.Text);
+                double unitCost = 0;
+                double totalPayment = 0;
+                double balance = 0;
+
+                unitCost = Convert.ToDouble(unitCostText);
+                totalPayment = Convert.ToDouble(totalPaymentText);
                 balance = unitCost - totalPayment;
 
                 Balance.Text = string.Format("{0:0.00}", balance.ToString());
