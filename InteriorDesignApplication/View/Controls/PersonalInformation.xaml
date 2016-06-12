@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:View"
     xmlns:control="clr-namespace:View.Controls"
@@ -75,10 +76,34 @@
                         Text="Last Name:"
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <TextBox
+                    <controls:WatermarkTextBox 
+                        Name="LastName"
                         Width="150"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.LastName}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.LastName}"
+                        Watermark="This field is required"
+                        >
+                        <controls:WatermarkTextBox.Style>
+                            <Style TargetType="{x:Type controls:WatermarkTextBox}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource Self}}" Value="{x:Static sys:String.Empty}">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                        <Setter Property="BorderBrush" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:WatermarkTextBox.Style>
+                    </controls:WatermarkTextBox>
+                    <!--<TextBox
+                        Width="150"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.LastName}"
+                        >
+                        <TextBox.ToolTip>
+                            <ToolTip Placement="Bottom" StaysOpen="True" Content="This field is required" Visibility="Visible"/>
+                        </TextBox.ToolTip>
+                    </TextBox>-->
+                    
                 </StackPanel>
             </Grid>
             <Grid

@@ -62,11 +62,7 @@ namespace IntDesignControls
                 Process.Start(new ProcessStartInfo(uri.AbsoluteUri));
             }
         }
-        private void OnMouseDoubleClick(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         public bool AllowUserInput
         {
             get { return (bool)GetValue(AllowUserInputProperty); }
