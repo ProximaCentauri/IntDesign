@@ -93,6 +93,9 @@
     <Compile Include="FitOutDetails.xaml.cs">
       <DependentUpon>FitOutDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GenericNotificationPopup.xaml.cs">
+      <DependentUpon>GenericNotificationPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaymentDetails.xaml.cs">
       <DependentUpon>PaymentDetails.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DependentDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GenericNotificationPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
