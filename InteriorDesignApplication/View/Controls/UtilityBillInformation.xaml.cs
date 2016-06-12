@@ -17,6 +17,7 @@ using Model.Controls;
 using ViewModel;
 using Model;
 using System.Diagnostics;
+using System.IO;
 
 namespace View.Controls
 {
@@ -77,12 +78,29 @@ namespace View.Controls
 
         private void BillStatementLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {            
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));          
+            try
+            {
+                Process.Start(new ProcessStartInfo(@e.Uri.AbsolutePath)); 
+            }
+            catch(Exception ex)
+            {
+
+                // show pop-up here that problem is encountered opening file
+            }
+                    
         }
 
         private void OfficialReceiptLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri)); 
+            try
+            {
+                Process.Start(new ProcessStartInfo(@e.Uri.AbsolutePath));
+            }
+            catch (Exception ex)
+            {
+
+                // show pop-up here that problem is encountered opening file
+            }
         }
 
 

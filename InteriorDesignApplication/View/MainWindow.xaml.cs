@@ -78,7 +78,7 @@ namespace View
             DeleteButton.Visibility = Visibility.Collapsed;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (personalInfo.StatusIndex.Text.Equals("Married") && personalInfo.SpouseName.Text != String.Empty)
             {
@@ -148,20 +148,25 @@ namespace View
         {
             if(enable)
             {
-                MainTabControl.IsEnabled = SaveButton.IsEnabled = true;
+                MainTabControl.IsEnabled = CancelButton.IsEnabled = SaveButton.IsEnabled = true;
                 MainTabControl.SelectedIndex = 0;
-                MainTabControl.Opacity = SaveButton.Opacity = 1;
+                MainTabControl.Opacity = CancelButton.Opacity = SaveButton.Opacity = 1;
             }
             else
             {
-                MainTabControl.IsEnabled = SaveButton.IsEnabled = false;
+                MainTabControl.IsEnabled = CancelButton.IsEnabled = SaveButton.IsEnabled = false;
                 MainTabControl.SelectedIndex = 0;
-                MainTabControl.Opacity = SaveButton.Opacity = 0.50;
+                MainTabControl.Opacity = CancelButton.Opacity = SaveButton.Opacity = 0.50;
             }
         }
 
         IMainViewModel viewModel;
         private bool addCustomer = false;
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = new CancelConfirmationPopup();
+        }
 
     }
 }

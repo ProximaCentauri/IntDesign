@@ -306,26 +306,50 @@
                         Style="{StaticResource mainButtonTextStyle}" />
                 </StackPanel>
             </Button>
-            <Button
-                Grid.Column="1"
-                Width="180"
-                Height="50"
-                Margin="0,7,24,0"
+            <StackPanel
+                Orientation="Horizontal"
                 HorizontalAlignment="Right"
-                x:Name="SaveButton"
-                Style="{StaticResource mainButtonStyle}"
-                Command="{Binding SaveCustomerCommand}"
-                Click="Button_Click">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource saveUserDetailIconStyle}" />
-                    <TextBlock
-                        Text="Save Details"
-                        Style="{StaticResource mainButtonTextStyle}" />
-                </StackPanel>
-            </Button>
+                Grid.Column="1">
+                <Button
+                    Grid.Column="0"
+                    Width="180"
+                    Height="50"
+                    Margin="0,7,20,0"
+                    HorizontalAlignment="Left"
+                    Name="CancelButton"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource mainLinkButtonStyle}">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                        <Image
+                            Style="{StaticResource cancelChangesIconStyle}" />
+                        <TextBlock
+                            Text="Cancel Changes"
+                            Style="{StaticResource mainButtonTextStyle}" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="180"
+                    Height="50"
+                    Margin="0,7,24,0"
+                    HorizontalAlignment="Right"
+                    x:Name="SaveButton"
+                    Style="{StaticResource mainButtonStyle}"
+                    Command="{Binding SaveCustomerCommand}"
+                    Click="SaveButton_Click">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                        <Image
+                            Style="{StaticResource saveUserDetailIconStyle}" />
+                        <TextBlock
+                            Text="Save Details"
+                            Style="{StaticResource mainButtonTextStyle}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            
         </Grid>
         <c:PopupControl x:Name="PopupControl" />
     </Grid>

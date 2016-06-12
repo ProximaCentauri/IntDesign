@@ -1,0 +1,53 @@
+﻿<c:PopupView
+    x:Class="View.CancelConfirmationPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+    Title="CancelConfirmationPopup"
+    Height="Auto"
+    Width="300"
+    Loaded="PopupView_Loaded"
+    Alignment="Center"
+    Background="White"
+    BackgroundType="Shroud">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="130" />
+            <RowDefinition
+                Height="80" />
+        </Grid.RowDefinitions>
+        <Border
+            Style="{StaticResource mainPopupBorderStyle}"
+            Grid.RowSpan="2" />
+        <TextBlock
+            Text="Are you sure you want to cancel all changes made?"
+            Style="{StaticResource popupConfirmationTextStyle}" />
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Width="100"
+                Height="30"
+                x:Name="noButton"
+                Style="{StaticResource mainLinkButtonStyle}"
+                Click="noButton_Click">
+                <TextBlock
+                    Text="No"
+                    Style="{StaticResource noIconButtonStyle}" />
+            </Button>
+            <Button
+                Width="100"
+                Height="30"
+                Margin="24,0,0,0"
+                x:Name="yesButton"
+                Style="{StaticResource mainButtonStyle}"
+                Click="yesButton_Click">
+                <TextBlock
+                    Text="Yes"
+                    Style="{StaticResource noIconButtonStyle}" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</c:PopupView>
