@@ -211,16 +211,14 @@
                         Grid.Row="5"
                         Grid.Column="1"
                         Orientation="Horizontal">
-                        <!--<TextBox
-                            Style="{StaticResource popupTextBoxStyle}"
-                            Text="{Binding CurrentSelectedUtility.BillStatement, UpdateSourceTrigger=PropertyChanged}"
-                                 Name="BillStatementTxt" />-->
                         <controls:WatermarkTextBox
                             Style="{StaticResource popupTextBoxStyle}"
                             Text="{Binding CurrentSelectedUtility.BillStatement, UpdateSourceTrigger=PropertyChanged}"
-                            Watermark="company_accountId_duedate_bill (.png or .jpg)"
-                            Name="BillStatementTxt"
-                            WaterMarkForeground="Gray"/>
+                            Watermark="company_accountId_duedate_bill(.png or .jpg)"
+                            x:Name="BillStatementTxt"
+                            AllowUserInput="False"
+                            WaterMarkForeground="Gray"
+                            />
                         <Button
                             Name="browseBilling"
                             Width="50"
@@ -238,16 +236,14 @@
                         Grid.Row="6"
                         Grid.Column="1"
                         Orientation="Horizontal">
-                        <!--<TextBox
-                            Style="{StaticResource popupTextBoxStyle}"
-                            Text="{Binding UtilityReceipt, UpdateSourceTrigger=PropertyChanged}"
-                            Name="UtilityReceiptTxt"/>-->
-                        <controls:WatermarkTextBox
+                       <controls:WatermarkTextBox
                             Style="{StaticResource popupTextBoxStyle}"
                             Text="{Binding UtilityReceipt, UpdateSourceTrigger=PropertyChanged}"
                             Name="UtilityReceiptTxt"
-                            Watermark="company_accountId_dueDate_receipt (.png or .jpg)"
-                            WaterMarkForeground="Gray"/>
+                            Watermark="company_accountId_dueDate_receipt(.png or .jpg)"
+                            WaterMarkForeground="Gray"
+                            AllowUserInput="False"
+                           />
                         <Button
                             Name="browseReceipt"
                             Width="50"

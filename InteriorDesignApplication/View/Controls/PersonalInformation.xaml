@@ -97,11 +97,13 @@
                         Text="First Name:"
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <TextBox
+                    <controls:WatermarkTextBox
                         Width="180"
                         Margin="0,0,10,0"
                         Name="FirstName"
-                        Text="{Binding CurrentSelectedCustomer.FirstName, UpdateSourceTrigger=Explicit}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.FirstName, UpdateSourceTrigger=Explicit}"
+                        Watermark="This field is required"
+                        WaterMarkForeground="Gray"/>                   
                 </StackPanel>
             </Grid>
             <Grid

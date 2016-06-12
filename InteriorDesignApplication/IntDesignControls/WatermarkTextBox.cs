@@ -190,7 +190,7 @@ namespace IntDesignControls
         
         protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
         {
-            if (!string.IsNullOrEmpty(Watermark) && Text.Equals(Watermark))
+            if (!string.IsNullOrEmpty(Watermark) && Text.Equals(Watermark) && !IsReadOnly)
             {
                 CaretIndex = 0;                
             }

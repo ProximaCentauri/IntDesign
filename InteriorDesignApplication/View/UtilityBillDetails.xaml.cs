@@ -188,6 +188,7 @@ namespace View
                                 || !names[3].ToLower().Remove(names[3].IndexOf('.')).Equals(attachmentType.ToLower()))
                     {
                         isValid = false;
+                        BillStatementTxt.Background = Brushes.Red;
                     }                     
                 }
                 else
