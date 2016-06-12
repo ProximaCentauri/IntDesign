@@ -12,11 +12,13 @@ namespace Model
     public class FitOut
     {
         [Key]
+        [ForeignKey("Customer")]
         public int Id { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public double Cost { get; set; }
 
-        public string FitOutBy { get; set; }
+        public string Contractor { get; set; }
 
         public string Area { get; set; }
 
@@ -25,10 +27,6 @@ namespace Model
 
         [Column(TypeName = "Date")]
         public DateTime? EndDate { get; set; }
-
-        public int CustomerId { get; set; }
-        [ForeignKey("CustomerId")]
-        public virtual Customer Customer { get; set; }
 
         //[NotMapped]
         //public string WarrantyStatus

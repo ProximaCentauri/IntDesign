@@ -22,6 +22,8 @@ namespace Model
         public virtual ICollection<Dependent> Dependents { get; set; }
         public virtual ICollection<Utility> Utilities { get; set; }
         public virtual ICollection<Appliance> Appliances { get; set; }
+        public virtual Title TitleInfo { get; set; }
+        public virtual FitOut FitOut { get; set; }
 
         public static explicit operator Customer(DbSet<Customer> v)
         {

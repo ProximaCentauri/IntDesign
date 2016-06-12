@@ -27,5 +27,7 @@ namespace Model
         public DbSet<UtilityCompany> UtilityCompanies { get; set; }
         public DbSet<Utility> Utilities { get; set; }
         public DbSet<Appliance> Appliances { get; set; }
+        public DbSet Title { get; set; }
+        public DbSet FitOut { get; set; }
     }
 }

@@ -73,6 +73,7 @@ namespace View
         
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
+            addCustomer = true;
             enableCustomerFormPanel(true);
             DeleteButton.Visibility = Visibility.Collapsed;
         }
@@ -126,8 +127,10 @@ namespace View
             else
             {
                 DeleteButton.Visibility = Visibility.Collapsed;
-                enableCustomerFormPanel(false);
+                if(!addCustomer)
+                    enableCustomerFormPanel(false);
             }
+            addCustomer = false;
         }
 
         private void searchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,17 +150,18 @@ namespace View
             {
                 MainTabControl.IsEnabled = SaveButton.IsEnabled = true;
                 MainTabControl.SelectedIndex = 0;
-                MainTabControl.Opacity = 1;
+                MainTabControl.Opacity = SaveButton.Opacity = 1;
             }
             else
             {
                 MainTabControl.IsEnabled = SaveButton.IsEnabled = false;
                 MainTabControl.SelectedIndex = 0;
-                MainTabControl.Opacity = 0.50;
+                MainTabControl.Opacity = SaveButton.Opacity = 0.50;
             }
         }
 
         IMainViewModel viewModel;
+        private bool addCustomer = false;
 
     }
 }

@@ -52,7 +52,7 @@
                     Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                 <TextBox
                     Name="addressInfo"
-                    IsEnabled="False"
+                    IsReadOnly="True"
                     Width="502"
                     Margin="0,0,10,0" />
             </StackPanel>
@@ -71,7 +71,8 @@
                 <DatePicker
                     Width="150"
                     Margin="0,0,10,0"
-                    SelectedDateFormat="Short" />
+                    SelectedDateFormat="Long"
+                    SelectedDate="{Binding CurrentSelectedCustomer.TitleInfo.ReleasedDate}"/>
             </StackPanel>
         </Grid>
         <Grid
