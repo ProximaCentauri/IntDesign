@@ -5,6 +5,7 @@
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     xmlns:helpers="clr-namespace:Model.Helpers;assembly=Model"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"    
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     Title="UtilityBillsDetails"
     Height="Auto"
     Width="Auto"
@@ -210,10 +211,16 @@
                         Grid.Row="5"
                         Grid.Column="1"
                         Orientation="Horizontal">
-                        <TextBox
+                        <!--<TextBox
                             Style="{StaticResource popupTextBoxStyle}"
                             Text="{Binding CurrentSelectedUtility.BillStatement, UpdateSourceTrigger=PropertyChanged}"
-                                 Name="BillStatementTxt" />
+                                 Name="BillStatementTxt" />-->
+                        <controls:WatermarkTextBox
+                            Style="{StaticResource popupTextBoxStyle}"
+                            Text="{Binding CurrentSelectedUtility.BillStatement, UpdateSourceTrigger=PropertyChanged}"
+                            Watermark="company_accountId_duedate_bill (.png or .jpg)"
+                            Name="BillStatementTxt"
+                            WaterMarkForeground="Gray"/>
                         <Button
                             Name="browseBilling"
                             Width="50"
@@ -231,10 +238,16 @@
                         Grid.Row="6"
                         Grid.Column="1"
                         Orientation="Horizontal">
-                        <TextBox
+                        <!--<TextBox
                             Style="{StaticResource popupTextBoxStyle}"
                             Text="{Binding UtilityReceipt, UpdateSourceTrigger=PropertyChanged}"
-                            Name="UtilityReceiptTxt"/>
+                            Name="UtilityReceiptTxt"/>-->
+                        <controls:WatermarkTextBox
+                            Style="{StaticResource popupTextBoxStyle}"
+                            Text="{Binding UtilityReceipt, UpdateSourceTrigger=PropertyChanged}"
+                            Name="UtilityReceiptTxt"
+                            Watermark="company_accountId_dueDate_receipt (.png or .jpg)"
+                            WaterMarkForeground="Gray"/>
                         <Button
                             Name="browseReceipt"
                             Width="50"

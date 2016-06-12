@@ -104,6 +104,12 @@ namespace IntDesignControls
             set { SetValue(ClearButtonStyleProperty, value); }
         }
 
+        public Brush WaterMarkForeground
+        {
+            get { return (Brush)GetValue(WaterMarkForegroundProperty); }
+            set { SetValue(WaterMarkForegroundProperty, value); }
+        }
+
         public event RoutedEventHandler KeyboardFocusEventHandler
         {
             add { AddHandler(KeyboardFocusEvent, value); }
@@ -135,6 +141,8 @@ namespace IntDesignControls
 
         public static DependencyProperty PasswordCharProperty = DependencyProperty.Register("PasswordChar", typeof(char), typeof(WatermarkTextBox),
             new UIPropertyMetadata('*'));
+
+        public static DependencyProperty WaterMarkForegroundProperty = DependencyProperty.Register("WaterMarkForeground", typeof(Brush), typeof(WatermarkTextBox));
 
         protected override void OnPreviewTextChanged(PreviewTextChangedEventArgs e)
         {
@@ -184,7 +192,7 @@ namespace IntDesignControls
         {
             if (!string.IsNullOrEmpty(Watermark) && Text.Equals(Watermark))
             {
-                CaretIndex = 0;               
+                CaretIndex = 0;                
             }
         }
 
@@ -313,6 +321,11 @@ namespace IntDesignControls
             {
                 this.IsWatermarkShown = true;
                 this.Text = Watermark;
+                this.Foreground = WaterMarkForeground;
+            }
+            else
+            {
+                this.Foreground = Brushes.Black;
             }
             if (null != this.clearButton)
             {
@@ -340,6 +353,5 @@ namespace IntDesignControls
         private Border caret;
         private Button clearButton;
         private Control contentHost;
-        private bool ClickedToFocus = false;
     }
 }

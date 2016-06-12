@@ -182,8 +182,8 @@ namespace View
                 if (names.Count() == 4)
                 {
                     isValid = true;
-                    if (!names[0].Equals(utilityCompanyName.Text)
-                                || !names[1].Equals(AccountIdTxt.Text)
+                    if (!names[0].ToLower().Equals(utilityCompanyName.Text.ToLower())
+                                || !names[1].ToLower().Equals(AccountIdTxt.Text.ToLower())
                                 || !names[2].Equals(UtilityCutoffDateTxt.SelectedDate.Value.ToString("MMddyyyy"))
                                 || !names[3].ToLower().Remove(names[3].IndexOf('.')).Equals(attachmentType.ToLower()))
                     {

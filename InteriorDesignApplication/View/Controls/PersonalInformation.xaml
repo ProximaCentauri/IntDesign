@@ -82,7 +82,7 @@
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.LastName}"
                         Watermark="This field is required"   
-                        Foreground="Gray"
+                        WaterMarkForeground="Gray"
                         />
                     
                 </StackPanel>
