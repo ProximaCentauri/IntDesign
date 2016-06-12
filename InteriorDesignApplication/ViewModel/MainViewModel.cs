@@ -403,7 +403,7 @@ namespace ViewModel
                 Dependent = null;                
                 CustomerSpouse = null;
                 LoadEntities();
-                Log.Info("Successfully save the customer");
+                Log.Info("Successfully save the customer");                
             }
             catch (DbUpdateConcurrencyException ex)
             {                

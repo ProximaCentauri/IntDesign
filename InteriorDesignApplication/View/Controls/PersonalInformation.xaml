@@ -77,23 +77,13 @@
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <controls:WatermarkTextBox 
-                        Name="LastName"
+                        x:Name="LastName"
                         Width="150"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.LastName}"
-                        Watermark="This field is required"
-                        >
-                        <controls:WatermarkTextBox.Style>
-                            <Style TargetType="{x:Type controls:WatermarkTextBox}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource Self}}" Value="{x:Static sys:String.Empty}">
-                                        <Setter Property="Foreground" Value="Red"/>
-                                        <Setter Property="BorderBrush" Value="Red"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </controls:WatermarkTextBox.Style>
-                    </controls:WatermarkTextBox>
+                        Watermark="This field is required"   
+                        Foreground="Gray"
+                        />
                     <!--<TextBox
                         Width="150"
                         Margin="0,0,10,0"

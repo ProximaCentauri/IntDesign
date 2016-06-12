@@ -28,7 +28,7 @@ namespace View.Controls
         public PersonalInformation()
         {
             InitializeComponent();
-
+            
         }
 
         private void addDependent_Click(object sender, RoutedEventArgs e)

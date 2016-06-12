@@ -179,6 +179,14 @@ namespace IntDesignControls
                 base.OnTextInput(e);
             }
         }
+        
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Watermark) && Text.Equals(Watermark))
+            {
+                CaretIndex = 0;
+            }            
+        }
 
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
@@ -332,5 +340,6 @@ namespace IntDesignControls
         private Border caret;
         private Button clearButton;
         private Control contentHost;
+        private bool ClickedToFocus = false;
     }
 }
