@@ -604,6 +604,29 @@ namespace ViewModel
             CurrentSelectedBank = null;
             OnPropertyChanged("Banks");
         }
+
+        private void CancelChanges()
+        {            
+            foreach(DbEntityEntry entry in context.ChangeTracker.Entries())
+            {
+                switch(entry.State)
+                {
+                    case EntityState.Modified:
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Added:
+                        entry.State = EntityState.Detached;
+                        break;
+                    case EntityState.Deleted:
+                        entry.Reload();
+                        break;
+                    default:                        
+                        break;
+                }           
+            }
+            CurrentSelectedCustomer = (Customer)context.Entry(CurrentSelectedCustomer).Entity;            
+            OnPropertyChanged("CurrentSelectedCustomer");           
+        }
         #endregion
 
         #region Appliance
@@ -936,6 +959,19 @@ namespace ViewModel
                     _addApplianceCommand = new RelayCommand(AddAppliance);
                 }
                 return _addApplianceCommand;
+            }
+        }
+
+        ICommand _cancelChangesCommand;
+        public ICommand CancelChangesCommand
+        {
+            get
+            {
+                if (_cancelChangesCommand == null)
+                {
+                    _cancelChangesCommand = new RelayCommand(CancelChanges);
+                }
+                return _cancelChangesCommand;
             }
         }
 
