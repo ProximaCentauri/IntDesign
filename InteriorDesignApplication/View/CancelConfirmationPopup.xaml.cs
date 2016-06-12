@@ -27,7 +27,8 @@ namespace View
         }
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            
         }
 
         private void noButton_Click(object sender, RoutedEventArgs e)
@@ -37,7 +38,7 @@ namespace View
 
         private void yesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            viewModel.CurrentPopupView = null;
         }
 
         IMainViewModel viewModel;

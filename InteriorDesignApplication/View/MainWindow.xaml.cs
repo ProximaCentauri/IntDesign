@@ -81,6 +81,9 @@ namespace View
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            personalInfo.LastName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            personalInfo.FirstName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
             if (personalInfo.StatusIndex.Text.Equals("Married") && personalInfo.SpouseName.Text != String.Empty)
             {
                 Spouse spouse = new Spouse();

@@ -184,8 +184,8 @@ namespace IntDesignControls
         {
             if (!string.IsNullOrEmpty(Watermark) && Text.Equals(Watermark))
             {
-                CaretIndex = 0;
-            }            
+                CaretIndex = 0;               
+            }
         }
 
         protected override void OnTextChanged(TextChangedEventArgs e)

@@ -124,14 +124,16 @@
                                 <StackPanel
                                     Orientation="Horizontal">
                                     <TextBlock
-                                        Margin="5,0,0,0">
+                                        Margin="5,0,0,0"
+                                        IsEnabled="True">                                    
                                          <Hyperlink
                                             Command="{Binding Path=DataContext.ShowUtilityAlertsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                            IsEnabled="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=TextBlock}}"
                                             Click="Hyperlink_Click">
                                             <TextBlock
                                                 Text="{Binding Alerts}" />
                                         </Hyperlink>
-                                    </TextBlock>
+                                    </TextBlock>                                    
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

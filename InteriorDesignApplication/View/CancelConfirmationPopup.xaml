@@ -43,7 +43,8 @@
                 Margin="24,0,0,0"
                 x:Name="yesButton"
                 Style="{StaticResource mainButtonStyle}"
-                Click="yesButton_Click">
+                Click="yesButton_Click"
+                Command="{Binding CancelChangesCommand}">
                 <TextBlock
                     Text="Yes"
                     Style="{StaticResource noIconButtonStyle}" />

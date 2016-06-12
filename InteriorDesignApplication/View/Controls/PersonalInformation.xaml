@@ -84,15 +84,6 @@
                         Watermark="This field is required"   
                         Foreground="Gray"
                         />
-                    <!--<TextBox
-                        Width="150"
-                        Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.LastName}"
-                        >
-                        <TextBox.ToolTip>
-                            <ToolTip Placement="Bottom" StaysOpen="True" Content="This field is required" Visibility="Visible"/>
-                        </TextBox.ToolTip>
-                    </TextBox>-->
                     
                 </StackPanel>
             </Grid>
@@ -109,7 +100,8 @@
                     <TextBox
                         Width="180"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.FirstName}"></TextBox>
+                        Name="FirstName"
+                        Text="{Binding CurrentSelectedCustomer.FirstName, UpdateSourceTrigger=Explicit}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid
