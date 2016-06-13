@@ -110,6 +110,12 @@ namespace IntDesignControls
             set { SetValue(WaterMarkForegroundProperty, value); }
         }
 
+        public Brush WatermarkBorderColor
+        {
+            get { return (Brush)GetValue(WatermarkBorderColorProperty); }
+            set { SetValue(WatermarkBorderColorProperty, value); }
+        }
+
         public event RoutedEventHandler KeyboardFocusEventHandler
         {
             add { AddHandler(KeyboardFocusEvent, value); }
@@ -132,6 +138,9 @@ namespace IntDesignControls
 
         public static DependencyProperty WatermarkProperty = DependencyProperty.Register("Watermark", typeof(string), typeof(WatermarkTextBox),
             new PropertyMetadata(new PropertyChangedCallback(OnWatermarkChanged)));
+
+        public static DependencyProperty WatermarkBorderColorProperty = DependencyProperty.Register("WatermarkBorderColor", typeof(Brush), typeof(WatermarkTextBox),
+            new PropertyMetadata(new PropertyChangedCallback(OnWatermarkBorderColorChanged)));
 
         public static DependencyProperty ClearButtonStyleProperty = DependencyProperty.Register("ClearButtonStyle", typeof(Style),
             typeof(WatermarkTextBox));
@@ -286,6 +295,12 @@ namespace IntDesignControls
             }
         }
 
+        private static void OnWatermarkBorderColorChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            WatermarkTextBox textBox = sender as WatermarkTextBox;
+            textBox.BorderBrush = textBox.WatermarkBorderColor;
+        }
+
         private void ShowCaret()
         {
             if (null != this.caret && null != this.contentHost)
@@ -322,10 +337,12 @@ namespace IntDesignControls
                 this.IsWatermarkShown = true;
                 this.Text = Watermark;
                 this.Foreground = WaterMarkForeground;
+                this.BorderBrush = WatermarkBorderColor;
             }
             else
             {
                 this.Foreground = Brushes.Black;
+                this.BorderBrush = Brushes.LightGray;
             }
             if (null != this.clearButton)
             {

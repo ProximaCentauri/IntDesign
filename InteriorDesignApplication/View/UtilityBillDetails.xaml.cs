@@ -16,6 +16,7 @@ using Model.Controls;
 using Model;
 using Model.Helpers;
 using Microsoft.Win32;
+using IntDesignControls;
 
 namespace View
 {
@@ -60,6 +61,13 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (EmptyFields())
+            {
+                ErrorNotification.Visibility = Visibility.Visible; 
+                return;
+            }
+
+            ErrorNotification.Visibility = Visibility.Collapsed; 
             if (this.utilityFormPanel.Visibility == Visibility.Visible)
             {
                 if (view == "add")
@@ -70,6 +78,7 @@ namespace View
                 {
                     this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
                 }
+
                 viewModel.CurrentPopupView = null;
             }
             else if (this.addBillTypePanel.Visibility == Visibility.Visible)
@@ -83,6 +92,42 @@ namespace View
                 ShowUtilityFormPanel();
             }
                                    
+        }
+
+        private bool EmptyFields()
+        {
+            bool retVal = false;    
+            List<WatermarkTextBox> list = new List<WatermarkTextBox>();
+            list.Add(SubscriberName);
+            list.Add(AccountIdTxt);
+            list.Add(UtilityReceiptTxt);
+            list.Add(BillStatementTxt);
+            CheckEmptyFields(list, out retVal);
+            return retVal;
+        }
+
+        private void CheckEmptyFields(List<WatermarkTextBox> list, out bool retVal)
+        {
+            retVal = false;
+            foreach (WatermarkTextBox textBox in list)
+            {
+                if(textBox.Text.Equals(textBox.Watermark)){
+                    retVal = true;
+                    textBox.WatermarkBorderColor = Brushes.Red;
+                }   
+            }
+            if (utilityCompanyName.SelectedIndex == -1)
+            {
+                retVal = true;
+                utilityCompanyName.BorderBrush = Brushes.Red;
+                utilityCompanyName.Focus();
+            }
+            if (billType.SelectedIndex == -1)
+            {
+                retVal = true;
+                billType.BorderBrush = Brushes.Red;
+                billType.Focus();
+            }
         }
 
         private void addBillType_Click(object sender, RoutedEventArgs e)
@@ -123,7 +168,10 @@ namespace View
                 else
                 {
                     BillStatementTxt.Text = string.Empty;
-                    // show popup here
+                    ErrorNotification.Visibility = Visibility.Visible;
+                    string val = ErrorNotification.Content.ToString();
+                    val += Environment.NewLine + "Wrong attachment on billing.";
+                    ErrorNotification.Content = val;
                 }
             }
         }
@@ -142,7 +190,10 @@ namespace View
                 else
                 {
                     UtilityReceiptTxt.Text = string.Empty;
-                    //show pop-up here
+                    ErrorNotification.Visibility = Visibility.Visible;
+                    string val = ErrorNotification.Content.ToString();
+                    val += Environment.NewLine + "Wrong attachment on receipt.";
+                    ErrorNotification.Content = val;
                 }
             }
         }
@@ -166,11 +217,13 @@ namespace View
         private void billType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             editBillType.Visibility = Visibility.Visible;
+            billType.BorderBrush = Brushes.LightGray;
         }
 
         private void utilityCompanyName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             editCompanyName.Visibility = Visibility.Visible;
+            utilityCompanyName.BorderBrush = Brushes.LightGray;
         }        
 
         private bool validateFileAttachment(string filename, string attachmentType)

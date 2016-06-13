@@ -85,12 +85,14 @@
                         Orientation="Horizontal"
                         Grid.Column="1">
                         <ComboBox
-                            Name="billType"
+                            x:Name="billType"
                             Style="{StaticResource popupComboBoxStyle}"
                             ItemsSource="{Binding UtilityBillTypes}"
                             DisplayMemberPath="Name"
                             SelectedValue="{Binding CurrentSelectedUtilityBillType}" 
-                            SelectionChanged="billType_SelectionChanged"/>
+                            SelectionChanged="billType_SelectionChanged">
+                            
+                        </ComboBox>
                         <Button
                             Name="addBillType"
                             Width="30"
@@ -132,7 +134,7 @@
                         Grid.Row="1"
                         Grid.Column="1">
                         <ComboBox
-                            Name="utilityCompanyName"
+                            x:Name="utilityCompanyName"
                             Style="{StaticResource popupComboBoxStyle}" 
                             ItemsSource="{Binding UtilityCompanies}"
                             DisplayMemberPath="Name"
@@ -173,22 +175,27 @@
                         Grid.Column="0"
                         Text="Subscriber Name:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <controls:WatermarkTextBox
                         Grid.Row="2"
                         Grid.Column="1"
+                        x:Name="SubscriberName"
                         Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding CurrentSelectedUtility.AccountName}"/>
+                        Text="{Binding CurrentSelectedUtility.AccountName}"
+                        Watermark="This field is required"
+                        WaterMarkForeground="Gray"/>
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
                         Text="Account #:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <controls:WatermarkTextBox
                         Grid.Row="3"
-                        Grid.Column="1"
+                        Grid.Column="1"                        
                         Name="AccountIdTxt"
                         Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding CurrentSelectedUtility.AccountId}"/>
+                        Text="{Binding CurrentSelectedUtility.AccountId}"
+                        Watermark="This field is required"
+                        WaterMarkForeground="Gray"/>                    
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
@@ -239,7 +246,7 @@
                        <controls:WatermarkTextBox
                             Style="{StaticResource popupTextBoxStyle}"
                             Text="{Binding UtilityReceipt, UpdateSourceTrigger=PropertyChanged}"
-                            Name="UtilityReceiptTxt"
+                            x:Name="UtilityReceiptTxt"
                             Watermark="company_accountId_dueDate_receipt(.png or .jpg)"
                             WaterMarkForeground="Gray"
                             AllowUserInput="False"
@@ -379,22 +386,29 @@
                     Content="Cancel"
                     Style="{StaticResource mainLinkButtonStyle}">                    
                 </Button>
-                <Button
+                <StackPanel>
+                    <Button
                     Width="100"
                     Height="30"
                     Style="{StaticResource mainButtonStyle}"
                     Name="AddSaveUtilityBtn"                  
-                    Click="Button_Click">                    
-                    <StackPanel
+                    Click="Button_Click">
+                        <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
-                        <Image
+                            <Image
                             Style="{StaticResource checkIconStyle}" />
-                        <TextBlock
+                            <TextBlock
                             Name="AddSaveButtonLabel"
                             Style="{StaticResource addButtonStyle}" />
-                    </StackPanel>
-                </Button>
+                        </StackPanel>
+                    </Button>
+                    <Label
+                        x:Name="ErrorNotification"
+                        Visibility="Collapsed"
+                    Foreground="Red"
+                    Content="There is something wrong with the input you provided."/>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
