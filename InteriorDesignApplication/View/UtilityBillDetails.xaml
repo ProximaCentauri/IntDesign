@@ -59,6 +59,7 @@
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
                 Orientation="Vertical"
+                Margin="0,0,24,0"
                 Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -76,7 +77,7 @@
                         <ColumnDefinition
                             Width="125"></ColumnDefinition>
                         <ColumnDefinition
-                            Width="275"></ColumnDefinition>
+                            Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Text="Bill Type:"
@@ -203,7 +204,7 @@
                         Style="{StaticResource popupLabelTextStyle}" />
                     <DatePicker Grid.Row="4"
                                 Grid.Column="1"
-                                Width="200"
+                                Width="275"
                                 Margin="0,5,0,0"
                                 SelectedDateFormat="Long"
                                 HorizontalAlignment="Left"
@@ -219,13 +220,13 @@
                         Grid.Column="1"
                         Orientation="Horizontal">
                         <controls:WatermarkTextBox
+                            Width="275"
                             Style="{StaticResource popupTextBoxStyle}"
                             Text="{Binding CurrentSelectedUtility.BillStatement, UpdateSourceTrigger=PropertyChanged}"
                             Watermark="company_accountId_duedate_bill(.png or .jpg)"
                             x:Name="BillStatementTxt"
                             AllowUserInput="False"
-                            WaterMarkForeground="Gray"
-                            />
+                            WaterMarkForeground="Gray" />
                         <Button
                             Name="browseBilling"
                             Width="50"
@@ -243,14 +244,14 @@
                         Grid.Row="6"
                         Grid.Column="1"
                         Orientation="Horizontal">
-                       <controls:WatermarkTextBox
+                        <controls:WatermarkTextBox
+                            Width="275"
                             Style="{StaticResource popupTextBoxStyle}"
                             Text="{Binding UtilityReceipt, UpdateSourceTrigger=PropertyChanged}"
                             x:Name="UtilityReceiptTxt"
                             Watermark="company_accountId_dueDate_receipt(.png or .jpg)"
                             WaterMarkForeground="Gray"
-                            AllowUserInput="False"
-                           />
+                            AllowUserInput="False" />
                         <Button
                             Name="browseReceipt"
                             Width="50"
@@ -293,20 +294,21 @@
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
                 Orientation="Vertical"
+                Margin="0,0,24,0"
                 Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
                             Width="125"></ColumnDefinition>
                         <ColumnDefinition
-                            Width="275"></ColumnDefinition>
+                            Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>                  
                     <TextBlock
                         Grid.Column="0"
                         Text="Bill Type:"
                         Style="{StaticResource popupLabelTextStyle}" />
                     <TextBox
-                        Grid.Column="1"
+                        Grid.Column="1"                        
                         Style="{StaticResource popupTextBoxStyle}"
                         Text="{Binding CurrentSelectedUtilityBillType.Name}"
                         Name="UtilityBillTypeInput"/>                    
@@ -332,6 +334,7 @@
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
                 Orientation="Vertical"
+                Margin="0,0,24,0"
                 Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -342,7 +345,7 @@
                         <ColumnDefinition
                             Width="125"></ColumnDefinition>
                         <ColumnDefinition
-                            Width="275"></ColumnDefinition>
+                            Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Grid.Column="0"

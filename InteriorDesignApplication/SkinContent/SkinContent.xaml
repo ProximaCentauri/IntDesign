@@ -214,7 +214,7 @@
         TargetType="TextBox">
         <Setter
             Property="Width"
-            Value="200" />
+            Value="275" />
         <Setter
             Property="HorizontalAlignment"
             Value="Left" />
@@ -264,7 +264,7 @@
         TargetType="ComboBox">
         <Setter
             Property="Width"
-            Value="200" />
+            Value="275" />
         <Setter
             Property="HorizontalAlignment"
             Value="Left" />
