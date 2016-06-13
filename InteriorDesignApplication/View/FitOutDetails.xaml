@@ -54,6 +54,7 @@
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
                 Orientation="Vertical"
+                Margin="0,0,24,0"
                 Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -69,7 +70,7 @@
                         <ColumnDefinition
                             Width="125"></ColumnDefinition>
                         <ColumnDefinition
-                            Width="250"></ColumnDefinition>
+                            Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Text="Cost of FIT Out:"

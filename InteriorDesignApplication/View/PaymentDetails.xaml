@@ -54,6 +54,7 @@
                 Style="{StaticResource mainSeparatorStyle}" />
             <StackPanel
                 Orientation="Vertical"
+                Margin="0,0,24,0"
                 Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -67,14 +68,14 @@
                         <ColumnDefinition
                             Width="125"></ColumnDefinition>
                         <ColumnDefinition
-                            Width="250"></ColumnDefinition>
+                            Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Text="Date:"
                         Style="{StaticResource popupLabelTextStyle}" />
                     <DatePicker
                         Grid.Column="1"
-                        Width="200"
+                        Width="275"
                         Margin="0,5,0,0"
                         SelectedDateFormat="Long"
                         HorizontalAlignment="Left"
