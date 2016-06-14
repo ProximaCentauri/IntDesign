@@ -169,9 +169,9 @@ namespace View
                 {
                     BillStatementTxt.Text = string.Empty;
                     ErrorNotification.Visibility = Visibility.Visible;
-                    string val = ErrorNotification.Content.ToString();
-                    val += Environment.NewLine + "Wrong attachment on billing.";
-                    ErrorNotification.Content = val;
+                    string val = ErrorNotification.Text;
+                    val += Environment.NewLine + "The file name(Bill Statement) does not follow the correct format.";
+                    ErrorNotification.Text = val;
                 }
             }
         }
@@ -191,9 +191,9 @@ namespace View
                 {
                     UtilityReceiptTxt.Text = string.Empty;
                     ErrorNotification.Visibility = Visibility.Visible;
-                    string val = ErrorNotification.Content.ToString();
-                    val += Environment.NewLine + "Wrong attachment on receipt.";
-                    ErrorNotification.Content = val;
+                    string val = ErrorNotification.Text;
+                    val += Environment.NewLine + "The file name(Receipt) does not follow the correct format.";
+                    ErrorNotification.Text = val;
                 }
             }
         }

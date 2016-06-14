@@ -406,11 +406,11 @@
                             Style="{StaticResource addButtonStyle}" />
                         </StackPanel>
                     </Button>
-                    <Label
+                    <TextBlock
                         x:Name="ErrorNotification"
                         Visibility="Collapsed"
                     Foreground="Red"
-                    Content="There is something wrong with the input you provided."/>
+                    Text="There is something wrong with the input you provided."/>
                 </StackPanel>
             </StackPanel>
         </Grid>
