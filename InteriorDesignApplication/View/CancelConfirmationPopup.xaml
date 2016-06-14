@@ -5,7 +5,7 @@
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     Title="CancelConfirmationPopup"
     Height="Auto"
-    Width="300"
+    Width="Auto"
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
@@ -13,16 +13,25 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
-                Height="130" />
+                Height="100" />
             <RowDefinition
                 Height="80" />
         </Grid.RowDefinitions>
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
             Grid.RowSpan="2" />
-        <TextBlock
-            Text="Are you sure you want to cancel all changes made?"
-            Style="{StaticResource popupConfirmationTextStyle}" />
+        <StackPanel
+            Orientation="Horizontal">
+            <Image
+                Margin="18,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Style="{StaticResource warningIconStyle}" />
+            <TextBlock
+                Width="260"
+                Text="Are you sure you want to cancel all changes made?"
+                Style="{StaticResource popupConfirmationTextStyle}" />
+        </StackPanel>
         <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Center"
