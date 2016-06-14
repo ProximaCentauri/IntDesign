@@ -199,7 +199,7 @@
             Value="15" />
         <Setter
             Property="Margin"
-            Value="0,5,5,0" />
+            Value="0,8,8,0" />
     </Style>
     <Style
         x:Key="popupHeaderTextStyle"
@@ -220,7 +220,7 @@
             Value="Left" />
         <Setter
             Property="Margin"
-            Value="0,5,0,0" />
+            Value="0,8,0,0" />
     </Style>
     <Style
         x:Key="popupConfirmationTextStyle"
@@ -270,7 +270,7 @@
             Value="Left" />
         <Setter
             Property="Margin"
-            Value="0,5,0,0" />
+            Value="0,8,0,0" />
     </Style>
     <Style
         x:Key="searchByTextStyle"

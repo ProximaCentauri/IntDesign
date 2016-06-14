@@ -207,7 +207,7 @@
                     <DatePicker Grid.Row="4"
                                 Grid.Column="1"
                                 Width="275"
-                                Margin="0,5,0,0"
+                                Margin="0,8,0,0"
                                 SelectedDateFormat="Long"
                                 HorizontalAlignment="Left"
                                 Name="UtilityCutoffDateTxt"
@@ -233,7 +233,7 @@
                             Name="browseBilling"
                             Width="50"
                             Height="22"
-                            Margin="8,4,0,0"
+                            Margin="8,6,0,0"
                             Content="Browse"
                             Click="browseBilling_Click" />
                     </StackPanel>
@@ -258,7 +258,7 @@
                             Name="browseReceipt"
                             Width="50"
                             Height="22"
-                            Margin="8,4,0,0"
+                            Margin="8,6,0,0"
                             Content="Browse" 
                             Click="browseReceipt_Click" />
                     </StackPanel>

@@ -112,10 +112,10 @@
                     <DatePicker
                         Grid.Row="4"
                         Grid.Column="1"
-                        Width="200"
-                        Margin="0,5,0,0"
+                        Width="275"
+                        Margin="0,8,0,0"
                         HorizontalAlignment="Left"
-                        SelectedDateFormat="Short"
+                        SelectedDateFormat="Long"
                         SelectedDate="{Binding Dependent.BirthDate}"/>
                 </Grid>
             </StackPanel>

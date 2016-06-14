@@ -45,14 +45,14 @@ namespace View
                 if (null == viewModel.CurrentPopupView)
                 {
                     this.GridCustomers.IsEnabled = true;
-                    this.GridCustomers.Opacity = this.MainTabControl.Opacity = this.SaveButton.Opacity = this.DeleteButton.Opacity = this.SearchPanel.Opacity = 1;
+                    this.GridCustomers.Opacity = this.MainTabControl.Opacity = this.CancelButton.Opacity = this.SaveButton.Opacity = this.DeleteButton.Opacity = this.SearchPanel.Opacity = 1;
                     this.Opacity = 1;
                     PopupControl.ShowPopup(false, viewModel.CurrentPopupView, false);
                 }
                 else
                 {
                     this.GridCustomers.IsEnabled = false;
-                    this.GridCustomers.Opacity = this.MainTabControl.Opacity = this.SaveButton.Opacity = this.DeleteButton.Opacity = this.SearchPanel.Opacity = 0.5;                    
+                    this.GridCustomers.Opacity = this.MainTabControl.Opacity = this.CancelButton.Opacity = this.SaveButton.Opacity = this.DeleteButton.Opacity = this.SearchPanel.Opacity = 0.5;                    
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
                 }                
             }            

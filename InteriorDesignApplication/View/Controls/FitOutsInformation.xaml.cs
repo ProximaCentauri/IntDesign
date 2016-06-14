@@ -73,7 +73,6 @@ namespace View.Controls
 
             WarrantyStatus.Text = warrantyStatus;
 
-            
         }
     }
 }
