@@ -413,7 +413,12 @@ namespace ViewModel
                     Dependent = null;
                     CustomerSpouse = null;
                     LoadEntities();
+                    OnPropertyChanged("SavedCustomer");
                     Log.Info("Successfully save the customer");
+                }
+                else
+                {
+                    OnPropertyChanged("EmptyFields");
                 }
             }
             catch (DbUpdateConcurrencyException ex)

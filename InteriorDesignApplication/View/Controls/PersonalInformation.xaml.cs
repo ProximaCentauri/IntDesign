@@ -60,7 +60,7 @@ namespace View.Controls
             }
             else if (e.PropertyName.Equals("SavingCustomer"))
             {
-                viewModel.ReadyToSave = readyToSave;
+                viewModel.ReadyToSave = _noOfErrorsOnScreen == 0;
             }            
         }
 
@@ -90,7 +90,17 @@ namespace View.Controls
             viewModel.CurrentPopupView = new DeleteConfirmationPopup(customerDependent.FullName);
         }
 
-        private bool readyToSave = true;
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            var textBox = sender as IntDesignControls.WatermarkTextBox;
+            if (e.Action == ValidationErrorEventAction.Added || textBox.Watermark.Equals(textBox.Text.Trim()))
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+        }
+        
+        
+        private int _noOfErrorsOnScreen = 0;
         
     }
 }

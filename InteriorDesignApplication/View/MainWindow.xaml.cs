@@ -54,8 +54,16 @@ namespace View
                     this.GridCustomers.IsEnabled = false;
                     this.GridCustomers.Opacity = this.MainTabControl.Opacity = this.CancelButton.Opacity = this.SaveButton.Opacity = this.DeleteButton.Opacity = this.SearchPanel.Opacity = 0.5;                    
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
-                }                
-            }            
+                }
+            }
+            else if (e.PropertyName.Equals("SavedCustomer"))
+            {
+                viewModel.CurrentPopupView = new SaveNotificationPopup("Details are successfully saved");
+            }
+            else if (e.PropertyName.Equals("EmptyFields"))
+            {
+                viewModel.CurrentPopupView = new SaveNotificationPopup("Please fill the required fields.");
+            }
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -92,7 +100,7 @@ namespace View
                 spouse.City = personalInfo.SpouseAddress.Text;
                 viewModel.CreateEntity(spouse);                
             }
-            viewModel.CurrentPopupView = new SaveNotificationPopup();
+            
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

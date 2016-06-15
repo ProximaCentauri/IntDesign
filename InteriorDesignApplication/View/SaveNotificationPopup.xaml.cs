@@ -22,14 +22,28 @@ namespace View
     /// </summary>
     public partial class SaveNotificationPopup : PopupView
     {
-        public SaveNotificationPopup()
+        public SaveNotificationPopup(string notification)
         {
             InitializeComponent();
+            Notification.Text = notification;
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+        }
+
+        private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("SavedCustomer"))
+            {
+                SaveIcon.Visibility = Visibility.Visible;
+            }
+            else if (e.PropertyName.Equals("EmptyFields"))
+            {
+                SaveIcon.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
