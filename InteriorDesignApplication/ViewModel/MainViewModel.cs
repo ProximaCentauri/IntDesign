@@ -89,6 +89,13 @@ namespace ViewModel
             }
         }
 
+        private bool readyToSave;
+        public bool ReadyToSave
+        {
+            get { return readyToSave; }
+            set { readyToSave = value; }
+        }
+
         #region Personal Information
         public int SelectedIndex { get; set; }
         public string CommandParameter { get; set; }
@@ -382,28 +389,32 @@ namespace ViewModel
         {
             try
             {
-                Customer customer = CurrentSelectedCustomer as Customer;
-                Log.InfoFormat("Saving customer:{0} {1}...", customer.FirstName, customer.LastName);
-                customer.CustomerSpouse = this.CustomerSpouse;
-                // avoid saving null customer company in db; company name required
-                if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
+                OnPropertyChanged("SavingCustomer");
+                if (readyToSave)
                 {
-                    customer.CustomerCompany = null;
-                }
-                if (CustomerImageSource != null)
-                {
-                    customer.ImageSourceLocation = CustomerImageSource.ToString();
-                }
-                if (SelectedIndex == -1 && null != customer.FirstName)
-                {
-                    context.Customers.Add(customer);                   
-                }
+                    Customer customer = CurrentSelectedCustomer as Customer;
+                    Log.InfoFormat("Saving customer:{0} {1}...", customer.FirstName, customer.LastName);
+                    customer.CustomerSpouse = this.CustomerSpouse;
+                    // avoid saving null customer company in db; company name required
+                    if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
+                    {
+                        customer.CustomerCompany = null;
+                    }
+                    if (CustomerImageSource != null)
+                    {
+                        customer.ImageSourceLocation = CustomerImageSource.ToString();
+                    }
+                    if (SelectedIndex == -1 && null != customer.FirstName)
+                    {
+                        context.Customers.Add(customer);
 
-                context.SaveChanges();
-                Dependent = null;                
-                CustomerSpouse = null;
-                LoadEntities();
-                Log.Info("Successfully save the customer");                
+                    }
+                    context.SaveChanges();
+                    Dependent = null;
+                    CustomerSpouse = null;
+                    LoadEntities();
+                    Log.Info("Successfully save the customer");
+                }
             }
             catch (DbUpdateConcurrencyException ex)
             {                

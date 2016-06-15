@@ -21,6 +21,7 @@ namespace ViewModel
         string CommandParameter { get; set; }
         Customer CurrentSelectedCustomer { get; set; }
 
+        bool ReadyToSave { get; set; }
 
     }
 }

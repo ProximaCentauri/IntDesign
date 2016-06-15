@@ -57,8 +57,13 @@ namespace View.Controls
                 {
                     this.Opacity = 0.5;
                 }
-            }                        
+            }
+            else if (e.PropertyName.Equals("SavingCustomer"))
+            {
+                viewModel.ReadyToSave = readyToSave;
+            }            
         }
+
         private void CustomerImageBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -85,5 +90,7 @@ namespace View.Controls
             viewModel.CurrentPopupView = new DeleteConfirmationPopup(customerDependent.FullName);
         }
 
+        private bool readyToSave = true;
+        
     }
 }

@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Model
 {
-    public class Person
+    public class Person : IDataErrorInfo
     {       
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -59,6 +60,31 @@ namespace Model
                     MiddleName + " " +
                     LastName;
             }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = null;
+                if (columnName == "FirstName")
+                {
+                    if (string.IsNullOrEmpty(FirstName))
+                        result = "Please enter a First Name";
+                }
+                if (columnName == "LastName")
+                {
+                    if (string.IsNullOrEmpty(LastName))
+                        result = "Please enter a Last Name";
+                }
+                
+                return result;
+            }
+        }
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }
