@@ -29,21 +29,27 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;            
-            this.viewModel.CreateEntity(new Dependent());            
+            this.viewModel.CreateEntity(new Dependent());
+            LastName.Focus();
         }
         
         private void close_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = null;
-            
         }
 
         IMainViewModel viewModel;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CurrentPopupView = null;
-        }
-        
+            if (LastName.NoOfErrorsOnScreen == 0 && FirstName.NoOfErrorsOnScreen == 0)      
+            {   
+                viewModel.CurrentPopupView = null;
+            }
+            else
+            {
+                ErrorNotification.Visibility = Visibility.Visible;
+            }            
+        }        
     }
 }

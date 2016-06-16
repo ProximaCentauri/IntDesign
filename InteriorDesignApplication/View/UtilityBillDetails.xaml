@@ -411,8 +411,8 @@
                     <TextBlock
                         x:Name="ErrorNotification"
                         Visibility="Collapsed"
-                    Foreground="Red"
-                    Text="There is something wrong with the input you provided."/>
+                        Foreground="Red"
+                        Text="There is something wrong with the input you provided."/>
                 </StackPanel>
             </StackPanel>
         </Grid>
