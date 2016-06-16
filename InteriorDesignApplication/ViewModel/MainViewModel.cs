@@ -424,7 +424,8 @@ namespace ViewModel
             catch (DbUpdateConcurrencyException ex)
             {                
                 ex.Entries.Single().Reload();
-                Log.ErrorFormat("Error in saving customer. ", ex.ToString());
+                context.SaveChanges();
+                OnPropertyChanged("SavedCustomer");                
             }            
         }
 
@@ -442,8 +443,7 @@ namespace ViewModel
         {
             OnPropertyChanged("AddCustomer");
             CurrentSelectedCustomer = null;
-            Customer customer = new Customer();
-            customer.CustomerCompany = new Company();
+            Customer customer = new Customer();            
             customer.TitleInfo = new Title();
             customer.FitOut = new FitOut();
             CurrentSelectedCustomer = customer;
