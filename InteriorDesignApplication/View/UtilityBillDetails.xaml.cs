@@ -140,8 +140,7 @@ namespace View
                 {
                     BillStatementTxt.Text = string.Empty;
                     ErrorNotification.Visibility = Visibility.Visible;
-                    ErrorNotification.Text = "The file name(Bill Statement) does not follow the correct format.";
-                    
+                    ErrorNotification.Text = "The file name(Bill Statement) does not follow the correct format.";                    
                 }
             }
         }
