@@ -43,6 +43,7 @@ namespace View.Controls
         {
             viewModel = this.DataContext as IMainViewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
+            
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -60,7 +61,16 @@ namespace View.Controls
             }
             else if (e.PropertyName.Equals("SavingCustomer"))
             {
-                viewModel.ReadyToSave = _noOfErrorsOnScreen == 0;
+                if (LastName.NoOfErrorsOnScreen == 0 && FirstName.NoOfErrorsOnScreen == 0)
+                {
+                    viewModel.ReadyToSave = true;
+                    LastName.NoOfErrorsOnScreen = 0;
+                    FirstName.NoOfErrorsOnScreen = 0;
+                }
+                else
+                {
+                    viewModel.ReadyToSave = false;
+                }
             }            
         }
 
@@ -89,18 +99,5 @@ namespace View.Controls
             Dependent customerDependent = gridDependents.SelectedItem as Dependent;
             viewModel.CurrentPopupView = new DeleteConfirmationPopup(customerDependent.FullName);
         }
-
-        private void Validation_Error(object sender, ValidationErrorEventArgs e)
-        {
-            var textBox = sender as IntDesignControls.WatermarkTextBox;
-            if (e.Action == ValidationErrorEventAction.Added || textBox.Watermark.Equals(textBox.Text.Trim()))
-                _noOfErrorsOnScreen++;
-            else
-                _noOfErrorsOnScreen--;
-        }
-        
-        
-        private int _noOfErrorsOnScreen = 0;
-        
     }
 }

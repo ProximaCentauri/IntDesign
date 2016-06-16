@@ -163,6 +163,7 @@ namespace View
                 MainTabControl.IsEnabled = CancelButton.IsEnabled = SaveButton.IsEnabled = true;
                 MainTabControl.SelectedIndex = 0;
                 MainTabControl.Opacity = CancelButton.Opacity = SaveButton.Opacity = 1;
+                personalInfo.LastName.Focus();
             }
             else
             {

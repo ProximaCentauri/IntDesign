@@ -122,6 +122,12 @@ namespace IntDesignControls
             remove { RemoveHandler(KeyboardFocusEvent, value); }
         }
 
+        public int NoOfErrorsOnScreen
+        {
+            get { return (int)GetValue(NoOfErrorsOnScreenProperty); }
+            set { SetValue(NoOfErrorsOnScreenProperty, value); }
+        }
+
         public static readonly RoutedEvent KeyboardFocusEvent = EventManager.RegisterRoutedEvent("KeyboardFocus", RoutingStrategy.Bubble,
             typeof(RoutedEventHandler), typeof(WatermarkTextBox));
 
@@ -152,6 +158,8 @@ namespace IntDesignControls
             new UIPropertyMetadata('*'));
 
         public static DependencyProperty WaterMarkForegroundProperty = DependencyProperty.Register("WaterMarkForeground", typeof(Brush), typeof(WatermarkTextBox));
+
+        public static DependencyProperty NoOfErrorsOnScreenProperty = DependencyProperty.Register("NoOfErrorsOnScreen", typeof(int), typeof(WatermarkTextBox));
 
         protected override void OnPreviewTextChanged(PreviewTextChangedEventArgs e)
         {
@@ -223,9 +231,25 @@ namespace IntDesignControls
             }
             base.OnTextChanged(e);
             ShowWatermark();
+            
             if (PasswordMode && !PasswordText.Length.Equals(Text.Length))
             {
                 PasswordText = PasswordText.Remove(Text.Length);
+            }
+        }
+
+        private void CheckEmptyRequiredFields()
+        {
+            if (!string.IsNullOrEmpty(this.Text.Trim()))
+            {
+                if (this.Watermark.Equals(this.Text) && NoOfErrorsOnScreen == 0)
+                {
+                    this.NoOfErrorsOnScreen++;
+                }
+                else if(NoOfErrorsOnScreen > 0)
+                {
+                    this.NoOfErrorsOnScreen--;
+                }
             }
         }
 
@@ -275,6 +299,11 @@ namespace IntDesignControls
             d.CoerceValue(UIElement.IsEnabledProperty);
         }
 
+        protected override void OnLostFocus(RoutedEventArgs e)
+        {
+            CheckEmptyRequiredFields();
+        }
+
         private static void OnKeyboardFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             WatermarkTextBox tb = d as WatermarkTextBox;
@@ -283,6 +312,7 @@ namespace IntDesignControls
             {
                 RoutedEventArgs newEventArgs = new RoutedEventArgs(WatermarkTextBox.KeyboardFocusEvent);
                 tb.RaiseEvent(newEventArgs);
+                
             }
         }
 

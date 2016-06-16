@@ -80,17 +80,10 @@
                         x:Name="LastName"
                         Width="150"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.LastName, 
-                        UpdateSourceTrigger=Explicit, 
-                        ValidatesOnDataErrors=True, 
-                        NotifyOnValidationError=True}"
-                        Style="{StaticResource ControlValidationStyle}"
+                        Text="{Binding CurrentSelectedCustomer.LastName}"
                         Watermark="This field is required"   
                         WaterMarkForeground="Gray"
-                        WatermarkBorderColor="LightGray"
-                        Validation.Error="Validation_Error"
-                        />
-                    
+                        WatermarkBorderColor="LightGray" />
                 </StackPanel>
             </Grid>
             <Grid
@@ -108,14 +101,11 @@
                         Margin="0,0,10,0"
                         Name="FirstName"
                         Text="{Binding CurrentSelectedCustomer.FirstName, 
-                        UpdateSourceTrigger=Explicit, 
-                        ValidatesOnDataErrors=True, 
-                        NotifyOnValidationError=True}"
-                        Style="{StaticResource ControlValidationStyle}"
+                        UpdateSourceTrigger=Explicit}"
                         Watermark="This field is required"
                         WatermarkBorderColor="LightGray"
                         WaterMarkForeground="Gray"
-                        Validation.Error="Validation_Error"
+                       
                         />                   
                 </StackPanel>
             </Grid>
