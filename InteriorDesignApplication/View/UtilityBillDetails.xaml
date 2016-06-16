@@ -416,7 +416,7 @@
                         Visibility="Collapsed"
                         Foreground="Red"
                         FontSize="18"
-                        Text="There is something wrong with the input you provided."/>
+                       />
                 </StackPanel>
             </StackPanel>
         </Grid>

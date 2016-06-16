@@ -95,7 +95,9 @@ namespace View
             }
             else
             {
+                ErrorNotification.Text = "Please fill up the required fields.";
                 ErrorNotification.Visibility = Visibility.Visible; 
+
             }            
         }
 
@@ -138,9 +140,8 @@ namespace View
                 {
                     BillStatementTxt.Text = string.Empty;
                     ErrorNotification.Visibility = Visibility.Visible;
-                    string val = ErrorNotification.Text;
-                    val += Environment.NewLine + "The file name(Bill Statement) does not follow the correct format.";
-                    ErrorNotification.Text = val;
+                    ErrorNotification.Text = "The file name(Bill Statement) does not follow the correct format.";
+                    
                 }
             }
         }
@@ -160,9 +161,7 @@ namespace View
                 {
                     UtilityReceiptTxt.Text = string.Empty;
                     ErrorNotification.Visibility = Visibility.Visible;
-                    string val = ErrorNotification.Text;
-                    val += Environment.NewLine + "The file name(Receipt) does not follow the correct format.";
-                    ErrorNotification.Text = val;
+                    ErrorNotification.Text = "The file name(Receipt) does not follow the correct format.";
                 }
             }
         }
