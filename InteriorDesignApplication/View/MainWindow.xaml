@@ -338,8 +338,7 @@
                     HorizontalAlignment="Right"
                     x:Name="SaveButton"
                     Style="{StaticResource mainButtonStyle}"
-                    Command="{Binding SaveCustomerCommand}"
-                    Click="SaveButton_Click">
+                    Command="{Binding SaveCustomerCommand}">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
