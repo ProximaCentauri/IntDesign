@@ -85,7 +85,6 @@ namespace View
             addCustomer = true;
             enableCustomerFormPanel(true);
             DeleteButton.Visibility = Visibility.Collapsed;
-            
         }
 
         private void SaveDetails()

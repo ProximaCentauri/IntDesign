@@ -27,8 +27,7 @@ namespace View.Controls
     {
         public PersonalInformation()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         private void addDependent_Click(object sender, RoutedEventArgs e)
@@ -43,34 +42,17 @@ namespace View.Controls
         {
             viewModel = this.DataContext as IMainViewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
-            
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName.Equals("CurrentPopupView"))
             {
-                if (null == viewModel.CurrentPopupView)
-                {
-                    this.Opacity = 1;
-                }
-                else
-                {
-                    this.Opacity = 0.5;
-                }
+                this.Opacity = null == viewModel.CurrentPopupView ? 1 : 0.5;                
             }
             else if (e.PropertyName.Equals("SavingCustomer"))
             {
-                if (LastName.NoOfErrorsOnScreen == 0 && FirstName.NoOfErrorsOnScreen == 0)
-                {
-                    viewModel.ReadyToSave = true;
-                    LastName.NoOfErrorsOnScreen = 0;
-                    FirstName.NoOfErrorsOnScreen = 0;
-                }
-                else
-                {
-                    viewModel.ReadyToSave = false;
-                }
+                viewModel.ReadyToSave = LastName.NoOfErrorsOnScreen == 0 && FirstName.NoOfErrorsOnScreen == 0;                
             }            
         }
 

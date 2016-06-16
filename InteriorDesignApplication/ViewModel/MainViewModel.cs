@@ -440,13 +440,14 @@ namespace ViewModel
         // This cancels currently selected customer to clear data in panel
         private void AddCustomer()
         {
+            OnPropertyChanged("AddCustomer");
             CurrentSelectedCustomer = null;
             Customer customer = new Customer();
             customer.CustomerCompany = new Company();
             customer.TitleInfo = new Title();
             customer.FitOut = new FitOut();
             CurrentSelectedCustomer = customer;
-            SelectedIndex = -1;
+            SelectedIndex = -1;            
         }
 
         private void AddDependent()

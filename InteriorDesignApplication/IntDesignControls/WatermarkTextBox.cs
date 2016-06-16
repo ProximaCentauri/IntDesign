@@ -246,7 +246,7 @@ namespace IntDesignControls
                 {
                     this.NoOfErrorsOnScreen++;
                 }
-                else if(NoOfErrorsOnScreen > 0)
+                else if(NoOfErrorsOnScreen > 0 && !this.Watermark.Equals(this.Text))
                 {
                     this.NoOfErrorsOnScreen--;
                 }
@@ -368,6 +368,7 @@ namespace IntDesignControls
                 this.Text = Watermark;
                 this.Foreground = WaterMarkForeground;
                 this.BorderBrush = WatermarkBorderColor;
+                this.NoOfErrorsOnScreen = 1;
             }
             else
             {
