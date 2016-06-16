@@ -238,21 +238,6 @@ namespace IntDesignControls
             }
         }
 
-        private void CheckEmptyRequiredFields()
-        {
-            if (!string.IsNullOrEmpty(this.Text.Trim()))
-            {
-                if (this.Watermark.Equals(this.Text) && NoOfErrorsOnScreen == 0)
-                {
-                    this.NoOfErrorsOnScreen++;
-                }
-                else if(NoOfErrorsOnScreen > 0 && !this.Watermark.Equals(this.Text))
-                {
-                    this.NoOfErrorsOnScreen--;
-                }
-            }
-        }
-
         protected override bool IsEnabledCore
         {
             get
@@ -297,11 +282,6 @@ namespace IntDesignControls
         private static void OnAllowUserInputChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             d.CoerceValue(UIElement.IsEnabledProperty);
-        }
-
-        protected override void OnLostFocus(RoutedEventArgs e)
-        {
-            CheckEmptyRequiredFields();
         }
 
         private static void OnKeyboardFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -372,6 +352,7 @@ namespace IntDesignControls
             }
             else
             {
+                this.NoOfErrorsOnScreen = 0;
                 this.Foreground = Brushes.Black;
                 this.BorderBrush = Brushes.LightGray;
             }
