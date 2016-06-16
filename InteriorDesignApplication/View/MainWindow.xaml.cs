@@ -58,6 +58,7 @@ namespace View
             }
             else if (e.PropertyName.Equals("SavedCustomer"))
             {
+                SaveDetails();   
                 viewModel.CurrentPopupView = new SaveNotificationPopup("Details are successfully saved");
             }
             else if (e.PropertyName.Equals("EmptyFields"))
@@ -87,11 +88,10 @@ namespace View
             
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveDetails()
         {
             personalInfo.LastName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             personalInfo.FirstName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-
             if (personalInfo.StatusIndex.Text.Equals("Married") && personalInfo.SpouseName.Text != String.Empty)
             {
                 Spouse spouse = new Spouse();
