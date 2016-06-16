@@ -91,7 +91,9 @@
                             ItemsSource="{Binding UtilityBillTypes}"
                             DisplayMemberPath="Name"
                             SelectedValue="{Binding CurrentSelectedUtilityBillType}" 
-                            SelectionChanged="billType_SelectionChanged">
+                            SelectionChanged="billType_SelectionChanged"
+                            
+                            >
                             
                         </ComboBox>
                         <Button
@@ -140,7 +142,8 @@
                             ItemsSource="{Binding UtilityCompanies}"
                             DisplayMemberPath="Name"
                             SelectedValue="{Binding CurrentSelectedUtilityCompany}" 
-                            SelectionChanged="utilityCompanyName_SelectionChanged" />
+                            SelectionChanged="utilityCompanyName_SelectionChanged" 
+                            />
                         <Button
                             Name="addCompanyName"
                             Width="30"
@@ -412,6 +415,7 @@
                         x:Name="ErrorNotification"
                         Visibility="Collapsed"
                         Foreground="Red"
+                        FontSize="18"
                         Text="There is something wrong with the input you provided."/>
                 </StackPanel>
             </StackPanel>

@@ -344,13 +344,13 @@ namespace IntDesignControls
             bool canClear = !this.IsWatermarkShown && this.Text.Length > 0;
             if (!IsWatermarkShown && 0 == Text.Length && !String.IsNullOrEmpty(Watermark))
             {
-                this.IsWatermarkShown = true;
-                this.Text = Watermark;
                 this.Foreground = WaterMarkForeground;
                 this.BorderBrush = WatermarkBorderColor;
                 this.NoOfErrorsOnScreen = 1;
+                this.IsWatermarkShown = true;
+                this.Text = Watermark;
             }
-            else
+            else if(!Watermark.Equals(Text))
             {
                 this.NoOfErrorsOnScreen = 0;
                 this.Foreground = Brushes.Black;

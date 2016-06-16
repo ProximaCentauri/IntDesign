@@ -150,8 +150,9 @@
             </Button>
             <TextBlock
                 HorizontalAlignment="Center"
-                        x:Name="ErrorNotification"
+                   x:Name="ErrorNotification"
                        Visibility="Collapsed"
+                    FontSize="20"
                         Foreground="Red"
                         Text="Please fill up the required fields."
                 Margin="0,-15,0,10"/>

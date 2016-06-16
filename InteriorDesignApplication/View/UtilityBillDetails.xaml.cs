@@ -30,6 +30,7 @@ namespace View
         {
             InitializeComponent();
             view = _view;
+            
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
@@ -42,6 +43,7 @@ namespace View
             else
             {
                 this.AddSaveButtonLabel.Text = "Add";
+               
             }                     
         }
 
@@ -61,73 +63,40 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (EmptyFields())
+            if (SubscriberName.NoOfErrorsOnScreen == 0 &&
+                AccountIdTxt.NoOfErrorsOnScreen == 0 &&
+                utilityCompanyName.SelectedIndex != -1 &&
+                billType.SelectedIndex != -1)
+            {
+                ErrorNotification.Visibility = Visibility.Collapsed;
+                if (this.utilityFormPanel.Visibility == Visibility.Visible)
+                {
+                    if (view == "add")
+                    {
+                        this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCommand"));
+                    }
+                    else if (view == "edit")
+                    {
+                        this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
+                    }
+
+                    viewModel.CurrentPopupView = null;
+                }
+                else if (this.addBillTypePanel.Visibility == Visibility.Visible)
+                {
+                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityBillTypeCommand"));
+                    ShowUtilityFormPanel();
+                }
+                else if (this.addCompanyNamePanel.Visibility == Visibility.Visible)
+                {
+                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCompanyCommand"));
+                    ShowUtilityFormPanel();
+                }
+            }
+            else
             {
                 ErrorNotification.Visibility = Visibility.Visible; 
-                return;
-            }
-
-            ErrorNotification.Visibility = Visibility.Collapsed; 
-            if (this.utilityFormPanel.Visibility == Visibility.Visible)
-            {
-                if (view == "add")
-                {
-                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCommand"));
-                }
-                else if (view == "edit")
-                {
-                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
-                }
-
-                viewModel.CurrentPopupView = null;
-            }
-            else if (this.addBillTypePanel.Visibility == Visibility.Visible)
-            {
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityBillTypeCommand"));
-                ShowUtilityFormPanel();
-            }
-            else if (this.addCompanyNamePanel.Visibility == Visibility.Visible)
-            {
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCompanyCommand"));
-                ShowUtilityFormPanel();
-            }
-                                   
-        }
-
-        private bool EmptyFields()
-        {
-            bool retVal = false;    
-            List<WatermarkTextBox> list = new List<WatermarkTextBox>();
-            list.Add(SubscriberName);
-            list.Add(AccountIdTxt);
-            list.Add(UtilityReceiptTxt);
-            list.Add(BillStatementTxt);
-            CheckEmptyFields(list, out retVal);
-            return retVal;
-        }
-
-        private void CheckEmptyFields(List<WatermarkTextBox> list, out bool retVal)
-        {
-            retVal = false;
-            foreach (WatermarkTextBox textBox in list)
-            {
-                if(textBox.Text.Equals(textBox.Watermark)){
-                    retVal = true;
-                    textBox.WatermarkBorderColor = Brushes.Red;
-                }   
-            }
-            if (utilityCompanyName.SelectedIndex == -1)
-            {
-                retVal = true;
-                utilityCompanyName.BorderBrush = Brushes.Red;
-                utilityCompanyName.Focus();
-            }
-            if (billType.SelectedIndex == -1)
-            {
-                retVal = true;
-                billType.BorderBrush = Brushes.Red;
-                billType.Focus();
-            }
+            }            
         }
 
         private void addBillType_Click(object sender, RoutedEventArgs e)
@@ -251,5 +220,7 @@ namespace View
             }            
             return isValid;
         }
+
+        
     }
 }
