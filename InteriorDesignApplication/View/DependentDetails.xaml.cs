@@ -30,7 +30,6 @@ namespace View
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;            
             this.viewModel.CreateEntity(new Dependent());
-            LastName.Focus();
         }
         
         private void close_Click(object sender, RoutedEventArgs e)
@@ -43,13 +42,19 @@ namespace View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (LastName.NoOfErrorsOnScreen == 0 && FirstName.NoOfErrorsOnScreen == 0)      
-            {   
+            {
+                viewModel.ReadyToSave = true;
                 viewModel.CurrentPopupView = null;
             }
             else
             {
                 ErrorNotification.Visibility = Visibility.Visible;
-            }            
+                viewModel.ReadyToSave = false;
+            }
+            //else
+            //{
+            //    ErrorNotification.Visibility = Visibility.Visible;
+            //}            
         }        
     }
 }

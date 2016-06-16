@@ -452,9 +452,12 @@ namespace ViewModel
 
         private void AddDependent()
         {
-            CurrentSelectedCustomer.Dependents.Add(Dependent);
-            Dependent = null;
-            OnPropertyChanged("Dependents");
+            if (readyToSave)
+            {
+                CurrentSelectedCustomer.Dependents.Add(Dependent);
+                Dependent = null;
+                OnPropertyChanged("Dependents");
+            }
         }
 
         private void DeleteDependent()

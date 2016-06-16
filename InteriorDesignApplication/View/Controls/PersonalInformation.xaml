@@ -106,7 +106,7 @@
                         WatermarkBorderColor="LightGray"
                         WaterMarkForeground="Gray"
                        
-                        />                   
+                        />
                 </StackPanel>
             </Grid>
             <Grid
@@ -410,7 +410,8 @@
                 Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="Auto" />
+                        Width="177.2" />
+                    <ColumnDefinition Width="782"/>
                     <ColumnDefinition
                         Width="Auto" />
                     <ColumnDefinition />
@@ -420,12 +421,12 @@
                     Height="90"
                     HorizontalAlignment="Left"
                     Width="935"
-                    Margin="24,0,0,0"
+                    Margin="24,0,0,-0.4"
                     ItemsSource="{Binding Dependents}"
                     SelectedItem="{Binding CurrentSelectedDependent}"
                     SelectionChanged="gridDependents_SelectionChanged"
                     AutoGenerateColumns="False"
-                    CanUserAddRows="False">
+                    CanUserAddRows="False" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Last Name"
@@ -454,7 +455,7 @@
                     Style="{StaticResource iconButtonStyle}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                    Click="deleteEntry_Click">
+                    Click="deleteEntry_Click" Grid.ColumnSpan="3" Margin="781.8,30,0,29.6">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
