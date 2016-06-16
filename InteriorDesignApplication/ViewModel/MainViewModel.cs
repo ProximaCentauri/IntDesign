@@ -392,6 +392,7 @@ namespace ViewModel
                 OnPropertyChanged("SavingCustomer");
                 if (readyToSave)
                 {
+                    OnPropertyChanged("ReadyToSave");
                     Customer customer = CurrentSelectedCustomer as Customer;
                     Log.InfoFormat("Saving customer:{0} {1}...", customer.FirstName, customer.LastName);
                     customer.CustomerSpouse = this.CustomerSpouse;
@@ -407,7 +408,6 @@ namespace ViewModel
                     if (SelectedIndex == -1 && null != customer.FirstName)
                     {
                         context.Customers.Add(customer);
-
                     }
                     context.SaveChanges();
                     Dependent = null;

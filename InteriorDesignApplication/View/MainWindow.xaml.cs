@@ -57,13 +57,16 @@ namespace View
                 }
             }
             else if (e.PropertyName.Equals("SavedCustomer"))
-            {
-                SaveDetails();   
+            {   
                 viewModel.CurrentPopupView = new SaveNotificationPopup("Details are successfully saved");
             }
             else if (e.PropertyName.Equals("EmptyFields"))
             {
                 viewModel.CurrentPopupView = new SaveNotificationPopup("Please fill the required fields.");
+            }
+            else if (e.PropertyName.Equals("ReadyToSave"))
+            {
+                SaveDetails();
             }
         }
 
@@ -178,7 +181,6 @@ namespace View
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new CancelConfirmationPopup();
-        }
-
+        }       
     }
 }
