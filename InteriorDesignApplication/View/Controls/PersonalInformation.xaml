@@ -187,6 +187,7 @@
                     <DatePicker
                         Width="150"
                         SelectedDateFormat="Short"
+                        Focusable="False"
                         SelectedDate="{Binding CurrentSelectedCustomer.BirthDate}" />
                 </StackPanel>
             </Grid>
@@ -330,6 +331,7 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <DatePicker
                         Width="195"
+                        Focusable="False"
                         SelectedDateFormat="Short"
                         SelectedDate="{Binding CurrentSelectedCustomer.CustomerSpouse.BirthDate}"
                         Name="SpouseBirthDate" />

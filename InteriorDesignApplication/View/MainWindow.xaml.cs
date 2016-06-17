@@ -58,11 +58,11 @@ namespace View
             }
             else if (e.PropertyName.Equals("SavedCustomer"))
             {   
-                viewModel.CurrentPopupView = new SaveNotificationPopup("Details are successfully saved");
+                viewModel.CurrentPopupView = new SaveNotificationPopup();
             }
             else if (e.PropertyName.Equals("EmptyFields"))
             {
-                viewModel.CurrentPopupView = new SaveNotificationPopup("Please fill the required fields.");
+                viewModel.CurrentPopupView = new WarningErrorNotificationPopup("Please fill the required fields.");
             }
             else if (e.PropertyName.Equals("ReadyToSave"))
             {

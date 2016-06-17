@@ -19,11 +19,12 @@ namespace View
     /// <summary>
     /// Interaction logic for GenericNotificationPopup.xaml
     /// </summary>
-    public partial class GenericNotificationPopup : PopupView
+    public partial class WarningErrorNotificationPopup : PopupView
     {
-        public GenericNotificationPopup()
+        public WarningErrorNotificationPopup(string notificationText)
         {
             InitializeComponent();
+            notification.Text = notificationText;
         }
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {

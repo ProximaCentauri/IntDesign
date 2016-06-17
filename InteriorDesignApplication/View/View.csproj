@@ -93,8 +93,8 @@
     <Compile Include="FitOutDetails.xaml.cs">
       <DependentUpon>FitOutDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GenericNotificationPopup.xaml.cs">
-      <DependentUpon>GenericNotificationPopup.xaml</DependentUpon>
+    <Compile Include="WarningErrorNotificationPopup.xaml.cs">
+      <DependentUpon>WarningErrorNotificationPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="PaymentDetails.xaml.cs">
       <DependentUpon>PaymentDetails.xaml</DependentUpon>
@@ -156,7 +156,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GenericNotificationPopup.xaml">
+    <Page Include="WarningErrorNotificationPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

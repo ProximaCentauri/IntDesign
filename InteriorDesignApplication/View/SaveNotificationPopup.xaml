@@ -26,15 +26,13 @@
             Style="{StaticResource mainPopupBorderStyle}"
             Grid.RowSpan="3" />
         <TextBlock
-            x:Name="Notification"
             Style="{StaticResource popupConfirmationTextStyle}"
             Text="Details are successfully saved" />
         <Image
             x:Name="SaveIcon"
             Grid.Row="1"
             HorizontalAlignment="Center"
-            Style="{StaticResource saveDetailsIconStyle}"
-            />
+            Style="{StaticResource saveDetailsIconStyle}" />
         <Button
             Grid.Row="2"
             Width="100"

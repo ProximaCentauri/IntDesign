@@ -106,6 +106,7 @@
                         Grid.Column="1"
                         Width="275"
                         Margin="0,8,0,0"
+                        Focusable="False"
                         SelectedDateFormat="Long"
                         HorizontalAlignment="Left"
                         SelectedDate="{x:Static sys:DateTime.Today}" />

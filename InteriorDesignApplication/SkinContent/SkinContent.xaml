@@ -250,6 +250,20 @@
             Value="15,10" />
     </Style>
     <Style
+        x:Key="warningPopupTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource popupConfirmationTextStyle}">
+        <Setter
+            Property="VerticalAlignment"
+            Value="Top" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="TextAlignment"
+            Value="Justify" />
+    </Style>
+    <Style
         x:Key="popupAddressTextBoxStyle"
         TargetType="TextBox"
         BasedOn="{StaticResource popupTextBoxStyle}">

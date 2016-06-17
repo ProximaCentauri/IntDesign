@@ -207,14 +207,16 @@
                         Grid.Column="0"
                         Text="Cut-off Date:"                        
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <DatePicker Grid.Row="4"
-                                Grid.Column="1"
-                                Width="275"
-                                Margin="0,8,0,0"
-                                SelectedDateFormat="Long"
-                                HorizontalAlignment="Left"
-                                Name="UtilityCutoffDateTxt"
-                                SelectedDate="{Binding UtilityCutoffDate}" />
+                    <DatePicker
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Width="275"
+                        Margin="0,8,0,0"
+                        Focusable="False"
+                        SelectedDateFormat="Long"
+                        HorizontalAlignment="Left"
+                        Name="UtilityCutoffDateTxt"
+                        SelectedDate="{Binding UtilityCutoffDate}" />
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"

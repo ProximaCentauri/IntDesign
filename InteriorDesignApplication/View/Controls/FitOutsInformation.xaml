@@ -112,6 +112,7 @@
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <DatePicker
                         Width="170"
+                        Focusable="False"
                         SelectedDateFormat="Long"
                         SelectedDate="{Binding CurrentSelectedCustomer.FitOut.StartDate}" />
                 </StackPanel>
@@ -129,6 +130,7 @@
                     <DatePicker
                         Width="170"
                         Name="EndDate"
+                        Focusable="False"
                         SelectedDateFormat="Long"
                         SelectedDateChanged="DatePicker_SelectedDateChanged"
                         SelectedDate="{Binding CurrentSelectedCustomer.FitOut.EndDate}" />

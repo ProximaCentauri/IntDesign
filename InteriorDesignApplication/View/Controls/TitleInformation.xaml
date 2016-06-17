@@ -71,6 +71,7 @@
                 <DatePicker
                     Width="150"
                     Margin="0,0,10,0"
+                    Focusable="False"
                     SelectedDateFormat="Long"
                     SelectedDate="{Binding CurrentSelectedCustomer.TitleInfo.ReleasedDate}"/>
             </StackPanel>

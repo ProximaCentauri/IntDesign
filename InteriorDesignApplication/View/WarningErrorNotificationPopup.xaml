@@ -1,11 +1,11 @@
 ﻿<c:PopupView
-    x:Class="View.GenericNotificationPopup"
+    x:Class="View.WarningErrorNotificationPopup"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     Title="GenericNotificationPopup"
-    Height="300"
-    Width="300"
+    Height="Auto"
+    Width="Auto"
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
@@ -13,18 +13,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
-                MinHeight="130"
-                MaxHeight="220" />
+                Height="Auto" />
             <RowDefinition
                 Height="80" />
         </Grid.RowDefinitions>
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
             Grid.RowSpan="2" />
-        <TextBlock
-            x:Name="entryValueText"
-            Text="File is not found or an error has been encountered when opening file"
-            Style="{StaticResource popupConfirmationTextStyle}" />
+        <StackPanel
+            Margin="12"
+            Orientation="Horizontal">
+            <Image
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="0,15,0,0"
+                Style="{StaticResource warningIconStyle}" />
+            <TextBlock
+                Name="notification"
+                Width="240"
+                Style="{StaticResource warningPopupTextStyle}" />
+        </StackPanel>
         <Button
             Grid.Row="1"
             Width="100"
