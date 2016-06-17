@@ -197,10 +197,10 @@
                         Grid.Row="3"
                         Grid.Column="1"                        
                         Name="AccountIdTxt"
-                        WatermarkBorderColor="LightGray"
                         Style="{StaticResource popupTextBoxStyle}"
                         Text="{Binding CurrentSelectedUtility.AccountId}"
                         Watermark="This field is required"
+                        WatermarkBorderColor="LightGray"
                         WaterMarkForeground="Gray"/>                    
                     <TextBlock
                         Grid.Row="4"

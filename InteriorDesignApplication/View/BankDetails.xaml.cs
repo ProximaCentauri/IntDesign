@@ -51,17 +51,30 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (view == "add")
+            if(SwiftCode.NoOfErrorsOnScreen == 0 &&
+                Address.NoOfErrorsOnScreen == 0 &&
+                Branch.NoOfErrorsOnScreen == 0 &&
+                AccountNo.NoOfErrorsOnScreen == 0 &&
+                AccountName.NoOfErrorsOnScreen == 0 &&
+                BankName.NoOfErrorsOnScreen == 0)
             {
-                this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("AddBankCommand"));
+                if (view == "add")
+                {
+                    this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("AddBankCommand"));
+                }
+                else
+                {
+                    this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateBankCommand"));
+                }
+
+                viewModel.CurrentPopupView = null;
             }
             else
             {
-                this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateBankCommand"));
+                ErrorNotification.Text = "Please fill up the required fields.";
+                ErrorNotification.Visibility = Visibility.Visible;
             }
-
-            viewModel.CurrentPopupView = null;
+            
         }
     }
 }
