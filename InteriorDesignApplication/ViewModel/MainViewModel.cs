@@ -526,8 +526,6 @@ namespace ViewModel
                 CurrentSelectedCustomer.Utilities.Add(CurrentSelectedUtility);
                 context.Entry(CurrentSelectedUtility).State = EntityState.Added;
                 Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
-
-                
                 // set properties to null
                 Utility = null;
                 CurrentSelectedUtilityBillType = null;
