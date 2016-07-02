@@ -139,10 +139,17 @@ namespace ViewModel
                 return currentSelectedCustomer;
             }
             set
-            {
-                currentSelectedCustomer = value;
+            {                                
+                currentSelectedCustomer = value;                 
+
                 if (currentSelectedCustomer != null)
-                {
+                {                    
+                    // discard un-saved changes from db context
+                    if (!string.IsNullOrEmpty(currentSelectedCustomer.FirstName))
+                    {
+                        ResetContext();
+                    }
+
                     Utilities = CurrentSelectedCustomer.Utilities;
                     if (currentSelectedCustomer.CustomerCompany == null)
                     {
@@ -166,8 +173,7 @@ namespace ViewModel
                     if(currentSelectedCustomer.FitOut == null)
                     {
                         currentSelectedCustomer.FitOut = new FitOut();
-                    }
-                    
+                    }                    
                     
                 }                
                 OnPropertyChanged("CurrentSelectedCustomer");
@@ -426,13 +432,13 @@ namespace ViewModel
                 }
             }
             catch (DbUpdateConcurrencyException ex)
-            {                
+            {                       
                 ex.Entries.Single().Reload();
                 context.SaveChanges();
                 OnPropertyChanged("SavedCustomer");                
             }            
         }
-
+       
         public void DeleteCustomer()
         {
             Log.InfoFormat("Deleting customer:{0} {1}", CurrentSelectedCustomer.FirstName, CurrentSelectedCustomer.LastName);
@@ -446,11 +452,8 @@ namespace ViewModel
         private void AddCustomer()
         {
             OnPropertyChanged("AddCustomer");
-            CurrentSelectedCustomer = null;
-            Customer customer = new Customer();            
-            customer.TitleInfo = new Title();
-            customer.FitOut = new FitOut();
-            CurrentSelectedCustomer = customer;
+            CurrentSelectedCustomer = null;            
+            CurrentSelectedCustomer = new Customer();
             SelectedIndex = -1;            
         }
 
@@ -628,10 +631,17 @@ namespace ViewModel
         }
 
         private void CancelChanges()
-        {            
-            foreach(DbEntityEntry entry in context.ChangeTracker.Entries())
+        {
+            ResetContext();            
+            CurrentSelectedCustomer = (Customer)context.Entry(CurrentSelectedCustomer).Entity;
+            OnPropertyChanged("CurrentSelectedCustomer");            
+        }
+
+        private void ResetContext()
+        {
+            foreach (DbEntityEntry entry in context.ChangeTracker.Entries())
             {
-                switch(entry.State)
+                switch (entry.State)
                 {
                     case EntityState.Modified:
                         entry.State = EntityState.Unchanged;
@@ -642,12 +652,10 @@ namespace ViewModel
                     case EntityState.Deleted:
                         entry.Reload();
                         break;
-                    default:                        
+                    default:
                         break;
-                }           
+                }
             }
-            CurrentSelectedCustomer = (Customer)context.Entry(CurrentSelectedCustomer).Entity;            
-            OnPropertyChanged("CurrentSelectedCustomer");           
         }
         #endregion
 

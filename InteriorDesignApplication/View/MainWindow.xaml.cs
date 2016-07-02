@@ -136,7 +136,7 @@ namespace View
             if (GridCustomers.SelectedIndex >= 0)
             {
                 DeleteButton.Visibility = Visibility.Visible;
-                enableCustomerFormPanel(true);
+                enableCustomerFormPanel(true);                               
             }
             else
             {
