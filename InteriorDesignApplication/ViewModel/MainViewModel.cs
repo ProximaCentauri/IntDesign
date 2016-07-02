@@ -148,10 +148,17 @@ namespace ViewModel
                     {
                         currentSelectedCustomer.CustomerCompany = new Company();
                     }
+
                     if (currentSelectedCustomer.ImageSourceLocation != null)
                     {
                         CustomerImageSource = new BitmapImage(new Uri(currentSelectedCustomer.ImageSourceLocation));
                     }
+                    else
+                    {
+                        // this stays in here! do not move somewhere else!
+                        CustomerImageSource = null;
+                    }
+
                     if(currentSelectedCustomer.TitleInfo == null)
                     {
                         currentSelectedCustomer.TitleInfo = new Title();
@@ -160,10 +167,7 @@ namespace ViewModel
                     {
                         currentSelectedCustomer.FitOut = new FitOut();
                     }
-                    else
-                    {
-                        CustomerImageSource = null;
-                    }
+                    
                     
                 }                
                 OnPropertyChanged("CurrentSelectedCustomer");
