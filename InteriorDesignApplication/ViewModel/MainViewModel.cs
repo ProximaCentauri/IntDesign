@@ -145,7 +145,7 @@ namespace ViewModel
                 if (currentSelectedCustomer != null)
                 {                    
                     // discard un-saved changes from db context
-                    if (!string.IsNullOrEmpty(currentSelectedCustomer.FirstName))
+                    if (SelectedIndex != -1)
                     {
                         ResetContext();
                     }
@@ -451,10 +451,11 @@ namespace ViewModel
         // This cancels currently selected customer to clear data in panel
         private void AddCustomer()
         {
+            SelectedIndex = -1; 
             OnPropertyChanged("AddCustomer");
             CurrentSelectedCustomer = null;            
             CurrentSelectedCustomer = new Customer();
-            SelectedIndex = -1;            
+                       
         }
 
         private void AddDependent()
