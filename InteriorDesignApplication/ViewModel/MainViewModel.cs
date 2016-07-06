@@ -758,6 +758,16 @@ namespace ViewModel
             OnPropertyChanged("UnitRemainingBalance");
         }
 
+        private void DeletePayment()
+        {
+            CurrentSelectedCustomer.TitleInfo.Payments.Remove(CurrentSelectedPayment);
+            context.Entry(CurrentSelectedPayment).State = EntityState.Deleted;
+            CurrentSelectedPayment = null;
+            OnPropertyChanged("Payments");
+            OnPropertyChanged("UnitTotalPayment");
+            OnPropertyChanged("UnitRemainingBalance");
+        }
+
         #endregion
 
         #region Appliance
@@ -1129,6 +1139,19 @@ namespace ViewModel
                     _addPaymentCommand = new RelayCommand(AddPayment);
                 }
                 return _addPaymentCommand;
+            }
+        }
+
+        ICommand _deletePaymentCommand;
+        public ICommand DeletePaymentCommand
+        {
+            get
+            {
+                if (_deletePaymentCommand == null)
+                {
+                    _deletePaymentCommand = new RelayCommand(DeletePayment);
+                }
+                return _deletePaymentCommand;
             }
         }
 

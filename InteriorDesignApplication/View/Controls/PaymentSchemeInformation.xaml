@@ -193,7 +193,8 @@
                     Style="{StaticResource iconButtonStyle}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                    Margin="0,110,-29,110">
+                    Margin="0,110,-29,110"
+                    Command="{Binding DeletePaymentCommand}">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
