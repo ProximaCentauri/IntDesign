@@ -414,30 +414,16 @@ namespace ViewModel
                 OnPropertyChanged("UnitRemainingBalance");
             }
         }
-
-        private double unitTotalPayment;
+        
         public double UnitTotalPayment
         {
-            //get
-            //{
-            //    return unitTotalPayment;
-            //}
-            //set
-            //{
-            //    unitTotalPayment = value;
-            //    if (CurrentSelectedCustomer != null && CurrentSelectedCustomer.TitleInfo != null)
-            //    {
-            //        CurrentSelectedCustomer.TitleInfo.TotalPayment = value;
-            //    }
-            //    OnPropertyChanged("UnitTotalPayment");
-            //    OnPropertyChanged("UnitRemainingBalance");
-            //}
             get
             {
                 double total = 0.0;
                 if(CurrentSelectedCustomer != null && CurrentSelectedCustomer.TitleInfo != null)
                 {
-                    total = CurrentSelectedCustomer.TitleInfo.Payments.Sum(j => j.Amount);                    
+                    total = CurrentSelectedCustomer.TitleInfo.Payments.Sum(j => j.Amount);
+                    CurrentSelectedCustomer.TitleInfo.TotalPayment = total;
                 }
                 return total;
             }
@@ -750,8 +736,7 @@ namespace ViewModel
         private void AddPayment()
         {
             CurrentSelectedCustomer.TitleInfo.Payments.Add(CurrentSelectedPayment);
-            context.Entry(CurrentSelectedPayment).State = EntityState.Added;
-            CurrentSelectedCustomer.TitleInfo.TotalPayment = UnitTotalPayment;
+            context.Entry(CurrentSelectedPayment).State = EntityState.Added;            
             CurrentSelectedPayment = null;
             OnPropertyChanged("Payments");
             OnPropertyChanged("UnitTotalPayment");
@@ -772,7 +757,10 @@ namespace ViewModel
         {
             if (CurrentSelectedPayment != null)
             {
-                context.Entry(CurrentSelectedPayment).State = EntityState.Modified;
+                context.Entry(CurrentSelectedPayment).State = EntityState.Modified;                
+                OnPropertyChanged("Payments");
+                OnPropertyChanged("UnitTotalPayment");
+                OnPropertyChanged("UnitRemainingBalance");
             }
         }
 

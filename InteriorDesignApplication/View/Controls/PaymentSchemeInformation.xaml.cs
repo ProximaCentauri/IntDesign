@@ -52,15 +52,19 @@ namespace View.Controls
 
         private void gridPayments_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(gridPayments.SelectedIndex >= 0)
-                deleteEntry.Visibility = Visibility.Visible;
+            if (gridPayments.SelectedIndex >= 0)
+            {
+                editPayment.Visibility = deleteEntry.Visibility = Visibility.Visible;                
+            }
             else
-                deleteEntry.Visibility = Visibility.Collapsed;
+            {
+                editPayment.Visibility = deleteEntry.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void editPayment_Click(object sender, RoutedEventArgs e)
         {
-
+            viewModel.CurrentPopupView = new PaymentDetails("edit");
         }
     }
 }
