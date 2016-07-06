@@ -768,6 +768,14 @@ namespace ViewModel
             OnPropertyChanged("UnitRemainingBalance");
         }
 
+        private void EditUpdatePayment()
+        {
+            if (CurrentSelectedPayment != null)
+            {
+                context.Entry(CurrentSelectedPayment).State = EntityState.Modified;
+            }
+        }
+
         #endregion
 
         #region Appliance
@@ -1152,6 +1160,19 @@ namespace ViewModel
                     _deletePaymentCommand = new RelayCommand(DeletePayment);
                 }
                 return _deletePaymentCommand;
+            }
+        }
+
+        ICommand _editUpdatePaymentCommand;
+        public ICommand EditUpdatePaymentCommand
+        {
+            get
+            {
+                if (_editUpdatePaymentCommand == null)
+                {
+                    _editUpdatePaymentCommand = new RelayCommand(EditUpdatePayment);
+                }
+                return _editUpdatePaymentCommand;
             }
         }
 

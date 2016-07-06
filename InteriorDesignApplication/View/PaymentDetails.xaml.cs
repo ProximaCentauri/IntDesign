@@ -52,6 +52,7 @@ namespace View
         {
             if (view == "edit")
             {
+                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdatePaymentCommand"));
             }
             else
             {
