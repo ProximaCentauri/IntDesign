@@ -57,5 +57,10 @@ namespace View.Controls
             else
                 deleteEntry.Visibility = Visibility.Collapsed;
         }
+
+        private void editPayment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

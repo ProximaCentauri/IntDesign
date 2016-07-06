@@ -106,11 +106,21 @@
                         Grid.Column="0"
                         Text="Attachment:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <StackPanel
                         Grid.Row="3"
                         Grid.Column="1"
-                        Text="{Binding CurrentSelectedPayment.Attachment}"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Orientation="Horizontal">
+                        <TextBox
+                            Text="{Binding CurrentSelectedPayment.Attachment}"
+                            Style="{StaticResource popupTextBoxStyle}" />
+                        <Button
+                            Name="browsePayment"
+                            Width="50"
+                            Height="22"
+                            Margin="8,6,0,0"
+                            Content="Browse"
+                            Click="browsePayment_Click" />
+                    </StackPanel>
                 </Grid>
             </StackPanel>
         </Grid>

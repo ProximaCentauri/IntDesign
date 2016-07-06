@@ -138,6 +138,16 @@
                                 Style="{StaticResource addIconStyle}" />
                         </StackPanel>
                     </Button>
+                    <Button
+                        Name="editPayment"
+                        Width="40"
+                        Height="20"
+                        Visibility="Collapsed"
+                        Click="editPayment_Click"
+                        Style="{StaticResource iconButtonStyle}">
+                        <Image
+                            Style="{StaticResource editIconStyle}" />
+                    </Button>
                 </StackPanel>
             </Grid>
             <Grid

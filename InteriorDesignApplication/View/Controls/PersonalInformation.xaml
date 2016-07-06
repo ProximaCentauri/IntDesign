@@ -104,9 +104,7 @@
                         UpdateSourceTrigger=Explicit}"
                         Watermark="This field is required"
                         WatermarkBorderColor="LightGray"
-                        WaterMarkForeground="Gray"
-                       
-                        />
+                        WaterMarkForeground="Gray" />
                 </StackPanel>
             </Grid>
             <Grid
@@ -122,6 +120,7 @@
                     <TextBox
                         Width="194"
                         Margin="0,0,10,0"
+                        CharacterCasing="Upper"
                         Text="{Binding CurrentSelectedCustomer.MiddleName}"></TextBox>
                 </StackPanel>
             </Grid>
@@ -138,6 +137,7 @@
                     <TextBox
                         Width="150"
                         Margin="0,0,10,0"
+                        CharacterCasing="Upper"
                         Text="{Binding CurrentSelectedCustomer.Religion}"></TextBox>
                 </StackPanel>
             </Grid>

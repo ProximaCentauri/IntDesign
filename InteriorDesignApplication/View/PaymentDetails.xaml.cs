@@ -60,5 +60,10 @@ namespace View
             }
             viewModel.CurrentPopupView = null;
         }
+
+        private void browsePayment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

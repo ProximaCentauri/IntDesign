@@ -86,10 +86,24 @@
                     Text="Scanned Title:"
                     Width="75"
                     Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                <TextBox
+                <!--<TextBox
                     Width="180"
                     Margin="0,0,10,0"
-                    Name="EmailAddress" />
+                    Name="EmailAddress" />-->
+                <TextBlock
+                    Width="260"
+                    Background="#f4f4f4"
+                    Margin="0,0,10,0"
+                    Name="ScannedTitleText"
+                    Text="{Binding CurrentSelectedCustomer.TitleInfo.ScannedTitle}"> 
+                    <!--<Hyperlink
+                        Name="ScannedTitleLink"
+                        RequestNavigate="ScannedTitleLink_RequestNavigate">
+                        <TextBlock
+                            Text="{Binding CurrentSelectedCustomer.TitleInfo.ReleaseDate, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            Name="ScannedTitleText" />
+                        </Hyperlink>-->
+                </TextBlock>
                 <Button
                     Name="browseBtn"
                     Width="70"

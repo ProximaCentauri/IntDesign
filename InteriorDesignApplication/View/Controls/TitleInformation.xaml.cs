@@ -17,6 +17,8 @@ using Model.Controls;
 using ViewModel;
 using Model;
 using Microsoft.Win32;
+using System.Diagnostics;
+using System.IO;
 
 namespace View.Controls
 {
@@ -32,8 +34,8 @@ namespace View.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            viewModel = this.DataContext as IMainViewModel;
-
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            
             if(viewModel.CurrentSelectedCustomer != null)
                 addressInfo.Text = viewModel.CurrentSelectedCustomer.Address;
         }
@@ -45,10 +47,23 @@ namespace View.Controls
             Nullable<bool> result = dlg.ShowDialog();
             if (!String.IsNullOrEmpty(dlg.FileName))
             {
-                
+               ScannedTitleText.Text = dlg.FileName;
             }
         }
 
         IMainViewModel viewModel;
+
+        private void ScannedTitleLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(@e.Uri.AbsolutePath));
+            }
+            catch (Exception ex)
+            {
+
+                // show pop-up here that problem is encountered opening file
+            }
+        }
     }
 }
