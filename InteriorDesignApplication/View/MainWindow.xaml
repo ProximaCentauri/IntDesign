@@ -96,6 +96,7 @@
                 SelectedItem="{Binding CurrentSelectedCustomer}"
                 SelectedIndex="{Binding SelectedIndex}"    
                 SelectionChanged="GridCustomers_SelectionChanged"
+                SelectionMode="Single"
                 CanUserAddRows="False"
                 IsReadOnly="True"
                 AutoGenerateColumns="False">
