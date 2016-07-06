@@ -66,7 +66,7 @@
                         Name="UnitCost"
                         Width="170"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.TitleInfo.UnitCost, StringFormat='{}{0:0,0.00}'}"></TextBox>
+                        Text="{Binding UnitTotalCost, StringFormat='{}{0:0,0.00}', UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid
@@ -83,8 +83,7 @@
                         Width="170"
                         Margin="0,0,10,0"
                         Name="TotalPayment"
-                        TextChanged="TotalPayment_TextChanged"
-                        Text="{Binding CurrentSelectedCustomer.TitleInfo.TotalPayment, StringFormat='{}{0:0,0.00}'}"></TextBox>
+                        Text="{Binding UnitTotalPayment, StringFormat='{}{0:0,0.00}', UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
             </Grid>
             <Grid
@@ -101,6 +100,7 @@
                         Width="194"
                         Margin="0,0,10,0"
                         IsReadOnly="True"
+                        Text="{Binding UnitRemainingBalance, StringFormat='{}{0:0,0.00}', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Name="Balance" />
                 </StackPanel>
             </Grid>

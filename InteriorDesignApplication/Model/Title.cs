@@ -18,11 +18,24 @@ namespace Model
         [Column(TypeName = "Date")]
         public DateTime? ReleasedDate { get; set; }
         public string ScannedTitle { get; set; }
+        
         public double UnitCost { get; set; }
         public double TotalPayment { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
+        
+        public Title()
+        {
+            Payments = new List<Payment>();
+        }
 
-        //[NotMapped]
-        //public string Balance { get; }
+        [NotMapped]
+        public double RemainingBalance
+        {
+            get
+            {
+                return UnitCost - TotalPayment;
+            }
+        }
 
     }
 }

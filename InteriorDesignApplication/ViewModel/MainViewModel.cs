@@ -168,8 +168,11 @@ namespace ViewModel
 
                     if(currentSelectedCustomer.TitleInfo == null)
                     {
-                        currentSelectedCustomer.TitleInfo = new Title();
-                    }
+                        currentSelectedCustomer.TitleInfo = new Title();                      
+                    }                    
+                    UnitTotalCost = currentSelectedCustomer.TitleInfo.UnitCost;
+                    UnitTotalPayment = currentSelectedCustomer.TitleInfo.TotalPayment;                    
+
                     if(currentSelectedCustomer.FitOut == null)
                     {
                         currentSelectedCustomer.FitOut = new FitOut();
@@ -391,6 +394,53 @@ namespace ViewModel
                 return UtilityHelper.GetUtilityStatusText(UtilityCutoffDate, !String.IsNullOrEmpty(UtilityReceipt));
             }
         }
+
+        private double unitTotalCost;
+        public double UnitTotalCost
+        {
+            get
+            {
+                return unitTotalCost;
+            }
+            set
+            {
+                unitTotalCost = value;
+                if(CurrentSelectedCustomer != null && CurrentSelectedCustomer.TitleInfo != null)
+                {
+                    CurrentSelectedCustomer.TitleInfo.UnitCost = value;
+                }
+                OnPropertyChanged("UnitTotalCost");
+                OnPropertyChanged("UnitRemainingBalance");
+            }
+        }
+
+        private double unitTotalPayment;
+        public double UnitTotalPayment
+        {
+            get
+            {
+                return unitTotalPayment;
+            }
+            set
+            {
+                unitTotalPayment = value;
+                if (CurrentSelectedCustomer != null && CurrentSelectedCustomer.TitleInfo != null)
+                {
+                    CurrentSelectedCustomer.TitleInfo.TotalPayment = value;
+                }
+                OnPropertyChanged("UnitTotalPayment");
+                OnPropertyChanged("UnitRemainingBalance");
+            }
+        }
+       
+        public double UnitRemainingBalance
+        {
+            get
+            {
+                return UnitTotalCost - UnitTotalPayment;               
+            }           
+        }
+               
         #endregion
        
 
@@ -405,12 +455,7 @@ namespace ViewModel
                     OnPropertyChanged("ReadyToSave");
                     Customer customer = CurrentSelectedCustomer as Customer;
                     Log.InfoFormat("Saving customer:{0} {1}...", customer.FirstName, customer.LastName);
-                    customer.CustomerSpouse = this.CustomerSpouse;
-                    // avoid saving null customer company in db; company name required
-                    if (customer.CustomerCompany != null && String.IsNullOrEmpty(customer.CustomerCompany.Name))
-                    {
-                        customer.CustomerCompany = null;
-                    }
+                    customer.CustomerSpouse = this.CustomerSpouse;                    
                     if (CustomerImageSource != null)
                     {
                         customer.ImageSourceLocation = CustomerImageSource.ToString();
@@ -435,7 +480,7 @@ namespace ViewModel
             {                       
                 ex.Entries.Single().Reload();
                 context.SaveChanges();
-                OnPropertyChanged("SavedCustomer");                
+                OnPropertyChanged("SavedCustomer");
             }            
         }
        

@@ -30,7 +30,7 @@ namespace View.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            viewModel = this.DataContext as IMainViewModel;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
         }
 
@@ -58,24 +58,24 @@ namespace View.Controls
                 deleteEntry.Visibility = Visibility.Collapsed;
         }
 
-        private void TotalPayment_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string unitCostText = UnitCost.Text;
-            string totalPaymentText = TotalPayment.Text;
+        //private void TotalPayment_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    string unitCostText = UnitCost.Text;
+        //    string totalPaymentText = TotalPayment.Text;
 
-            if (unitCostText != string.Empty && totalPaymentText != string.Empty)
-            {
-                double unitCost = 0;
-                double totalPayment = 0;
-                double balance = 0;
+        //    if (unitCostText != string.Empty && totalPaymentText != string.Empty)
+        //    {
+        //        double unitCost = 0;
+        //        double totalPayment = 0;
+        //        double balance = 0;
 
-                unitCost = Convert.ToDouble(unitCostText);
-                totalPayment = Convert.ToDouble(totalPaymentText);
-                balance = unitCost - totalPayment;
+        //        unitCost = Convert.ToDouble(unitCostText);
+        //        totalPayment = Convert.ToDouble(totalPaymentText);
+        //        balance = unitCost - totalPayment;
 
-                Balance.Text = string.Format("{0:0.00}", balance.ToString());
-            }
+        //        Balance.Text = string.Format("{0:0.00}", balance.ToString());
+        //    }
                 
-        }
+        //}
     }
 }

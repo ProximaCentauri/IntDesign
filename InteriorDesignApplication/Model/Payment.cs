@@ -18,11 +18,11 @@ namespace Model
         public DateTime? PaymentDate { get; set; } 
         public string ChequeNumber { get; set; }
         public double Amount { get; set; }
-        public string Cheque { get; set; }
+        public string Attachment { get; set; }
 
-        public int CustomerId { get; set; }
-        [ForeignKey("CustomerId")]
-        public virtual Customer Customer { get; set; }
+        public int TitleId { get; set; }
+        [ForeignKey("TitleId")]
+        public virtual Title Title { get; set; }
 
     }
 }
