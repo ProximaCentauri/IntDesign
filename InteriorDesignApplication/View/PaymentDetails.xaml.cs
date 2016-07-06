@@ -21,14 +21,24 @@ namespace View
     /// </summary>
     public partial class PaymentDetails : PopupView
     {
-        public PaymentDetails()
+        private string view = string.Empty;  
+        public PaymentDetails(string _view)
         {
             InitializeComponent();
+            view = _view;
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            if (view == "edit")
+            {
+                this.AddSaveButtonLabel.Text = "Update";
+            }
+            else
+            {
+                this.AddSaveButtonLabel.Text = "Add";
+            }   
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -37,5 +47,17 @@ namespace View
         }
 
         IMainViewModel viewModel;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (view == "edit")
+            {
+            }
+            else
+            {
+                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddPaymentCommand"));
+            }
+            viewModel.CurrentPopupView = null;
+        }
     }
 }

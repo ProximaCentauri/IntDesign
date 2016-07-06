@@ -28,14 +28,5 @@ namespace Model
             Payments = new List<Payment>();
         }
 
-        [NotMapped]
-        public double RemainingBalance
-        {
-            get
-            {
-                return UnitCost - TotalPayment;
-            }
-        }
-
     }
 }

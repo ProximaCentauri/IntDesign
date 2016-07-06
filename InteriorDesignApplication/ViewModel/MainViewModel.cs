@@ -170,8 +170,7 @@ namespace ViewModel
                     {
                         currentSelectedCustomer.TitleInfo = new Title();                      
                     }                    
-                    UnitTotalCost = currentSelectedCustomer.TitleInfo.UnitCost;
-                    UnitTotalPayment = currentSelectedCustomer.TitleInfo.TotalPayment;                    
+                    UnitTotalCost = currentSelectedCustomer.TitleInfo.UnitCost;              
 
                     if(currentSelectedCustomer.FitOut == null)
                     {
@@ -184,6 +183,7 @@ namespace ViewModel
                 OnPropertyChanged("Utilities");
                 OnPropertyChanged("Banks");
                 OnPropertyChanged("Appliances");
+                OnPropertyChanged("Payments");
             }
         }
 
@@ -410,6 +410,7 @@ namespace ViewModel
                     CurrentSelectedCustomer.TitleInfo.UnitCost = value;
                 }
                 OnPropertyChanged("UnitTotalCost");
+                OnPropertyChanged("UnitTotalPayment");
                 OnPropertyChanged("UnitRemainingBalance");
             }
         }
@@ -417,19 +418,28 @@ namespace ViewModel
         private double unitTotalPayment;
         public double UnitTotalPayment
         {
+            //get
+            //{
+            //    return unitTotalPayment;
+            //}
+            //set
+            //{
+            //    unitTotalPayment = value;
+            //    if (CurrentSelectedCustomer != null && CurrentSelectedCustomer.TitleInfo != null)
+            //    {
+            //        CurrentSelectedCustomer.TitleInfo.TotalPayment = value;
+            //    }
+            //    OnPropertyChanged("UnitTotalPayment");
+            //    OnPropertyChanged("UnitRemainingBalance");
+            //}
             get
             {
-                return unitTotalPayment;
-            }
-            set
-            {
-                unitTotalPayment = value;
-                if (CurrentSelectedCustomer != null && CurrentSelectedCustomer.TitleInfo != null)
+                double total = 0.0;
+                if(CurrentSelectedCustomer != null && CurrentSelectedCustomer.TitleInfo != null)
                 {
-                    CurrentSelectedCustomer.TitleInfo.TotalPayment = value;
+                    total = CurrentSelectedCustomer.TitleInfo.Payments.Sum(j => j.Amount);                    
                 }
-                OnPropertyChanged("UnitTotalPayment");
-                OnPropertyChanged("UnitRemainingBalance");
+                return total;
             }
         }
        
@@ -439,6 +449,33 @@ namespace ViewModel
             {
                 return UnitTotalCost - UnitTotalPayment;               
             }           
+        }
+
+       
+        public IEnumerable<Payment> Payments
+        {
+            get
+            {
+                if (CurrentSelectedCustomer != null)
+                {
+                    return new ObservableCollection<Payment>(CurrentSelectedCustomer.TitleInfo.Payments);
+                }
+                return null;
+            }
+        }
+
+        private Payment currentSelectedPayment;
+        public Payment CurrentSelectedPayment
+        {
+            get
+            {
+                return currentSelectedPayment;
+            }
+            set
+            {
+                currentSelectedPayment = value;
+                OnPropertyChanged("CurrentSelectedPayment");                
+            }
         }
                
         #endregion
@@ -703,6 +740,24 @@ namespace ViewModel
                 }
             }
         }
+
+        private void CreatePayment()
+        {
+            CurrentSelectedPayment = null;            
+            CurrentSelectedPayment = new Payment();
+        }
+
+        private void AddPayment()
+        {
+            CurrentSelectedCustomer.TitleInfo.Payments.Add(CurrentSelectedPayment);
+            context.Entry(CurrentSelectedPayment).State = EntityState.Added;
+            CurrentSelectedCustomer.TitleInfo.TotalPayment = UnitTotalPayment;
+            CurrentSelectedPayment = null;
+            OnPropertyChanged("Payments");
+            OnPropertyChanged("UnitTotalPayment");
+            OnPropertyChanged("UnitRemainingBalance");
+        }
+
         #endregion
 
         #region Appliance
@@ -1048,6 +1103,32 @@ namespace ViewModel
                     _cancelChangesCommand = new RelayCommand(CancelChanges);
                 }
                 return _cancelChangesCommand;
+            }
+        }
+
+        ICommand _createPaymentCommand;
+        public ICommand CreatePaymentCommand
+        {
+            get
+            {
+                if (_createPaymentCommand == null)
+                {
+                    _createPaymentCommand = new RelayCommand(CreatePayment);
+                }
+                return _createPaymentCommand;
+            }
+        }
+
+        ICommand _addPaymentCommand;
+        public ICommand AddPaymentCommand
+        {
+            get
+            {
+                if (_addPaymentCommand == null)
+                {
+                    _addPaymentCommand = new RelayCommand(AddPayment);
+                }
+                return _addPaymentCommand;
             }
         }
 
