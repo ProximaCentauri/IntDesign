@@ -795,8 +795,8 @@ namespace ViewModel
 
         private void CreateAppliance()
         {
-            CurrentSelectedAppliance = null;
-            Appliance customerAppliance = new Appliance();
+            CurrentSelectedAppliance = new Appliance();
+            //Appliance customerAppliance = new Appliance();
         }
 
         private void AddAppliance()

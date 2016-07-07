@@ -193,7 +193,9 @@
                 Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="186" />
+                        Width="160.4" />
+                    <ColumnDefinition
+                        Width="26" />
                     <ColumnDefinition
                         Width="775" />
                     <ColumnDefinition
@@ -202,7 +204,7 @@
                 <DataGrid
                     Name="gridAppliances"
                     HorizontalAlignment="Left"
-                    Margin="10,0,0,0"
+                    Margin="10,0,0,-0.4"
                     Height="250"
                     Grid.Row="0"
                     Width="950"
@@ -210,7 +212,7 @@
                     ItemsSource="{Binding Appliances}"
                     SelectedItem="{Binding CurrentSelectedAppliance}"
                     SelectionChanged="gridAppliances_SelectionChanged"
-                    Grid.ColumnSpan="2">
+                    Grid.ColumnSpan="3">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Description"
@@ -243,7 +245,8 @@
                     Style="{StaticResource iconButtonStyle}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                    Margin="0,110,-29,110">
+                    Margin="775.6,110,-28.8,109.6"
+                    Grid.ColumnSpan="2">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

@@ -31,7 +31,7 @@ namespace View.Controls
         private void addAppliance_Click(object sender, RoutedEventArgs e)
         {
             deleteEntry.Visibility = Visibility.Collapsed;
-            viewModel.CurrentPopupView = new ApplianceDetails();
+            viewModel.CurrentPopupView = new ApplianceDetails("add");
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

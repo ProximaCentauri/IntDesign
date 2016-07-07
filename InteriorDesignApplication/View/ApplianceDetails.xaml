@@ -161,7 +161,7 @@
                     <Image
                         Style="{StaticResource checkIconStyle}" />
                     <TextBlock
-                        Text="Add"
+                        Name="AddSaveButtonLabel"
                         Style="{StaticResource addButtonStyle}" />
                 </StackPanel>
             </Button>

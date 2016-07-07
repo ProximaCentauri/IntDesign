@@ -22,14 +22,24 @@ namespace View
     /// </summary>
     public partial class ApplianceDetails : PopupView
     {
-        public ApplianceDetails()
+        private string view = string.Empty;
+        public ApplianceDetails(string _view)
         {
             InitializeComponent();
+            view = _view;
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            if (view == "edit")
+            {
+                this.AddSaveButtonLabel.Text = "Update";
+            }
+            else
+            {
+                this.AddSaveButtonLabel.Text = "Add";
+            } 
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -41,7 +51,14 @@ namespace View
 
         private void AddSaveApplianceBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("AddApplianceCommand"));
+            if(view == "edit")
+            {
+                this.AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateApplianceCommand"));
+            }
+            else
+            {
+                this.AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("AddApplianceCommand"));
+            }
             viewModel.CurrentPopupView = null;
         }
 
