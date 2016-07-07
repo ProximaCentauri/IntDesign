@@ -781,17 +781,15 @@ namespace ViewModel
             }
         }
 
-        private IEnumerable<Appliance> appliances;
         public IEnumerable<Appliance> Appliances
         {
             get
             {
-                return appliances;
-            }
-            set
-            {
-                appliances = value;
-                OnPropertyChanged("Appliances");
+                if(CurrentSelectedAppliance != null)
+                {
+                    return new ObservableCollection<Appliance>(CurrentSelectedCustomer.FitOut.Appliances);
+                }
+                return null;
             }
         }
 
@@ -799,7 +797,6 @@ namespace ViewModel
         {
             CurrentSelectedAppliance = null;
             Appliance customerAppliance = new Appliance();
-            CurrentSelectedAppliance = customerAppliance;
         }
 
         private void AddAppliance()
@@ -808,6 +805,23 @@ namespace ViewModel
             context.Entry(CurrentSelectedAppliance).State = EntityState.Added;
             CurrentSelectedAppliance = null;
             OnPropertyChanged("Appliances");
+        }
+
+        private void DeleteAppliance()
+        {
+            CurrentSelectedCustomer.Appliances.Remove(CurrentSelectedAppliance);
+            context.Entry(CurrentSelectedAppliance).State = EntityState.Deleted;
+            CurrentSelectedAppliance = null;
+            OnPropertyChanged("Appliances");
+        }
+
+        private void EditUpdateAppliance()
+        {
+            if(CurrentSelectedAppliance != null)
+            {
+                context.Entry(CurrentSelectedPayment).State = EntityState.Modified;
+                OnPropertyChanged("Appliances");
+            }
         }
 
         #endregion

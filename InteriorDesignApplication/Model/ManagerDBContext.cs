@@ -29,6 +29,6 @@ namespace Model
         public DbSet<Appliance> Appliances { get; set; }        
         public DbSet Title { get; set; }
         public DbSet FitOut { get; set; }       
-        public DbSet Payments { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }

@@ -28,10 +28,11 @@ namespace Model
         [Column(TypeName = "Date")]
         public DateTime? EndDate { get; set; }
 
-        //[NotMapped]
-        //public string WarrantyStatus
-        //{
-        //    get;
-        //}
+        public virtual ICollection<Appliance> Appliances { get; set; }
+
+        public FitOut()
+        {
+            Appliances = new List<Appliance>();
+        }
     }
 }
