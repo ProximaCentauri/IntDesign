@@ -124,10 +124,20 @@
                         Grid.Column="0"
                         Text="Receipt:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <StackPanel
+                        Orientation="Horizontal"
                         Grid.Row="5"
-                        Grid.Column="1"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Grid.Column="1">
+                        <TextBox
+                            Style="{StaticResource popupTextBoxStyle}" />
+                        <Button
+                            Name="browsePayment"
+                            Width="50"
+                            Height="22"
+                            Margin="8,6,0,0"
+                            Content="Browse"
+                            Click="browsePayment_Click" />
+                    </StackPanel>
                 </Grid>
             </StackPanel>
         </Grid>

@@ -60,18 +60,22 @@ namespace View.Controls
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            DateTime today = DateTime.Now;
-            DateTime endDate = Convert.ToDateTime(EndDate.Text);
-            DateTime warrantyEndDate = endDate.AddDays(45);
-            int result = DateTime.Compare(today, warrantyEndDate);
-            string warrantyStatus = string.Empty;
+            if(!EndDate.Text.Equals(string.Empty))
+            {
+                DateTime today = DateTime.Now;
+                DateTime endDate = Convert.ToDateTime(EndDate.Text);
+                DateTime warrantyEndDate = endDate.AddDays(45);
+                int result = DateTime.Compare(today, warrantyEndDate);
+                string warrantyStatus = string.Empty;
 
-            if (result < 0)
-                warrantyStatus = "On Warranty";
-            else
-                warrantyStatus = "Out of Warranty";
+                if (result < 0)
+                    warrantyStatus = "On Warranty";
+                else
+                    warrantyStatus = "Out of Warranty";
 
-            WarrantyStatus.Text = warrantyStatus;
+                WarrantyStatus.Text = warrantyStatus;
+            }
+            
 
         }
     }

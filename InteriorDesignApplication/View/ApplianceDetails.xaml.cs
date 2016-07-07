@@ -44,5 +44,10 @@ namespace View
             AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("AddApplianceCommand"));
             viewModel.CurrentPopupView = null;
         }
+
+        private void browsePayment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

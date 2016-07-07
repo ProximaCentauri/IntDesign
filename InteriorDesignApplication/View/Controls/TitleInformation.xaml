@@ -93,16 +93,14 @@
                 <TextBlock
                     Width="260"
                     Background="#f4f4f4"
-                    Margin="0,0,10,0"
-                    Name="ScannedTitleText"
-                    Text="{Binding CurrentSelectedCustomer.TitleInfo.ScannedTitle}"> 
-                    <!--<Hyperlink
+                    Margin="0,0,10,0"> 
+                    <Hyperlink
                         Name="ScannedTitleLink"
                         RequestNavigate="ScannedTitleLink_RequestNavigate">
                         <TextBlock
                             Text="{Binding CurrentSelectedCustomer.TitleInfo.ReleaseDate, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                             Name="ScannedTitleText" />
-                        </Hyperlink>-->
+                        </Hyperlink>
                 </TextBlock>
                 <Button
                     Name="browseBtn"
