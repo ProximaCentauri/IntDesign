@@ -49,6 +49,10 @@ namespace View.Controls
             {
                ScannedTitleText.Text = dlg.FileName;
             }
+            else
+            {
+                ScannedTitleText.Text = string.Empty;
+            }
         }
 
         IMainViewModel viewModel;

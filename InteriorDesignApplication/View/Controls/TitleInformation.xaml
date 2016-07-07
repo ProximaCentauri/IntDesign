@@ -96,9 +96,10 @@
                     Margin="0,0,10,0"> 
                     <Hyperlink
                         Name="ScannedTitleLink"
-                        RequestNavigate="ScannedTitleLink_RequestNavigate">
+                        RequestNavigate="ScannedTitleLink_RequestNavigate"
+                        NavigateUri="{Binding CurrentSelectedCustomer.TitleInfo.ScannedTitle}">
                         <TextBlock
-                            Text="{Binding CurrentSelectedCustomer.TitleInfo.ReleaseDate, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            Text="{Binding CurrentSelectedCustomer.TitleInfo.ScannedTitle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                             Name="ScannedTitleText" />
                         </Hyperlink>
                 </TextBlock>
