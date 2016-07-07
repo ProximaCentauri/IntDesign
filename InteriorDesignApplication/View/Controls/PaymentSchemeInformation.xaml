@@ -164,7 +164,7 @@
                 <DataGrid
                     Name="gridPayments"
                     Height="250"
-                    Width="700"
+                    Width="900"
                     HorizontalAlignment="Left"
                     ItemsSource="{Binding Payments}"
                     SelectedItem="{Binding CurrentSelectedPayment}"
@@ -173,7 +173,7 @@
                     AutoGenerateColumns="False"
                     CanUserAddRows="False"
                     IsReadOnly="True"
-                    Grid.ColumnSpan="3">
+                    Grid.ColumnSpan="4">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Date"
@@ -186,11 +186,25 @@
                         <DataGridTextColumn
                             Header="Amount"
                             Width="150"
-                            Binding="{Binding Amount, StringFormat='{}{0:0,0.00}'}"/>
-                        <DataGridTextColumn
+                            Binding="{Binding Amount, StringFormat='{}{0:0,0.00}'}" />
+                        <DataGridTemplateColumn
                             Header="Attached File"
-                            Width="175" 
-                            Binding="{Binding Attachment}"/>
+                            Width="375">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                    <Hyperlink
+                                            Name="AttachedFileLink"
+                                            RequestNavigate="AttachedFileLink_RequestNavigate"
+                                            NavigateUri="{Binding Attachment}">
+                                        <TextBlock
+                                                Text="{Binding Attachment}"
+                                                Name="AttachedFile" />
+                                    </Hyperlink>
+                                </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button

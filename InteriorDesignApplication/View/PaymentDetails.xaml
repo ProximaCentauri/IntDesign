@@ -99,7 +99,7 @@
                     <TextBox
                         Grid.Row="2"
                         Grid.Column="1"
-                        Text="{Binding CurrentSelectedPayment.Amount}"
+                        Text="{Binding CurrentSelectedPayment.Amount, StringFormat='{}{0:0,0.00}'}"
                         Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="3"
@@ -111,7 +111,8 @@
                         Grid.Column="1"
                         Orientation="Horizontal">
                         <TextBox
-                            Text="{Binding CurrentSelectedPayment.Attachment}"
+                            Name="paymentAttachment"
+                            Text="{Binding CurrentSelectedPayment.Attachment, UpdateSourceTrigger=PropertyChanged}"
                             Style="{StaticResource popupTextBoxStyle}" />
                         <Button
                             Name="browsePayment"

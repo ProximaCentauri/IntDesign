@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using View;
 using Model.Controls;
 using ViewModel;
+using System.Diagnostics;
 
 namespace View.Controls
 {
@@ -65,6 +66,19 @@ namespace View.Controls
         private void editPayment_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new PaymentDetails("edit");
+        }
+
+        private void AttachedFileLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(@e.Uri.AbsolutePath));
+            }
+            catch (Exception ex)
+            {
+
+                // show pop-up here that problem is encountered opening file
+            }
         }
     }
 }
