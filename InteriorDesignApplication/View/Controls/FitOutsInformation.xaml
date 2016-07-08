@@ -212,6 +212,8 @@
                     ItemsSource="{Binding Appliances}"
                     SelectedItem="{Binding CurrentSelectedAppliance}"
                     SelectionChanged="gridAppliances_SelectionChanged"
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
                     Grid.ColumnSpan="3">
                     <DataGrid.Columns>
                         <DataGridTextColumn

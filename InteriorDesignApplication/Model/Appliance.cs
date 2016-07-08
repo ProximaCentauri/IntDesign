@@ -22,8 +22,8 @@ namespace Model
 
         public string Receipt { get; set; }
 
-        public int CustomerId { get; set; }
-        [ForeignKey("CustomerId")]
-        public virtual Customer Customer { get; set; }
+        public int FitOutId { get; set; }
+        [ForeignKey("FitOutId")]
+        public virtual FitOut FitOut { get; set; }
     }
 }

@@ -785,7 +785,7 @@ namespace ViewModel
         {
             get
             {
-                if(CurrentSelectedAppliance != null)
+                if(CurrentSelectedCustomer != null)
                 {
                     return new ObservableCollection<Appliance>(CurrentSelectedCustomer.FitOut.Appliances);
                 }
@@ -795,13 +795,13 @@ namespace ViewModel
 
         private void CreateAppliance()
         {
+            CurrentSelectedAppliance = null;
             CurrentSelectedAppliance = new Appliance();
-            //Appliance customerAppliance = new Appliance();
         }
 
         private void AddAppliance()
         {
-            CurrentSelectedCustomer.Appliances.Add(CurrentSelectedAppliance);
+            CurrentSelectedCustomer.FitOut.Appliances.Add(CurrentSelectedAppliance);
             context.Entry(CurrentSelectedAppliance).State = EntityState.Added;
             CurrentSelectedAppliance = null;
             OnPropertyChanged("Appliances");
@@ -809,7 +809,7 @@ namespace ViewModel
 
         private void DeleteAppliance()
         {
-            CurrentSelectedCustomer.Appliances.Remove(CurrentSelectedAppliance);
+            CurrentSelectedCustomer.FitOut.Appliances.Remove(CurrentSelectedAppliance);
             context.Entry(CurrentSelectedAppliance).State = EntityState.Deleted;
             CurrentSelectedAppliance = null;
             OnPropertyChanged("Appliances");
@@ -1113,6 +1113,32 @@ namespace ViewModel
             }
         }
 
+        ICommand _deleteApplianceCommand;
+        public ICommand DeleteApplianceCommand
+        {
+            get
+            {
+                if(_deleteApplianceCommand == null)
+                {
+                    _deleteApplianceCommand = new RelayCommand(DeleteAppliance);
+                }
+                return _deleteApplianceCommand;
+            }
+        }
+
+        ICommand _editUpdateApplianceCommand;
+        public ICommand EditUpdateApplianceCommand
+        {
+            get
+            {
+                if(_editUpdateApplianceCommand == null)
+                {
+                    _editUpdateApplianceCommand = new RelayCommand(EditUpdateAppliance);
+                }
+                return _editUpdateApplianceCommand;
+            }
+        }
+
         ICommand _cancelChangesCommand;
         public ICommand CancelChangesCommand
         {
@@ -1239,7 +1265,6 @@ namespace ViewModel
                 .Include(f => f.CustomerSpouse)
                 .Include(g => g.CustomerCompany)
                 .Include(h => h.Utilities)
-                .Include(i => i.Appliances)
                 .Include(j => j.TitleInfo)
                 .Include(k => k.FitOut);
         }
