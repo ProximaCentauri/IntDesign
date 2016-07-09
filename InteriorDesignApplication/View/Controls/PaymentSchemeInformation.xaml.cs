@@ -16,6 +16,7 @@ using View;
 using Model.Controls;
 using ViewModel;
 using System.Diagnostics;
+using Model;
 
 namespace View.Controls
 {
@@ -79,6 +80,16 @@ namespace View.Controls
 
                 // show pop-up here that problem is encountered opening file
             }
+        }
+
+        private void deleteEntry_Click(object sender, RoutedEventArgs e)
+        {
+            string entryInfo = string.Empty;
+            this.viewModel.CommandParameter = "DeletePayment";
+            Payment paymentInfo = gridPayments.SelectedItem as Payment;
+            entryInfo = "check number " + paymentInfo.ChequeNumber + " with the amount of " + string.Format("{0:0,0.00}", paymentInfo.Amount);
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(entryInfo);
+            
         }
     }
 }

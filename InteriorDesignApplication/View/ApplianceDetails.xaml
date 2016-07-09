@@ -133,6 +133,7 @@
                         Grid.Row="5"
                         Grid.Column="1">
                         <TextBox
+                            Name="ApplianceReceipt"
                             Text="{Binding CurrentSelectedAppliance.Receipt, UpdateSourceTrigger=PropertyChanged}"
                             Style="{StaticResource popupTextBoxStyle}" />
                         <Button

@@ -819,7 +819,7 @@ namespace ViewModel
         {
             if(CurrentSelectedAppliance != null)
             {
-                context.Entry(CurrentSelectedPayment).State = EntityState.Modified;
+                context.Entry(CurrentSelectedAppliance).State = EntityState.Modified;
                 OnPropertyChanged("Appliances");
             }
         }

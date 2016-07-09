@@ -115,7 +115,7 @@
                     <DataGridTextColumn
                         Header="Cut-off Date"
                         Width="90"
-                        Binding="{Binding CutoffDate, StringFormat=\{0:MM/dd/yyyy\}}" />
+                        Binding="{Binding CutoffDate, StringFormat='MMMM dd, yyyy'}" />
                     <DataGridTemplateColumn
                         Header="Official Receipt"
                         Width="135">

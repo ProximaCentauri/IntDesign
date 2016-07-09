@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using View;
 using Model.Controls;
 using ViewModel;
+using System.Diagnostics;
+using Model;
 
 namespace View.Controls
 {
@@ -53,9 +55,9 @@ namespace View.Controls
         private void gridAppliances_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(gridAppliances.SelectedIndex >= 0)
-                deleteEntry.Visibility = Visibility.Visible;
+                deleteEntry.Visibility = editAppliance.Visibility = Visibility.Visible;
             else
-                deleteEntry.Visibility = Visibility.Collapsed;
+                deleteEntry.Visibility = editAppliance.Visibility = Visibility.Collapsed;
         }
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -77,6 +79,33 @@ namespace View.Controls
             }
             
 
+        }
+
+        private void editAppliance_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = new ApplianceDetails("edit");
+        }
+
+        private void OfficialReceiptLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(@e.Uri.AbsolutePath));
+            }
+            catch (Exception ex)
+            {
+
+                // show pop-up here that problem is encountered opening file
+            }
+        }
+
+        private void deleteEntry_Click(object sender, RoutedEventArgs e)
+        {
+            string entryInfo = string.Empty;
+            this.viewModel.CommandParameter = "DeleteAppliance";
+            Appliance applianceInfo = gridAppliances.SelectedItem as Appliance;
+            entryInfo = applianceInfo.Description + " with model #: " + applianceInfo.ModelNumber;
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(entryInfo);
         }
     }
 }

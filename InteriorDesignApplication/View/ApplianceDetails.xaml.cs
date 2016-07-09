@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ViewModel;
 using Model.Controls;
 using Model;
+using Microsoft.Win32;
 
 namespace View
 {
@@ -64,7 +65,13 @@ namespace View
 
         private void browsePayment_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|Pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (!String.IsNullOrEmpty(dlg.FileName))
+            {
+                ApplianceReceipt.Text = dlg.FileName;
+            }
         }
     }
 }

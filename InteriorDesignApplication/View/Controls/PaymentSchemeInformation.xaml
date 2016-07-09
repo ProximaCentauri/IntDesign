@@ -178,7 +178,7 @@
                         <DataGridTextColumn
                             Header="Date"
                             Width="150" 
-                            Binding="{Binding PaymentDate}"/>
+                            Binding="{Binding PaymentDate, StringFormat='MMMM dd, yyyy'}"/>
                         <DataGridTextColumn
                             Header="Cheque Number"
                             Width="225"
@@ -217,7 +217,7 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
                     Margin="0,110,-29,110"
-                    Command="{Binding DeletePaymentCommand}">
+                    Click="deleteEntry_Click">
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">

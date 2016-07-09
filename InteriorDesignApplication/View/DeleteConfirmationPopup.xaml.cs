@@ -48,6 +48,15 @@ namespace View
             {
                 entryValueText.Text = String.Format("Are you sure you want to delete utility info: {0}? ", entryValue);
             }   
+            else if(viewModel.CommandParameter.Equals("DeletePayment"))
+            {
+                entryValueText.Text = String.Format("Are you sure you want to delete payment: {0}? ", entryValue);
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteAppliance"))
+            {
+                entryValueText.Text = String.Format("Are you sure you want to delete appliance: {0}? ", entryValue);
+            }
+            
       
         }
 
@@ -76,7 +85,15 @@ namespace View
             {
                 deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteUtilityCommand"));
             }
-            
+            else if(viewModel.CommandParameter.Equals("DeletePayment"))
+            {
+                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeletePaymentCommand"));
+            }
+            else if (viewModel.CommandParameter.Equals("DeleteAppliance"))
+            {
+                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteApplianceCommand"));
+            }
+
             viewModel.CurrentPopupView = null;
         }
     }
