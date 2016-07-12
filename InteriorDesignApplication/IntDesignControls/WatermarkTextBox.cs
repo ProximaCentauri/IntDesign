@@ -342,7 +342,7 @@ namespace IntDesignControls
         private void ShowWatermark()
         {
             bool canClear = !this.IsWatermarkShown && this.Text.Length > 0;
-            if (!IsWatermarkShown && 0 == Text.Length && !String.IsNullOrEmpty(Watermark))
+            if (!IsWatermarkShown && 0 == Text.Trim().Length && !String.IsNullOrEmpty(Watermark))
             {
                 this.Foreground = WaterMarkForeground;
                 this.BorderBrush = WatermarkBorderColor;

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     Title="ApplianceDetails"
     Height="Auto"
     Width="Auto" 
@@ -75,20 +76,28 @@
                     <TextBlock
                         Text="Description:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <controls:WatermarkTextBox
+                        Name="Description"
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedAppliance.Description}"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Watermark="This field is required"
+                        WatermarkBorderColor="LightGray"
+                        WaterMarkForeground="Gray"/>
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         Text="Model #:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <controls:WatermarkTextBox
+                        Name="Model"
                         Grid.Row="1"
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedAppliance.ModelNumber}"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Watermark="This field is required"
+                        WatermarkBorderColor="LightGray"
+                        WaterMarkForeground="Gray"/>
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="0"
@@ -105,6 +114,7 @@
                         Text="Warranty End Date:"
                         Style="{StaticResource popupLabelTextStyle}" />
                     <DatePicker
+                        Name="WarrantyDate"
                         Grid.Row="3"
                         Grid.Column="1"
                         Width="275"
@@ -149,23 +159,33 @@
         </Grid>
         <Grid
             Grid.Row="2">
-            <Button
+            <StackPanel>
+                <Button
                 Name="AddSaveApplianceBtn"
                 Width="100"
                 Height="30"
                 Margin="20"
                 Click="AddSaveApplianceBtn_Click"
                 Style="{StaticResource mainButtonStyle}">
-                <StackPanel
+                    <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
-                    <Image
+                        <Image
                         Style="{StaticResource checkIconStyle}" />
-                    <TextBlock
+                        <TextBlock
                         Name="AddSaveButtonLabel"
                         Style="{StaticResource addButtonStyle}" />
-                </StackPanel>
-            </Button>
+                    </StackPanel>
+                </Button>
+                <TextBlock
+                    x:Name="ErrorNotification"
+                    Visibility="Collapsed"
+                    Foreground="Red"
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20"/>
+            </StackPanel>
+            
         </Grid>
     </Grid>
 </c:PopupView>

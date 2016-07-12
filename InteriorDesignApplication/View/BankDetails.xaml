@@ -130,29 +130,25 @@
                         Grid.Column="0"
                         Text="Address:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <controls:WatermarkTextBox
+                    <TextBox
                         Grid.Row="4"
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedBank.Address}"
                         Style="{StaticResource popupAddressTextBoxStyle}"
                         Name="Address"
-                        Watermark="This field is required"
-                        WatermarkBorderColor="LightGray"
-                        WaterMarkForeground="Gray"/>
+                        />
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"
                         Text="Swift Code:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <controls:WatermarkTextBox
+                    <TextBox
                         Grid.Row="5"
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedBank.SwiftCode}"
                         Style="{StaticResource popupTextBoxStyle}" 
                         Name="SwiftCode"
-                        Watermark="This field is required"
-                        WatermarkBorderColor="LightGray"
-                        WaterMarkForeground="Gray"/>
+                        />
                 </Grid>
             </StackPanel>
         </Grid>

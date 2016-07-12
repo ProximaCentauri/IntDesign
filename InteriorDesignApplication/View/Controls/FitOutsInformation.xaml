@@ -7,6 +7,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     mc:Ignorable="d"
     xmlns:local="clr-namespace:View"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     Height="Auto"
     Width="1024"
     Loaded="UserControl_Loaded">
@@ -250,13 +251,16 @@
                                     <TextBlock>
                                     <Hyperlink
                                             Name="OfficialReceiptLink"
-                                            RequestNavigate="OfficialReceiptLink_RequestNavigate"
+                                            controls:HyperlinkExtensions.IsExternal="True"
                                             NavigateUri="{Binding Receipt}">
                                         <TextBlock
                                                 Text="{Binding Receipt}" />
                                     </Hyperlink>
+                                        <!--RequestNavigate="OfficialReceiptLink_RequestNavigate"-->
                                 </TextBlock>
                                 </DataTemplate>
+                                
+                                
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>

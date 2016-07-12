@@ -43,7 +43,7 @@ namespace View
             else
             {
                 this.AddSaveButtonLabel.Text = "Add";
-               
+                UtilityCutoffDateTxt.SelectedDate = DateTime.Now;
             }                     
         }
 

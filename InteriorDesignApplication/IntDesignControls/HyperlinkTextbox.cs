@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Input;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace IntDesignControls
 {
@@ -52,6 +53,8 @@ namespace IntDesignControls
             textBox.TextDecorations = myCollection;
             textBox.Foreground = Brushes.Blue;
         }
+
+        
 
         protected override void OnMouseDoubleClick(MouseButtonEventArgs e)
         {

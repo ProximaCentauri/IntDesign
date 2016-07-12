@@ -44,6 +44,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HyperlinkExtensions.cs" />
     <Compile Include="HyperlinkTextbox.cs" />
     <Compile Include="ISupportUserInput.cs" />
     <Compile Include="PreviewTextbox\PreviewTextBox.cs" />

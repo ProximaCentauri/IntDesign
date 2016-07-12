@@ -40,6 +40,7 @@ namespace View
             else
             {
                 this.AddSaveButtonLabel.Text = "Add";
+                WarrantyDate.SelectedDate = DateTime.Now;
             } 
         }
 
@@ -52,15 +53,24 @@ namespace View
 
         private void AddSaveApplianceBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(view == "edit")
+            if(Description.NoOfErrorsOnScreen == 0 &&
+                Model.NoOfErrorsOnScreen == 0)
             {
-                this.AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateApplianceCommand"));
+                if (view == "edit")
+                {
+                    this.AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateApplianceCommand"));
+                }
+                else
+                {
+                    this.AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("AddApplianceCommand"));
+                }
+                viewModel.CurrentPopupView = null;
             }
             else
             {
-                this.AddSaveApplianceBtn.SetBinding(Button.CommandProperty, new Binding("AddApplianceCommand"));
+                ErrorNotification.Text = "Please fill up the required fields.";
+                ErrorNotification.Visibility = Visibility.Visible;
             }
-            viewModel.CurrentPopupView = null;
         }
 
         private void browsePayment_Click(object sender, RoutedEventArgs e)

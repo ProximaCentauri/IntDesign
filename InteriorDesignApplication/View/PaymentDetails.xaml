@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     Title="PaymentDetails"
     Height="Auto"
     Width="Auto"
@@ -74,6 +75,7 @@
                         Text="Date:"
                         Style="{StaticResource popupLabelTextStyle}" />
                     <DatePicker
+                        Name="PaymentDate"
                         Grid.Column="1"
                         Width="275"
                         Margin="0,8,0,0"
@@ -86,21 +88,29 @@
                         Grid.Column="0"
                         Text="Cheque #:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <controls:WatermarkTextBox
+                        Name="cheque"
                         Grid.Row="1"
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedPayment.ChequeNumber}"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Watermark="This field is required"
+                        WatermarkBorderColor="LightGray"
+                        WaterMarkForeground="Gray"/>
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="0"
                         Text="Amount:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                    <controls:WatermarkTextBox
+                        Name="Amount"
                         Grid.Row="2"
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedPayment.Amount, StringFormat='{}{0:0,0.00}'}"
-                        Style="{StaticResource popupTextBoxStyle}" />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Watermark="This field is required"
+                        WatermarkBorderColor="LightGray"
+                        WaterMarkForeground="Gray"/>
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
@@ -127,23 +137,32 @@
         </Grid>
         <Grid
             Grid.Row="2">
-            <Button
-                Width="100"
-                Height="30"
-                Margin="20"
-                Name="AddSaveUtilityBtn"
-                Style="{StaticResource mainButtonStyle}"
-                Click="Button_Click">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource checkIconStyle}" />
-                    <TextBlock
-                        Name="AddSaveButtonLabel"
-                        Style="{StaticResource addButtonStyle}" />
-                </StackPanel>
-            </Button>
+            <StackPanel>
+                <Button
+                    Width="100"
+                    Height="30"
+                    Margin="20"
+                    Name="AddSaveUtilityBtn"
+                    Style="{StaticResource mainButtonStyle}"
+                    Click="Button_Click">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                        <Image
+                            Style="{StaticResource checkIconStyle}" />
+                        <TextBlock
+                            Name="AddSaveButtonLabel"
+                            Style="{StaticResource addButtonStyle}" />
+                    </StackPanel>
+                </Button>
+                <TextBlock
+                    x:Name="ErrorNotification"
+                    Visibility="Collapsed"
+                    Foreground="Red"
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </c:PopupView>

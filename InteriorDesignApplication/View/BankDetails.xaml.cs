@@ -51,9 +51,7 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(SwiftCode.NoOfErrorsOnScreen == 0 &&
-                Address.NoOfErrorsOnScreen == 0 &&
-                Branch.NoOfErrorsOnScreen == 0 &&
+            if(Branch.NoOfErrorsOnScreen == 0 &&
                 AccountNo.NoOfErrorsOnScreen == 0 &&
                 AccountName.NoOfErrorsOnScreen == 0 &&
                 BankName.NoOfErrorsOnScreen == 0)

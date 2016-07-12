@@ -27,6 +27,10 @@ namespace View
         {
             InitializeComponent();
             view = _view;
+            if (!view.Equals("edit"))
+            {
+                //PaymentDate.SelectedDate = DateTime.Parse(DateTime.Now.());
+            }
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
@@ -39,6 +43,7 @@ namespace View
             else
             {
                 this.AddSaveButtonLabel.Text = "Add";
+                
             }   
         }
 
@@ -51,15 +56,24 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (view == "edit")
+            if(cheque.NoOfErrorsOnScreen == 0 &&
+                Amount.NoOfErrorsOnScreen == 0)
             {
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdatePaymentCommand"));
+                if (view == "edit")
+                {
+                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdatePaymentCommand"));
+                }
+                else
+                {
+                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddPaymentCommand"));
+                }
+                viewModel.CurrentPopupView = null;
             }
             else
             {
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddPaymentCommand"));
-            }
-            viewModel.CurrentPopupView = null;
+                ErrorNotification.Text = "Please fill up the required fields.";
+                ErrorNotification.Visibility = Visibility.Visible;
+            }            
         }
 
         private void browsePayment_Click(object sender, RoutedEventArgs e)
