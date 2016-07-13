@@ -59,28 +59,7 @@ namespace View.Controls
             else
                 deleteEntry.Visibility = editAppliance.Visibility = Visibility.Collapsed;
         }
-
-        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(!EndDate.Text.Equals(string.Empty))
-            {
-                DateTime today = DateTime.Now;
-                DateTime endDate = Convert.ToDateTime(EndDate.Text);
-                DateTime warrantyEndDate = endDate.AddDays(45);
-                int result = DateTime.Compare(today, warrantyEndDate);
-                string warrantyStatus = string.Empty;
-
-                if (result < 0)
-                    warrantyStatus = "On Warranty";
-                else
-                    warrantyStatus = "Out of Warranty";
-
-                WarrantyStatus.Text = warrantyStatus;
-            }
-            
-
-        }
-
+       
         private void editAppliance_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new ApplianceDetails("edit");

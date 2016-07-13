@@ -131,6 +131,7 @@
                     <TextBox
                         Grid.Row="4"
                         Grid.Column="1"
+                        IsReadOnly="True"
                         Text="{Binding WarrantyStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock

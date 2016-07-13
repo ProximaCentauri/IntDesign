@@ -133,8 +133,7 @@
                         Name="EndDate"
                         Focusable="False"
                         SelectedDateFormat="Long"
-                        SelectedDateChanged="DatePicker_SelectedDateChanged"
-                        SelectedDate="{Binding CurrentSelectedCustomer.FitOut.EndDate}" />
+                        SelectedDate="{Binding FitOutCompletionDate}" />
                 </StackPanel>
             </Grid>
             <Grid
@@ -151,6 +150,7 @@
                         Width="194"
                         Margin="0,0,10,0"
                         IsReadOnly="True"
+                        Text="{Binding FitOutWarrantyStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Name="WarrantyStatus"></TextBox>
                 </StackPanel>
             </Grid>

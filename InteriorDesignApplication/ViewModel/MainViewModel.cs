@@ -175,8 +175,8 @@ namespace ViewModel
                     if(currentSelectedCustomer.FitOut == null)
                     {
                         currentSelectedCustomer.FitOut = new FitOut();
-                    }                    
-                    
+                    }
+                    FitOutCompletionDate = currentSelectedCustomer.FitOut.EndDate;
                 }                
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
@@ -487,6 +487,7 @@ namespace ViewModel
                     {
                         context.Customers.Add(customer);
                     }
+                    customer.FitOut.EndDate = FitOutCompletionDate;
                     context.SaveChanges();
                     Dependent = null;
                     CustomerSpouse = null;
@@ -812,7 +813,30 @@ namespace ViewModel
         {
             get
             {
-                return UtilityHelper.GetWarrantyStatus(WarrantyEndDate);
+                return UtilityHelper.GetApplianceWarrantyStatus(WarrantyEndDate);
+            }
+        }
+
+        private DateTime? fitOutDateCompletion;
+        public DateTime? FitOutCompletionDate
+        {
+            get
+            {
+                return fitOutDateCompletion;
+            }
+            set
+            {
+                fitOutDateCompletion = value;
+                OnPropertyChanged("FitOutCompletionDate");
+                OnPropertyChanged("FitOutWarrantyStatus");
+            }
+        }
+
+        public string FitOutWarrantyStatus
+        {
+            get
+            {
+                return UtilityHelper.GetFitOutWarrantyStatus(FitOutCompletionDate);
             }
         }
 
