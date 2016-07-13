@@ -71,5 +71,14 @@ namespace Model.Helpers
             }
             return alert;
         }
+
+        public static string GetWarrantyStatus(DateTime? warrantyEndDate)
+        {            
+            if(!warrantyEndDate.HasValue)
+            {
+                return string.Empty;
+            }
+            return (DateTime.Today.Date < warrantyEndDate.Value) ? "On Warranty" : "Out of Warranty";            
+        }
     }
 }

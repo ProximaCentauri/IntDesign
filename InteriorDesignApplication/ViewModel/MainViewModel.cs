@@ -793,18 +793,45 @@ namespace ViewModel
             }
         }
 
+        private DateTime? warrantyEndDate;
+        public DateTime? WarrantyEndDate
+        {
+            get
+            {
+                return warrantyEndDate;
+            }
+            set
+            {
+                warrantyEndDate = value;                
+                OnPropertyChanged("WarrantyEndDate");
+                OnPropertyChanged("WarrantyStatus");
+            }
+        }
+
+        public string WarrantyStatus
+        {
+            get
+            {
+                return UtilityHelper.GetWarrantyStatus(WarrantyEndDate);
+            }
+        }
+
         private void CreateAppliance()
         {
             CurrentSelectedAppliance = null;
+            WarrantyEndDate = null;
             CurrentSelectedAppliance = new Appliance();
         }
 
         private void AddAppliance()
         {
-            CurrentSelectedCustomer.FitOut.Appliances.Add(CurrentSelectedAppliance);
+            CurrentSelectedAppliance.WarrantyEndDate = WarrantyEndDate;
+            CurrentSelectedCustomer.FitOut.Appliances.Add(CurrentSelectedAppliance);            
             context.Entry(CurrentSelectedAppliance).State = EntityState.Added;
             CurrentSelectedAppliance = null;
+            WarrantyEndDate = null;
             OnPropertyChanged("Appliances");
+    
         }
 
         private void DeleteAppliance()
@@ -819,8 +846,18 @@ namespace ViewModel
         {
             if(CurrentSelectedAppliance != null)
             {
+                CurrentSelectedAppliance.WarrantyEndDate = WarrantyEndDate;
                 context.Entry(CurrentSelectedAppliance).State = EntityState.Modified;
                 OnPropertyChanged("Appliances");
+            }
+        }       
+
+        private void EditAppliance()
+        {
+            if (CurrentSelectedAppliance != null)
+            {
+                WarrantyEndDate = CurrentSelectedAppliance.WarrantyEndDate;
+                OnPropertyChanged("WarrantyEndDate");
             }
         }
 
@@ -1136,6 +1173,19 @@ namespace ViewModel
                     _editUpdateApplianceCommand = new RelayCommand(EditUpdateAppliance);
                 }
                 return _editUpdateApplianceCommand;
+            }
+        }
+
+        ICommand _editApplianceCommand;
+        public ICommand EditApplianceCommand
+        {
+            get
+            {
+                if (_editApplianceCommand == null)
+                {
+                    _editApplianceCommand = new RelayCommand(EditAppliance);
+                }
+                return _editApplianceCommand;
             }
         }
 

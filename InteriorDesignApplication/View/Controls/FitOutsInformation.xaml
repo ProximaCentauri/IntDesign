@@ -194,7 +194,7 @@
                         Visibility="Collapsed"
                         Click="editAppliance_Click"
                         Style="{StaticResource iconButtonStyle}"
-                        Command="{Binding EditUtilityCommand}">
+                        Command="{Binding EditApplianceCommand}">
                         <Image
                             Style="{StaticResource editIconStyle}" />
                     </Button>

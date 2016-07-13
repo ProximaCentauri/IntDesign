@@ -122,7 +122,7 @@
                         Focusable="False"
                         SelectedDateFormat="Long"
                         HorizontalAlignment="Left"
-                        SelectedDate="{Binding CurrentSelectedAppliance.WarrantyEndDate}" />
+                        SelectedDate="{Binding WarrantyEndDate}" />
                     <TextBlock
                         Grid.Row="4"
                         Grid.Column="0"
@@ -131,7 +131,7 @@
                     <TextBox
                         Grid.Row="4"
                         Grid.Column="1"
-                        Text="{Binding Binding CurrentSelectedAppliance.Status}"
+                        Text="{Binding WarrantyStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource popupTextBoxStyle}" />
                     <TextBlock
                         Grid.Row="5"
