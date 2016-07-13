@@ -59,15 +59,23 @@ namespace View.Controls
 
         private void ScannedTitleLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
+            string notification = string.Empty;
             try
             {
-                Process.Start(new ProcessStartInfo(@e.Uri.AbsolutePath));
+                string file = @e.Uri.AbsolutePath.ToString();
+                if (File.Exists(file))
+                    Process.Start(new ProcessStartInfo(file));
+                else
+                {
+                    notification = "A problem is encountered when trying to open file \"" + file + "\" \n\nCheck that: \n 1. File exists in the specified location \n 2. File is not corrupted";
+                    viewModel.CurrentPopupView = new WarningErrorNotificationPopup(notification);
+                }
             }
             catch (Exception ex)
             {
-
-                // show pop-up here that problem is encountered opening file
+                viewModel.CurrentPopupView = new WarningErrorNotificationPopup(ex.Message);
             }
+
         }
     }
 }

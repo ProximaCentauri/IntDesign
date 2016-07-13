@@ -243,6 +243,10 @@
                             Header="Warranty End Date"
                             Width="150"
                             Binding="{Binding WarrantyEndDate, StringFormat='MMMM dd, yyyy'}" />
+                        <DataGridTextColumn
+                            Header="Warranty Status"
+                            Width="150"
+                            Binding="{Binding WarrantyStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <DataGridTemplateColumn
                             Header="Official Receipt"
                             Width="250">
@@ -251,7 +255,7 @@
                                     <TextBlock>
                                     <Hyperlink
                                             Name="OfficialReceiptLink"
-                                            controls:HyperlinkExtensions.IsExternal="True"
+                                            RequestNavigate="OfficialReceiptLink_RequestNavigate"
                                             NavigateUri="{Binding Receipt}">
                                         <TextBlock
                                                 Text="{Binding Receipt}" />

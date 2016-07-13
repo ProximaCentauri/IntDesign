@@ -254,6 +254,9 @@
         TargetType="TextBlock"
         BasedOn="{StaticResource popupConfirmationTextStyle}">
         <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
             Property="VerticalAlignment"
             Value="Top" />
         <Setter
@@ -261,7 +264,7 @@
             Value="Left" />
         <Setter
             Property="TextAlignment"
-            Value="Justify" />
+            Value="Left" />
     </Style>
     <Style
         x:Key="popupAddressTextBoxStyle"
