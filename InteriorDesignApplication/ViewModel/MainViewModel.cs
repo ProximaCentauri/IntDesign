@@ -18,6 +18,7 @@ using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
 using log4net;
+using System.IO;
 namespace ViewModel
 {
     public class MainViewModel : IMainViewModel
@@ -158,7 +159,12 @@ namespace ViewModel
 
                     if (currentSelectedCustomer.ImageSourceLocation != null)
                     {
-                        CustomerImageSource = new BitmapImage(new Uri(currentSelectedCustomer.ImageSourceLocation));
+                        string file = new Uri(currentSelectedCustomer.ImageSourceLocation).LocalPath.ToString();
+
+                        if (File.Exists(file))
+                            CustomerImageSource = new BitmapImage(new Uri(file));
+                        else
+                            OnPropertyChanged("FileNotFound");
                     }
                     else
                     {
