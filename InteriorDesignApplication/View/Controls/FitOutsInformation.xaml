@@ -246,7 +246,7 @@
                         <DataGridTextColumn
                             Header="Warranty Status"
                             Width="150"
-                            Binding="{Binding WarrantyStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            Binding="{Binding WarrantyStatus}" />
                         <DataGridTemplateColumn
                             Header="Official Receipt"
                             Width="250">
