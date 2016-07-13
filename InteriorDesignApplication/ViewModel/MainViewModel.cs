@@ -159,7 +159,7 @@ namespace ViewModel
 
                     if (currentSelectedCustomer.ImageSourceLocation != null)
                     {
-                        string file = new Uri(currentSelectedCustomer.ImageSourceLocation).LocalPath.ToString();
+                        string file = new Uri(currentSelectedCustomer.ImageSourceLocation).LocalPath;
 
                         if (File.Exists(file))
                             CustomerImageSource = new BitmapImage(new Uri(file));
