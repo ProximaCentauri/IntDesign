@@ -74,6 +74,15 @@
     <SolidColorBrush
         x:Key="userImageBackgroundColorBrush"
         Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="linkButtonForegroundColorBrush"
+        Color="#1583D0" />
+    <SolidColorBrush
+        x:Key="linkButtonBackgroundColorBrush"
+        Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="loginWarningBackgroundColorBrush"
+        Color="#e8a5a5" />
 
     <Color
         x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
@@ -506,7 +515,84 @@
             Property="Background"
             Value="{StaticResource userImageBackgroundColorBrush}" />
     </Style>
-
+    <Style
+        x:Key="loginTitleTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="21" />
+        <Setter
+            Property="TextAlignment"
+            Value="Center" />
+    </Style>
+    <Style
+        x:Key="loginTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="TextAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="loginBorderStyle"
+        TargetType="Border">
+        <Setter
+            Property="CornerRadius"
+            Value="12" />
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource mainButtonBackgroundColorBrush}" />
+        <Setter
+            Property="BorderThickness"
+            Value="1" />
+    </Style>
+    <Style
+        x:Key="loginLinkButtonStyle"
+        TargetType="Button"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource linkButtonForegroundColorBrush}" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource linkButtonBackgroundColorBrush}" />
+        <Setter
+            Property="FontSize"
+            Value="14" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="loginWarningTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="TextAlignment"
+            Value="Left" />
+        <Setter
+            Property="Padding"
+            Value="5" />
+        <Setter
+            Property="Foreground"
+            Value="Black" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource loginWarningBackgroundColorBrush}" />
+    </Style>
 
     <!--icon styles-->
     <Style
@@ -983,7 +1069,31 @@
             Property="Background"
             Value="White" />
     </Style>
-
+    <Style
+        x:Key="unlockIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-unlock}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="30" />
+        <Setter
+            Property="Height"
+            Value="30" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+    </Style>
     <Style
         x:Key="popupShroudStyle"
         TargetType="Rectangle">
