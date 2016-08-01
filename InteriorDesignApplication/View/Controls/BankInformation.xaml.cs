@@ -74,7 +74,7 @@ namespace View.Controls
             string bankInfo = string.Empty;
             this.viewModel.CommandParameter = "DeleteBankInfo";
             Bank selectedBank = gridBanks.SelectedItem as Bank;
-            bankInfo = selectedBank.Name + " with account number: " + selectedBank.AccountNumber;
+            bankInfo = selectedBank.BankType.Name + " with account number: " + selectedBank.AccountNumber;
             viewModel.CurrentPopupView = new DeleteConfirmationPopup(bankInfo);
         }
 

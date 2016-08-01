@@ -259,6 +259,34 @@ namespace ViewModel
             }
         }
 
+        private BankType currentSelectedBankType;
+        public BankType CurrentSelectedBankType
+        {
+            get
+            {
+                return currentSelectedBankType;
+            }
+            set
+            {
+                currentSelectedBankType = value;
+                OnPropertyChanged("CurrentSelectedBankType");                
+            }
+        }
+
+
+        private ICollection<BankType> bankTypes;
+        public ICollection<BankType> BankTypes
+        {
+            get
+            {
+                return bankTypes;
+            }
+            set
+            {
+                bankTypes = value;
+                OnPropertyChanged("BankTypes");
+            }
+        }
         #endregion
 
         #region Utilities
@@ -564,27 +592,54 @@ namespace ViewModel
             }
         }
 
+        private void AddBankType()
+        {
+            if(CurrentSelectedBankType != null && !CurrentSelectedBankType.Name.Trim().Equals(string.Empty))
+            {
+                if (!BankTypes.Contains(CurrentSelectedBankType))
+                {
+                    BankTypes.Add(CurrentSelectedBankType);
+                }
+                OnPropertyChanged("CurrentSelectedBankType");
+                OnPropertyChanged("BankTypes");
+            }            
+        }        
+
         private void CreateBank()
         {
             CurrentSelectedBank = null;
-            Bank customerBank = new Bank();
-            CurrentSelectedBank = customerBank;
+            CurrentSelectedBankType = new BankType();
+            CurrentSelectedBank = new Bank();
         }
 
         private void AddBank()
         {
-            CurrentSelectedCustomer.Banks.Add(CurrentSelectedBank);
-            context.Entry(CurrentSelectedBank).State = EntityState.Added;
-            CurrentSelectedBank = null;       
-            OnPropertyChanged("Banks");                      
+            if (CurrentSelectedBankType != null)
+            {
+                CurrentSelectedBank.BankType = CurrentSelectedBankType;
+                CurrentSelectedCustomer.Banks.Add(CurrentSelectedBank);
+                context.Entry(CurrentSelectedBank).State = EntityState.Added;
+                CurrentSelectedBank = null;
+                CurrentSelectedBankType = null;
+                OnPropertyChanged("Banks");
+            }  
         }
 
         private void EditUpdateBank()
         {
             if (CurrentSelectedBank != null)
-            {               
-                context.Entry(CurrentSelectedBank).State = EntityState.Modified;                
+            {
+                CurrentSelectedBank.BankType = CurrentSelectedBankType;
+                context.Entry(CurrentSelectedBank).State = EntityState.Modified;
             }
+        }
+
+        private void DeleteBank()
+        {
+            CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
+            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
+            CurrentSelectedBank = null;            
+            OnPropertyChanged("Banks");
         }
 
         
@@ -696,15 +751,7 @@ namespace ViewModel
             CurrentSelectedUtility = null;
             UtilityCutoffDate = null;
             UtilityReceipt = null;
-        }
-
-        private void DeleteBank()
-        {
-            CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
-            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;            
-            CurrentSelectedBank = null;
-            OnPropertyChanged("Banks");
-        }
+        }        
 
         private void CancelChanges()
         {
@@ -959,6 +1006,19 @@ namespace ViewModel
             }
         }
 
+        ICommand _addBankTypeCommand;
+        public ICommand AddBankTypeCommand
+        {
+            get
+            {
+                if (_addBankTypeCommand == null)
+                {
+                    _addBankTypeCommand = new RelayCommand(AddBankType);
+                }
+                return _addBankTypeCommand;
+            }
+        }
+
         
         ICommand _searchCustomerCommand;
         public ICommand SearchCustomerCommand
@@ -1153,7 +1213,7 @@ namespace ViewModel
                 return _editUpdateBankCommand;
             }
         }
-
+       
         ICommand _createApplianceCommand;
         public ICommand CreateApplianceCommand
         {

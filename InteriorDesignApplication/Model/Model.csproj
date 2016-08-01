@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Appliance.cs" />
     <Compile Include="Bank.cs" />
+    <Compile Include="BankType.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Controls\DropShadowBorder.xaml.cs">
       <DependentUpon>DropShadowBorder.xaml</DependentUpon>

@@ -74,5 +74,16 @@ namespace View
             }
             
         }
+
+        private bool addBankType()
+        {
+            if (BankName.NoOfErrorsOnScreen == 0)
+            {
+                this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("AddBankTypeCommand"));
+                // call method for showing bank type panel here
+                return true;
+            }
+            return false;
+        }
     }
 }

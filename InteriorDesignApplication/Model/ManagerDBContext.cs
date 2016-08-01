@@ -22,6 +22,7 @@ namespace Model
         public DbSet<Dependent> Dependents { get; set; }
         public DbSet Company { get; set; }
         public DbSet<Bank> Banks { get; set; }
+        public DbSet<BankType> BankTypes { get; set; }
         public DbSet Spouse { get; set; }
         public DbSet<UtilityBillType> UtilityBillTypes { get; set; }
         public DbSet<UtilityCompany> UtilityCompanies { get; set; }

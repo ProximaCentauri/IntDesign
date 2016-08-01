@@ -12,8 +12,7 @@ namespace Model
     {
         [Key]
         public int Id { get; set; }
-
-        public string Name { get; set; }
+        
         public string AccountName { get; set; }
         public string AccountNumber { get; set; }
         public string Branch { get; set; }
@@ -23,5 +22,9 @@ namespace Model
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]        
         public virtual Customer Customer { get; set; }
+
+        public int BankTypeId { get; set; }
+        [ForeignKey("BankTypeId")]
+        public virtual BankType BankType { get; set; }
     }
 }
