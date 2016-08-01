@@ -25,5 +25,14 @@ namespace Model
         public int FitOutId { get; set; }
         [ForeignKey("FitOutId")]
         public virtual FitOut FitOut { get; set; }
+
+        [NotMapped]
+        public string WarrantyStatus
+        {
+            get
+            {
+                return UtilityHelper.GetApplianceWarrantyStatus(WarrantyEndDate);
+            }
+        }
     }
 }

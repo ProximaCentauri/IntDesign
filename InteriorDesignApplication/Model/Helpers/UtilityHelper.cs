@@ -71,5 +71,24 @@ namespace Model.Helpers
             }
             return alert;
         }
+
+        public static string GetApplianceWarrantyStatus(DateTime? warrantyEndDate)
+        {            
+            if(!warrantyEndDate.HasValue)
+            {
+                return string.Empty;
+            }
+            return (DateTime.Today.Date <= warrantyEndDate.Value) ? "On Warranty" : "Out of Warranty";            
+        }
+
+        public static string GetFitOutWarrantyStatus(DateTime? fitOutCompletionDate)
+        {            
+            if (!fitOutCompletionDate.HasValue)
+            {
+                return string.Empty;
+            }
+            DateTime warrantyEndDate = fitOutCompletionDate.Value.AddDays(45);
+            return (DateTime.Today.Date <= warrantyEndDate) ? "On Warranty" : "Out of Warranty";
+        }
     }
 }

@@ -53,7 +53,13 @@ namespace View.Controls
             else if (e.PropertyName.Equals("SavingCustomer"))
             {
                 viewModel.ReadyToSave = LastName.NoOfErrorsOnScreen == 0 && FirstName.NoOfErrorsOnScreen == 0;                
-            }            
+            }
+            else if (e.PropertyName.Equals("FileNotFound"))
+            {
+                string notification = string.Empty;
+                notification = "A problem is encountered when trying to open customer's profile image. \n\nCheck that: \n 1. File exists in the specified location \n 2. File is not corrupted";
+                viewModel.CurrentPopupView = new WarningErrorNotificationPopup(notification);
+            }
         }
 
         private void CustomerImageBtn_Click(object sender, RoutedEventArgs e)

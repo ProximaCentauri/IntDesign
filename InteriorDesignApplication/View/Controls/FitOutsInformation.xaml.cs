@@ -17,6 +17,7 @@ using Model.Controls;
 using ViewModel;
 using System.Diagnostics;
 using Model;
+using System.IO;
 
 namespace View.Controls
 {
@@ -59,28 +60,7 @@ namespace View.Controls
             else
                 deleteEntry.Visibility = editAppliance.Visibility = Visibility.Collapsed;
         }
-
-        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(!EndDate.Text.Equals(string.Empty))
-            {
-                DateTime today = DateTime.Now;
-                DateTime endDate = Convert.ToDateTime(EndDate.Text);
-                DateTime warrantyEndDate = endDate.AddDays(45);
-                int result = DateTime.Compare(today, warrantyEndDate);
-                string warrantyStatus = string.Empty;
-
-                if (result < 0)
-                    warrantyStatus = "On Warranty";
-                else
-                    warrantyStatus = "Out of Warranty";
-
-                WarrantyStatus.Text = warrantyStatus;
-            }
-            
-
-        }
-
+       
         private void editAppliance_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new ApplianceDetails("edit");
@@ -88,15 +68,23 @@ namespace View.Controls
 
         private void OfficialReceiptLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
+            string notification = string.Empty;
             try
             {
-                Process.Start(new ProcessStartInfo(@e.Uri.AbsolutePath));
+                string file = @e.Uri.AbsolutePath.ToString();
+                if (File.Exists(file))
+                    Process.Start(new ProcessStartInfo(file));
+                else
+                {
+                    notification = "A problem is encountered when trying to open file \"" + file + "\" \n\nCheck that: \n 1. File exists in the specified location \n 2. File is not corrupted";
+                    viewModel.CurrentPopupView = new WarningErrorNotificationPopup(notification);
+                }
             }
             catch (Exception ex)
             {
-
-                // show pop-up here that problem is encountered opening file
+                viewModel.CurrentPopupView = new WarningErrorNotificationPopup(ex.Message);
             }
+
         }
 
         private void deleteEntry_Click(object sender, RoutedEventArgs e)

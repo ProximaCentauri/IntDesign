@@ -30,7 +30,7 @@
                 Style="{StaticResource warningIconStyle}" />
             <TextBlock
                 Name="notification"
-                Width="240"
+                Width="350"
                 Style="{StaticResource warningPopupTextStyle}" />
         </StackPanel>
         <Button

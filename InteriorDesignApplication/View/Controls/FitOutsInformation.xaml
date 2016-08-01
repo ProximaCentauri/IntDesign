@@ -133,8 +133,7 @@
                         Name="EndDate"
                         Focusable="False"
                         SelectedDateFormat="Long"
-                        SelectedDateChanged="DatePicker_SelectedDateChanged"
-                        SelectedDate="{Binding CurrentSelectedCustomer.FitOut.EndDate}" />
+                        SelectedDate="{Binding FitOutCompletionDate}" />
                 </StackPanel>
             </Grid>
             <Grid
@@ -151,6 +150,7 @@
                         Width="194"
                         Margin="0,0,10,0"
                         IsReadOnly="True"
+                        Text="{Binding FitOutWarrantyStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Name="WarrantyStatus"></TextBox>
                 </StackPanel>
             </Grid>
@@ -194,7 +194,7 @@
                         Visibility="Collapsed"
                         Click="editAppliance_Click"
                         Style="{StaticResource iconButtonStyle}"
-                        Command="{Binding EditUtilityCommand}">
+                        Command="{Binding EditApplianceCommand}">
                         <Image
                             Style="{StaticResource editIconStyle}" />
                     </Button>
@@ -243,6 +243,10 @@
                             Header="Warranty End Date"
                             Width="150"
                             Binding="{Binding WarrantyEndDate, StringFormat='MMMM dd, yyyy'}" />
+                        <DataGridTextColumn
+                            Header="Warranty Status"
+                            Width="150"
+                            Binding="{Binding WarrantyStatus}" />
                         <DataGridTemplateColumn
                             Header="Official Receipt"
                             Width="250">
@@ -250,9 +254,9 @@
                                 <DataTemplate>
                                     <TextBlock>
                                     <Hyperlink
-                                        Name="OfficialReceiptLink"
-                                        controls:HyperlinkExtensions.IsExternal="True"
-                                        NavigateUri="{Binding Receipt}">
+                                            Name="OfficialReceiptLink"
+                                            RequestNavigate="OfficialReceiptLink_RequestNavigate"
+                                            NavigateUri="{Binding Receipt}">
                                         <TextBlock
                                             Text="{Binding Receipt}" />
                                     </Hyperlink>

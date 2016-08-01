@@ -18,6 +18,7 @@ using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
 using log4net;
+using System.IO;
 namespace ViewModel
 {
     public class MainViewModel : IMainViewModel
@@ -158,7 +159,12 @@ namespace ViewModel
 
                     if (currentSelectedCustomer.ImageSourceLocation != null)
                     {
-                        CustomerImageSource = new BitmapImage(new Uri(currentSelectedCustomer.ImageSourceLocation));
+                        string file = new Uri(currentSelectedCustomer.ImageSourceLocation).LocalPath;
+
+                        if (File.Exists(file))
+                            CustomerImageSource = new BitmapImage(new Uri(file));
+                        else
+                            OnPropertyChanged("FileNotFound");
                     }
                     else
                     {
@@ -175,8 +181,8 @@ namespace ViewModel
                     if(currentSelectedCustomer.FitOut == null)
                     {
                         currentSelectedCustomer.FitOut = new FitOut();
-                    }                    
-                    
+                    }
+                    FitOutCompletionDate = currentSelectedCustomer.FitOut.EndDate;
                 }                
                 OnPropertyChanged("CurrentSelectedCustomer");
                 OnPropertyChanged("Dependents");
@@ -487,6 +493,7 @@ namespace ViewModel
                     {
                         context.Customers.Add(customer);
                     }
+                    customer.FitOut.EndDate = FitOutCompletionDate;
                     context.SaveChanges();
                     Dependent = null;
                     CustomerSpouse = null;
@@ -793,18 +800,68 @@ namespace ViewModel
             }
         }
 
+        private DateTime? warrantyEndDate;
+        public DateTime? WarrantyEndDate
+        {
+            get
+            {
+                return warrantyEndDate;
+            }
+            set
+            {
+                warrantyEndDate = value;                
+                OnPropertyChanged("WarrantyEndDate");
+                OnPropertyChanged("WarrantyStatus");
+            }
+        }
+
+        public string WarrantyStatus
+        {
+            get
+            {
+                return UtilityHelper.GetApplianceWarrantyStatus(WarrantyEndDate);
+            }
+        }
+
+        private DateTime? fitOutDateCompletion;
+        public DateTime? FitOutCompletionDate
+        {
+            get
+            {
+                return fitOutDateCompletion;
+            }
+            set
+            {
+                fitOutDateCompletion = value;
+                OnPropertyChanged("FitOutCompletionDate");
+                OnPropertyChanged("FitOutWarrantyStatus");
+            }
+        }
+
+        public string FitOutWarrantyStatus
+        {
+            get
+            {
+                return UtilityHelper.GetFitOutWarrantyStatus(FitOutCompletionDate);
+            }
+        }
+
         private void CreateAppliance()
         {
             CurrentSelectedAppliance = null;
+            WarrantyEndDate = null;
             CurrentSelectedAppliance = new Appliance();
         }
 
         private void AddAppliance()
         {
-            CurrentSelectedCustomer.FitOut.Appliances.Add(CurrentSelectedAppliance);
+            CurrentSelectedAppliance.WarrantyEndDate = WarrantyEndDate;
+            CurrentSelectedCustomer.FitOut.Appliances.Add(CurrentSelectedAppliance);            
             context.Entry(CurrentSelectedAppliance).State = EntityState.Added;
             CurrentSelectedAppliance = null;
+            WarrantyEndDate = null;
             OnPropertyChanged("Appliances");
+    
         }
 
         private void DeleteAppliance()
@@ -819,8 +876,18 @@ namespace ViewModel
         {
             if(CurrentSelectedAppliance != null)
             {
+                CurrentSelectedAppliance.WarrantyEndDate = WarrantyEndDate;
                 context.Entry(CurrentSelectedAppliance).State = EntityState.Modified;
                 OnPropertyChanged("Appliances");
+            }
+        }       
+
+        private void EditAppliance()
+        {
+            if (CurrentSelectedAppliance != null)
+            {
+                WarrantyEndDate = CurrentSelectedAppliance.WarrantyEndDate;
+                OnPropertyChanged("WarrantyEndDate");
             }
         }
 
@@ -1136,6 +1203,19 @@ namespace ViewModel
                     _editUpdateApplianceCommand = new RelayCommand(EditUpdateAppliance);
                 }
                 return _editUpdateApplianceCommand;
+            }
+        }
+
+        ICommand _editApplianceCommand;
+        public ICommand EditApplianceCommand
+        {
+            get
+            {
+                if (_editApplianceCommand == null)
+                {
+                    _editApplianceCommand = new RelayCommand(EditAppliance);
+                }
+                return _editApplianceCommand;
             }
         }
 

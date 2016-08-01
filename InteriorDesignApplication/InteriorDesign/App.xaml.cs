@@ -32,6 +32,7 @@ namespace InteriorDesign
             {
                 this.viewModel = new MainViewModel();
                 View.MainWindow main = new View.MainWindow(viewModel);
+                //View.Login main = new View.Login();
                 main.Show();
             }            
         }
