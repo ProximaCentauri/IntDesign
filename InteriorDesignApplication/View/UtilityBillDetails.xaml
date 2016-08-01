@@ -91,13 +91,10 @@
                             ItemsSource="{Binding UtilityBillTypes}"
                             DisplayMemberPath="Name"
                             SelectedValue="{Binding CurrentSelectedUtilityBillType}" 
-                            SelectionChanged="billType_SelectionChanged"
-                            
-                            >
-                            
-                        </ComboBox>
+                            SelectionChanged="billType_SelectionChanged"                            
+                            />
                         <Button
-                            Name="addBillType"
+                            Name="addBillTypeButton"
                             Width="30"
                             Height="20"
                             Margin="0,7,0,0"
@@ -125,8 +122,7 @@
                                     Style="{StaticResource editIconStyle}" />
                             </StackPanel>
                         </Button>
-                    </StackPanel>
-                    
+                    </StackPanel>                    
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
@@ -314,11 +310,14 @@
                         Grid.Column="0"
                         Text="Bill Type:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
-                        Grid.Column="1"                        
+                    <controls:WatermarkTextBox
+                        Grid.Column="1"
+                        x:Name="UtilityBillTypeInput"
+                        WatermarkBorderColor="LightGray"
                         Style="{StaticResource popupTextBoxStyle}"
                         Text="{Binding CurrentSelectedUtilityBillType.Name}"
-                        Name="UtilityBillTypeInput"/>                    
+                        Watermark="This field is required"
+                        WaterMarkForeground="Gray"/>
                 </Grid>
             </StackPanel>
         </Grid>
@@ -369,13 +368,16 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         Text="Company Name:"
-                        Style="{StaticResource popupLabelTextStyle}" />
-                    <TextBox
+                        Style="{StaticResource popupLabelTextStyle}" />                    
+                    <controls:WatermarkTextBox
                         Grid.Row="1"
                         Grid.Column="1"
+                        x:Name="UtilityCompanyInput"
+                        WatermarkBorderColor="LightGray"
                         Style="{StaticResource popupTextBoxStyle}"
                         Text="{Binding CurrentSelectedUtilityCompany.Name}"
-                        Name="UtilityCompanyInput"/>
+                        Watermark="This field is required"
+                        WaterMarkForeground="Gray"/>
                 </Grid>
             </StackPanel>
         </Grid>
@@ -386,16 +388,18 @@
                 Margin="0,20,0,20"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
-                <Button
-                    Name="cancelButton"
-                    Visibility="Collapsed"
-                    Width="100"
-                    Height="30"
-                    Margin="0,0,24,0"
-                    Click="cancelButton_Click"
-                    Content="Cancel"
-                    Style="{StaticResource mainLinkButtonStyle}">                    
-                </Button>
+                <StackPanel>
+                    <Button
+                        Name="cancelButton"
+                        Visibility="Collapsed"
+                        Width="100"
+                        Height="30"
+                        Margin="0,0,24,0"
+                        Click="cancelButton_Click"
+                        Content="Cancel"
+                        Style="{StaticResource mainLinkButtonStyle}">                    
+                    </Button>
+                </StackPanel>
                 <StackPanel>
                     <Button
                     Width="100"
@@ -412,7 +416,7 @@
                             Name="AddSaveButtonLabel"
                             Style="{StaticResource addButtonStyle}" />
                         </StackPanel>
-                    </Button>
+                    </Button>                
                     <TextBlock
                         x:Name="ErrorNotification"
                         Visibility="Collapsed"

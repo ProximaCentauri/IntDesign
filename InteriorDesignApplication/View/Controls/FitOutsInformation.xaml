@@ -250,11 +250,11 @@
                                 <DataTemplate>
                                     <TextBlock>
                                     <Hyperlink
-                                            Name="OfficialReceiptLink"
-                                            controls:HyperlinkExtensions.IsExternal="True"
-                                            NavigateUri="{Binding Receipt}">
+                                        Name="OfficialReceiptLink"
+                                        controls:HyperlinkExtensions.IsExternal="True"
+                                        NavigateUri="{Binding Receipt}">
                                         <TextBlock
-                                                Text="{Binding Receipt}" />
+                                            Text="{Binding Receipt}" />
                                     </Hyperlink>
                                         <!--RequestNavigate="OfficialReceiptLink_RequestNavigate"-->
                                 </TextBlock>

@@ -25,6 +25,7 @@ using System.Windows.Documents;
          {
              obj.SetValue(IsExternalProperty, value);
          }
+
          public static readonly DependencyProperty IsExternalProperty =
              DependencyProperty.RegisterAttached("IsExternal", typeof(bool), typeof(HyperlinkExtensions), new UIPropertyMetadata(false, OnIsExternalChanged));
 
