@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appliance.cs" />
+    <Compile Include="AppUser.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="BankType.cs" />
     <Compile Include="Company.cs" />

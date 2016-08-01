@@ -20,7 +20,7 @@ namespace Model.Migrations
 
             SeedDefaultUtilityBillTypeAndCompany(context);
             SeedDefaultBank(context);
-                      
+            SeedAppUser(context);
             
             
          }
@@ -194,6 +194,26 @@ namespace Model.Migrations
                 {
                     Id = 20,
                     Name = "Union Bank of the Philippines"
+                });
+        }
+
+        private void SeedAppUser(Model.ManagerDBContext context)
+        {
+            context.AppUsers.AddOrUpdate(x => x.Id,
+                new AppUser()
+                {
+                    Id = 1,
+                    UserName = "Admin"
+                },
+                new AppUser()
+                {
+                    Id = 2,
+                    UserName = "Guest1"
+                },
+                new AppUser()
+                {
+                    Id = 3,
+                    UserName = "Guest2"
                 });
         }
     }

@@ -31,5 +31,6 @@ namespace Model
         public DbSet Title { get; set; }
         public DbSet FitOut { get; set; }       
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<AppUser> AppUsers {get;set;}
     }
 }
