@@ -66,17 +66,17 @@ namespace View
                 addBillTypePanel.Visibility.Equals(Visibility.Collapsed) &&
                 addCompanyNamePanel.Visibility.Equals(Visibility.Collapsed))                
             {
-                ErrorNotification.Text = "Please fill up the required fields.";
+                ErrorNotification.Text = "***Please fill up the required fields.***";
                 ErrorNotification.Visibility = Visibility.Visible; 
             }
             else if (addBillTypePanel.Visibility.Equals(Visibility.Visible) && !addBillType())
             {
-                ErrorNotification.Text = "Please fill up the required fields.";
+                ErrorNotification.Text = "***Please fill up the required fields.***";
                 ErrorNotification.Visibility = Visibility.Visible; 
             }
             else if (this.addCompanyNamePanel.Visibility == Visibility.Visible && !addCompany())
             {
-                ErrorNotification.Text = "Please fill up the required fields.";
+                ErrorNotification.Text = "***Please fill up the required fields.***";
                 ErrorNotification.Visibility = Visibility.Visible; 
             }         
         }

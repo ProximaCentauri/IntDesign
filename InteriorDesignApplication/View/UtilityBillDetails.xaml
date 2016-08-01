@@ -21,10 +21,12 @@
                 Height="Auto"></RowDefinition>
             <RowDefinition
                 Height="Auto"></RowDefinition>
+            <RowDefinition
+                Height="35"></RowDefinition>
         </Grid.RowDefinitions>
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
-            Grid.RowSpan="3" />
+            Grid.RowSpan="4" />
         <Button
             x:Name="close"
             Grid.Row="0"
@@ -385,7 +387,7 @@
             Grid.Row="2">
             <StackPanel
                 Orientation="Horizontal"
-                Margin="0,20,0,20"
+                Margin="0,20,0,0"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
                 <StackPanel>
@@ -416,15 +418,17 @@
                             Name="AddSaveButtonLabel"
                             Style="{StaticResource addButtonStyle}" />
                         </StackPanel>
-                    </Button>                
-                    <TextBlock
-                        x:Name="ErrorNotification"
-                        Visibility="Collapsed"
-                        Foreground="Red"
-                        FontSize="18"
-                       />
+                    </Button>                    
                 </StackPanel>
             </StackPanel>
+        </Grid>
+        <Grid
+            Grid.Row="3">
+            <TextBlock
+                x:Name="ErrorNotification"
+                Margin="0,8,0,10"
+                Visibility="Collapsed"
+                Style="{StaticResource requiredFieldNotificationTextStyle}" />
         </Grid>
     </Grid>
 </c:PopupView>

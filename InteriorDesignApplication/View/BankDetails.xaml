@@ -19,10 +19,12 @@
                 Height="Auto"></RowDefinition>
             <RowDefinition 
                 Height="Auto"></RowDefinition>
+            <RowDefinition
+                Height="35"></RowDefinition>
         </Grid.RowDefinitions>
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
-            Grid.RowSpan="3" />
+            Grid.RowSpan="4" />
         <Button
             x:Name="close"
             Grid.Row="0"
@@ -94,7 +96,7 @@
                         Text="{Binding CurrentSelectedBank.AccountName}"
                         Style="{StaticResource popupTextBoxStyle}"
                         Name="AccountName"
-                         Watermark="This field is required"
+                        Watermark="This field is required"
                         WatermarkBorderColor="LightGray"
                         WaterMarkForeground="Gray"/>
                     <TextBlock
@@ -159,7 +161,7 @@
                 Name="AddSaveBankBtn"
                 Width="100"
                 Height="30"
-                Margin="20"
+                Margin="20,20,20,0"
                 Style="{StaticResource mainButtonStyle}"
                 Click="Button_Click">
                     <StackPanel
@@ -173,15 +175,15 @@
                         Style="{StaticResource addButtonStyle}" />
                     </StackPanel>
                 </Button>
-                <TextBlock
-                    x:Name="ErrorNotification"
-                    Visibility="Collapsed"
-                    Foreground="Red"
-                    FontSize="18"
-                    HorizontalAlignment="Center"
-                    Margin="0,0,0,20"/>
             </StackPanel>
-           
+        </Grid>
+        <Grid
+            Grid.Row="3">
+            <TextBlock
+                x:Name="ErrorNotification"
+                Margin="0,8,0,10"
+                Visibility="Collapsed"
+                Style="{StaticResource requiredFieldNotificationTextStyle}" />
         </Grid>
     </Grid>
 </c:PopupView>

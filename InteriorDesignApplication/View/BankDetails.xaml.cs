@@ -69,7 +69,7 @@ namespace View
             }
             else
             {
-                ErrorNotification.Text = "Please fill up the required fields.";
+                ErrorNotification.Text = "***Please fill up the required fields.***";
                 ErrorNotification.Visibility = Visibility.Visible;
             }
             
