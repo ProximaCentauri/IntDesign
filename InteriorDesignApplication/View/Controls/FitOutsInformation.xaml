@@ -263,8 +263,6 @@
                                         <!--RequestNavigate="OfficialReceiptLink_RequestNavigate"-->
                                 </TextBlock>
                                 </DataTemplate>
-                                
-                                
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>

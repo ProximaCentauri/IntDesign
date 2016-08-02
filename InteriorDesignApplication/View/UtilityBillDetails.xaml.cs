@@ -78,7 +78,7 @@ namespace View
             {
                 ErrorNotification.Text = "***Please fill up the required fields.***";
                 ErrorNotification.Visibility = Visibility.Visible; 
-            }         
+            }
         }
 
         private bool addUtility()
@@ -152,6 +152,7 @@ namespace View
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ErrorNotification.Visibility = Visibility.Collapsed;
             ShowUtilityFormPanel();
         }
 
