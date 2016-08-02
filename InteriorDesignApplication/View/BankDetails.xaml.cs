@@ -51,16 +51,22 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!addBank() && addBankNamePanel.Visibility.Equals(Visibility.Collapsed))
+            if (addBankNamePanel.Visibility.Equals(Visibility.Collapsed))
             {
-                ErrorNotification.Text = "***Please fill up the required fields.***";
-                ErrorNotification.Visibility = Visibility.Visible; 
+                if(!addBank())
+                {
+                    ErrorNotification.Text = "***Please fill up the required fields.***";
+                    ErrorNotification.Visibility = Visibility.Visible; 
+                }
             }
-            else if(!addBankType() && addBankNamePanel.Visibility.Equals(Visibility.Visible))
+            else if (addBankNamePanel.Visibility.Equals(Visibility.Visible))
             {
-                ErrorNotification.Text = "***Please fill up the required fields.***";
-                ErrorNotification.Visibility = Visibility.Visible; 
-            }            
+                if(!addBankType())
+                {
+                    ErrorNotification.Text = "***Please fill up the required fields.***";
+                    ErrorNotification.Visibility = Visibility.Visible;
+                }
+            }              
         }
 
         private bool addBank()
