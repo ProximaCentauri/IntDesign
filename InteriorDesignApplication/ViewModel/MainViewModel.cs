@@ -39,7 +39,8 @@ namespace ViewModel
         private void LoadEntities()
         {            
             LoadCustomers();
-            LoadUtilityBillTypes();            
+            LoadUtilityBillTypes();
+            LoadBankTypes();
         }
 
         private void InitializeEntities()
@@ -57,6 +58,11 @@ namespace ViewModel
         private void LoadUtilityBillTypes()
         {
             UtilityBillTypes = new ObservableCollection<UtilityBillType>(context.GetAllUtilityBillTypes());
+        }
+
+        private void LoadBankTypes()
+        {
+            BankTypes = new ObservableCollection<BankType>(context.GetAllBankTypes());
         }
 
         public void CreateEntity(object ob)
@@ -1516,6 +1522,11 @@ namespace ViewModel
                 .Where(u => u.CustomerId == currentSelectedCustomer.Id)
                 .Where(u => !u.Status.Contains("Paid"))
                 .Where(u => u.DaysDue <= 5);
+        }
+
+        public static IQueryable<BankType> GetAllBankTypes(this ManagerDBContext context)
+        {
+            return context.BankTypes;
         }
     }
     #endregion

@@ -23,8 +23,9 @@ namespace Model
         [ForeignKey("CustomerId")]        
         public virtual Customer Customer { get; set; }
 
-        public int BankTypeId { get; set; }
-        [ForeignKey("BankTypeId")]
+        //public int BankTypeId { get; set; }
+        //[ForeignKey("BankTypeId")]
+        //public virtual BankType BankType { get; set; }
         public virtual BankType BankType { get; set; }
     }
 }
