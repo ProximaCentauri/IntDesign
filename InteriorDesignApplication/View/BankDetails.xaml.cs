@@ -107,15 +107,17 @@ namespace View
         {
             ErrorNotification.Visibility = bankFormPanel.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
+            bankTypeHeader.Text = "Add Bank Name";
+            AddSaveButtonLabel.Text = "Add";
+            bankNameInput.Text = string.Empty;
         }
 
         private void editBankNameButton_Click(object sender, RoutedEventArgs e)
         {
-            bankFormPanel.Visibility = Visibility.Collapsed;
+            ErrorNotification.Visibility = bankFormPanel.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
             bankTypeHeader.Text = "Edit Bank Name";
             AddSaveButtonLabel.Text = "Update";
-            ErrorNotification.Visibility = Visibility.Collapsed;
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)

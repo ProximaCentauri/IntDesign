@@ -316,7 +316,7 @@
                         x:Name="UtilityBillTypeInput"
                         WatermarkBorderColor="LightGray"
                         Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding CurrentSelectedUtilityBillType.Name}"
+                        Text="{Binding CurrentSelectedUtilityBillType.Name, UpdateSourceTrigger=Explicit}"
                         Watermark="This field is required"
                         WaterMarkForeground="Gray"/>
                 </Grid>
@@ -363,7 +363,7 @@
                         Style="{StaticResource popupComboBoxStyle}"
                         ItemsSource="{Binding UtilityBillTypes}"
                         DisplayMemberPath="Name"
-                        SelectedValue="{Binding CurrentSelectedUtilityBillType}" 
+                        SelectedValue="{Binding CurrentSelectedUtilityBillType, UpdateSourceTrigger=Explicit}" 
                         Name="CompanyUtilityBillTypeSelection"/>
                     <TextBlock
                         Grid.Row="1"
@@ -376,7 +376,7 @@
                         x:Name="UtilityCompanyInput"
                         WatermarkBorderColor="LightGray"
                         Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding CurrentSelectedUtilityCompany.Name}"
+                        Text="{Binding CurrentSelectedUtilityCompany.Name, UpdateSourceTrigger=Explicit}"
                         Watermark="This field is required"
                         WaterMarkForeground="Gray"/>
                 </Grid>
