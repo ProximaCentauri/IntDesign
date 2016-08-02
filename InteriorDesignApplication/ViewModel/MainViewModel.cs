@@ -103,6 +103,13 @@ namespace ViewModel
             set { readyToSave = value; }
         }
 
+        private bool isAdmin;
+        public bool IsAdmin
+        {
+            get { return isAdmin; }
+            set { isAdmin = value; }
+        }
+
         #region Personal Information
         public int SelectedIndex { get; set; }
         public string CommandParameter { get; set; }
