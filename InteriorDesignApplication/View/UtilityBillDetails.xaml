@@ -92,9 +92,8 @@
                             Style="{StaticResource popupComboBoxStyle}"
                             ItemsSource="{Binding UtilityBillTypes}"
                             DisplayMemberPath="Name"
-                            SelectedValue="{Binding CurrentSelectedUtilityBillType}" 
-                            SelectionChanged="billType_SelectionChanged"                            
-                            />
+                            SelectedValue="{Binding CurrentSelectedUtilityBillType}"
+                            SelectionChanged="billType_SelectionChanged" />
                         <Button
                             Name="addBillTypeButton"
                             Width="30"

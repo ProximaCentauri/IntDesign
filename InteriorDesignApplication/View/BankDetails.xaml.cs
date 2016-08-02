@@ -51,10 +51,24 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(Branch.NoOfErrorsOnScreen == 0 &&
+            if (!addBank() && addBankNamePanel.Visibility.Equals(Visibility.Collapsed))
+            {
+                ErrorNotification.Text = "***Please fill up the required fields.***";
+                ErrorNotification.Visibility = Visibility.Visible; 
+            }
+            else if(!addBankType() && addBankNamePanel.Visibility.Equals(Visibility.Visible))
+            {
+                ErrorNotification.Text = "***Please fill up the required fields.***";
+                ErrorNotification.Visibility = Visibility.Visible; 
+            }            
+        }
+
+        private bool addBank()
+        {
+            if (Branch.NoOfErrorsOnScreen == 0 &&
                 AccountNo.NoOfErrorsOnScreen == 0 &&
                 AccountName.NoOfErrorsOnScreen == 0 &&
-                BankName.NoOfErrorsOnScreen == 0)
+                bankType.SelectedIndex != -1)
             {
                 if (view == "add")
                 {
@@ -66,24 +80,54 @@ namespace View
                 }
 
                 viewModel.CurrentPopupView = null;
-            }
-            else
-            {
-                ErrorNotification.Text = "***Please fill up the required fields.***";
-                ErrorNotification.Visibility = Visibility.Visible;
-            }
-            
-        }
-
-        private bool addBankType()
-        {
-            if (BankName.NoOfErrorsOnScreen == 0)
-            {
-                this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("AddBankTypeCommand"));
-                // call method for showing bank type panel here
                 return true;
             }
             return false;
         }
+
+        private bool addBankType()
+        {
+            if (bankNameInput.NoOfErrorsOnScreen == 0)
+            {
+                this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("AddBankTypeCommand"));
+                // call method for showing bank type panel here
+                ShowBankFormPanel();
+                return true;
+            }
+            return false;
+        }
+
+        private void addBankNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            ErrorNotification.Visibility = bankFormPanel.Visibility = Visibility.Collapsed;
+            cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
+        }
+
+        private void editBankNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            bankFormPanel.Visibility = Visibility.Collapsed;
+            cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
+            bankTypeHeader.Text = "Edit Bank Name";
+            AddSaveButtonLabel.Text = "Update";
+            ErrorNotification.Visibility = Visibility.Collapsed;
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowBankFormPanel();
+        }
+
+        private void ShowBankFormPanel()
+        {
+            this.cancelButton.Visibility = this.addBankNamePanel.Visibility = Visibility.Collapsed;
+            this.bankFormPanel.Visibility = Visibility.Visible;
+        }
+
+        private void bankNameComboxBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            editBankNameButton.Visibility = Visibility.Visible;
+        }
+
+       
     }
 }

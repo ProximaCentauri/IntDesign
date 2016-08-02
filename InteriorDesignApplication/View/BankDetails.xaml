@@ -42,6 +42,8 @@
         </Button>
         <Grid
             Grid.Row="1"
+            Name="bankFormPanel"
+            Visibility="Visible"
             Margin="10,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition
@@ -77,14 +79,54 @@
                     <TextBlock
                         Text="Name of Bank:"
                         Style="{StaticResource popupLabelTextStyle}" />
-                    <controls:WatermarkTextBox
+                    <!--<controls:WatermarkTextBox
                         Grid.Column="1"
                         Style="{StaticResource popupTextBoxStyle}"
                         Text="{Binding CurrentSelectedBank.Name}"
                         Watermark="This field is required"
                         WatermarkBorderColor="LightGray"
                         WaterMarkForeground="Gray"
-                        Name="BankName"/>
+                        Name="BankName"/>-->
+                    <StackPanel
+                        Grid.Column="1"
+                        Orientation="Horizontal">
+                        <ComboBox
+                            Name="bankType"
+                            ItemsSource="{Binding BankTypes}"
+                            DisplayMemberPath="Name"
+                            SelectedValue="{Binding CurrentSelectedBankType}"
+                            SelectionChanged="bankNameComboxBox_SelectionChanged" />
+                        <Button
+                            Name="addBankNameButton"
+                            Width="30"
+                            Height="20"
+                            Margin="0,7,0,0"
+                            Click="addBankNameButton_Click"
+                            Style="{StaticResource iconButtonStyle}">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                                <Image
+                                    Style="{StaticResource addIconStyle}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Name="editBankNameButton"
+                            Visibility="Collapsed"
+                            Width="30"
+                            Height="20"
+                            Margin="0,7,0,0"
+                            Click="editBankNameButton_Click"
+                            Style="{StaticResource iconButtonStyle}">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                                <Image
+                                    Style="{StaticResource editIconStyle}" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
@@ -148,31 +190,85 @@
                         Grid.Row="5"
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedBank.SwiftCode}"
-                        Style="{StaticResource popupTextBoxStyle}" 
-                        Name="SwiftCode"
-                        />
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Name="SwiftCode" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid
+            Name="addBankNamePanel"
+            Visibility="Collapsed"
+            Grid.Row="1"
+            Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Name="bankTypeHeader"
+                Text="Add Bank Name"
+                Style="{StaticResource popupHeaderTextStyle}" />
+            <Separator
+                Style="{StaticResource mainSeparatorStyle}" />
+            <StackPanel
+                Orientation="Vertical"
+                Margin="0,0,24,0"
+                Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="125"></ColumnDefinition>
+                        <ColumnDefinition
+                            Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="Name of Bank:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <controls:WatermarkTextBox
+                        Grid.Column="1"
+                        x:Name="bankNameInput"
+                        WatermarkBorderColor="LightGray"
+                        Style="{StaticResource popupTextBoxStyle}"
+                        Watermark="This field is required"
+                        WaterMarkForeground="Gray" />
                 </Grid>
             </StackPanel>
         </Grid>
         <Grid
             Grid.Row="2">
-            <StackPanel>
-                <Button
-                Name="AddSaveBankBtn"
-                Width="100"
-                Height="30"
+            <StackPanel
                 Margin="20,20,20,0"
-                Style="{StaticResource mainButtonStyle}"
-                Click="Button_Click">
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Button
+                    Name="cancelButton"
+                    Visibility="Collapsed"
+                    Width="100"
+                    Height="30"
+                    Margin="0,0,24,0"
+                    Click="cancelButton_Click"
+                    Content="Cancel"
+                    Style="{StaticResource mainLinkButtonStyle}">
+                </Button>
+                <Button
+                    Name="AddSaveBankBtn"
+                    Width="100"
+                    Height="30"
+                    Style="{StaticResource mainButtonStyle}"
+                    Click="Button_Click">
                     <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
                         <Image
-                        Style="{StaticResource checkIconStyle}" />
+                            Style="{StaticResource checkIconStyle}" />
                         <TextBlock
-                        Name="AddSaveButtonLabel"
-                        Text="Add"
-                        Style="{StaticResource addButtonStyle}" />
+                            Name="AddSaveButtonLabel"
+                            Text="Add"
+                            Style="{StaticResource addButtonStyle}" />
                     </StackPanel>
                 </Button>
             </StackPanel>
