@@ -163,6 +163,14 @@ namespace View
 
         private void ShowUtilityFormPanel()
         {
+            if (view == "edit")
+            {
+                this.AddSaveButtonLabel.Text = "Update";
+            }
+            else
+            {
+                this.AddSaveButtonLabel.Text = "Add";
+            }     
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.utilityFormPanel.Visibility = Visibility.Visible;
         }

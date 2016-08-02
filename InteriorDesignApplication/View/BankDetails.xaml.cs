@@ -125,11 +125,20 @@ namespace View
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ErrorNotification.Visibility = Visibility.Collapsed;
             ShowBankFormPanel();
         }
 
         private void ShowBankFormPanel()
-        {
+        {            
+            if (view == "edit")
+            {
+                this.AddSaveButtonLabel.Text = "Update";
+            }
+            else
+            {
+                this.AddSaveButtonLabel.Text = "Add";
+            }
             this.cancelButton.Visibility = this.addBankNamePanel.Visibility = Visibility.Collapsed;
             this.bankFormPanel.Visibility = Visibility.Visible;
         }

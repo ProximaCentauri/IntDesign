@@ -71,7 +71,7 @@
                     <DataGridTextColumn
                         Header="Name of Bank"
                         Width="150" 
-                        Binding="{Binding Name }"/>
+                        Binding="{Binding BankType.Name}"/>
                     <DataGridTextColumn
                         Header="Account Name"
                         Width="200" 
