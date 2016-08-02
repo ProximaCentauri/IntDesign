@@ -92,6 +92,7 @@
                         Orientation="Horizontal">
                         <ComboBox
                             Name="bankType"
+                            Style="{StaticResource popupComboBoxStyle}"
                             ItemsSource="{Binding BankTypes}"
                             DisplayMemberPath="Name"
                             SelectedValue="{Binding CurrentSelectedBankType}"
@@ -125,8 +126,7 @@
                                     Style="{StaticResource editIconStyle}" />
                             </StackPanel>
                         </Button>
-                    </StackPanel>
-                    
+                    </StackPanel>                    
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
@@ -179,8 +179,7 @@
                         Grid.Column="1"
                         Text="{Binding CurrentSelectedBank.Address}"
                         Style="{StaticResource popupAddressTextBoxStyle}"
-                        Name="Address"
-                        />
+                        Name="Address" />
                     <TextBlock
                         Grid.Row="5"
                         Grid.Column="0"
@@ -232,6 +231,7 @@
                         x:Name="bankNameInput"
                         WatermarkBorderColor="LightGray"
                         Style="{StaticResource popupTextBoxStyle}"
+                        Text="{Binding CurrentSelectedBankType.Name}"
                         Watermark="This field is required"
                         WaterMarkForeground="Gray" />
                 </Grid>
