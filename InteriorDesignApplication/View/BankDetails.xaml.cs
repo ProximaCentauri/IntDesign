@@ -95,6 +95,7 @@ namespace View
         {
             if (bankNameInput.NoOfErrorsOnScreen == 0)
             {
+                bankNameInput.GetBindingExpression(TextBox.TextProperty).UpdateSource();               
                 this.AddSaveBankBtn.SetBinding(Button.CommandProperty, new Binding("AddBankTypeCommand"));
                 // call method for showing bank type panel here
                 ShowBankFormPanel();
@@ -114,6 +115,8 @@ namespace View
 
         private void editBankNameButton_Click(object sender, RoutedEventArgs e)
         {
+            bankNameInput.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
+
             ErrorNotification.Visibility = bankFormPanel.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
             bankTypeHeader.Text = "Edit Bank Name";

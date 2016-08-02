@@ -231,7 +231,7 @@
                         x:Name="bankNameInput"
                         WatermarkBorderColor="LightGray"
                         Style="{StaticResource popupTextBoxStyle}"
-                        Text="{Binding CurrentSelectedBankType.Name}"
+                        Text="{Binding CurrentSelectedBankType.Name, UpdateSourceTrigger=Explicit}"
                         Watermark="This field is required"
                         WaterMarkForeground="Gray" />
                 </Grid>
