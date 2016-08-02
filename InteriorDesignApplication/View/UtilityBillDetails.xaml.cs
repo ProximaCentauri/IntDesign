@@ -111,6 +111,8 @@ namespace View
         {
             if (UtilityBillTypeInput.NoOfErrorsOnScreen == 0)
             {
+                UtilityBillTypeInput.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
                 this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityBillTypeCommand"));
                 ShowUtilityFormPanel();
                 return true;
@@ -123,6 +125,9 @@ namespace View
             if (UtilityCompanyInput.NoOfErrorsOnScreen == 0 &&
                 CompanyUtilityBillTypeSelection.SelectedIndex != -1)
             {
+                UtilityCompanyInput.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                CompanyUtilityBillTypeSelection.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+
                 this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCompanyCommand"));
                 ShowUtilityFormPanel();
                 return true;
@@ -205,6 +210,8 @@ namespace View
 
         private void editBillType_Click(object sender, RoutedEventArgs e)
         {
+            UtilityBillTypeInput.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
+
             this.utilityFormPanel.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Collapsed;
             this.cancelButton.Visibility = this.addBillTypePanel.Visibility = Visibility.Visible;
             billTypeHeader.Text = "Edit Bill Type";
@@ -214,6 +221,9 @@ namespace View
 
         private void editCompanyName_Click(object sender, RoutedEventArgs e)
         {
+            UtilityCompanyInput.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
+            CompanyUtilityBillTypeSelection.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateTarget();
+
             this.utilityFormPanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Visible;
             companyNameHeader.Text = "Edit Company Name";
