@@ -135,6 +135,9 @@ namespace View
             this.utilityFormPanel.Visibility = this.addCompanyNamePanel.Visibility= Visibility.Collapsed;
             this.cancelButton.Visibility = this.addBillTypePanel.Visibility = Visibility.Visible;
             ErrorNotification.Visibility = Visibility.Collapsed;
+            billTypeHeader.Text = "Add Bill Type";
+            this.AddSaveButtonLabel.Text = "Add";
+            UtilityBillTypeInput.Text = string.Empty;
         }
 
         private void addCompanyName_Click(object sender, RoutedEventArgs e)
@@ -142,6 +145,9 @@ namespace View
             this.utilityFormPanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Visible;
             ErrorNotification.Visibility = Visibility.Collapsed;
+            companyNameHeader.Text = "Add Company Name";
+            this.AddSaveButtonLabel.Text = "Update";
+            UtilityCompanyInput.Text = string.Empty;
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
