@@ -679,6 +679,16 @@ namespace ViewModel
             CurrentSelectedUtility = new Utility();            
         }
 
+        private void CreateUtilityBillType()
+        {
+            CurrentSelectedUtilityBillType = new UtilityBillType();
+        }
+
+        private void CreateUtilityCompany()
+        {
+            CurrentSelectedUtilityCompany = new UtilityCompany();
+        }
+
         private void AddUtility()
         {
             if (CurrentSelectedUtilityBillType != null && CurrentSelectedUtilityCompany != null)
@@ -1187,6 +1197,34 @@ namespace ViewModel
                 return _createUtilityCommand;
             }
         }
+
+        ICommand _createUtilityBillTypeCommand;
+        public ICommand CreateUtilityBillTypeCommand
+        {
+            get
+            {
+                if (_createUtilityBillTypeCommand == null)
+                {
+                    _createUtilityBillTypeCommand = new RelayCommand(CreateUtilityBillType);
+                }
+                return _createUtilityBillTypeCommand;
+            }
+        }
+
+
+        ICommand _createUtilityCompanyCommand;
+        public ICommand CreateUtilityCompanyCommand
+        {
+            get
+            {
+                if (_createUtilityCompanyCommand == null)
+                {
+                    _createUtilityCompanyCommand = new RelayCommand(CreateUtilityCompany);
+                }
+                return _createUtilityCompanyCommand;
+            }
+        }
+
 
         ICommand _editUtilityCommand;
         public ICommand EditUtilityCommand

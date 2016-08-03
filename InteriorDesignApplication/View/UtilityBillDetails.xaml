@@ -100,6 +100,7 @@
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addBillType_Click"
+                            Command="{Binding CreateUtilityBillTypeCommand}"
                             Style="{StaticResource iconButtonStyle}">
                             <StackPanel
                                 Orientation="Horizontal"
@@ -147,6 +148,7 @@
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addCompanyName_Click"
+                            Command="{Binding CreateUtilityCompanyCommand}"
                             Style="{StaticResource iconButtonStyle}">
                             <StackPanel
                                 Orientation="Horizontal"
