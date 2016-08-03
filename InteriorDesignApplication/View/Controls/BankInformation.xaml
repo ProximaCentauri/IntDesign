@@ -41,6 +41,7 @@
                     Width="40"
                     Height="20"
                     Click="editBankInfo_Click"
+                    Command="{Binding EditBankCommand}"
                     Style="{StaticResource iconButtonStyle}">
                     <Image
                         Style="{StaticResource editIconStyle}" />

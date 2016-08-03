@@ -111,6 +111,7 @@ namespace View
             bankTypeHeader.Text = "Add Bank Name";
             AddSaveButtonLabel.Text = "Add";
             bankNameInput.Text = string.Empty;
+            this.addBankNameButton.SetBinding(Button.CommandProperty, new Binding("CreateBankTypeCommand"));
         }
 
         private void editBankNameButton_Click(object sender, RoutedEventArgs e)
@@ -121,6 +122,7 @@ namespace View
             cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
             bankTypeHeader.Text = "Edit Bank Name";
             AddSaveButtonLabel.Text = "Update";
+                        
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)

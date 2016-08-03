@@ -625,6 +625,11 @@ namespace ViewModel
             CurrentSelectedBank = new Bank();
         }
 
+        private void CreateBankType()
+        {            
+            CurrentSelectedBankType = new BankType();            
+        }
+
         private void AddBank()
         {
             if (CurrentSelectedBankType != null)
@@ -636,6 +641,14 @@ namespace ViewModel
                 CurrentSelectedBankType = null;
                 OnPropertyChanged("Banks");
             }  
+        }
+
+        private void EditBank()
+        {
+            if (CurrentSelectedBank != null)
+            {
+                CurrentSelectedBankType = CurrentSelectedBank.BankType;                
+            }
         }
 
         private void EditUpdateBank()
@@ -1249,6 +1262,32 @@ namespace ViewModel
                     _editUpdateBankCommand = new RelayCommand(EditUpdateBank);
                 }
                 return _editUpdateBankCommand;
+            }
+        }
+
+        ICommand _editBankCommand;
+        public ICommand EditBankCommand
+        {
+            get
+            {
+                if (_editBankCommand == null)
+                {
+                    _editBankCommand = new RelayCommand(EditBank);
+                }
+                return _editBankCommand;
+            }
+        }
+
+        ICommand _createBankTypeCommand;
+        public ICommand CreateBankTypeCommand
+        {
+            get
+            {
+                if (_createBankTypeCommand == null)
+                {
+                    _createBankTypeCommand = new RelayCommand(CreateBankType);
+                }
+                return _createBankTypeCommand;
             }
         }
        
