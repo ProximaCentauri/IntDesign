@@ -657,6 +657,10 @@ namespace ViewModel
             {
                 CurrentSelectedBank.BankType = CurrentSelectedBankType;
                 context.Entry(CurrentSelectedBank).State = EntityState.Modified;
+                CurrentSelectedBank = null;
+                currentSelectedBankType = null;
+                OnPropertyChanged("Banks");
+
             }
         }
 
