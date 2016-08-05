@@ -19,6 +19,9 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
 using log4net;
 using System.IO;
+using System.Security.Cryptography;
+using System.Reflection;
+
 namespace ViewModel
 {
     public class MainViewModel : IMainViewModel
