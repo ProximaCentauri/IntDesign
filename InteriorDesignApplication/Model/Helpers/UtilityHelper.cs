@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.Security.Cryptography;
 
 namespace Model.Helpers
 {
@@ -89,6 +92,33 @@ namespace Model.Helpers
             }
             DateTime warrantyEndDate = fitOutCompletionDate.Value.AddDays(45);
             return (DateTime.Today.Date <= warrantyEndDate) ? "On Warranty" : "Out of Warranty";
+        }
+
+        public static bool CheckConnection(String URL, ref string exception)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
+                request.Timeout = 5000;
+                request.Credentials = CredentialCache.DefaultNetworkCredentials;
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode == HttpStatusCode.OK) return true;
+                else return false;
+            }
+            catch(WebException ex)
+            {
+                exception = ex.Message;
+                return false;
+            }
+        }
+
+        public static string Protect(string str)
+        {
+            byte[] entropy = Encoding.ASCII.GetBytes(Assembly.GetExecutingAssembly().FullName);
+            byte[] data = Encoding.ASCII.GetBytes(str);
+            string protectedData = Convert.ToBase64String(ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser));
+            return protectedData;
         }
     }
 }

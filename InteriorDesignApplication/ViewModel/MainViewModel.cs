@@ -113,14 +113,6 @@ namespace ViewModel
             set { isAdmin = value; }
         }
 
-        public static string Protect(string str)
-        {
-            byte[] entropy = Encoding.ASCII.GetBytes(Assembly.GetExecutingAssembly().FullName);
-            byte[] data = Encoding.ASCII.GetBytes(str);
-            string protectedData = Convert.ToBase64String(ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser));
-            return protectedData;
-        }
-
         #region Personal Information
         public int SelectedIndex { get; set; }
         public string CommandParameter { get; set; }
