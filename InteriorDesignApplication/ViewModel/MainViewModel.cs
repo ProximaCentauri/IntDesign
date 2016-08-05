@@ -19,6 +19,9 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
 using log4net;
 using System.IO;
+using System.Security.Cryptography;
+using System.Reflection;
+
 namespace ViewModel
 {
     public class MainViewModel : IMainViewModel
@@ -108,6 +111,14 @@ namespace ViewModel
         {
             get { return isAdmin; }
             set { isAdmin = value; }
+        }
+
+        public static string Protect(string str)
+        {
+            byte[] entropy = Encoding.ASCII.GetBytes(Assembly.GetExecutingAssembly().FullName);
+            byte[] data = Encoding.ASCII.GetBytes(str);
+            string protectedData = Convert.ToBase64String(ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser));
+            return protectedData;
         }
 
         #region Personal Information
