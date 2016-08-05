@@ -18,5 +18,7 @@ namespace Model
 
         public bool IsAdmin { get; set; }
         public string EmailAddress { get; set; }
+
+        public string TemporaryPin { get; set; }
     }
 }
