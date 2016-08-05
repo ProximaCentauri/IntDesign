@@ -6,11 +6,15 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Security.Cryptography;
+using log4net;
 
 namespace Model.Helpers
 {
     public static class UtilityHelper
     {
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static string GetUtilityStatusText(DateTime? cutoffDate, bool withReceipt)
         {
             string status = string.Empty;            
@@ -94,7 +98,7 @@ namespace Model.Helpers
             return (DateTime.Today.Date <= warrantyEndDate) ? "On Warranty" : "Out of Warranty";
         }
 
-        public static bool CheckConnection(String URL, ref string exception)
+        public static bool CheckConnection(String URL)
         {
             try
             {
@@ -108,7 +112,7 @@ namespace Model.Helpers
             }
             catch(WebException ex)
             {
-                exception = ex.Message;
+                Log.ErrorFormat("No internet connection. Message: {0}", ex.ToString());
                 return false;
             }
         }
