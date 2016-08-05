@@ -160,6 +160,7 @@ namespace View
 
         private void enableCustomerFormPanel(bool enable)
         {
+            
             if(enable)
             {
                 MainTabControl.IsEnabled = CancelButton.IsEnabled = SaveButton.IsEnabled = true;
