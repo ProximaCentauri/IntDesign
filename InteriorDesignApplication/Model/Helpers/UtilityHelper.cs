@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Security.Cryptography;
 using log4net;
+using System.Net.Mail;
+
 
 namespace Model.Helpers
 {
@@ -123,6 +125,50 @@ namespace Model.Helpers
             byte[] data = Encoding.ASCII.GetBytes(str);
             string protectedData = Convert.ToBase64String(ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser));
             return protectedData;
+        }
+
+        public static string TemporaryPIN()
+        {
+            var random = new Random();
+            return random.Next(1000000).ToString("D6");
+        }
+
+        public static bool Send(string TO, string CC, string subject, string body)
+        {
+            bool retVal = false;
+            if (CheckConnection("www.google.com"))
+            {
+                MailMessage msg = new MailMessage();
+
+                msg.From = new MailAddress("proximacentauriofficial@gmail.com");
+                msg.To.Add(TO);
+                msg.CC.Add(CC);
+                msg.Subject = subject + " " + DateTime.Now.ToString();
+                msg.Body = body;
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential("proximacentauriofficial@gmail.com", "jasperp@ssw0rd");
+                client.Timeout = 20000;
+                try
+                {
+                    client.Send(msg);
+                    retVal = true;
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorFormat("Exception in sending the email. Message:{0}", ex.ToString());
+                    retVal = false;
+                }
+                finally
+                {
+                    msg.Dispose();
+                }
+            }
+            return retVal;
         }
     }
 }
