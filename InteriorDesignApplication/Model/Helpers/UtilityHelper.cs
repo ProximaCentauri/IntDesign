@@ -15,7 +15,7 @@ namespace Model.Helpers
     public static class UtilityHelper
     {
 
-        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
 
         public static string GetUtilityStatusText(DateTime? cutoffDate, bool withReceipt)
         {
@@ -99,7 +99,28 @@ namespace Model.Helpers
             DateTime warrantyEndDate = fitOutCompletionDate.Value.AddDays(45);
             return (DateTime.Today.Date <= warrantyEndDate) ? "On Warranty" : "Out of Warranty";
         }
+    }
 
+    public class Encryptor
+    {
+        public static string Encrypt(string str)
+        {
+            byte[] entropy = Encoding.ASCII.GetBytes(Assembly.GetExecutingAssembly().FullName);
+            byte[] data = Encoding.ASCII.GetBytes(str);
+            string protectedData = Convert.ToBase64String(ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser));
+            return protectedData;
+        }
+
+        public static string GenerateTempPIN()
+        {
+            var random = new Random();
+            return random.Next(1000000).ToString("D6");
+        }
+    }
+
+    public class EmailManager
+    {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static bool CheckConnection(String URL)
         {
             try
@@ -112,25 +133,11 @@ namespace Model.Helpers
                 if (response.StatusCode == HttpStatusCode.OK) return true;
                 else return false;
             }
-            catch(WebException ex)
+            catch (WebException ex)
             {
                 Log.ErrorFormat("No internet connection. Message: {0}", ex.ToString());
                 return false;
             }
-        }
-
-        public static string Protect(string str)
-        {
-            byte[] entropy = Encoding.ASCII.GetBytes(Assembly.GetExecutingAssembly().FullName);
-            byte[] data = Encoding.ASCII.GetBytes(str);
-            string protectedData = Convert.ToBase64String(ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser));
-            return protectedData;
-        }
-
-        public static string TemporaryPIN()
-        {
-            var random = new Random();
-            return random.Next(1000000).ToString("D6");
         }
 
         public static bool Send(string TO, string CC, string subject, string body)

@@ -21,6 +21,7 @@ using log4net;
 using System.IO;
 using System.Security.Cryptography;
 using System.Reflection;
+using Model.Helpers;
 
 namespace ViewModel
 {
@@ -35,7 +36,7 @@ namespace ViewModel
         public void InitializeAndLoadEntities()
         {
             LoadEntities();
-            InitializeEntities();
+            InitializeEntities();            
         }
 
 
