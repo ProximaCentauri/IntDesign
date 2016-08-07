@@ -136,7 +136,7 @@ namespace Model.Helpers
         public static bool Send(string TO, string CC, string subject, string body)
         {
             bool retVal = false;
-            if (CheckConnection("www.google.com"))
+            if (CheckConnection("http://www.google.com"))
             {
                 MailMessage msg = new MailMessage();
 
@@ -160,7 +160,7 @@ namespace Model.Helpers
                 }
                 catch (Exception ex)
                 {
-                    Log.ErrorFormat("Exception in sending the email. Message:{0}", ex.ToString());
+                    Log.ErrorFormat("Exception in sending email. Message:{0}", ex.ToString());
                     retVal = false;
                 }
                 finally
