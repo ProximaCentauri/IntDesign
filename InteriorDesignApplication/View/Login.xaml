@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vwMdl="clr-namespace:ViewModel;assembly=ViewModel"
     xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
+    xmlns:c="clr-namespace:View.Controls"
     Title="Login"
     WindowStyle="SingleBorderWindow"
     ResizeMode="NoResize"
@@ -69,11 +70,28 @@
                             Style="{StaticResource mainButtonTextStyle}" />
                     </StackPanel>
                 </Button>
-                <Button
-                    Content="Forgot Password?"
+                <StackPanel
                     Margin="0,20,0,10"
-                    Style="{StaticResource loginLinkButtonStyle}"/>
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Name="forgotPassBtn"
+                        Content="Forgot Password?"
+                        Click="forgotPassBtn_Click"
+                        Style="{StaticResource loginLinkButtonStyle}" />
+                    <TextBlock
+                        Margin="10,0,10,0"
+                        Style="{StaticResource loginSeparatorTextStyle}"
+                        Text="|" />
+                    <Button
+                        Content="Reset Password?"
+                        Name="resetPassBtn"
+                        Click="resetPassBtn_Click"
+                        Style="{StaticResource loginLinkButtonStyle}" />
+                </StackPanel>                
             </StackPanel>
         </Border>
+        <c:PopupControl
+            x:Name="PopupControl" />
     </Grid>
 </Window>

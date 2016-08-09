@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
+using Model.Controls;
+using Model;
 
 namespace View
 {
@@ -19,9 +22,41 @@ namespace View
     /// </summary>
     public partial class Login : Window
     {
-        public Login()
+        IMainViewModel viewModel;
+
+        public Login() { }
+        public Login(IMainViewModel viewModel)
         {
             InitializeComponent();
+            this.viewModel = viewModel;
+            this.DataContext = viewModel;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+            viewModel.InitializeAndLoadEntities();     
+        }
+
+        private void forgotPassBtn_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentPopupView = new ForgotPassword();
+        }
+
+        private void resetPassBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("CurrentPopupView"))
+            {
+                if (null == viewModel.CurrentPopupView)
+                {
+                    PopupControl.ShowPopup(false, viewModel.CurrentPopupView, false);
+                }
+                else
+                {
+                    PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
+                }
+            }
         }
     }
 }
