@@ -1121,7 +1121,7 @@
                     <DrawingImage.Drawing>
                         <GeometryDrawing
                             Brush="{StaticResource mainButtonBackgroundColorBrush}"
-                            Geometry="{StaticResource icon-unlock}" />
+                            Geometry="{StaticResource icon-lock}" />
                     </DrawingImage.Drawing>
                 </DrawingImage>
             </Setter.Value>
@@ -1135,6 +1135,28 @@
         <Setter
             Property="HorizontalAlignment"
             Value="Center" />
+    </Style>
+    <Style
+        x:Key="emailSecureIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-email-secure}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="18" />
+        <Setter
+            Property="Height"
+            Value="18" />
     </Style>
     <Style
         x:Key="popupShroudStyle"
