@@ -41,7 +41,7 @@ namespace View
 
         private void resetPassBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            viewModel.CurrentPopupView = new ResetPassword();
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
