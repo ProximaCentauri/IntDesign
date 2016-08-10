@@ -72,6 +72,9 @@
     <Compile Include="CancelConfirmationPopup.xaml.cs">
       <DependentUpon>CancelConfirmationPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FitOutsInformation.xaml.cs">
       <DependentUpon>FitOutsInformation.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
     <Page Include="CancelConfirmationPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\BankInformation.xaml">
       <SubType>Designer</SubType>

@@ -165,14 +165,14 @@
                     Height="Auto" />
             </Grid.RowDefinitions>
             <Grid
+                Margin="0,10,0,0"
                 Grid.Row="0">
                 <StackPanel
                     Orientation="Horizontal">
                     <TextBlock
                         Text="Appliances Information"
                         Width="150"
-                        Style="{StaticResource mainSubHeaderStyle}"
-                        Margin="0,10,0,0" />
+                        Style="{StaticResource mainSubHeaderStyle}" />
                     <Button
                         Name="addAppliance"
                         Width="40"

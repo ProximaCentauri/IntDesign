@@ -31,59 +31,121 @@
                 Height="Auto" />
         </Grid.RowDefinitions>
         <Grid
-            Margin="5,24,5,5"
-            Height="30">
+            Margin="0">
+            <!--801638-->
             <StackPanel
-                x:Name="SearchPanel"
-                Orientation="Horizontal">
-                <ComboBox
-                    Name="searchComboBox"
-                    Width="150"
-                    Margin="10,0,0,0"
-                    Style="{StaticResource searchByComboxBoxStyle}"
-                    Loaded="ComboBox_Loaded"
-                    SelectionChanged="searchComboBox_SelectionChanged"
-                    SelectedItem="{Binding SelectedSearchType}"/>
-                <TextBox
-                    x:Name="SearchTextBlock"
-                    Width="250"
-                    Style="{StaticResource searchByTextStyle}"
-                    Text="{Binding SelectedSearchValue}" 
-                    Margin="10,0,0,0" />
-                <Button
-                    Name="SearchButton"
-                    Width="120"
-                    Margin="10,0,0,0"
-                    Style="{StaticResource mainButtonStyle}"                    
-                    Command="{Binding SearchCustomerCommand}"
-                    Click="SearchButton_Click">
+                Orientation="Vertical">
+                <StackPanel
+                    Height="25"
+                    Background="#027878"
+                    Name="userInfoPanel">
                     <StackPanel
                         Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource searchIconStyle}" />
+                        HorizontalAlignment="Right">
                         <TextBlock
-                            Text="Search"
-                            Style="{StaticResource mainButtonTextStyle}" />
-                    </StackPanel>
-                </Button>
-                <Button
-                    Name="AddCustomerButton"
-                    Width="150"
-                    Margin="100,0,0,0"
-                    Style="{StaticResource mainButtonStyle}"
-                    Command="{Binding AddCustomerCommand}"
-                    Click="AddCustomerButton_Click">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource addUserIconStyle}" />
+                            Text="Welcome user!"
+                            Style="{StaticResource headerButtonTextStyle}" />
                         <TextBlock
-                            Text="Add customer"
-                            Style="{StaticResource mainButtonTextStyle}" />
+                            Text="|"
+                            Margin="8,0,8,0"
+                            Style="{StaticResource headerButtonTextStyle}" />
+                        <Button
+                            Name="changePassBtn"
+                            Width="Auto"
+                            Height="20"
+                            Margin="0,2,5,2"
+                            Click="changePassBtn_Click"
+                            Style="{StaticResource logoutButtonStyle}">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                                <TextBlock
+                                    Text="Change Password"
+                                    Margin="0,0,3,0"
+                                    Style="{StaticResource headerButtonTextStyle}" />
+                                <Image
+                                    Style="{StaticResource settingsIconStyle}" />
+                            </StackPanel>
+                        </Button>
+                        <TextBlock
+                            Text="|"
+                            Margin="3,0,8,0"
+                            Style="{StaticResource headerButtonTextStyle}" />
+                        <Button
+                            Name="logOutBtn"
+                            Width="Auto"
+                            Height="20"
+                            Margin="0,2,10,2"
+                            Click="logOutBtn_Click"
+                            Style="{StaticResource logoutButtonStyle}">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                                <TextBlock
+                                    Text="Logout"
+                                    Margin="0,0,5,0"
+                                    Style="{StaticResource headerButtonTextStyle}" />
+                                <Image
+                                    Style="{StaticResource logoutIconStyle}" />
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
-                </Button>
+                </StackPanel>
+                <StackPanel
+                    Height="30"
+                    Margin="8,8,8,0"
+                    x:Name="SearchPanel"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Bottom">
+                    <ComboBox
+                        Name="searchComboBox"
+                        Width="150"
+                        Margin="10,0,0,0"
+                        Style="{StaticResource searchByComboxBoxStyle}"
+                        Loaded="ComboBox_Loaded"
+                        SelectionChanged="searchComboBox_SelectionChanged"
+                        SelectedItem="{Binding SelectedSearchType}" />
+                    <TextBox
+                        x:Name="SearchTextBlock"
+                        Width="250"
+                        Style="{StaticResource searchByTextStyle}"
+                        Text="{Binding SelectedSearchValue}"
+                        Margin="10,0,0,0" />
+                    <Button
+                        Name="SearchButton"
+                        Width="120"
+                        Margin="10,0,0,0"
+                        Style="{StaticResource mainButtonStyle}"
+                        Command="{Binding SearchCustomerCommand}"
+                        Click="SearchButton_Click">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left">
+                            <Image
+                                Style="{StaticResource searchIconStyle}" />
+                            <TextBlock
+                                Text="Search"
+                                Style="{StaticResource mainButtonTextStyle}" />
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Name="AddCustomerButton"
+                        Width="150"
+                        Margin="100,0,0,0"
+                        Style="{StaticResource mainButtonStyle}"
+                        Command="{Binding AddCustomerCommand}"
+                        Click="AddCustomerButton_Click">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left">
+                            <Image
+                                Style="{StaticResource addUserIconStyle}" />
+                            <TextBlock
+                                Text="Add customer"
+                                Style="{StaticResource mainButtonTextStyle}" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </Grid>
         <!--This panel is for search results-->

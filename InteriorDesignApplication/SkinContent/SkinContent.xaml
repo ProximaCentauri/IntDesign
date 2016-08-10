@@ -340,6 +340,9 @@
             Property="Opacity"
             Value="1" />
         <Setter
+            Property="Cursor"
+            Value="Hand" />
+        <Setter
             Property="Template">
             <Setter.Value>
                 <ControlTemplate
@@ -400,6 +403,17 @@
         <Setter
             Property="Margin"
             Value="6,0,0,0" />
+    </Style>
+    <Style
+        x:Key="headerButtonTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainButtonTextStyle}">
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource mainButtonForegroundColorBrush}" />
     </Style>
     <Style
         x:Key="mainLinkButtonStyle"
@@ -479,6 +493,14 @@
         <Setter
             Property="BorderBrush"
             Value="{StaticResource mainButtonBackgroundColorBrush}" />
+    </Style>
+    <Style
+        x:Key="logoutButtonStyle"
+        TargetType="{x:Type Button}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Background"
+            Value="Transparent" />
     </Style>
     <Style
         x:Key="searchResultDataGridHeaderStyle"
@@ -1157,6 +1179,50 @@
         <Setter
             Property="Height"
             Value="18" />
+    </Style>
+    <Style
+        x:Key="logoutIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-logout}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="13" />
+        <Setter
+            Property="Height"
+            Value="13" />
+    </Style>
+    <Style
+        x:Key="settingsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-settings}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="13" />
+        <Setter
+            Property="Height"
+            Value="13" />
     </Style>
     <Style
         x:Key="popupShroudStyle"
