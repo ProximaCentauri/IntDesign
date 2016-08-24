@@ -23,21 +23,15 @@
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
             Grid.RowSpan="3" />
-        <Button
-            x:Name="close"
+        <controls:ImageButton
+            Name="close"
             Grid.Row="0"
             Width="30"
-            Height="20"
+            Height="24"
             Margin="0,8,5,0"
             Click="close_Click"
-            Style="{StaticResource iconButtonStyle}"
             HorizontalAlignment="Right"
-            VerticalAlignment="Center">
-            <StackPanel>
-                <Image
-                    Style="{StaticResource closeIconStyle}" />
-            </StackPanel>
-        </Button>
+            Style="{StaticResource closeButtonStyle}" />
         <Grid
             Grid.Row="1"
             Margin="10,0,0,0">
@@ -46,7 +40,7 @@
                     Height="Auto"></RowDefinition>
                 <RowDefinition
                     Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>            
+            </Grid.RowDefinitions>
             <TextBlock
                 Text="Dependent Information"
                 Style="{StaticResource popupHeaderTextStyle}" />
@@ -126,37 +120,29 @@
                         Focusable="False"
                         HorizontalAlignment="Left"
                         SelectedDateFormat="Long"
-                        SelectedDate="{Binding Dependent.BirthDate}"/>
+                        SelectedDate="{Binding Dependent.BirthDate}" />
                 </Grid>
             </StackPanel>
         </Grid>
         <Grid
             Grid.Row="2">
-            <StackPanel>
-            <Button
-                Width="100"
-                Height="30"
-                Margin="20"
-                Style="{StaticResource mainButtonStyle}"
-                Command="{Binding AddDependentCommand}"
-                Click="Button_Click">
-                <StackPanel
-                    Orientation="Horizontal">
-                    <Image
-                        Style="{StaticResource checkIconStyle}" />
-                    <TextBlock
-                        Text="Add"
-                        Style="{StaticResource addButtonStyle}" />
-                </StackPanel>
-            </Button>
-            <TextBlock
-                HorizontalAlignment="Center"
-                   x:Name="ErrorNotification"
-                       Visibility="Collapsed"
+            <StackPanel>               
+                <controls:ImageButton
+                    Width="100"
+                    Height="30"
+                    Margin="20"
+                    Command="{Binding AddDependentCommand}"
+                    Click="Button_Click"
+                    Text="Add"
+                    Style="{StaticResource checkButtonStyle}" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    x:Name="ErrorNotification"
+                    Visibility="Collapsed"
                     FontSize="20"
-                        Foreground="Red"
-                        Text="Please fill up the required fields."
-                Margin="0,-15,0,10"/>
+                    Foreground="Red"
+                    Text="Please fill up the required fields."
+                    Margin="0,-15,0,10" />
             </StackPanel>
         </Grid>
     </Grid>

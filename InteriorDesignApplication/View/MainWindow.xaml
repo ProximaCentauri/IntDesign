@@ -9,6 +9,7 @@
     xmlns:local="clr-namespace:View"
     xmlns:vwMdl="clr-namespace:ViewModel;assembly=ViewModel"
     xmlns:viewsControls="clr-namespace:View.Controls"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     mc:Ignorable="d"
     Title="Interior Design"
     WindowStyle="SingleBorderWindow"
@@ -49,46 +50,26 @@
                             Text="|"
                             Margin="8,0,8,0"
                             Style="{StaticResource headerButtonTextStyle}" />
-                        <Button
+                        <controls:ImageButton
                             Name="changePassBtn"
                             Width="Auto"
                             Height="20"
                             Margin="0,2,5,2"
                             Click="changePassBtn_Click"
-                            Style="{StaticResource logoutButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <TextBlock
-                                    Text="Change Password"
-                                    Margin="0,0,3,0"
-                                    Style="{StaticResource headerButtonTextStyle}" />
-                                <Image
-                                    Style="{StaticResource settingsIconStyle}" />
-                            </StackPanel>
-                        </Button>
+                            Text="Change Password"
+                            Style="{StaticResource settingsButtonStyle}" />
                         <TextBlock
                             Text="|"
                             Margin="3,0,8,0"
                             Style="{StaticResource headerButtonTextStyle}" />
-                        <Button
+                        <controls:ImageButton
                             Name="logOutBtn"
                             Width="Auto"
                             Height="20"
                             Margin="0,2,10,2"
                             Click="logOutBtn_Click"
-                            Style="{StaticResource logoutButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <TextBlock
-                                    Text="Logout"
-                                    Margin="0,0,5,0"
-                                    Style="{StaticResource headerButtonTextStyle}" />
-                                <Image
-                                    Style="{StaticResource logoutIconStyle}" />
-                            </StackPanel>
-                        </Button>
+                            Text="Logout"
+                            Style="{StaticResource logoutButtonStyle}" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel
@@ -111,40 +92,22 @@
                         Style="{StaticResource searchByTextStyle}"
                         Text="{Binding SelectedSearchValue}"
                         Margin="10,0,0,0" />
-                    <Button
+                    <controls:ImageButton
                         Name="SearchButton"
+                        Text="Search"
                         Width="120"
                         Margin="10,0,0,0"
-                        Style="{StaticResource mainButtonStyle}"
                         Command="{Binding SearchCustomerCommand}"
-                        Click="SearchButton_Click">
-                        <StackPanel
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
-                            <Image
-                                Style="{StaticResource searchIconStyle}" />
-                            <TextBlock
-                                Text="Search"
-                                Style="{StaticResource mainButtonTextStyle}" />
-                        </StackPanel>
-                    </Button>
-                    <Button
+                        Click="SearchButton_Click"
+                        Style="{StaticResource searchButtonStyle}" />
+                    <controls:ImageButton
                         Name="AddCustomerButton"
+                        Text="Add customer"
                         Width="150"
                         Margin="100,0,0,0"
-                        Style="{StaticResource mainButtonStyle}"
                         Command="{Binding AddCustomerCommand}"
-                        Click="AddCustomerButton_Click">
-                        <StackPanel
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
-                            <Image
-                                Style="{StaticResource addUserIconStyle}" />
-                            <TextBlock
-                                Text="Add customer"
-                                Style="{StaticResource mainButtonTextStyle}" />
-                        </StackPanel>
-                    </Button>
+                        Click="AddCustomerButton_Click"
+                        Style="{StaticResource addUserButtonStyle}" />
                 </StackPanel>
             </StackPanel>
         </Grid>
@@ -156,7 +119,7 @@
                 Name="GridCustomers"
                 ItemsSource="{Binding Customers}"
                 SelectedItem="{Binding CurrentSelectedCustomer}"
-                SelectedIndex="{Binding SelectedIndex}"    
+                SelectedIndex="{Binding SelectedIndex}"
                 SelectionChanged="GridCustomers_SelectionChanged"
                 SelectionMode="Single"
                 CanUserAddRows="False"
@@ -165,21 +128,21 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Last Name"
-                        Width="150" 
-                        Binding="{Binding LastName}"/>
+                        Width="150"
+                        Binding="{Binding LastName}" />
                     <DataGridTextColumn
                         Header="First Name"
                         Width="150"
-                        Binding="{Binding FirstName}"/>
+                        Binding="{Binding FirstName}" />
                     <DataGridTextColumn
                         Header="Company Name"
                         Width="150"
-                        Binding="{Binding CustomerCompany.Name}"/>
+                        Binding="{Binding CustomerCompany.Name}" />
                     <DataGridTextColumn
                         Header="Address"
-                        Width="350" 
-                        Binding="{Binding Address}"/>
-                    <DataGridTemplateColumn 
+                        Width="350"
+                        Binding="{Binding Address}" />
+                    <DataGridTemplateColumn
                         Header="Alerts"
                         Width="200">
                         <DataGridTemplateColumn.CellTemplate>
@@ -196,7 +159,7 @@
                                             <TextBlock
                                                 Text="{Binding Alerts}" />
                                         </Hyperlink>
-                                    </TextBlock>                                    
+                                    </TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -253,13 +216,17 @@
                     <TabItem
                         Name="PersonalInfoTab">
                         <TabItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Style="{StaticResource personalInfoIconStyle}" />
-                                <TextBlock Text="Personal Information"
-                                           Style="{StaticResource tabItemFontStyle}" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Style="{StaticResource personalInfoIconStyle}" />
+                                <TextBlock
+                                    Text="Personal Information"
+                                    Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-                        <viewsControls:PersonalInformation x:Name="personalInfo" />
+                        <viewsControls:PersonalInformation
+                            x:Name="personalInfo" />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>
@@ -272,8 +239,8 @@
                                     Style="{StaticResource tabItemFontStyle}" />
                             </StackPanel>
                         </TabItem.Header>
-                        <viewsControls:CompanyInformation 
-                            x:Name="CompanyInfo"/>
+                        <viewsControls:CompanyInformation
+                            x:Name="CompanyInfo" />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>
@@ -287,7 +254,7 @@
                             </StackPanel>
                         </TabItem.Header>
                         <viewsControls:BankInformation
-                            x:Name="BankInfo"/>
+                            x:Name="BankInfo" />
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>
@@ -352,69 +319,44 @@
                 <ColumnDefinition
                     Width="512" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
-                    Width="180"
-                    Height="50"
-                    Margin="20,7,0,0"
-                    HorizontalAlignment="Left"
-                    x:Name="DeleteButton"
-                    Visibility="Collapsed"
-                    Style="{StaticResource mainLinkButtonStyle}"
-                    Click="DeleteButton_Click">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource deleteUserIconStyle}" />
-                    <TextBlock
-                        Text="Delete Customer"
-                        Style="{StaticResource mainButtonTextStyle}" />
-                </StackPanel>
-            </Button>
+            <controls:ImageButton
+                Grid.Column="0"
+                Width="180"
+                Height="50"
+                Margin="20,7,0,0"
+                HorizontalAlignment="Left"
+                Name="DeleteButton"
+                Text="Delete Customer"
+                Visibility="Collapsed"
+                Click="DeleteButton_Click"
+                Style="{StaticResource deleteUserButtonStyle}" />
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Right"
-                Grid.Column="1">
-                <Button
+                Grid.Column="1">                
+                <controls:ImageButton
                     Grid.Column="0"
                     Width="180"
                     Height="50"
                     Margin="0,7,20,0"
                     HorizontalAlignment="Left"
                     Name="CancelButton"
+                    Text="Cancel Changes"
                     Click="CancelButton_Click"
-                    Style="{StaticResource mainLinkButtonStyle}">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource cancelChangesIconStyle}" />
-                        <TextBlock
-                            Text="Cancel Changes"
-                            Style="{StaticResource mainButtonTextStyle}" />
-                    </StackPanel>
-                </Button>
-                <Button
+                    Style="{StaticResource cancelChangesButtonStyle}" />                
+                <controls:ImageButton
                     Width="180"
                     Height="50"
                     Margin="0,7,24,0"
                     HorizontalAlignment="Right"
-                    x:Name="SaveButton"
-                    Style="{StaticResource mainButtonStyle}"
-                    Command="{Binding SaveCustomerCommand}">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource saveUserDetailIconStyle}" />
-                        <TextBlock
-                            Text="Save Details"
-                            Style="{StaticResource mainButtonTextStyle}" />
-                    </StackPanel>
-                </Button>
+                    Name="SaveButton"
+                    Text="Save Details"
+                    Command="{Binding SaveCustomerCommand}"
+                    Style="{StaticResource saveUserDetailButtonStyle}" />
             </StackPanel>
-            
+
         </Grid>
-        <c:PopupControl x:Name="PopupControl" />
+        <c:PopupControl
+            x:Name="PopupControl" />
     </Grid>
 </Window>

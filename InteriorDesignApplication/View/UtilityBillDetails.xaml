@@ -27,22 +27,15 @@
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
             Grid.RowSpan="4" />
-        <Button
-            x:Name="close"
+        <controls:ImageButton
+            Name="close"
             Grid.Row="0"
             Width="30"
-            Height="20"
+            Height="24"
             Margin="0,8,5,0"
             Click="close_Click"
-            Style="{StaticResource iconButtonStyle}"
             HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Command="{Binding CloseUtilityCommand}">
-            <StackPanel>
-                <Image
-                    Style="{StaticResource closeIconStyle}" />
-            </StackPanel>
-        </Button>
+            Style="{StaticResource closeButtonStyle}" />
         <Grid
             Name="utilityFormPanel"
             Visibility="Visible"
@@ -93,37 +86,23 @@
                             ItemsSource="{Binding UtilityBillTypes}"
                             DisplayMemberPath="Name"
                             SelectedValue="{Binding CurrentSelectedUtilityBillType}"
-                            SelectionChanged="billType_SelectionChanged" />
-                        <Button
+                            SelectionChanged="billType_SelectionChanged" />                        
+                        <controls:ImageButton
                             Name="addBillTypeButton"
                             Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addBillType_Click"
                             Command="{Binding CreateUtilityBillTypeCommand}"
-                            Style="{StaticResource iconButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <Image
-                                    Style="{StaticResource addIconStyle}" />
-                            </StackPanel>
-                        </Button>
-                        <Button
+                            Style="{StaticResource addEntryButtonStyle}" />                        
+                        <controls:ImageButton
                             Name="editBillType"
                             Visibility="Collapsed"
                             Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="editBillType_Click"
-                            Style="{StaticResource iconButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <Image
-                                    Style="{StaticResource editIconStyle}" />
-                            </StackPanel>
-                        </Button>
+                            Style="{StaticResource editEntryButtonStyle}" />
                     </StackPanel>                    
                     <TextBlock
                         Grid.Row="1"
@@ -136,42 +115,27 @@
                         Grid.Column="1">
                         <ComboBox
                             x:Name="utilityCompanyName"
-                            Style="{StaticResource popupComboBoxStyle}" 
+                            Style="{StaticResource popupComboBoxStyle}"
                             ItemsSource="{Binding UtilityCompanies}"
                             DisplayMemberPath="Name"
-                            SelectedValue="{Binding CurrentSelectedUtilityCompany}" 
-                            SelectionChanged="utilityCompanyName_SelectionChanged" 
-                            />
-                        <Button
+                            SelectedValue="{Binding CurrentSelectedUtilityCompany}"
+                            SelectionChanged="utilityCompanyName_SelectionChanged" />                        
+                        <controls:ImageButton
                             Name="addCompanyName"
                             Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addCompanyName_Click"
                             Command="{Binding CreateUtilityCompanyCommand}"
-                            Style="{StaticResource iconButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <Image
-                                    Style="{StaticResource addIconStyle}" />
-                            </StackPanel>
-                        </Button>
-                        <Button
+                            Style="{StaticResource addEntryButtonStyle}" />                        
+                        <controls:ImageButton
                             Name="editCompanyName"
                             Visibility="Collapsed"
                             Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="editCompanyName_Click"
-                            Style="{StaticResource iconButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <Image
-                                    Style="{StaticResource editIconStyle}" />
-                            </StackPanel>
-                        </Button>
+                            Style="{StaticResource editEntryButtonStyle}" />
                     </StackPanel>
                     <TextBlock
                         Grid.Row="2"
@@ -391,36 +355,21 @@
                 Margin="0,20,0,0"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
-                <StackPanel>
-                    <Button
-                        Name="cancelButton"
-                        Visibility="Collapsed"
-                        Width="100"
-                        Height="30"
-                        Margin="0,0,24,0"
-                        Click="cancelButton_Click"
-                        Content="Cancel"
-                        Style="{StaticResource mainLinkButtonStyle}">                    
-                    </Button>
-                </StackPanel>
-                <StackPanel>
-                    <Button
+                <controls:ImageButton
+                    Name="cancelButton"
+                    Visibility="Collapsed"
                     Width="100"
                     Height="30"
-                    Style="{StaticResource mainButtonStyle}"
-                    Name="AddSaveUtilityBtn"                  
-                    Click="Button_Click">
-                        <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                            <Image
-                            Style="{StaticResource checkIconStyle}" />
-                            <TextBlock
-                            Name="AddSaveButtonLabel"
-                            Style="{StaticResource addButtonStyle}" />
-                        </StackPanel>
-                    </Button>                    
-                </StackPanel>
+                    Margin="0,0,24,0"
+                    Click="cancelButton_Click"
+                    Text="Cancel"
+                    Style="{StaticResource secondaryActionButtonStyle}" />
+                <controls:ImageButton
+                    Width="100"
+                    Height="30"
+                    Name="AddSaveUtilityBtn"
+                    Click="Button_Click"
+                    Style="{StaticResource checkButtonStyle}" />
             </StackPanel>
         </Grid>
         <Grid

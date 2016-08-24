@@ -76,12 +76,12 @@
                         Text="Last Name:"
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                    <controls:WatermarkTextBox 
+                    <controls:WatermarkTextBox
                         x:Name="LastName"
                         Width="150"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.LastName, UpdateSourceTrigger=Explicit}"
-                        Watermark="This field is required"   
+                        Watermark="This field is required"
                         WaterMarkForeground="Gray"
                         WatermarkBorderColor="LightGray" />
                 </StackPanel>
@@ -359,15 +359,17 @@
                 Margin="15,-5,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center">
-                <Border BorderBrush="{StaticResource mainLinkButtonBorderColorBrush}"
-                        BorderThickness="1">
+                <Border
+                    BorderBrush="{StaticResource secondaryActionButtonBorderColorBrush}"
+                    BorderThickness="1">
                     <Button
                         Name="CustomerImageBtn"
                         Height="115"
                         Width="115"
                         Click="CustomerImageBtn_Click"
                         Style="{StaticResource userImageButtonStyle}">
-                        <Image Style="{StaticResource userImageIconStyle}" />
+                        <Image
+                            Style="{StaticResource userImageIconStyle}" />
                     </Button>
                 </Border>
             </Grid>
@@ -389,21 +391,13 @@
                         Width="150"
                         Style="{StaticResource mainSubHeaderStyle}"
                         Margin="0,10,0,0" />
-                    <Button
-                        x:Name="addDependent"
-                        Width="50"
+                    <controls:ImageButton
+                        Name="addDependent"
+                        Width="30"
                         Height="20"
                         Margin="0,8,0,0"
                         Click="addDependent_Click"
-                        Style="{StaticResource iconButtonStyle}"
-                        VerticalAlignment="Top">
-                        <StackPanel
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
-                            <Image
-                                Style="{StaticResource addIconStyle}" />
-                        </StackPanel>
-                    </Button>
+                        Style="{StaticResource addEntryButtonStyle}" />
                 </StackPanel>
             </Grid>
             <Grid
@@ -411,7 +405,8 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="177.2" />
-                    <ColumnDefinition Width="782"/>
+                    <ColumnDefinition
+                        Width="782" />
                     <ColumnDefinition
                         Width="Auto" />
                     <ColumnDefinition />
@@ -426,7 +421,8 @@
                     SelectedItem="{Binding CurrentSelectedDependent}"
                     SelectionChanged="gridDependents_SelectionChanged"
                     AutoGenerateColumns="False"
-                    CanUserAddRows="False" Grid.ColumnSpan="2">
+                    CanUserAddRows="False"
+                    Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Last Name"
@@ -445,24 +441,19 @@
                             Width="200"
                             Binding="{Binding BirthDate, StringFormat=\{0:MM/dd/yyyy\}}" />
                     </DataGrid.Columns>
-                </DataGrid>
-                <Button
-                    x:Name="deleteEntry"
+                </DataGrid>                
+                <controls:ImageButton
+                    Name="deleteEntry"
                     Visibility="Collapsed"
                     Width="30"
                     Height="30"
                     Grid.Column="1"
-                    Style="{StaticResource iconButtonStyle}"
+                    Style="{StaticResource deleteEntryButtonStyle}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                    Click="deleteEntry_Click" Grid.ColumnSpan="3" Margin="781.8,30,0,29.6">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource deleteEntryIconStyle}" />
-                    </StackPanel>
-                </Button>
+                    Click="deleteEntry_Click"
+                    Grid.ColumnSpan="3"
+                    Margin="781.8,30,0,29.6" />
             </Grid>
         </Grid>
         <Grid

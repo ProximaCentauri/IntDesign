@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     mc:Ignorable="d"
     xmlns:local="clr-namespace:View"
     Height="Auto"
@@ -21,31 +22,21 @@
                 <TextBlock
                     Text="Bank Information"
                     Style="{StaticResource mainHeaderStyle}" />
-                <Button
+                <controls:ImageButton
                     Name="addBankDetails"
-                    Width="40"
+                    Width="30"
                     Height="20"
                     Click="addBankDetails_Click"
-                    Style="{StaticResource iconButtonStyle}"
-                    Command="{Binding CreateBankCommand}">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource addIconStyle}" />
-                    </StackPanel>
-                </Button>
-                <Button
+                    Command="{Binding CreateBankCommand}"
+                    Style="{StaticResource addEntryButtonStyle}" />
+                <controls:ImageButton
                     Name="editBankInfo"
                     Visibility="Collapsed"
-                    Width="40"
+                    Width="30"
                     Height="20"
                     Click="editBankInfo_Click"
                     Command="{Binding EditBankCommand}"
-                    Style="{StaticResource iconButtonStyle}">
-                    <Image
-                        Style="{StaticResource editIconStyle}" />
-                </Button>
+                    Style="{StaticResource editEntryButtonStyle}" />
             </StackPanel>
             <Separator
                 Margin="0,-5,0,0"
@@ -91,25 +82,16 @@
                         Binding="{Binding SwiftCode}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button
-                x:Name="deleteEntry"
+            <controls:ImageButton
+                Name="deleteEntry"
                 Visibility="Collapsed"
                 Width="30"
                 Height="30"
-                Grid.Column="1"
-                Style="{StaticResource iconButtonStyle}"
+                Grid.Column="1"                
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
-                Click="deleteEntry_Click">
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-                    <Image
-                        Style="{StaticResource deleteEntryIconStyle}" />
-                </StackPanel>
-            </Button>
+                Click="deleteEntry_Click"
+                Style="{StaticResource deleteEntryButtonStyle}" />
         </Grid>
-            
-        
     </Grid>
 </UserControl>

@@ -34,11 +34,11 @@ namespace View
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             if (view == "edit")
             {
-                this.AddSaveButtonLabel.Text = "Update";
+                this.AddSaveBankBtn.Text = "Update";
             }
             else
             {
-                this.AddSaveButtonLabel.Text = "Add";
+                this.AddSaveBankBtn.Text = "Add";
             }            
         }
 
@@ -109,7 +109,7 @@ namespace View
             ErrorNotification.Visibility = bankFormPanel.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
             bankTypeHeader.Text = "Add Bank Name";
-            AddSaveButtonLabel.Text = "Add";
+            AddSaveBankBtn.Text = "Add";
             bankNameInput.Text = string.Empty;            
         }
 
@@ -120,7 +120,7 @@ namespace View
             ErrorNotification.Visibility = bankFormPanel.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = addBankNamePanel.Visibility = Visibility.Visible;
             bankTypeHeader.Text = "Edit Bank Name";
-            AddSaveButtonLabel.Text = "Update";
+            AddSaveBankBtn.Text = "Update";
                         
         }
 
@@ -134,11 +134,11 @@ namespace View
         {            
             if (view == "edit")
             {
-                this.AddSaveButtonLabel.Text = "Update";
+                this.AddSaveBankBtn.Text = "Update";
             }
             else
             {
-                this.AddSaveButtonLabel.Text = "Add";
+                this.AddSaveBankBtn.Text = "Add";
             }
             this.cancelButton.Visibility = this.addBankNamePanel.Visibility = Visibility.Collapsed;
             this.bankFormPanel.Visibility = Visibility.Visible;

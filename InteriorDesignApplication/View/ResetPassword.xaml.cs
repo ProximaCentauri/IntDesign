@@ -32,14 +32,14 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
-            resetPassBtnLabel.Text = "Submit";
+            resetPassBtn.Text = "Submit";
         }
 
         private void resetPassBtn_Click(object sender, RoutedEventArgs e)
         {
             inputPinPanel.Visibility = Visibility.Collapsed;
             newPasswordPanel.Visibility = Visibility.Visible;
-            resetPassBtnLabel.Text = "Login";
+            resetPassBtn.Text = "Login";
         }
 
         private void close_Click(object sender, RoutedEventArgs e)

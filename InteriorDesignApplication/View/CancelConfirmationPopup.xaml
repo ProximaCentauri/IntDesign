@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     Title="CancelConfirmationPopup"
     Height="Auto"
     Width="Auto"
@@ -36,28 +37,23 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             Orientation="Horizontal">
-            <Button
+            <controls:ImageButton
                 Width="100"
                 Height="30"
                 x:Name="noButton"
-                Style="{StaticResource mainLinkButtonStyle}"
-                Click="noButton_Click">
-                <TextBlock
-                    Text="No"
-                    Style="{StaticResource noIconButtonStyle}" />
-            </Button>
-            <Button
+                Text="No"
+                Style="{StaticResource secondaryActionButtonStyle}"
+                Click="noButton_Click" />
+            <controls:ImageButton
                 Width="100"
                 Height="30"
                 Margin="24,0,0,0"
-                x:Name="yesButton"
+                Name="yesButton"
+                Text="Yes"
                 Style="{StaticResource mainButtonStyle}"
                 Click="yesButton_Click"
                 Command="{Binding CancelChangesCommand}">
-                <TextBlock
-                    Text="Yes"
-                    Style="{StaticResource noIconButtonStyle}" />
-            </Button>
+            </controls:ImageButton>
         </StackPanel>
     </Grid>
 </c:PopupView>

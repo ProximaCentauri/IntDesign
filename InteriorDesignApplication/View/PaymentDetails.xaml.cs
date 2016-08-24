@@ -38,11 +38,11 @@ namespace View
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             if (view == "edit")
             {
-                this.AddSaveButtonLabel.Text = "Update";
+                this.AddSavePaymentBtn.Text = "Update";
             }
             else
             {
-                this.AddSaveButtonLabel.Text = "Add";
+                this.AddSavePaymentBtn.Text = "Add";
                 
             }   
         }
@@ -61,11 +61,11 @@ namespace View
             {
                 if (view == "edit")
                 {
-                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdatePaymentCommand"));
+                    this.AddSavePaymentBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdatePaymentCommand"));
                 }
                 else
                 {
-                    this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddPaymentCommand"));
+                    this.AddSavePaymentBtn.SetBinding(Button.CommandProperty, new Binding("AddPaymentCommand"));
                 }
                 viewModel.CurrentPopupView = null;
             }

@@ -55,26 +55,19 @@
                     Watermark="Password"
                     WatermarkBorderColor="LightGray"
                     WaterMarkForeground="Gray" />
-                <Button
+                <controls:ImageButton
                     Name="LoginBtn"
                     Width="250"
                     Height="35"
                     Margin="0,15,0,0"
                     HorizontalAlignment="Left"
-                    Style="{StaticResource mainButtonStyle}">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <TextBlock
-                            Text="Log in"
-                            Style="{StaticResource mainButtonTextStyle}" />
-                    </StackPanel>
-                </Button>
+                    Text="Log in"
+                    Style="{StaticResource mainButtonStyle}" />
                 <StackPanel
                     Margin="0,20,0,10"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal">
-                    <Button
+                    <controls:ImageButton
                         Name="forgotPassBtn"
                         Content="Forgot Password?"
                         Click="forgotPassBtn_Click"
@@ -83,7 +76,7 @@
                         Margin="10,0,10,0"
                         Style="{StaticResource loginSeparatorTextStyle}"
                         Text="|" />
-                    <Button
+                    <controls:ImageButton
                         Content="Reset Password?"
                         Name="resetPassBtn"
                         Click="resetPassBtn_Click"

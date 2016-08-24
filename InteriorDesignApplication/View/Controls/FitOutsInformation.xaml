@@ -173,31 +173,21 @@
                         Text="Appliances Information"
                         Width="150"
                         Style="{StaticResource mainSubHeaderStyle}" />
-                    <Button
+                    <controls:ImageButton
                         Name="addAppliance"
-                        Width="40"
+                        Width="30"
                         Height="20"
                         Command="{Binding CreateApplianceCommand}"
                         Click="addAppliance_Click"
-                        Style="{StaticResource iconButtonStyle}">
-                        <StackPanel
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
-                            <Image
-                                Style="{StaticResource addIconStyle}" />
-                        </StackPanel>
-                    </Button>
-                    <Button
+                        Style="{StaticResource addEntryButtonStyle}" />
+                    <controls:ImageButton
                         Name="editAppliance"
-                        Width="40"
+                        Width="30"
                         Height="20"
                         Visibility="Collapsed"
                         Click="editAppliance_Click"
-                        Style="{StaticResource iconButtonStyle}"
-                        Command="{Binding EditApplianceCommand}">
-                        <Image
-                            Style="{StaticResource editIconStyle}" />
-                    </Button>
+                        Command="{Binding EditApplianceCommand}"
+                        Style="{StaticResource editEntryButtonStyle}" />
                 </StackPanel>
             </Grid>
             <Grid
@@ -206,7 +196,11 @@
                     <ColumnDefinition
                         Width="160.4" />
                     <ColumnDefinition
-                        Width="26" />
+                        Width="7.2" />
+                    <ColumnDefinition
+                        Width="14.4" />
+                    <ColumnDefinition
+                        Width="5.6" />
                     <ColumnDefinition
                         Width="775" />
                     <ColumnDefinition
@@ -225,7 +219,7 @@
                     SelectionChanged="gridAppliances_SelectionChanged"
                     AutoGenerateColumns="False"
                     IsReadOnly="True"
-                    Grid.ColumnSpan="3">
+                    Grid.ColumnSpan="5">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Description"
@@ -258,7 +252,7 @@
                                             RequestNavigate="OfficialReceiptLink_RequestNavigate"
                                             NavigateUri="{Binding Receipt}">
                                         <TextBlock
-                                            Text="{Binding Receipt}" />
+                                                Text="{Binding Receipt}" />
                                     </Hyperlink>
                                         <!--RequestNavigate="OfficialReceiptLink_RequestNavigate"-->
                                 </TextBlock>
@@ -267,25 +261,18 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button
-                    x:Name="deleteEntry"
+                <controls:ImageButton
+                    Name="deleteEntry"
                     Visibility="Collapsed"
                     Width="30"
                     Height="30"
-                    Grid.Column="2"
-                    Style="{StaticResource iconButtonStyle}"
+                    Grid.Column="4"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
                     Click="deleteEntry_Click"
-                    Margin="775.6,110,-28.8,109.6"
-                    Grid.ColumnSpan="2">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource deleteEntryIconStyle}" />
-                    </StackPanel>
-                </Button>
+                    Margin="774.6,124,-27.8,95.6"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource deleteEntryButtonStyle}" />
             </Grid>
         </Grid>
     </Grid>

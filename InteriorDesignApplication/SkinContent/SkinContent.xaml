@@ -57,13 +57,13 @@
         x:Key="popupBorderColorBrush"
         Color="#b2b2b2" />
     <SolidColorBrush
-        x:Key="mainLinkButtonForegroundColorBrush"
+        x:Key="secondaryActionButtonForegroundColorBrush"
         Color="#717171" />
     <SolidColorBrush
-        x:Key="mainLinkButtonBackgroundColorBrush"
+        x:Key="secondaryActionButtonBackgroundColorBrush"
         Color="#fafafa" />
     <SolidColorBrush
-        x:Key="mainLinkButtonBorderColorBrush"
+        x:Key="secondaryActionButtonBorderColorBrush"
         Color="#b7b7b7" />
     <SolidColorBrush
         x:Key="photoImageBackgroundColorBrush"
@@ -323,7 +323,7 @@
     </Style>
     <Style
         x:Key="mainButtonStyle"
-        TargetType="{x:Type Button}">
+        TargetType="{x:Type control:ImageButton}">
         <Setter
             Property="Foreground"
             Value="{StaticResource mainButtonForegroundColorBrush}" />
@@ -416,15 +416,15 @@
             Value="{StaticResource mainButtonForegroundColorBrush}" />
     </Style>
     <Style
-        x:Key="mainLinkButtonStyle"
-        TargetType="Button"
+        x:Key="secondaryActionButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
         BasedOn="{StaticResource mainButtonStyle}">
         <Setter
             Property="Foreground"
-            Value="{StaticResource mainLinkButtonForegroundColorBrush}" />
+            Value="{StaticResource secondaryActionButtonForegroundColorBrush}" />
         <Setter
             Property="Background"
-            Value="{StaticResource mainLinkButtonBackgroundColorBrush}" />
+            Value="{StaticResource secondaryActionButtonBackgroundColorBrush}" />
         <Setter
             Property="Template">
             <Setter.Value>
@@ -435,7 +435,7 @@
                             x:Name="innerBorder"
                             Background="{TemplateBinding Background}"
                             TextBlock.Foreground="{TemplateBinding Foreground}"
-                            BorderBrush="{StaticResource mainLinkButtonBorderColorBrush}"
+                            BorderBrush="{StaticResource secondaryActionButtonBorderColorBrush}"
                             CornerRadius="2"
                             BorderThickness="1" />
                         <ContentPresenter
@@ -467,22 +467,8 @@
         </Setter>
     </Style>
     <Style
-        x:Key="addButtonStyle"
-        TargetType="{x:Type TextBlock}"
-        BasedOn="{StaticResource mainButtonTextStyle}">
-        <Setter
-            Property="FontSize"
-            Value="16" />
-        <Setter
-            Property="VerticalAlignment"
-            Value="Center" />
-        <Setter
-            Property="Margin"
-            Value="6,0,0,0" />
-    </Style>
-    <Style
         x:Key="iconButtonStyle"
-        TargetType="{x:Type Button}"
+        TargetType="{x:Type control:ImageButton}"
         BasedOn="{StaticResource mainButtonStyle}">
         <Setter
             Property="Background"
@@ -493,14 +479,6 @@
         <Setter
             Property="BorderBrush"
             Value="{StaticResource mainButtonBackgroundColorBrush}" />
-    </Style>
-    <Style
-        x:Key="logoutButtonStyle"
-        TargetType="{x:Type Button}"
-        BasedOn="{StaticResource mainButtonStyle}">
-        <Setter
-            Property="Background"
-            Value="Transparent" />
     </Style>
     <Style
         x:Key="searchResultDataGridHeaderStyle"
@@ -596,7 +574,7 @@
     </Style>
     <Style
         x:Key="loginLinkButtonStyle"
-        TargetType="Button"
+        TargetType="{x:Type control:ImageButton}"
         BasedOn="{StaticResource mainButtonStyle}">
         <Setter
             Property="Foreground"
@@ -660,10 +638,11 @@
 
     <!--icon styles-->
     <Style
-        x:Key="searchIconStyle"
-        TargetType="Image">
+        x:Key="searchButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -675,17 +654,21 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="18" />
+            Property="ImageSize"
+            Value="18,28" />
         <Setter
-            Property="Height"
-            Value="28" />
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="ImageVerticalAlignment"
+            Value="Center" />
     </Style>
     <Style
-        x:Key="addUserIconStyle"
-        TargetType="Image">
+        x:Key="addUserButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -697,17 +680,21 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="18" />
+            Property="ImageSize"
+            Value="18,28" />
         <Setter
-            Property="Height"
-            Value="28" />
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="ImageVerticalAlignment"
+            Value="Center" />
     </Style>
     <Style
-        x:Key="addIconStyle"
-        TargetType="Image">
+        x:Key="addEntryButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -719,17 +706,24 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="14" />
+            Property="ImageSize"
+            Value="14,14" />
         <Setter
-            Property="Height"
-            Value="14" />
+            Property="FontSize"
+            Value="16" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Margin"
+            Value="6,0,0,0" />
     </Style>
     <Style
-        x:Key="editIconStyle"
-        TargetType="Image">
+        x:Key="editEntryButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -741,17 +735,15 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="13" />
-        <Setter
-            Property="Height"
-            Value="13" />
+            Property="ImageSize"
+            Value="13,13" />
     </Style>
     <Style
-        x:Key="closeIconStyle"
-        TargetType="Image">
+        x:Key="closeButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -763,17 +755,15 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="20" />
-        <Setter
-            Property="Height"
-            Value="20" />
+            Property="ImageSize"
+            Value="20,20" />
     </Style>
     <Style
-        x:Key="saveUserDetailIconStyle"
-        TargetType="Image">
+        x:Key="saveUserDetailButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -785,17 +775,18 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="30" />
+            Property="ImageSize"
+            Value="30,30" />
         <Setter
-            Property="Height"
-            Value="30" />
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
     </Style>
     <Style
-        x:Key="deleteUserIconStyle"
-        TargetType="Image">
+        x:Key="deleteUserButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource secondaryActionButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -807,17 +798,18 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="30" />
+            Property="ImageSize"
+            Value="30,30" />
         <Setter
-            Property="Height"
-            Value="30" />
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
     </Style>
     <Style
-        x:Key="cancelChangesIconStyle"
-        TargetType="Image">
+        x:Key="cancelChangesButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource secondaryActionButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -829,11 +821,11 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="25" />
+            Property="ImageSize"
+            Value="25,25" />
         <Setter
-            Property="Height"
-            Value="25" />
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
     </Style>
     <Style
         x:Key="warningIconStyle"
@@ -858,10 +850,11 @@
             Value="25" />
     </Style>
     <Style
-        x:Key="checkIconStyle"
-        TargetType="Image">
+        x:Key="checkButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -873,11 +866,11 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="18" />
+            Property="ImageSize"
+            Value="18,18" />
         <Setter
-            Property="Height"
-            Value="18" />
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
     </Style>
     <Style
         x:Key="personalInfoIconStyle"
@@ -1083,10 +1076,11 @@
             Value="20" />
     </Style>
     <Style
-        x:Key="deleteEntryIconStyle"
-        TargetType="Image">
+        x:Key="deleteEntryButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -1098,11 +1092,8 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="18" />
-        <Setter
-            Property="Height"
-            Value="18" />
+            Property="ImageSize"
+            Value="18,18" />
     </Style>
     <Style
         x:Key="alertIconStyle"
@@ -1159,10 +1150,11 @@
             Value="Center" />
     </Style>
     <Style
-        x:Key="emailSecureIconStyle"
-        TargetType="Image">
+        x:Key="emailSecureButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -1174,17 +1166,18 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="18" />
+            Property="ImageSize"
+            Value="18,18" />
         <Setter
-            Property="Height"
-            Value="18" />
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
     </Style>
     <Style
-        x:Key="logoutIconStyle"
-        TargetType="Image">
+        x:Key="logoutButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -1196,17 +1189,27 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="13" />
+            Property="ImageSize"
+            Value="12,12" />
         <Setter
-            Property="Height"
-            Value="13" />
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Right" />
     </Style>
     <Style
-        x:Key="settingsIconStyle"
-        TargetType="Image">
+        x:Key="settingsButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
         <Setter
-            Property="Source">
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="Image">
             <Setter.Value>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -1218,11 +1221,17 @@
             </Setter.Value>
         </Setter>
         <Setter
-            Property="Width"
-            Value="13" />
+            Property="ImageSize"
+            Value="13,13" />
         <Setter
-            Property="Height"
-            Value="13" />
+            Property="ImageHorizontalAlignment"
+            Value="Right" />
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="ImageMargin"
+            Value="0,0,3,0" />
     </Style>
     <Style
         x:Key="popupShroudStyle"

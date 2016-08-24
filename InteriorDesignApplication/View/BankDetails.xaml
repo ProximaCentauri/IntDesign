@@ -25,21 +25,15 @@
         <Border
             Style="{StaticResource mainPopupBorderStyle}"
             Grid.RowSpan="4" />
-        <Button
-            x:Name="close"
+        <controls:ImageButton
+            Name="close"
             Grid.Row="0"
             Width="30"
-            Height="20"
+            Height="24"
             Margin="0,8,5,0"
             Click="close_Click"
-            Style="{StaticResource iconButtonStyle}"
             HorizontalAlignment="Right"
-            VerticalAlignment="Center">
-            <StackPanel>
-                <Image
-                    Style="{StaticResource closeIconStyle}" />
-            </StackPanel>
-        </Button>
+            Style="{StaticResource closeButtonStyle}" />
         <Grid
             Grid.Row="1"
             Name="bankFormPanel"
@@ -97,36 +91,22 @@
                             DisplayMemberPath="Name"
                             SelectedValue="{Binding CurrentSelectedBankType}"
                             SelectionChanged="bankNameComboxBox_SelectionChanged" />
-                        <Button
+                        <controls:ImageButton
                             Name="addBankNameButton"
                             Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addBankNameButton_Click"
                             Command="{Binding CreateBankTypeCommand}"
-                            Style="{StaticResource iconButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <Image
-                                    Style="{StaticResource addIconStyle}" />
-                            </StackPanel>
-                        </Button>
-                        <Button
+                            Style="{StaticResource addEntryButtonStyle}" />
+                        <controls:ImageButton
                             Name="editBankNameButton"
                             Visibility="Collapsed"
                             Width="30"
                             Height="20"
                             Margin="0,7,0,0"
                             Click="editBankNameButton_Click"
-                            Style="{StaticResource iconButtonStyle}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                                <Image
-                                    Style="{StaticResource editIconStyle}" />
-                            </StackPanel>
-                        </Button>
+                            Style="{StaticResource editEntryButtonStyle}" />
                     </StackPanel>                    
                     <TextBlock
                         Grid.Row="1"
@@ -245,7 +225,7 @@
                 Orientation="Horizontal"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                <Button
+                <controls:ImageButton
                     Name="cancelButton"
                     Visibility="Collapsed"
                     Width="100"
@@ -253,25 +233,13 @@
                     Margin="0,0,24,0"
                     Click="cancelButton_Click"
                     Content="Cancel"
-                    Style="{StaticResource mainLinkButtonStyle}">
-                </Button>
-                <Button
+                    Style="{StaticResource secondaryActionButtonStyle}" />
+                <controls:ImageButton
                     Name="AddSaveBankBtn"
                     Width="100"
                     Height="30"
-                    Style="{StaticResource mainButtonStyle}"
-                    Click="Button_Click">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource checkIconStyle}" />
-                        <TextBlock
-                            Name="AddSaveButtonLabel"
-                            Text="Add"
-                            Style="{StaticResource addButtonStyle}" />
-                    </StackPanel>
-                </Button>
+                    Click="Button_Click"
+                    Style="{StaticResource checkButtonStyle}" />
             </StackPanel>
         </Grid>
         <Grid

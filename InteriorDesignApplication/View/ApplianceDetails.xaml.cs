@@ -35,11 +35,11 @@ namespace View
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             if (view == "edit")
             {
-                this.AddSaveButtonLabel.Text = "Update";
+                this.AddSaveApplianceBtn.Text = "Update";
             }
             else
             {
-                this.AddSaveButtonLabel.Text = "Add";
+                this.AddSaveApplianceBtn.Text = "Add";
                 WarrantyDate.SelectedDate = DateTime.Now;
             } 
         }

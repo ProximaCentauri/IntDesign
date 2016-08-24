@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     Title="DeleteConfirmationPopup"
     mc:Ignorable="d"
     Height="Auto"
@@ -28,27 +29,21 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             Orientation="Horizontal">
-            <Button
+            <controls:ImageButton
                 Width="100"
                 Height="30"
-                x:Name="cancelButton"
-                Style="{StaticResource mainLinkButtonStyle}"
-                Click="cancelButton_Click">
-                <TextBlock
-                    Text="Cancel"
-                    Style="{StaticResource noIconButtonStyle}" />
-            </Button>
-            <Button 
-                    Width="100"
-                    Height="30"
-                    Margin="24,0,0,0"
-                    x:Name="deleteButton"
-                    Style="{StaticResource mainButtonStyle}"
-                    Click="deleteButton_Click">
-                <TextBlock
-                    Text="Delete"
-                    Style="{StaticResource noIconButtonStyle}" />
-            </Button>
+                Name="cancelButton"
+                Text="Cancel"
+                Click="cancelButton_Click"
+                Style="{StaticResource secondaryActionButtonStyle}" />
+            <controls:ImageButton
+                Width="100"
+                Height="30"
+                Margin="24,0,0,0"
+                Name="deleteButton"
+                Text="Delete"
+                Click="deleteButton_Click"
+                Style="{StaticResource mainButtonStyle}" />
         </StackPanel>
     </Grid>
 </c:PopupView>

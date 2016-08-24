@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     mc:Ignorable="d"
     Height="Auto"
     Width="300"
@@ -32,17 +33,14 @@
             x:Name="SaveIcon"
             Grid.Row="1"
             HorizontalAlignment="Center"
-            Style="{StaticResource saveDetailsIconStyle}" />
-        <Button
+            Style="{StaticResource saveDetailsIconStyle}" />        
+        <controls:ImageButton
             Grid.Row="2"
             Width="100"
             Height="30"
-            x:Name="okButton"
+            Name="okButton"
+            Text="OK"
             Click="okButton_Click"
-            Style="{StaticResource mainButtonStyle}">
-            <TextBlock
-                Text="OK"
-                Style="{StaticResource noIconButtonStyle}" />
-        </Button>
+            Style="{StaticResource mainButtonStyle}" />
     </Grid>
 </c:PopupView>

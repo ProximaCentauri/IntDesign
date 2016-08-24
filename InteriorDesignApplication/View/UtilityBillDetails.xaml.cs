@@ -37,11 +37,11 @@ namespace View
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             if (view == "edit")
             {
-                this.AddSaveButtonLabel.Text = "Update";
+                this.AddSaveUtilityBtn.Text = "Update";
             }
             else
             {
-                this.AddSaveButtonLabel.Text = "Add";
+                this.AddSaveUtilityBtn.Text = "Add";
                 UtilityCutoffDateTxt.SelectedDate = DateTime.Now;
             }                     
         }
@@ -141,7 +141,7 @@ namespace View
             this.cancelButton.Visibility = this.addBillTypePanel.Visibility = Visibility.Visible;
             ErrorNotification.Visibility = Visibility.Collapsed;
             billTypeHeader.Text = "Add Bill Type";
-            this.AddSaveButtonLabel.Text = "Add";
+            this.AddSaveUtilityBtn.Text = "Add";
             UtilityBillTypeInput.Text = string.Empty;
         }
 
@@ -151,7 +151,7 @@ namespace View
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Visible;
             ErrorNotification.Visibility = Visibility.Collapsed;
             companyNameHeader.Text = "Add Company Name";
-            this.AddSaveButtonLabel.Text = "Update";
+            this.AddSaveUtilityBtn.Text = "Add";
             UtilityCompanyInput.Text = string.Empty;
         }
 
@@ -165,11 +165,11 @@ namespace View
         {
             if (view == "edit")
             {
-                this.AddSaveButtonLabel.Text = "Update";
+                this.AddSaveUtilityBtn.Text = "Update";
             }
             else
             {
-                this.AddSaveButtonLabel.Text = "Add";
+                this.AddSaveUtilityBtn.Text = "Add";
             }     
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.utilityFormPanel.Visibility = Visibility.Visible;
@@ -223,7 +223,7 @@ namespace View
             this.utilityFormPanel.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Collapsed;
             this.cancelButton.Visibility = this.addBillTypePanel.Visibility = Visibility.Visible;
             billTypeHeader.Text = "Edit Bill Type";
-            this.AddSaveButtonLabel.Text = "Update";
+            this.AddSaveUtilityBtn.Text = "Update";
             ErrorNotification.Visibility = Visibility.Collapsed;
         }
 
@@ -235,7 +235,7 @@ namespace View
             this.utilityFormPanel.Visibility = this.addBillTypePanel.Visibility = Visibility.Collapsed;
             this.cancelButton.Visibility = this.addCompanyNamePanel.Visibility = Visibility.Visible;
             companyNameHeader.Text = "Edit Company Name";
-            this.AddSaveButtonLabel.Text = "Update";
+            this.AddSaveUtilityBtn.Text = "Update";
             ErrorNotification.Visibility = Visibility.Collapsed;
         }
 

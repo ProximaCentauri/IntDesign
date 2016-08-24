@@ -124,30 +124,20 @@
                         Text="Payment Details"
                         Width="100"
                         Style="{StaticResource mainSubHeaderStyle}" />
-                    <Button
+                    <controls:ImageButton
                         Name="addPayment"
-                        Width="40"
+                        Width="30"
                         Height="20"
                         Click="addPayment_Click"
                         Command="{Binding CreatePaymentCommand}"
-                        Style="{StaticResource iconButtonStyle}">
-                        <StackPanel
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
-                            <Image
-                                Style="{StaticResource addIconStyle}" />
-                        </StackPanel>
-                    </Button>
-                    <Button
+                        Style="{StaticResource addEntryButtonStyle}" />
+                    <controls:ImageButton
                         Name="editPayment"
-                        Width="40"
+                        Width="30"
                         Height="20"
                         Visibility="Collapsed"
                         Click="editPayment_Click"
-                        Style="{StaticResource iconButtonStyle}">
-                        <Image
-                            Style="{StaticResource editIconStyle}" />
-                    </Button>
+                        Style="{StaticResource editEntryButtonStyle}" />
                 </StackPanel>
             </Grid>
             <Grid
@@ -178,12 +168,12 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Header="Date"
-                            Width="150" 
-                            Binding="{Binding PaymentDate, StringFormat='MMMM dd, yyyy'}"/>
+                            Width="150"
+                            Binding="{Binding PaymentDate, StringFormat='MMMM dd, yyyy'}" />
                         <DataGridTextColumn
                             Header="Cheque Number"
                             Width="225"
-                            Binding="{Binding ChequeNumber}"/>
+                            Binding="{Binding ChequeNumber}" />
                         <DataGridTextColumn
                             Header="Amount"
                             Width="150"
@@ -208,24 +198,17 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button
-                    x:Name="deleteEntry"
+                <controls:ImageButton
+                    Name="deleteEntry"
                     Visibility="Collapsed"
                     Width="30"
                     Height="30"
                     Grid.Column="3"
-                    Style="{StaticResource iconButtonStyle}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
                     Margin="0,110,-29,110"
-                    Click="deleteEntry_Click">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                        <Image
-                            Style="{StaticResource deleteEntryIconStyle}" />
-                    </StackPanel>
-                </Button>
+                    Click="deleteEntry_Click"
+                    Style="{StaticResource deleteEntryButtonStyle}" />
             </Grid>
         </Grid>
     </Grid>
