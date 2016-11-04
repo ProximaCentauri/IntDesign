@@ -81,7 +81,7 @@ namespace View.Controls
             string notification = string.Empty;
             try
             {
-                string file = @e.Uri.AbsolutePath.ToString();
+                string file = @e.Uri.LocalPath.ToString();
                 if (File.Exists(file))
                     Process.Start(new ProcessStartInfo(file));
                 else
@@ -103,7 +103,7 @@ namespace View.Controls
             string notification = string.Empty;
             try
             {
-                string file = @e.Uri.AbsolutePath.ToString();
+                string file = @e.Uri.LocalPath.ToString();
                 if (File.Exists(file))
                     Process.Start(new ProcessStartInfo(file));
                 else
