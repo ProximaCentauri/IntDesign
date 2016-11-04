@@ -19,7 +19,9 @@
     Icon="HouseholdInterior.ico"
     Loaded="Window_Loaded"
     Width="1024"
-    Height="768">
+    Height="768"
+    Unloaded="Window_Unloaded"
+    >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -43,9 +45,12 @@
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                        <TextBlock
-                            Text="Welcome user!"
-                            Style="{StaticResource headerButtonTextStyle}" />
+                        <TextBlock                            
+                            Style="{StaticResource headerButtonTextStyle}">
+                            <Run Text="Welcome "/>
+                            <Run Text="{Binding CurrentAppUser.UserName}"/>
+                            <Run Text="!" />
+                        </TextBlock>
                         <TextBlock
                             Text="|"
                             Margin="8,0,8,0"

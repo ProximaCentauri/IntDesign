@@ -187,6 +187,11 @@ namespace View
         private void changePassBtn_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new ChangePassword();
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            viewModel.PropertyChanged -= viewModel_PropertyChanged;            
         }       
     }
 }

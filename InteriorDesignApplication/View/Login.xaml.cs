@@ -71,5 +71,10 @@ namespace View
                 loginWarning.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

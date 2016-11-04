@@ -34,8 +34,7 @@ namespace InteriorDesign
             {
                 this.viewModel = new MainViewModel();                
                 viewModel.PropertyChanged += viewModel_PropertyChanged;
-                login = new View.Login(viewModel);
-                main = new View.MainWindow(viewModel);
+                login = new View.Login(viewModel);                
                 login.Show();
             }            
         }
@@ -44,12 +43,16 @@ namespace InteriorDesign
         {
             if (e.PropertyName.Equals("AppUser"))
             {
-                login.Hide();                
+                login.Hide();
+                if (main == null)
+                {
+                    main = new View.MainWindow(viewModel);
+                }
                 main.Show();
             }
             else if (e.PropertyName.Equals("LogoutUser"))
             {
-                main.Hide();
+                main.Close();
                 login.Show();
             }
         }
@@ -69,6 +72,11 @@ namespace InteriorDesign
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Log.Info("Exit Application...");
+            login.Close();
+            if (main != null)
+            {
+                main.Close();
+            }            
         }
 
         IMainViewModel viewModel;

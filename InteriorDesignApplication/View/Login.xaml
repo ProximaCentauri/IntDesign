@@ -12,7 +12,8 @@
     Top="0"
     Left="0"
     Width="1024"
-    Height="768">
+    Height="768"
+    Closed="Window_Closed">
     <Grid>
         <Border
             Width="300"
