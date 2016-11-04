@@ -203,7 +203,8 @@ namespace Model.Migrations
                 new AppUser()
                 {
                     Id = 1,
-                    UserName = "Admin"
+                    UserName = "Admin",
+                    CurrentPassword = "jasper"
                 },
                 new AppUser()
                 {

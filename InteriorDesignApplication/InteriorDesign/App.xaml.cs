@@ -13,6 +13,8 @@ namespace InteriorDesign
     public partial class App : Application
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private View.Login login = null;
+        private View.MainWindow main = null;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             string dir = System.IO.Directory.GetCurrentDirectory();
@@ -30,11 +32,26 @@ namespace InteriorDesign
             }
             else
             {
-                this.viewModel = new MainViewModel();
-                View.MainWindow main = new View.MainWindow(viewModel);
-                //View.Login main = new View.Login(viewModel);
-                main.Show();
+                this.viewModel = new MainViewModel();                
+                viewModel.PropertyChanged += viewModel_PropertyChanged;
+                login = new View.Login(viewModel);
+                main = new View.MainWindow(viewModel);
+                login.Show();
             }            
+        }
+
+        private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("AppUser"))
+            {
+                login.Hide();                
+                main.Show();
+            }
+            else if (e.PropertyName.Equals("LogoutUser"))
+            {
+                main.Hide();
+                login.Show();
+            }
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -56,6 +56,19 @@ namespace View
                 {
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
                 }
+            }            
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(password.NoOfErrorsOnScreen != 0 ||
+                userName.NoOfErrorsOnScreen != 0)
+            {
+                loginWarning.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                loginWarning.Visibility = Visibility.Collapsed;
             }
         }
     }

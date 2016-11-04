@@ -31,8 +31,10 @@
                     Style="{StaticResource loginTitleTextStyle}" />
                 <TextBlock
                     Margin="0,10,0,0"
+                    Name="loginWarning"
                     Style="{StaticResource loginWarningTextStyle}"
-                    Text="Invalid login. Please check your email or password." />
+                    Text="Invalid login. Please check your email or password."
+                    Visibility="Collapsed"/>
                 <TextBlock
                     Text="User account"
                     Margin="0,20,0,0"
@@ -40,10 +42,12 @@
                 <controls:WatermarkTextBox
                     Width="250"
                     Margin="0,5,0,0"
+                    Name="userName"
                     Watermark="User Name"
                     WatermarkBorderColor="LightGray"
                     HorizontalAlignment="Left"
-                    WaterMarkForeground="Gray" />
+                    WaterMarkForeground="Gray"
+                    Text="{Binding Username}"/>
                 <TextBlock
                     Text="Password"
                     Margin="0,10,0,0"
@@ -51,10 +55,12 @@
                 <controls:WatermarkTextBox
                     Width="250"
                     Margin="0,5,0,0"
+                    Name="password"
                     HorizontalAlignment="Left"
                     Watermark="Password"
                     WatermarkBorderColor="LightGray"
-                    WaterMarkForeground="Gray" />
+                    WaterMarkForeground="Gray" 
+                    Text="{Binding Password}"/>
                 <controls:ImageButton
                     Name="LoginBtn"
                     Width="250"
@@ -62,7 +68,9 @@
                     Margin="0,15,0,0"
                     HorizontalAlignment="Left"
                     Text="Log in"
-                    Style="{StaticResource mainButtonStyle}" />
+                    Style="{StaticResource mainButtonStyle}"
+                    Command="{Binding SearchUserCommand}"
+                    Click="LoginBtn_Click"/>
                 <StackPanel
                     Margin="0,20,0,10"
                     HorizontalAlignment="Center"
@@ -80,6 +88,7 @@
                         Content="Reset Password?"
                         Name="resetPassBtn"
                         Click="resetPassBtn_Click"
+                        Visibility="Collapsed"
                         Style="{StaticResource loginLinkButtonStyle}" />
                 </StackPanel>                
             </StackPanel>

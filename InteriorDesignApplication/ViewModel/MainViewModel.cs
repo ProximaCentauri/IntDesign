@@ -21,7 +21,6 @@ using log4net;
 using System.IO;
 using System.Security.Cryptography;
 using System.Reflection;
-using Model.Helpers;
 
 namespace ViewModel
 {
@@ -119,6 +118,9 @@ namespace ViewModel
         public string CommandParameter { get; set; }
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+
         private Spouse CustomerSpouse { get; set; }       
 
         private Dependent newDependent;
@@ -609,6 +611,19 @@ namespace ViewModel
             }
         }
 
+        private void SearchUser()
+        {
+            CurrentAppUser = context.GetUserByParam(Username, Password);            
+        }
+
+        private void LogoutUser()
+        {
+            if (CurrentAppUser != null)
+            {
+                OnPropertyChanged("LogoutUser");
+            }            
+        }
+
         private void AddBankType()
         {
             if(CurrentSelectedBankType != null && !CurrentSelectedBankType.Name.Trim().Equals(string.Empty))
@@ -995,7 +1010,10 @@ namespace ViewModel
             set
             {
                 currentAppUser = value;
-                OnPropertyChanged("AppUser");
+                if (currentAppUser != null)
+                {
+                    OnPropertyChanged("AppUser");
+                }                
             }
         }
         
@@ -1099,6 +1117,32 @@ namespace ViewModel
                     _searchCustomerCommand = new RelayCommand(SearchCustomer);
                 }
                 return _searchCustomerCommand;
+            }
+        }
+
+        ICommand _searchUserCommand;
+        public ICommand SearchUserCommand
+        {
+            get
+            {
+                if (_searchUserCommand == null)
+                {
+                    _searchUserCommand = new RelayCommand(SearchUser);
+                }
+                return _searchUserCommand;
+            }
+        }
+
+        ICommand _logoutUserCommand;
+        public ICommand LogoutUserCommand
+        {
+            get
+            {
+                if (_logoutUserCommand == null)
+                {
+                    _logoutUserCommand = new RelayCommand(LogoutUser);
+                }
+                return _logoutUserCommand;
             }
         }
 
@@ -1619,6 +1663,13 @@ namespace ViewModel
         public static IQueryable<BankType> GetAllBankTypes(this ManagerDBContext context)
         {
             return context.BankTypes;
+        }
+
+        public static AppUser GetUserByParam(this ManagerDBContext context, string username, string password)
+        {
+            AppUser user = null;
+            user = context.AppUsers.ToList().Find(u => u.UserName.Equals(username) && u.CurrentPassword.Equals(password));            
+            return user;
         }
     }
     #endregion

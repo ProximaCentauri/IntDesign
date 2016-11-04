@@ -38,5 +38,10 @@ namespace View
         {
             viewModel.CurrentPopupView = null;
         }
+
+        private void generatePinBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

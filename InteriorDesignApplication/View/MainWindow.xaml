@@ -67,8 +67,8 @@
                             Width="Auto"
                             Height="20"
                             Margin="0,2,10,2"
-                            Click="logOutBtn_Click"
                             Text="Logout"
+                            Command="{Binding LogoutUserCommand}"
                             Style="{StaticResource logoutButtonStyle}" />
                     </StackPanel>
                 </StackPanel>

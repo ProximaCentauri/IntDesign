@@ -184,11 +184,6 @@ namespace View
             viewModel.CurrentPopupView = new CancelConfirmationPopup();
         }
 
-        private void logOutBtn_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void changePassBtn_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new ChangePassword();
