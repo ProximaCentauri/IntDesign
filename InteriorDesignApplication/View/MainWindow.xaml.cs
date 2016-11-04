@@ -191,6 +191,10 @@ namespace View
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
+            if (logOutBtn.Command != null)
+            {
+                logOutBtn.Command.Execute("LogoutUserCommand");
+            }
             viewModel.PropertyChanged -= viewModel_PropertyChanged;            
         }       
     }

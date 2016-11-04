@@ -56,7 +56,15 @@ namespace View
                 {
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
                 }
-            }            
+            }
+            else if (e.PropertyName.Equals("InvalidUser"))
+            {
+                loginWarning.Visibility = Visibility.Visible;
+            }
+            else if (e.PropertyName.Equals("LogoutUser"))
+            {
+                loginWarning.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
@@ -68,6 +76,8 @@ namespace View
             }
             else
             {
+                this.userName.Text = string.Empty;
+                this.password.Text = string.Empty;
                 loginWarning.Visibility = Visibility.Collapsed;
             }
         }

@@ -620,6 +620,9 @@ namespace ViewModel
         {
             if (CurrentAppUser != null)
             {
+                CurrentAppUser = null;
+                Username = string.Empty;
+                Password = string.Empty;
                 OnPropertyChanged("LogoutUser");
             }            
         }
@@ -1013,6 +1016,10 @@ namespace ViewModel
                 if (currentAppUser != null)
                 {
                     OnPropertyChanged("AppUser");
+                }
+                else
+                {
+                    OnPropertyChanged("InvalidUser");
                 }                
             }
         }

@@ -52,7 +52,11 @@ namespace InteriorDesign
             }
             else if (e.PropertyName.Equals("LogoutUser"))
             {
-                main.Close();
+                if (main != null)
+                {
+                    main.Close();
+                }                
+                main = null;
                 login.Show();
             }
         }
