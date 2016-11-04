@@ -36,6 +36,7 @@ namespace View
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.CommandParameter = "";
             viewModel.CurrentPopupView = null;
         }
 
