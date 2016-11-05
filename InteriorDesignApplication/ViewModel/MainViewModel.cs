@@ -627,6 +627,11 @@ namespace ViewModel
             }            
         }
 
+        private void ChangeUserPassword()
+        {
+
+        }
+
         private void AddBankType()
         {
             if(CurrentSelectedBankType != null && !CurrentSelectedBankType.Name.Trim().Equals(string.Empty))
@@ -1150,6 +1155,19 @@ namespace ViewModel
                     _logoutUserCommand = new RelayCommand(LogoutUser);
                 }
                 return _logoutUserCommand;
+            }
+        }
+
+        ICommand _changeUserPasswordCommand;
+        public ICommand ChangeUserPasswordCommand
+        {
+            get
+            {
+                if (_changeUserPasswordCommand == null)
+                {
+                    _changeUserPasswordCommand = new RelayCommand(ChangeUserPassword);
+                }
+                return _changeUserPasswordCommand;
             }
         }
 

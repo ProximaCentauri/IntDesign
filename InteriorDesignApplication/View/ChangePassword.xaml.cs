@@ -41,9 +41,13 @@ namespace View
 
         private void changePassBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(OldPassword.NoOfErrorsOnScreen != 0 ||
-                NewPassword.NoOfErrorsOnScreen != 0 ||
-                ConfirmPassword.NoOfErrorsOnScreen != 0)
+            if(OldPassword.NoOfErrorsOnScreen == 0 &&
+                NewPassword.NoOfErrorsOnScreen == 0 &&
+                ConfirmPassword.NoOfErrorsOnScreen == 0)
+            {
+                
+            }
+            else
             {
                 warning.Text = "Please fill up the empty fields.";
                 warning.Visibility = Visibility.Visible;
