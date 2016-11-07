@@ -88,8 +88,7 @@
                     <controls:ImageButton
                         Content="Reset Password?"
                         Name="resetPassBtn"
-                        Click="resetPassBtn_Click"
-                        Visibility="Collapsed"
+                        Click="resetPassBtn_Click"                        
                         Style="{StaticResource loginLinkButtonStyle}" />
                 </StackPanel>                
             </StackPanel>

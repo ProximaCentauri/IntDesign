@@ -42,6 +42,7 @@ namespace View
 
         private void resetPassBtn_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.CommandParameter = "resetPassword";
             viewModel.CurrentPopupView = new ResetPassword();
         }
 
@@ -53,7 +54,8 @@ namespace View
                 {
                     PopupControl.ShowPopup(false, viewModel.CurrentPopupView, false);
                 }
-                else if (viewModel.CommandParameter != null && viewModel.CommandParameter.Equals("forgotPassword"))
+                else if (viewModel.CommandParameter != null && (viewModel.CommandParameter.Equals("forgotPassword") || 
+                    viewModel.CommandParameter.Equals("resetPassword")))
                 {
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
                 }             

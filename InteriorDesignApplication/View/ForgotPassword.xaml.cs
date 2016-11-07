@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ViewModel;
 using Model.Controls;
 using Model;
+using Model.Helpers;
 
 namespace View
 {
@@ -42,7 +43,12 @@ namespace View
 
         private void generatePinBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!string.IsNullOrEmpty(EmailAd.Text))
+            {
+                Random r = new Random();
+                string tp = r.Next(0, 1000000).ToString("D6");
+                EmailManager.Send(EmailAd.Text, "", "Temporary PIN", tp);
+            }            
         }
     }
 }
