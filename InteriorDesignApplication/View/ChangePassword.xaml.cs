@@ -31,8 +31,22 @@ namespace View
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;            
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
         }
+
+        public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("PasswordNotMatched"))
+            {
+
+            }
+            if (e.PropertyName.Equals("DuplicatePassword"))
+            {
+
+            }
+        }
+             
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
@@ -45,7 +59,8 @@ namespace View
                 NewPassword.NoOfErrorsOnScreen == 0 &&
                 ConfirmPassword.NoOfErrorsOnScreen == 0)
             {
-                
+                OldPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                NewPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             }
             else
             {
