@@ -630,7 +630,32 @@ namespace ViewModel
 
         private void ChangeUserPassword()
         {
+            if (CurrentAppUser != null)
+            {
+                if (CurrentAppUser.CurrentPassword != AppUserOldPassword)
+                {
+                    OnPropertyChanged("PasswordNotMatched");
+                }
+                else if (CurrentAppUser.CurrentPassword.ToLower() == AppUserNewPassword.ToLower())
+                {
+                    OnPropertyChanged("DuplicatePassword");
+                }
+                else
+                {
+                    using (var newContext = new ManagerDBContext())
+                    {
+                        CurrentAppUser.CurrentPassword = AppUserNewPassword;
+                        newContext.Entry(CurrentAppUser).State = EntityState.Modified;
+                        AppUserOldPassword = AppUserNewPassword = string.Empty;                        
+                        newContext.SaveChanges();
+                        OnPropertyChanged("CurrentAppUser");                       
+                    }
 
+
+
+                }
+
+            }
         }
 
         private void SendTemporaryPIN()
@@ -1046,14 +1071,38 @@ namespace ViewModel
                 }                
             }
         }
-        
-        
+
+        private string appUserOldPassword;
+        public string AppUserOldPassword
+        {
+            get
+            {
+                return appUserOldPassword;
+            }
+            set
+            {
+                appUserOldPassword = value;
+                OnPropertyChanged("AppUserOldPassword");
+            }
+        }
+
+        private string appUserNewPassword;
+        public string AppUserNewPassword
+        {
+            get
+            {
+                return appUserNewPassword;
+            }
+            set
+            {
+                appUserNewPassword = value;
+                OnPropertyChanged("AppUserNewPassword");
+            }
+        }
+
         private void UpdatePassword()
         {
-            if(CurrentAppUser != null)
-            {
-                // update passsword here
-            }
+            
         }
 
         #endregion
