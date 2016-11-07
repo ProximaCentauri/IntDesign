@@ -33,6 +33,15 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+        }
+
+        private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("TemporaryPINSendFailed"))
+            {
+                viewModel.CurrentPopupView = new WarningErrorNotificationPopup("Problem encountered while sending the temporary pin.\nPlease make sure you have an internet connection before doing this task.");
+            }         
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -43,12 +52,7 @@ namespace View
 
         private void generatePinBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EmailAd.Text))
-            {
-                Random r = new Random();
-                string tp = r.Next(0, 1000000).ToString("D6");
-                EmailManager.Send(EmailAd.Text, "", "Temporary PIN", tp);
-            }            
+            
         }
     }
 }

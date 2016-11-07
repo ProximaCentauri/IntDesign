@@ -142,10 +142,16 @@ namespace Model.Helpers
             }
         }
 
+        public static bool IsValidEmail(string emailAdd)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(emailAdd, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        }
+
         public static bool Send(string TO, string CC, string subject, string body)
         {
             bool retVal = false;
-            if (CheckConnection("http://www.google.com"))
+            
+            if (IsValidEmail(TO) && CheckConnection("http://www.google.com"))
             {
                 MailMessage msg = new MailMessage();
 

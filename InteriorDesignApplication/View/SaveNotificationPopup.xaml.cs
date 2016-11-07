@@ -22,29 +22,32 @@ namespace View
     /// </summary>
     public partial class SaveNotificationPopup : PopupView
     {
+        private string notification = string.Empty;
         public SaveNotificationPopup()
         {
             InitializeComponent();
-            //Notification.Text = notification;
+            Notification.Text = notification;
         }
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
-            //viewModel.PropertyChanged += viewModel_PropertyChanged;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
         }
 
-        //private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        //{
-        //    if (e.PropertyName.Equals("SavedCustomer"))
-        //    {
-        //        SaveIcon.Visibility = Visibility.Visible;
-        //    }
-        //    else if (e.PropertyName.Equals("EmptyFields"))
-        //    {
-        //        SaveIcon.Visibility = Visibility.Collapsed;
-        //    }
-        //}
+        private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("SavedCustomer"))
+            {
+                SaveIcon.Visibility = Visibility.Visible;
+                notification = "Details are successfully saved.";
+            }
+            else if (e.PropertyName.Equals("TemporaryPINSent"))
+            {
+                SaveIcon.Visibility = Visibility.Visible;
+                notification = "Successfully sent of temporary pin to your email.";
+            } 
+        }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {

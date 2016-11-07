@@ -120,6 +120,7 @@ namespace ViewModel
         public string SelectedSearchValue { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string EmailAd { get; set; }
 
         private Spouse CustomerSpouse { get; set; }       
 
@@ -630,6 +631,23 @@ namespace ViewModel
         private void ChangeUserPassword()
         {
 
+        }
+
+        private void SendTemporaryPIN()
+        {
+            if (!string.IsNullOrEmpty(EmailAd))
+            {
+                Random r = new Random();
+                string tp = r.Next(0, 1000000).ToString("D6");
+                if (EmailManager.Send(EmailAd, "", "Temporary PIN", tp))
+                {
+                    OnPropertyChanged("TemporaryPINSent");
+                }
+                else
+                {
+                    OnPropertyChanged("TemporaryPINSendFailed");
+                }
+            }            
         }
 
         private void AddBankType()
@@ -1170,6 +1188,21 @@ namespace ViewModel
                 return _changeUserPasswordCommand;
             }
         }
+
+        ICommand _sendTemporaryPINCommand;
+        public ICommand SendTemporaryPINCommand
+        {
+            get
+            {
+                if (_sendTemporaryPINCommand == null)
+                {
+                    _sendTemporaryPINCommand = new RelayCommand(SendTemporaryPIN);
+                }
+                return _sendTemporaryPINCommand;
+            }
+        }
+
+        
 
         ICommand _deleteCustomerCommand;
         public ICommand DeleteCustomerCommand

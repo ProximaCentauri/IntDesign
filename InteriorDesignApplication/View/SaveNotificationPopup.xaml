@@ -28,7 +28,8 @@
             Grid.RowSpan="3" />
         <TextBlock
             Style="{StaticResource popupConfirmationTextStyle}"
-            Text="Details are successfully saved" />
+            Name="Notification"
+             />
         <Image
             x:Name="SaveIcon"
             Grid.Row="1"
