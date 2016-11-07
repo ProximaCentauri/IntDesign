@@ -40,8 +40,21 @@ namespace View
         {
             if (e.PropertyName.Equals("TemporaryPINSendFailed"))
             {
-                viewModel.CurrentPopupView = new WarningErrorNotificationPopup("Problem encountered while sending the temporary pin.\nPlease make sure you have an internet connection before doing this task.");
-            }         
+                notification.Text = "Problem encountered while sending the temporary pin.\nPlease make sure you have an internet connection before doing this task.";
+                notification.Visibility = Visibility.Visible;
+                generatePinBtn.Visibility = Visibility.Visible;
+            }
+            else if (e.PropertyName.Equals("TemporaryPINSent"))
+            {
+                notification.Text = "Please check your email. Your temporary password/PIN has been sent to your email. Click on Reset Password? button in the login screen to reset password using the temporary password/PIN provided.";
+                notification.Visibility = Visibility.Visible;
+                generatePinBtn.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                notification.Visibility = Visibility.Collapsed;
+                notification.Text = string.Empty;
+            }
         }
 
         private void close_Click(object sender, RoutedEventArgs e)

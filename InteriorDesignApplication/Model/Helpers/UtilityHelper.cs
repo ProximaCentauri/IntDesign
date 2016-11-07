@@ -157,15 +157,15 @@ namespace Model.Helpers
 
                 msg.From = new MailAddress("proximacentauriofficial@gmail.com");
                 msg.To.Add(TO);
-                msg.CC.Add(CC);
+                //msg.CC.Add(CC);
                 msg.Subject = subject + " " + DateTime.Now.ToString();
                 msg.Body = body;
                 SmtpClient client = new SmtpClient();
+                client.UseDefaultCredentials = false;
                 client.Host = "smtp.gmail.com";
                 client.Port = 587;
                 client.EnableSsl = true;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;                
                 client.Credentials = new NetworkCredential("proximacentauriofficial@gmail.com", "jasperp@ssw0rd");
                 client.Timeout = 20000;
                 try

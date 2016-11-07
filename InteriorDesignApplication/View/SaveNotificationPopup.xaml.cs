@@ -41,12 +41,7 @@ namespace View
             {
                 SaveIcon.Visibility = Visibility.Visible;
                 notification = "Details are successfully saved.";
-            }
-            else if (e.PropertyName.Equals("TemporaryPINSent"))
-            {
-                SaveIcon.Visibility = Visibility.Visible;
-                notification = "Successfully sent of temporary pin to your email.";
-            } 
+            }            
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
