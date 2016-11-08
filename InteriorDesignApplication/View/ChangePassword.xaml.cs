@@ -39,15 +39,15 @@ namespace View
         {
             if (e.PropertyName.Equals("PasswordNotMatched"))
             {
-                // vanessa work! - notif for password not matching
+                ShowMessage("Old password isn't valid. Please re-enter correct password.");
             }
             else if (e.PropertyName.Equals("DuplicatePassword"))
             {
-                // vanessa work! notif for old password same with current password
+                ShowMessage("Old password is the same with new password. Please re-enter new and unique password.");
             }
             else if (e.PropertyName.Equals("PasswordChangeSuccessful"))
             {
-                // vanessa work ! notif for successful passowrd change
+                ShowMessage("Password changed successfully.");
             }
         }
              
@@ -59,18 +59,36 @@ namespace View
 
         private void changePassBtn_Click(object sender, RoutedEventArgs e)
         {
+            warning.Text = string.Empty;
+            warning.Visibility = Visibility.Collapsed;
+
             if(OldPassword.NoOfErrorsOnScreen == 0 &&
                 NewPassword.NoOfErrorsOnScreen == 0 &&
                 ConfirmPassword.NoOfErrorsOnScreen == 0)
             {
-                OldPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                NewPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();                
+
+                if (NewPassword.Text != ConfirmPassword.Text)
+                {
+                    ShowMessage("New password doesn't match the confirmation. Please re-enter password.");
+                }
+                else
+                {
+                    OldPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                    NewPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                    this.changePassBtn.SetBinding(Button.CommandProperty, new Binding("ChangeUserPasswordCommand"));
+                }
             }
             else
             {
-                warning.Text = "Please fill up the empty fields.";
-                warning.Visibility = Visibility.Visible;
+                ShowMessage("Please fill up the empty fields.");                
             }
+        }
+
+        private void ShowMessage(string msg)
+        {
+            warning.Text = msg;
+            warning.Visibility = Visibility.Visible;
+            OldPassword.Text = NewPassword.Text = ConfirmPassword.Text = string.Empty;            
         }
     }
 }
