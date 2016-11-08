@@ -204,7 +204,7 @@ namespace Model.Migrations
                 {
                     Id = 1,
                     UserName = "Admin",
-                    CurrentPassword = "jasper",
+                    CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
                     EmailAddress = "proximacentauriofficial@gmail.com"
                 },
                 new AppUser()

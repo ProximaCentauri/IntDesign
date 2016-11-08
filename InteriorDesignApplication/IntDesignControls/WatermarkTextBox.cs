@@ -204,12 +204,12 @@ namespace IntDesignControls
                 base.OnTextInput(e);
             }
         }
-        
+
         protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
         {
             if (!string.IsNullOrEmpty(Watermark) && Text.Equals(Watermark) && !IsReadOnly)
             {
-                CaretIndex = 0;                
+                CaretIndex = 0;
             }
         }
 
@@ -230,12 +230,7 @@ namespace IntDesignControls
                 }
             }
             base.OnTextChanged(e);
-            ShowWatermark();
-            
-            if (PasswordMode && !PasswordText.Length.Equals(Text.Length))
-            {
-                PasswordText = PasswordText.Remove(Text.Length);
-            }
+            ShowWatermark();           
         }
 
         protected override bool IsEnabledCore
@@ -292,7 +287,7 @@ namespace IntDesignControls
             {
                 RoutedEventArgs newEventArgs = new RoutedEventArgs(WatermarkTextBox.KeyboardFocusEvent);
                 tb.RaiseEvent(newEventArgs);
-                
+
             }
         }
 
@@ -350,7 +345,7 @@ namespace IntDesignControls
                 this.IsWatermarkShown = true;
                 this.Text = Watermark;
             }
-            else if(!Watermark.Equals(Text))
+            else if (null != Watermark && !Watermark.Equals(Text))
             {
                 this.NoOfErrorsOnScreen = 0;
                 this.Foreground = Brushes.Black;

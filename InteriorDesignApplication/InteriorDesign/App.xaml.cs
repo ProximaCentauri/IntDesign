@@ -41,7 +41,7 @@ namespace InteriorDesign
 
         private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("AppUser"))
+            if (e.PropertyName.Equals("LoginSuccessful"))
             {
                 login.Hide();
                 if (main == null)

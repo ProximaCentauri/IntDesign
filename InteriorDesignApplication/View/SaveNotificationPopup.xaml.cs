@@ -23,7 +23,7 @@ namespace View
     public partial class SaveNotificationPopup : PopupView
     {
         private string notification = string.Empty;
-        public SaveNotificationPopup()
+        public SaveNotificationPopup(string notification)
         {
             InitializeComponent();
             Notification.Text = notification;
@@ -32,16 +32,6 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
-            viewModel.PropertyChanged += viewModel_PropertyChanged;
-        }
-
-        private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName.Equals("SavedCustomer"))
-            {
-                SaveIcon.Visibility = Visibility.Visible;
-                notification = "Details are successfully saved.";
-            }            
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)

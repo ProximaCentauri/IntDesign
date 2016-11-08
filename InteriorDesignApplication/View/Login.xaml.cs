@@ -72,16 +72,18 @@ namespace View
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(password.NoOfErrorsOnScreen != 0 ||
-                userName.NoOfErrorsOnScreen != 0)
+            if(password.NoOfErrorsOnScreen == 0 &&
+                userName.NoOfErrorsOnScreen == 0)
             {
-                loginWarning.Visibility = Visibility.Visible;
+                viewModel.CommandParameter = password.PasswordText;
+                this.userName.Text = string.Empty;
+                this.password.Text = string.Empty;
+                this.password.PasswordText = string.Empty;
+                loginWarning.Visibility = Visibility.Collapsed;                
             }
             else
             {
-                this.userName.Text = string.Empty;
-                this.password.Text = string.Empty;
-                loginWarning.Visibility = Visibility.Collapsed;
+                loginWarning.Visibility = Visibility.Visible;
             }
         }
 

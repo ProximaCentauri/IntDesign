@@ -22,6 +22,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Reflection;
 
+
 namespace ViewModel
 {
     public class MainViewModel : IMainViewModel
@@ -119,7 +120,6 @@ namespace ViewModel
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
         public string EmailAd { get; set; }
 
         private Spouse CustomerSpouse { get; set; }       
@@ -614,7 +614,7 @@ namespace ViewModel
 
         private void SearchUser()
         {
-            CurrentAppUser = context.GetUserByParam(Username, Password);            
+            CurrentAppUser = context.GetUserByParam(Username, DataEncryptor.Encrypt(CommandParameter));            
         }
 
         private void LogoutUser()
@@ -623,7 +623,7 @@ namespace ViewModel
             {
                 CurrentAppUser = null;
                 Username = string.Empty;
-                Password = string.Empty;
+                CommandParameter = string.Empty;
                 OnPropertyChanged("LogoutUser");
             }            
         }
@@ -632,25 +632,14 @@ namespace ViewModel
         {
             if (CurrentAppUser != null)
             {
-                if (CurrentAppUser.CurrentPassword != AppUserOldPassword)
+                using (var newContext = new ManagerDBContext())
                 {
-                    OnPropertyChanged("PasswordNotMatched");
-                }
-                else if (CurrentAppUser.CurrentPassword.ToLower() == AppUserNewPassword.ToLower())
-                {
-                    OnPropertyChanged("DuplicatePassword");
-                }
-                else
-                {
-                    using (var newContext = new ManagerDBContext())
-                    {
-                        CurrentAppUser.CurrentPassword = AppUserNewPassword;
-                        newContext.Entry(CurrentAppUser).State = EntityState.Modified;
-                        AppUserOldPassword = AppUserNewPassword = string.Empty;                        
-                        newContext.SaveChanges();
-                        OnPropertyChanged("CurrentAppUser");
-                        OnPropertyChanged("PasswordChangeSuccessful");
-                    }
+                    CurrentAppUser.CurrentPassword = DataEncryptor.Encrypt(CommandParameter);
+                    newContext.Entry(CurrentAppUser).State = EntityState.Modified;
+                    CommandParameter = string.Empty;
+                    newContext.SaveChanges();
+                    OnPropertyChanged("CurrentAppUser");
+                    OnPropertyChanged("PasswordChangeSuccessful");
                 }
             }
         }
@@ -1060,40 +1049,12 @@ namespace ViewModel
                 currentAppUser = value;
                 if (currentAppUser != null)
                 {
-                    OnPropertyChanged("AppUser");
+                    OnPropertyChanged("LoginSuccessful");
                 }
                 else
                 {
                     OnPropertyChanged("InvalidUser");
                 }                
-            }
-        }
-
-        private string appUserOldPassword;
-        public string AppUserOldPassword
-        {
-            get
-            {
-                return appUserOldPassword;
-            }
-            set
-            {
-                appUserOldPassword = value;
-                OnPropertyChanged("AppUserOldPassword");
-            }
-        }
-
-        private string appUserNewPassword;
-        public string AppUserNewPassword
-        {
-            get
-            {
-                return appUserNewPassword;
-            }
-            set
-            {
-                appUserNewPassword = value;
-                OnPropertyChanged("AppUserNewPassword");
             }
         }
 
