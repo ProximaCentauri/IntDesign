@@ -648,7 +648,8 @@ namespace ViewModel
                         newContext.Entry(CurrentAppUser).State = EntityState.Modified;
                         AppUserOldPassword = AppUserNewPassword = string.Empty;                        
                         newContext.SaveChanges();
-                        OnPropertyChanged("CurrentAppUser");                       
+                        OnPropertyChanged("CurrentAppUser");
+                        OnPropertyChanged("PasswordChangeSuccessful");
                     }
                 }
             }

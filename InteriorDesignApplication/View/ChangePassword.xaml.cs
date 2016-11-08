@@ -39,11 +39,15 @@ namespace View
         {
             if (e.PropertyName.Equals("PasswordNotMatched"))
             {
-
+                // vanessa work! - notif for password not matching
             }
-            if (e.PropertyName.Equals("DuplicatePassword"))
+            else if (e.PropertyName.Equals("DuplicatePassword"))
             {
-
+                // vanessa work! notif for old password same with current password
+            }
+            else if (e.PropertyName.Equals("PasswordChangeSuccessful"))
+            {
+                // vanessa work ! notif for successful passowrd change
             }
         }
              
@@ -60,7 +64,7 @@ namespace View
                 ConfirmPassword.NoOfErrorsOnScreen == 0)
             {
                 OldPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                NewPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                NewPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();                
             }
             else
             {
