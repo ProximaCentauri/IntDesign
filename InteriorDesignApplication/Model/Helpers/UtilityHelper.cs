@@ -165,9 +165,9 @@ namespace Model.Helpers
                 client.Host = "smtp.gmail.com";
                 client.Port = 587;
                 client.EnableSsl = true;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;                
-                client.Credentials = new NetworkCredential("proximacentauriofficial@gmail.com", "jasperp@ssw0rd");
                 client.Timeout = 20000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;                
+                client.Credentials = new NetworkCredential("proximacentauriofficial@gmail.com", "jasperp@ssw0rd");                
                 try
                 {
                     client.Send(msg);

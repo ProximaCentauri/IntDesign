@@ -650,11 +650,7 @@ namespace ViewModel
                         newContext.SaveChanges();
                         OnPropertyChanged("CurrentAppUser");                       
                     }
-
-
-
                 }
-
             }
         }
 
