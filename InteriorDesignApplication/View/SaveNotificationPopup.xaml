@@ -8,7 +8,7 @@
     xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
     mc:Ignorable="d"
     Height="Auto"
-    Width="300"
+    Width="400"
     Loaded="PopupView_Loaded"
     Alignment="Center"
     Background="White"
@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
-                Height="80" />
+                Height="Auto" />
             <RowDefinition
                 Height="60" />
             <RowDefinition

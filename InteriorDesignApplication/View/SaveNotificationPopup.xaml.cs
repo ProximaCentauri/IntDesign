@@ -31,7 +31,7 @@ namespace View
 
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;            
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)

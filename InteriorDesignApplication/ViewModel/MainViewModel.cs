@@ -663,13 +663,20 @@ namespace ViewModel
             {
                 Random r = new Random();
                 string tp = r.Next(0, 1000000).ToString("D6");
-                if (EmailManager.Send(EmailAd, "", "Temporary PIN", tp))
+                bool success = true;
+                //if (EmailManager.Send(EmailAd, "", "Temporary PIN", tp))
+                if(success)
                 {
                     OnPropertyChanged("TemporaryPINSent");
+                    success = true;
                 }
                 else
                 {
                     OnPropertyChanged("TemporaryPINSendFailed");
+                }
+                if (success)
+                {
+                    OnPropertyChanged("TemporaryPINAlreadySent");
                 }
             }            
         }

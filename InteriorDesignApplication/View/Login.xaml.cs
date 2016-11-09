@@ -55,10 +55,15 @@ namespace View
                     PopupControl.ShowPopup(false, viewModel.CurrentPopupView, false);
                 }
                 else if (viewModel.CommandParameter != null && (viewModel.CommandParameter.Equals("forgotPassword") || 
-                    viewModel.CommandParameter.Equals("resetPassword")))
+                    viewModel.CommandParameter.Equals("resetPassword")) ||
+                    viewModel.CommandParameter.Equals("TemporaryPINSent"))
                 {
                     PopupControl.ShowPopup(true, viewModel.CurrentPopupView, false);
-                }             
+                }
+            }
+            else if (e.PropertyName.Equals("TemporaryPINAlreadySent"))
+            {
+                viewModel.CurrentPopupView = new SaveNotificationPopup("Please check your email. Your temporary password/PIN has been sent to your email.\nClick on Reset Password? button in the login screen to reset password using the temporary password/PIN provided.");
             }
             else if (e.PropertyName.Equals("InvalidUser"))
             {
