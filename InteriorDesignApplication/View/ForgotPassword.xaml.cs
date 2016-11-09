@@ -49,6 +49,12 @@ namespace View
                 viewModel.CommandParameter = "TemporaryPINSent";
                 viewModel.CurrentPopupView = null;
             }
+            else if (e.PropertyName.Equals("InvalidEmailAdd"))
+            {
+                notification.Text = "Invalid email address or email address provided doesn't exist in our system. Please provide a valid email.";
+                notification.Visibility = Visibility.Visible;
+                generatePinBtn.Visibility = Visibility.Visible;
+            }
             else
             {
                 notification.Visibility = Visibility.Collapsed;

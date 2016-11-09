@@ -210,12 +210,16 @@ namespace Model.Migrations
                 new AppUser()
                 {
                     Id = 2,
-                    UserName = "Guest1"
+                    UserName = "Guest1",
+                    CurrentPassword = "test",
+                    EmailAddress = "zz@gmail.com"
                 },
                 new AppUser()
                 {
                     Id = 3,
-                    UserName = "Guest2"
+                    UserName = "Guest2",
+                    CurrentPassword = "test",
+                    EmailAddress = "xx@gmail.com"
                 });
         }
     }

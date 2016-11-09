@@ -614,7 +614,15 @@ namespace ViewModel
 
         private void SearchUser()
         {
-            CurrentAppUser = context.GetUserByParam(Username, DataEncryptor.Encrypt(CommandParameter));            
+            CurrentAppUser = context.GetUserByParam(Username, DataEncryptor.Encrypt(CommandParameter));
+            if (currentAppUser != null)
+            {
+                OnPropertyChanged("LoginSuccessful");
+            }
+            else
+            {
+                OnPropertyChanged("InvalidUser");
+            }                
         }
 
         private void LogoutUser()
@@ -632,51 +640,69 @@ namespace ViewModel
         {
             if (CurrentAppUser != null)
             {
-                using (var newContext = new ManagerDBContext())
+                CurrentAppUser.CurrentPassword = DataEncryptor.Encrypt(CommandParameter);
+                bool success = SaveContext(CurrentAppUser);
+                CommandParameter = string.Empty;
+                if (success)
                 {
-                    CurrentAppUser.CurrentPassword = DataEncryptor.Encrypt(CommandParameter);
-                    newContext.Entry(CurrentAppUser).State = EntityState.Modified;
-                    CommandParameter = string.Empty;
-                    bool success = false;
-                    try
-                    {
-                        newContext.SaveChanges();                        
-                        OnPropertyChanged("PasswordChangeSuccessful");
-                        success = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.ErrorFormat("Exception while saving password: {0}", ex.ToString());
-                    }
-
-                    if (success)
-                    {
-                        OnPropertyChanged("PasswordChanged");
-                    }
+                    OnPropertyChanged("PasswordChangeSuccessful");
+                    OnPropertyChanged("PasswordChanged");
                 }
             }
         }
 
+        private bool SaveContext(object entity)
+        {
+            bool success = false;
+            using (var newContext = new ManagerDBContext())
+            {
+                newContext.Entry(entity).State = EntityState.Modified;                
+                try
+                {
+                    newContext.SaveChanges();                
+                    success = true;
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorFormat("Exception while saving context: {0}", ex.ToString());
+                }                
+            }
+            return success;
+        }
+
         private void SendTemporaryPIN()
         {
-            if (!string.IsNullOrEmpty(EmailAd))
+            if (!string.IsNullOrEmpty(EmailAd) && EmailManager.IsValidEmail(EmailAd))
             {
                 Random r = new Random();
                 string tp = r.Next(0, 1000000).ToString("D6");
                 bool success = false;
-                if (EmailManager.Send(EmailAd, "", "Temporary PIN", tp))
+                CurrentAppUser = context.GetUserByEmail(EmailAd);
+                if (CurrentAppUser != null)
                 {
-                    OnPropertyChanged("TemporaryPINSent");
-                    success = true;
+                    if (EmailManager.Send(EmailAd, "", "Temporary PIN", "Your temporary pin: " + tp))
+                    {
+                        OnPropertyChanged("TemporaryPINSent");
+                        CurrentAppUser.TemporaryPin = tp;
+                        success = SaveContext(CurrentAppUser);
+                    }
+                    else
+                    {
+                        OnPropertyChanged("TemporaryPINSendFailed");
+                    }
+                    if (success)
+                    {
+                        OnPropertyChanged("TemporaryPINAlreadySent");
+                    }
                 }
                 else
                 {
-                    OnPropertyChanged("TemporaryPINSendFailed");
+                    OnPropertyChanged("InvalidEmailAdd");
                 }
-                if (success)
-                {
-                    OnPropertyChanged("TemporaryPINAlreadySent");
-                }
+            }
+            else
+            {
+                OnPropertyChanged("InvalidEmailAdd");
             }            
         }
 
@@ -1065,15 +1091,7 @@ namespace ViewModel
             }
             set
             {
-                currentAppUser = value;
-                if (currentAppUser != null)
-                {
-                    OnPropertyChanged("LoginSuccessful");
-                }
-                else
-                {
-                    OnPropertyChanged("InvalidUser");
-                }                
+                currentAppUser = value;               
             }
         }
 
@@ -1753,6 +1771,13 @@ namespace ViewModel
         {
             AppUser user = null;
             user = context.AppUsers.ToList().Find(u => u.UserName.Equals(username) && u.CurrentPassword.Equals(password));            
+            return user;
+        }
+
+        public static AppUser GetUserByEmail(this ManagerDBContext context, string emailAd)
+        {
+            AppUser user = null;
+            user = context.AppUsers.ToList().Find(u => u.EmailAddress.Equals(emailAd));
             return user;
         }
     }
