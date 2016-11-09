@@ -663,9 +663,8 @@ namespace ViewModel
             {
                 Random r = new Random();
                 string tp = r.Next(0, 1000000).ToString("D6");
-                bool success = true;
-                //if (EmailManager.Send(EmailAd, "", "Temporary PIN", tp))
-                if(success)
+                bool success = false;
+                if (EmailManager.Send(EmailAd, "", "Temporary PIN", tp))
                 {
                     OnPropertyChanged("TemporaryPINSent");
                     success = true;

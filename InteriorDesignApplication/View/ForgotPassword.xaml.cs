@@ -46,9 +46,6 @@ namespace View
             }
             else if (e.PropertyName.Equals("TemporaryPINSent"))
             {
-                //notification.Text = "Please check your email. Your temporary password/PIN has been sent to your email. Click on Reset Password? button in the login screen to reset password using the temporary password/PIN provided.";
-                //notification.Visibility = Visibility.Visible;
-                //generatePinBtn.Visibility = Visibility.Collapsed;
                 viewModel.CommandParameter = "TemporaryPINSent";
                 viewModel.CurrentPopupView = null;
             }
