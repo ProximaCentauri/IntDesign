@@ -68,7 +68,7 @@ namespace View
             {
                 SaveDetails();
             }
-            else if (e.PropertyName.Equals("PasswordChangeSuccessful"))
+            else if (e.PropertyName.Equals("PasswordChanged"))
             {
                 viewModel.CurrentPopupView = new SaveNotificationPopup("Password changed successfully.");
             }

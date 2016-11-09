@@ -637,9 +637,22 @@ namespace ViewModel
                     CurrentAppUser.CurrentPassword = DataEncryptor.Encrypt(CommandParameter);
                     newContext.Entry(CurrentAppUser).State = EntityState.Modified;
                     CommandParameter = string.Empty;
-                    newContext.SaveChanges();
-                    OnPropertyChanged("CurrentAppUser");
-                    OnPropertyChanged("PasswordChangeSuccessful");
+                    bool success = false;
+                    try
+                    {
+                        newContext.SaveChanges();                        
+                        OnPropertyChanged("PasswordChangeSuccessful");
+                        success = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.ErrorFormat("Exception while saving password: {0}", ex.ToString());
+                    }
+
+                    if (success)
+                    {
+                        OnPropertyChanged("PasswordChanged");
+                    }
                 }
             }
         }
