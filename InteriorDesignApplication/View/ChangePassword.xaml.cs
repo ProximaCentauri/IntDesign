@@ -59,7 +59,7 @@ namespace View
                 !ConfirmPassword.PasswordText.Equals(string.Empty))
             {
                 string plainPwd = DataEncryptor.Decrypt(viewModel.CurrentAppUser.CurrentPassword);
-                if (NewPassword.PasswordText != ConfirmPassword.PasswordText)
+                if (!NewPassword.PasswordText.Equals(ConfirmPassword.PasswordText))
                 {
                     ShowMessage("New password doesn't match the confirmation. Please re-enter password.");
                 }

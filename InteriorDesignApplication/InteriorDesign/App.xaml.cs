@@ -76,7 +76,10 @@ namespace InteriorDesign
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Log.Info("Exit Application...");
-            login.Close();
+            if (login != null)
+            {
+                login.Close();
+            }            
             if (main != null)
             {
                 main.Close();

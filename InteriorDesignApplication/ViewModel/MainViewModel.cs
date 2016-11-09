@@ -121,6 +121,7 @@ namespace ViewModel
         public string SelectedSearchValue { get; set; }
         public string Username { get; set; }
         public string EmailAd { get; set; }
+        public string TemporaryPIN { get; set; }
 
         private Spouse CustomerSpouse { get; set; }       
 
@@ -706,6 +707,31 @@ namespace ViewModel
             }            
         }
 
+        private void VerifyResetPassword()
+        {
+            if (!string.IsNullOrEmpty(EmailAd) && !string.IsNullOrEmpty(TemporaryPIN) && EmailManager.IsValidEmail(EmailAd))
+            {
+                var currentUser = context.GetUserByEmailandPIN(EmailAd, TemporaryPIN);
+                if (currentUser != null)
+                {
+                    OnPropertyChanged("ValidEmailAdd");
+                }
+                else
+                {
+                    OnPropertyChanged("InvalidEmailAdd");
+                }
+            }
+            else
+            {
+                OnPropertyChanged("InvalidEmailAdd");
+            }
+        }
+
+        private void ResetPassword()
+        {
+
+        }
+
         private void AddBankType()
         {
             if(CurrentSelectedBankType != null && !CurrentSelectedBankType.Name.Trim().Equals(string.Empty))
@@ -1246,7 +1272,31 @@ namespace ViewModel
             }
         }
 
-        
+        ICommand _verifyResetPasswordCommand;
+        public ICommand VerifyResetPasswordCommand
+        {
+            get
+            {
+                if (_verifyResetPasswordCommand == null)
+                {
+                    _verifyResetPasswordCommand = new RelayCommand(VerifyResetPassword);
+                }
+                return _verifyResetPasswordCommand;
+            }
+        }
+
+        ICommand _resetPasswordCommand;
+        public ICommand ResetPasswordCommand
+        {
+            get
+            {
+                if (_resetPasswordCommand == null)
+                {
+                    _verifyResetPasswordCommand = new RelayCommand(ResetPassword);
+                }
+                return _resetPasswordCommand;
+            }
+        }
 
         ICommand _deleteCustomerCommand;
         public ICommand DeleteCustomerCommand
@@ -1778,6 +1828,13 @@ namespace ViewModel
         {
             AppUser user = null;
             user = context.AppUsers.ToList().Find(u => u.EmailAddress.Equals(emailAd));
+            return user;
+        }
+
+        public static AppUser GetUserByEmailandPIN(this ManagerDBContext context, string emailAd, string temporayPIN)
+        {
+            AppUser user = null;
+            user = context.AppUsers.ToList().Find(u => u.EmailAddress.Equals(emailAd) && u.TemporaryPin.Equals(temporayPIN));
             return user;
         }
     }
