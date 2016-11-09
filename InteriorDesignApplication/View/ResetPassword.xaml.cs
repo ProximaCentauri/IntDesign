@@ -50,6 +50,10 @@ namespace View
                 notification.Visibility = Visibility.Collapsed;
                 showInputPanel(false);
             }
+            else if (e.PropertyName.Equals("PasswordResetSuccessful"))
+            {
+                viewModel.CurrentPopupView = null;
+            }
         }
 
         private void resetPassBtn_Click(object sender, RoutedEventArgs e)
@@ -69,6 +73,7 @@ namespace View
                 else
                 {
                     resetPassBtn.SetBinding(Button.CommandProperty, new Binding("ResetPasswordCommand"));
+                    viewModel.CommandParameter = NewPassword.PasswordText;                    
                 }                
             }            
         }

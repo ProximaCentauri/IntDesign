@@ -714,6 +714,7 @@ namespace ViewModel
                 var currentUser = context.GetUserByEmailandPIN(EmailAd, TemporaryPIN);
                 if (currentUser != null)
                 {
+                    CurrentAppUser = currentUser;
                     OnPropertyChanged("ValidEmailAdd");
                 }
                 else
@@ -729,7 +730,17 @@ namespace ViewModel
 
         private void ResetPassword()
         {
-
+            if (CurrentAppUser != null)
+            {
+                CurrentAppUser.CurrentPassword = DataEncryptor.Encrypt(CommandParameter);
+                bool success = SaveContext(CurrentAppUser);
+                CommandParameter = string.Empty;
+                if (success)
+                {
+                    OnPropertyChanged("PasswordResetSuccessful");
+                    OnPropertyChanged("LoginSuccessful");
+                }
+            }
         }
 
         private void AddBankType()
@@ -1292,7 +1303,7 @@ namespace ViewModel
             {
                 if (_resetPasswordCommand == null)
                 {
-                    _verifyResetPasswordCommand = new RelayCommand(ResetPassword);
+                    _resetPasswordCommand = new RelayCommand(ResetPassword);
                 }
                 return _resetPasswordCommand;
             }
