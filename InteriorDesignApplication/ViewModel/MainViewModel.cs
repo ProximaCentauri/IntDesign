@@ -739,6 +739,9 @@ namespace ViewModel
                 {
                     OnPropertyChanged("PasswordResetSuccessful");
                     OnPropertyChanged("LoginSuccessful");
+                    //delete the temporary PIN
+                    CurrentAppUser.TemporaryPin = string.Empty;
+                    SaveContext(CurrentAppUser);
                 }
             }
         }

@@ -212,15 +212,17 @@ namespace Model.Migrations
                 {
                     Id = 2,
                     UserName = "Guest1",
-                    CurrentPassword = "test",
-                    EmailAddress = "zz@gmail.com"
+                    CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
+                    EmailAddress = "marvin.casagnap@gmail.com",
+                    TemporaryPin = "777777"
                 },
                 new AppUser()
                 {
                     Id = 3,
                     UserName = "Guest2",
-                    CurrentPassword = "test",
-                    EmailAddress = "xx@gmail.com"
+                    CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
+                    EmailAddress = "xx@gmail.com",
+                    TemporaryPin = "888888"
                 });
         }
     }
