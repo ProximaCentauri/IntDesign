@@ -151,7 +151,7 @@ namespace Model.Helpers
 
                 msg.From = new MailAddress("proximacentauriofficial@gmail.com");
                 msg.To.Add(TO);
-                msg.CC.Add(CC);
+                //msg.CC.Add(CC);
                 msg.Subject = subject + " " + DateTime.Now.ToString();
                 msg.Body = body;
                 SmtpClient client = new SmtpClient();
