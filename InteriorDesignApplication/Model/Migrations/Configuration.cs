@@ -204,18 +204,23 @@ namespace Model.Migrations
                 {
                     Id = 1,
                     UserName = "Admin",
-                    CurrentPassword = "jasper",
-                    EmailAddress = "proximacentauriofficial@gmail.com"
+                    CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
+                    EmailAddress = "proximacentauriofficial@gmail.com",
+                    TemporaryPin = "666666"
                 },
                 new AppUser()
                 {
                     Id = 2,
-                    UserName = "Guest1"
+                    UserName = "Guest1",
+                    CurrentPassword = "test",
+                    EmailAddress = "zz@gmail.com"
                 },
                 new AppUser()
                 {
                     Id = 3,
-                    UserName = "Guest2"
+                    UserName = "Guest2",
+                    CurrentPassword = "test",
+                    EmailAddress = "xx@gmail.com"
                 });
         }
     }

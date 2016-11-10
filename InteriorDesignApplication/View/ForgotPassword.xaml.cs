@@ -33,6 +33,33 @@ namespace View
         private void PopupView_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+        }
+
+        private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("TemporaryPINSendFailed"))
+            {
+                notification.Text = "Problem encountered while sending the temporary pin.\nPlease make sure you have an internet connection before doing this task.";
+                notification.Visibility = Visibility.Visible;
+                generatePinBtn.Visibility = Visibility.Visible;
+            }
+            else if (e.PropertyName.Equals("TemporaryPINSent"))
+            {
+                viewModel.CommandParameter = "TemporaryPINSent";
+                viewModel.CurrentPopupView = null;
+            }
+            else if (e.PropertyName.Equals("InvalidEmailAdd"))
+            {
+                notification.Text = "Invalid email address or email address provided doesn't exist in our system. Please provide a valid email.";
+                notification.Visibility = Visibility.Visible;
+                generatePinBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                notification.Visibility = Visibility.Collapsed;
+                notification.Text = string.Empty;
+            }
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
@@ -43,12 +70,7 @@ namespace View
 
         private void generatePinBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EmailAd.Text))
-            {
-                Random r = new Random();
-                string tp = r.Next(0, 1000000).ToString("D6");
-                EmailManager.Send(EmailAd.Text, "", "Temporary PIN", tp);
-            }            
+            
         }
     }
 }

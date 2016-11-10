@@ -22,6 +22,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Reflection;
 
+
 namespace ViewModel
 {
     public class MainViewModel : IMainViewModel
@@ -119,7 +120,8 @@ namespace ViewModel
         public string SelectedSearchType { get; set; }
         public string SelectedSearchValue { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string EmailAd { get; set; }
+        public string TemporaryPIN { get; set; }
 
         private Spouse CustomerSpouse { get; set; }       
 
@@ -613,7 +615,15 @@ namespace ViewModel
 
         private void SearchUser()
         {
-            CurrentAppUser = context.GetUserByParam(Username, Password);            
+            CurrentAppUser = context.GetUserByParam(Username, DataEncryptor.Encrypt(CommandParameter));
+            if (currentAppUser != null)
+            {
+                OnPropertyChanged("LoginSuccessful");
+            }
+            else
+            {
+                OnPropertyChanged("InvalidUser");
+            }                
         }
 
         private void LogoutUser()
@@ -622,7 +632,7 @@ namespace ViewModel
             {
                 CurrentAppUser = null;
                 Username = string.Empty;
-                Password = string.Empty;
+                CommandParameter = string.Empty;
                 OnPropertyChanged("LogoutUser");
             }            
         }
@@ -631,27 +641,105 @@ namespace ViewModel
         {
             if (CurrentAppUser != null)
             {
-                if (CurrentAppUser.CurrentPassword != AppUserOldPassword)
+                CurrentAppUser.CurrentPassword = DataEncryptor.Encrypt(CommandParameter);
+                bool success = SaveContext(CurrentAppUser);
+                CommandParameter = string.Empty;
+                if (success)
                 {
-                    OnPropertyChanged("PasswordNotMatched");
+                    OnPropertyChanged("PasswordChangeSuccessful");
+                    OnPropertyChanged("PasswordChanged");
                 }
-                else if (CurrentAppUser.CurrentPassword.ToLower() == AppUserNewPassword.ToLower())
+            }
+        }
+
+        private bool SaveContext(object entity)
+        {
+            bool success = false;
+            using (var newContext = new ManagerDBContext())
+            {
+                newContext.Entry(entity).State = EntityState.Modified;                
+                try
                 {
-                    OnPropertyChanged("DuplicatePassword");
+                    newContext.SaveChanges();                
+                    success = true;
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorFormat("Exception while saving context: {0}", ex.ToString());
+                }                
+            }
+            return success;
+        }
+
+        private void SendTemporaryPIN()
+        {
+            if (!string.IsNullOrEmpty(EmailAd) && EmailManager.IsValidEmail(EmailAd))
+            {
+                Random r = new Random();
+                string tp = r.Next(0, 1000000).ToString("D6");
+                bool success = false;
+                CurrentAppUser = context.GetUserByEmail(EmailAd);
+                if (CurrentAppUser != null)
+                {
+                    if (EmailManager.Send(EmailAd, "", "Temporary PIN", "Your temporary pin: " + tp))
+                    {
+                        OnPropertyChanged("TemporaryPINSent");
+                        CurrentAppUser.TemporaryPin = tp;
+                        success = SaveContext(CurrentAppUser);
+                    }
+                    else
+                    {
+                        OnPropertyChanged("TemporaryPINSendFailed");
+                    }
+                    if (success)
+                    {
+                        OnPropertyChanged("TemporaryPINAlreadySent");
+                    }
                 }
                 else
                 {
-                    using (var newContext = new ManagerDBContext())
-                    {
-                        CurrentAppUser.CurrentPassword = AppUserNewPassword;
-                        newContext.Entry(CurrentAppUser).State = EntityState.Modified;
-                        AppUserOldPassword = AppUserNewPassword = string.Empty;                        
-                        newContext.SaveChanges();
-                        OnPropertyChanged("CurrentAppUser");
-                        OnPropertyChanged("PasswordChangeSuccessful");
-                    }
+                    OnPropertyChanged("InvalidEmailAdd");
                 }
+            }
+            else
+            {
+                OnPropertyChanged("InvalidEmailAdd");
+            }            
+        }
 
+        private void VerifyResetPassword()
+        {
+            if (!string.IsNullOrEmpty(EmailAd) && !string.IsNullOrEmpty(TemporaryPIN) && EmailManager.IsValidEmail(EmailAd))
+            {
+                var currentUser = context.GetUserByEmailandPIN(EmailAd, TemporaryPIN);
+                if (currentUser != null)
+                {
+                    CurrentAppUser = currentUser;
+                    OnPropertyChanged("ValidEmailAdd");
+                }
+                else
+                {
+                    OnPropertyChanged("InvalidEmailAdd");
+                }
+            }
+            else
+            {
+                OnPropertyChanged("InvalidEmailAdd");
+            }
+        }
+
+        private void ResetPassword()
+        {
+            if (CurrentAppUser != null)
+            {
+                CurrentAppUser.CurrentPassword = DataEncryptor.Encrypt(CommandParameter);
+                bool success = SaveContext(CurrentAppUser);
+                CommandParameter = string.Empty;
+                if (success)
+                {
+                    OnPropertyChanged("PasswordResetSuccessful");
+                    OnPropertyChanged("LoginSuccessful");
+                }
             }
         }
 
@@ -1040,43 +1128,7 @@ namespace ViewModel
             }
             set
             {
-                currentAppUser = value;
-                if (currentAppUser != null)
-                {
-                    OnPropertyChanged("AppUser");
-                }
-                else
-                {
-                    OnPropertyChanged("InvalidUser");
-                }                
-            }
-        }
-
-        private string appUserOldPassword;
-        public string AppUserOldPassword
-        {
-            get
-            {
-                return appUserOldPassword;
-            }
-            set
-            {
-                appUserOldPassword = value;
-                OnPropertyChanged("AppUserOldPassword");
-            }
-        }
-
-        private string appUserNewPassword;
-        public string AppUserNewPassword
-        {
-            get
-            {
-                return appUserNewPassword;
-            }
-            set
-            {
-                appUserNewPassword = value;
-                OnPropertyChanged("AppUserNewPassword");
+                currentAppUser = value;               
             }
         }
 
@@ -1215,6 +1267,45 @@ namespace ViewModel
                     _changeUserPasswordCommand = new RelayCommand(ChangeUserPassword);
                 }
                 return _changeUserPasswordCommand;
+            }
+        }
+
+        ICommand _sendTemporaryPINCommand;
+        public ICommand SendTemporaryPINCommand
+        {
+            get
+            {
+                if (_sendTemporaryPINCommand == null)
+                {
+                    _sendTemporaryPINCommand = new RelayCommand(SendTemporaryPIN);
+                }
+                return _sendTemporaryPINCommand;
+            }
+        }
+
+        ICommand _verifyResetPasswordCommand;
+        public ICommand VerifyResetPasswordCommand
+        {
+            get
+            {
+                if (_verifyResetPasswordCommand == null)
+                {
+                    _verifyResetPasswordCommand = new RelayCommand(VerifyResetPassword);
+                }
+                return _verifyResetPasswordCommand;
+            }
+        }
+
+        ICommand _resetPasswordCommand;
+        public ICommand ResetPasswordCommand
+        {
+            get
+            {
+                if (_resetPasswordCommand == null)
+                {
+                    _resetPasswordCommand = new RelayCommand(ResetPassword);
+                }
+                return _resetPasswordCommand;
             }
         }
 
@@ -1741,6 +1832,20 @@ namespace ViewModel
         {
             AppUser user = null;
             user = context.AppUsers.ToList().Find(u => u.UserName.Equals(username) && u.CurrentPassword.Equals(password));            
+            return user;
+        }
+
+        public static AppUser GetUserByEmail(this ManagerDBContext context, string emailAd)
+        {
+            AppUser user = null;
+            user = context.AppUsers.ToList().Find(u => u.EmailAddress.Equals(emailAd));
+            return user;
+        }
+
+        public static AppUser GetUserByEmailandPIN(this ManagerDBContext context, string emailAd, string temporayPIN)
+        {
+            AppUser user = null;
+            user = context.AppUsers.ToList().Find(u => u.EmailAddress.Equals(emailAd) && u.TemporaryPin.Equals(temporayPIN));
             return user;
         }
     }

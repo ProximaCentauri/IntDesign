@@ -41,7 +41,7 @@ namespace InteriorDesign
 
         private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("AppUser"))
+            if (e.PropertyName.Equals("LoginSuccessful"))
             {
                 login.Hide();
                 if (main == null)
@@ -76,7 +76,10 @@ namespace InteriorDesign
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Log.Info("Exit Application...");
-            login.Close();
+            if (login != null)
+            {
+                login.Close();
+            }            
             if (main != null)
             {
                 main.Close();

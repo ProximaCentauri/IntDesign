@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ViewModel;
 using Model.Controls;
 using Model;
+using Model.Helpers;
 
 namespace View
 {
@@ -37,20 +38,11 @@ namespace View
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("PasswordNotMatched"))
+            if (e.PropertyName.Equals("PasswordChangeSuccessful"))
             {
-                // vanessa work! - notif for password not matching
+                viewModel.CurrentPopupView = null;
             }
-            else if (e.PropertyName.Equals("DuplicatePassword"))
-            {
-                // vanessa work! notif for old password same with current password
-            }
-            else if (e.PropertyName.Equals("PasswordChangeSuccessful"))
-            {
-                // vanessa work ! notif for successful passowrd change
-            }
-        }
-             
+        }             
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
@@ -59,18 +51,43 @@ namespace View
 
         private void changePassBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(OldPassword.NoOfErrorsOnScreen == 0 &&
-                NewPassword.NoOfErrorsOnScreen == 0 &&
-                ConfirmPassword.NoOfErrorsOnScreen == 0)
+            warning.Text = string.Empty;
+            warning.Visibility = Visibility.Collapsed;
+
+            if(!OldPassword.PasswordText.Equals(string.Empty) &&
+                !NewPassword.PasswordText.Equals(string.Empty) &&
+                !ConfirmPassword.PasswordText.Equals(string.Empty))
             {
-                OldPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                NewPassword.GetBindingExpression(TextBox.TextProperty).UpdateSource();                
+                string plainPwd = DataEncryptor.Decrypt(viewModel.CurrentAppUser.CurrentPassword);
+                if (!NewPassword.PasswordText.Equals(ConfirmPassword.PasswordText))
+                {
+                    ShowMessage("New password doesn't match the confirmation. Please re-enter password.");
+                }
+                else if (!OldPassword.PasswordText.Equals(plainPwd))
+                {
+                    ShowMessage("Old password doesn't match the current password. Please re-enter password.");
+                }
+                else if (NewPassword.PasswordText.Equals(plainPwd))
+                {
+                    ShowMessage("Old password is the same with new password. Please re-enter new and unique password.");
+                }
+                else
+                {
+                    viewModel.CommandParameter = NewPassword.PasswordText;
+                    this.changePassBtn.SetBinding(Button.CommandProperty, new Binding("ChangeUserPasswordCommand"));
+                }
             }
             else
             {
-                warning.Text = "Please fill up the empty fields.";
-                warning.Visibility = Visibility.Visible;
+                ShowMessage("Please fill up the empty fields.");                
             }
+        }
+
+        private void ShowMessage(string msg)
+        {
+            warning.Text = msg;
+            warning.Visibility = Visibility.Visible;
+            OldPassword.Text = NewPassword.Text = ConfirmPassword.Text = string.Empty;            
         }
     }
 }

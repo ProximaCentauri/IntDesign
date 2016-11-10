@@ -58,7 +58,7 @@ namespace View
             }
             else if (e.PropertyName.Equals("SavedCustomer"))
             {   
-                viewModel.CurrentPopupView = new SaveNotificationPopup();
+                viewModel.CurrentPopupView = new SaveNotificationPopup("Details are successfully saved.");
             }
             else if (e.PropertyName.Equals("EmptyFields"))
             {
@@ -67,6 +67,10 @@ namespace View
             else if (e.PropertyName.Equals("ReadyToSave"))
             {
                 SaveDetails();
+            }
+            else if (e.PropertyName.Equals("PasswordChanged"))
+            {
+                viewModel.CurrentPopupView = new SaveNotificationPopup("Password changed successfully.");
             }
         }
 
