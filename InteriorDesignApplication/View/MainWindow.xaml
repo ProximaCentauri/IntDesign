@@ -111,8 +111,26 @@
                         Width="150"
                         Margin="100,0,0,0"
                         Command="{Binding AddCustomerCommand}"
-                        Click="AddCustomerButton_Click"
-                        Style="{StaticResource addUserButtonStyle}" />
+                        Click="AddCustomerButton_Click">
+                        <controls:ImageButton.Style>
+                            <Style
+                                TargetType="controls:ImageButton"
+                                BasedOn="{StaticResource addUserButtonStyle}">
+                                <Setter
+                                    Property="IsEnabled"
+                                    Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}"
+                                        Value="False">
+                                        <Setter
+                                            Property="IsEnabled"
+                                            Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:ImageButton.Style>
+                    </controls:ImageButton>
                 </StackPanel>
             </StackPanel>
         </Grid>
@@ -333,8 +351,26 @@
                 Name="DeleteButton"
                 Text="Delete Customer"
                 Visibility="Collapsed"
-                Click="DeleteButton_Click"
-                Style="{StaticResource deleteUserButtonStyle}" />
+                Click="DeleteButton_Click">
+                <controls:ImageButton.Style>
+                    <Style
+                                TargetType="controls:ImageButton"
+                                BasedOn="{StaticResource deleteUserButtonStyle}">
+                        <Setter
+                                    Property="IsEnabled"
+                                    Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}"
+                                        Value="False">
+                                <Setter
+                                            Property="IsEnabled"
+                                            Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </controls:ImageButton.Style>
+            </controls:ImageButton>
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Right"

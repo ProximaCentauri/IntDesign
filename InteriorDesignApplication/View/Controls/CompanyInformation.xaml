@@ -55,7 +55,25 @@
                     Width="150"
                     Text="{Binding CurrentSelectedCustomer.CustomerCompany.Name}"
                     Margin="0,0,10,0"
-                    Name="CompanyName" />
+                    Name="CompanyName">
+                    <TextBox.Style>
+                        <Style
+                                TargetType="TextBox">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
         </Grid>
         <Grid
@@ -72,7 +90,25 @@
                     Width="180"
                     Text="{Binding CurrentSelectedCustomer.CustomerCompany.Address}"
                     Margin="0,0,10,0"
-                    Name="Address" />
+                    Name="Address">
+                    <TextBox.Style>
+                        <Style
+                                TargetType="TextBox">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
         </Grid>
         <Grid
@@ -89,7 +125,25 @@
                     Width="180"
                     Text="{Binding CurrentSelectedCustomer.CustomerCompany.ContactNumber}"
                     Margin="0,0,10,0"
-                    Name="ContactNumber" />
+                    Name="ContactNumber">
+                    <TextBox.Style>
+                        <Style
+                                TargetType="TextBox">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
         </Grid>
         <Grid
@@ -107,7 +161,25 @@
                     Width="150"
                     Text="{Binding CurrentSelectedCustomer.CustomerCompany.Website}"
                     Margin="0,0,10,0"
-                    Name="Website" />
+                    Name="Website">
+                    <TextBox.Style>
+                        <Style
+                                TargetType="TextBox">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
         </Grid>
         <Grid
@@ -124,7 +196,25 @@
                     Width="180"
                     Text="{Binding CurrentSelectedCustomer.CustomerCompany.EmailAddress}"
                     Margin="0,0,10,0"
-                    Name="EmailAddress" />
+                    Name="EmailAddress">
+                    <TextBox.Style>
+                        <Style
+                                TargetType="TextBox">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
         </Grid>
         <Grid
@@ -143,11 +233,28 @@
                     Margin="0,0,10,0"
                     Name="FacebookPage">                    
                     <controls:HyperlinkTextbox.Style>
-                        <Style TargetType="{x:Type controls:HyperlinkTextbox}">
+                        <Style 
+                            TargetType="{x:Type controls:HyperlinkTextbox}">
+                            <Setter 
+                                Property="IsEnabled"
+                                Value="True" />
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding HasValidURI, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:HyperlinkTextbox}}}" Value="True">
-                                    <Setter Property="TextDecorations" Value="Underline"/>
-                                    <Setter Property="Foreground" Value="#FF2A6DCD"/>
+                                <DataTrigger 
+                                    Binding="{Binding HasValidURI, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:HyperlinkTextbox}}}" 
+                                    Value="True">
+                                    <Setter 
+                                        Property="TextDecorations" 
+                                        Value="Underline"/>
+                                    <Setter 
+                                        Property="Foreground" 
+                                        Value="#FF2A6DCD"/>
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding CurrentAppUser.IsAdmin}"
+                                    Value="False">
+                                    <Setter
+                                        Property="IsEnabled"
+                                        Value="False" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -176,7 +283,25 @@
                     Width="Auto"
                     Text="{Binding CurrentSelectedCustomer.CustomerCompany.OptionalInformation}"
                     Height="250"
-                    Name="Notes" />
+                    Name="Notes">
+                    <TextBox.Style>
+                        <Style
+                                TargetType="TextBox">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
         </Grid>
     </Grid>

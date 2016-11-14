@@ -66,7 +66,25 @@
                     <TextBox
                         Width="170"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.FitOut.Cost, StringFormat='{}{0:0,0.00}'}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.FitOut.Cost, StringFormat='{}{0:0,0.00}'}">
+                        <TextBox.Style>
+                            <Style
+                                TargetType="TextBox">
+                                <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                        <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
                 </StackPanel>
             </Grid>
             <Grid
@@ -82,7 +100,25 @@
                     <TextBox
                         Width="170"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.FitOut.Contractor}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.FitOut.Contractor}">
+                        <TextBox.Style>
+                            <Style
+                                TargetType="TextBox">
+                                <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                        <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
                 </StackPanel>
             </Grid>
             <Grid
@@ -98,7 +134,25 @@
                     <TextBox
                         Width="194"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.FitOut.Area}"></TextBox>
+                        Text="{Binding CurrentSelectedCustomer.FitOut.Area}">
+                        <TextBox.Style>
+                            <Style
+                                TargetType="TextBox">
+                                <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                        <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
                 </StackPanel>
             </Grid>
             <Grid
@@ -115,7 +169,25 @@
                         Width="170"
                         Focusable="False"
                         SelectedDateFormat="Long"
-                        SelectedDate="{Binding CurrentSelectedCustomer.FitOut.StartDate}" />
+                        SelectedDate="{Binding CurrentSelectedCustomer.FitOut.StartDate}">
+                        <DatePicker.Style>
+                            <Style
+                                TargetType="DatePicker">
+                                <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding CurrentAppUser.IsAdmin}"
+                                        Value="False">
+                                        <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DatePicker.Style>
+                    </DatePicker>
                 </StackPanel>
             </Grid>
             <Grid
@@ -133,7 +205,25 @@
                         Name="EndDate"
                         Focusable="False"
                         SelectedDateFormat="Long"
-                        SelectedDate="{Binding FitOutCompletionDate}" />
+                        SelectedDate="{Binding FitOutCompletionDate}">
+                        <DatePicker.Style>
+                            <Style
+                                TargetType="DatePicker">
+                                <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding CurrentAppUser.IsAdmin}"
+                                        Value="False">
+                                        <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DatePicker.Style>
+                    </DatePicker>
                 </StackPanel>
             </Grid>
             <Grid
@@ -149,7 +239,7 @@
                     <TextBox
                         Width="194"
                         Margin="0,0,10,0"
-                        IsReadOnly="True"
+                        IsEnabled="False"
                         Text="{Binding FitOutWarrantyStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Name="WarrantyStatus"></TextBox>
                 </StackPanel>

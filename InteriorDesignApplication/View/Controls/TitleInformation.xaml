@@ -52,7 +52,7 @@
                     Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                 <TextBox
                     Name="addressInfo"
-                    IsReadOnly="True"
+                    IsEnabled="False"
                     Width="502"
                     Margin="0,0,10,0" />
             </StackPanel>
@@ -73,7 +73,25 @@
                     Margin="0,0,10,0"
                     Focusable="False"
                     SelectedDateFormat="Long"
-                    SelectedDate="{Binding CurrentSelectedCustomer.TitleInfo.ReleasedDate}"/>
+                    SelectedDate="{Binding CurrentSelectedCustomer.TitleInfo.ReleasedDate}">
+                    <DatePicker.Style>
+                        <Style
+                                TargetType="DatePicker">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                        Binding="{Binding CurrentAppUser.IsAdmin}"
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DatePicker.Style>
+                </DatePicker>
             </StackPanel>
         </Grid>
         <Grid
@@ -86,10 +104,6 @@
                     Text="Scanned Title:"
                     Width="75"
                     Style="{StaticResource mainLabelTextStyle}"></TextBlock>
-                <!--<TextBox
-                    Width="180"
-                    Margin="0,0,10,0"
-                    Name="EmailAddress" />-->
                 <TextBlock
                     Width="260"
                     Background="#f4f4f4"
@@ -102,12 +116,47 @@
                             Text="{Binding CurrentSelectedCustomer.TitleInfo.ScannedTitle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                             Name="ScannedTitleText" />
                         </Hyperlink>
+                    <TextBlock.Style>
+                        <Style
+                                TargetType="TextBlock">
+                            <Setter 
+                                    Property="IsEnabled" 
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
+                                        Value="False">
+                                    <Setter 
+                                            Property="IsEnabled" 
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
                 </TextBlock>
                 <Button
                     Name="browseBtn"
                     Width="70"
                     Content="Browse" 
-                    Click="browseBtn_Click" />
+                    Click="browseBtn_Click">
+                    <Button.Style>
+                        <Style
+                                TargetType="Button">
+                            <Setter
+                                    Property="IsEnabled"
+                                    Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger 
+                                        Binding="{Binding CurrentAppUser.IsAdmin}"
+                                        Value="False">
+                                    <Setter
+                                            Property="IsEnabled"
+                                            Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>
