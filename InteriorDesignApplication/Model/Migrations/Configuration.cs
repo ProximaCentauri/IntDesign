@@ -206,7 +206,8 @@ namespace Model.Migrations
                     UserName = "Admin",
                     CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
                     EmailAddress = "proximacentauriofficial@gmail.com",
-                    TemporaryPin = "666666"
+                    TemporaryPin = "666666",
+                    IsAdmin = true
                 },
                 new AppUser()
                 {
