@@ -24,6 +24,8 @@ namespace View.Controls
     /// </summary>
     public partial class BankInformation : UserControl
     {
+        IMainViewModel viewModel;
+
         public BankInformation()
         {
             InitializeComponent();
@@ -47,6 +49,14 @@ namespace View.Controls
             {
 
             }
+
+            if (e.PropertyName.Equals("NonAdmin") || viewModel.CurrentPopupView == null)
+            {
+                if (viewModel.CurrentAppUser != null)
+                {
+                    DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+                }
+            } 
         }
 
         private void gridBanks_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -65,9 +75,7 @@ namespace View.Controls
         private void editBankInfo_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CurrentPopupView = new BankDetails("edit");
-        }
-
-        IMainViewModel viewModel;
+        }        
 
         private void deleteEntry_Click(object sender, RoutedEventArgs e)
         {
@@ -76,6 +84,11 @@ namespace View.Controls
             Bank selectedBank = gridBanks.SelectedItem as Bank;
             bankInfo = selectedBank.BankType.Name + " with account number: " + selectedBank.AccountNumber;
             viewModel.CurrentPopupView = new DeleteConfirmationPopup(bankInfo);
+        }
+
+        private void DisableControlForNonAdmin(bool isAdmin)
+        {
+            addBankDetails.IsEnabled = gridBanks.IsEnabled = isAdmin;
         }
 
     }

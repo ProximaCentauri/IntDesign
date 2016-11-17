@@ -66,10 +66,8 @@ namespace View.Controls
                 if (viewModel.CurrentAppUser != null)
                 {
                     DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
-                }
-                
-            }
-                
+                }                
+            }                
         }
 
         private void DisableControlForNonAdmin(bool isAdmin)

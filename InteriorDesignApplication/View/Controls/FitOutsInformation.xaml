@@ -122,24 +122,7 @@
                         Width="170"
                         Focusable="False"
                         SelectedDateFormat="Long"
-                        SelectedDate="{Binding CurrentSelectedCustomer.FitOut.StartDate}">
-                        <DatePicker.Style>
-                            <Style
-                                TargetType="DatePicker">
-                                <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                                <Style.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding CurrentAppUser.IsAdmin}"
-                                        Value="False">
-                                        <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DatePicker.Style>
+                        SelectedDate="{Binding CurrentSelectedCustomer.FitOut.StartDate}">                        
                     </DatePicker>
                 </StackPanel>
             </Grid>
@@ -158,24 +141,7 @@
                         Name="EndDate"
                         Focusable="False"
                         SelectedDateFormat="Long"
-                        SelectedDate="{Binding FitOutCompletionDate}">
-                        <DatePicker.Style>
-                            <Style
-                                TargetType="DatePicker">
-                                <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                                <Style.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding CurrentAppUser.IsAdmin}"
-                                        Value="False">
-                                        <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DatePicker.Style>
+                        SelectedDate="{Binding FitOutCompletionDate}">                        
                     </DatePicker>
                 </StackPanel>
             </Grid>

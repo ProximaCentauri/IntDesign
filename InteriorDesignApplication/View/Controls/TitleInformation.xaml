@@ -74,24 +74,7 @@
                     Margin="0,0,10,0"
                     Focusable="False"
                     SelectedDateFormat="Long"
-                    SelectedDate="{Binding CurrentSelectedCustomer.TitleInfo.ReleasedDate}">
-                    <DatePicker.Style>
-                        <Style
-                                TargetType="DatePicker">
-                            <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                            <Style.Triggers>
-                                <DataTrigger
-                                        Binding="{Binding CurrentAppUser.IsAdmin}"
-                                        Value="False">
-                                    <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DatePicker.Style>
+                    SelectedDate="{Binding CurrentSelectedCustomer.TitleInfo.ReleasedDate}">                    
                 </DatePicker>
             </StackPanel>
         </Grid>
@@ -117,47 +100,13 @@
                         <TextBlock
                             Text="{Binding CurrentSelectedCustomer.TitleInfo.ScannedTitle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                             Name="ScannedTitleText" />
-                        </Hyperlink>
-                    <TextBlock.Style>
-                        <Style
-                                TargetType="TextBlock">
-                            <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                            <Style.Triggers>
-                                <DataTrigger 
-                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
-                                        Value="False">
-                                    <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
+                        </Hyperlink>                    
                 </TextBlock>
                 <Button
                     Name="browseBtn"
                     Width="70"
                     Content="Browse" 
-                    Click="browseBtn_Click">
-                    <Button.Style>
-                        <Style
-                                TargetType="Button">
-                            <Setter
-                                    Property="IsEnabled"
-                                    Value="True" />
-                            <Style.Triggers>
-                                <DataTrigger 
-                                        Binding="{Binding CurrentAppUser.IsAdmin}"
-                                        Value="False">
-                                    <Setter
-                                            Property="IsEnabled"
-                                            Value="False"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
+                    Click="browseBtn_Click">                    
                 </Button>
             </StackPanel>
         </Grid>

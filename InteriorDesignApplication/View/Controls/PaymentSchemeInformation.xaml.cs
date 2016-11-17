@@ -46,8 +46,15 @@ namespace View.Controls
 
             }
 
-            if (viewModel.CurrentAppUser != null)
-                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+            if (e.PropertyName.Equals("NonAdmin") || viewModel.CurrentPopupView == null)
+            {
+                TotalPayment.IsEnabled = Balance.IsEnabled = false;
+
+                if (viewModel.CurrentAppUser != null)
+                {
+                    DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+                }
+            } 
         }       
 
         private void addPayment_Click(object sender, RoutedEventArgs e)

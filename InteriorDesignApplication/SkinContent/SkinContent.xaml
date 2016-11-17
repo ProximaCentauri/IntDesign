@@ -11,11 +11,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <sys:Double
-        x:Key="disabledButtonOpacity">0.50</sys:Double>
-    <sys:Double
-        x:Key="disabledButtonOpacityForSecondaryAction">0.30</sys:Double>
-    
-
+        x:Key="disabledButtonOpacity">0.40</sys:Double>
+ 
     <!--fonts-->
     <FontFamily
         x:Key="fontRegular">Calibri</FontFamily>
@@ -474,7 +471,7 @@
                 Value="False">
                 <Setter
                     Property="Opacity"
-                    Value="{StaticResource disabledButtonOpacityForSecondaryAction}" />
+                    Value="{StaticResource disabledButtonOpacity}" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -52,8 +52,15 @@ namespace View.Controls
 
             }
 
-            if (viewModel.CurrentAppUser != null)
-                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+            if (e.PropertyName.Equals("NonAdmin") || viewModel.CurrentPopupView == null)
+            {
+                WarrantyStatus.IsEnabled = false;
+
+                if (viewModel.CurrentAppUser != null)
+                {
+                    DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+                }
+            } 
         }
 
         private void gridAppliances_SelectionChanged(object sender, SelectionChangedEventArgs e)
