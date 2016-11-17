@@ -21,13 +21,16 @@ namespace Model.Migrations
             SeedDefaultUtilityBillTypeAndCompany(context);
             SeedDefaultBank(context);
             SeedAppUser(context);
-            
-            
-         }
+
+
+        }
 
         private void SeedDefaultUtilityBillTypeAndCompany(Model.ManagerDBContext context)
         {
-            context.UtilityBillTypes.AddOrUpdate(x => x.Id,
+            if (!context.UtilityBillTypes.Any())
+            {
+                // table is empty - seed default data
+                context.UtilityBillTypes.AddOrUpdate(x => x.Id,
                 new UtilityBillType()
                 {
                     Id = 1,
@@ -90,11 +93,16 @@ namespace Model.Migrations
                                             new UtilityCompany {Id = 7, Name = "Globe Telecom"}
                                         }
                 });
+            }
+
         }
 
         private void SeedDefaultBank(Model.ManagerDBContext context)
         {
-            context.BankTypes.AddOrUpdate(x => x.Id,
+            if (!context.BankTypes.Any())
+            {
+                // table is empty -- seed default data
+                context.BankTypes.AddOrUpdate(x => x.Id,
                 new BankType()
                 {
                     Id = 1,
@@ -126,10 +134,10 @@ namespace Model.Migrations
                     Name = "BPI Family"
                 },
                 new BankType()
-                 {
-                     Id = 7,
-                     Name = "China Bank"
-                 },
+                {
+                    Id = 7,
+                    Name = "China Bank"
+                },
                 new BankType()
                 {
                     Id = 8,
@@ -141,10 +149,10 @@ namespace Model.Migrations
                     Name = "East West Bank"
                 },
                 new BankType()
-                 {
-                     Id = 10,
-                     Name = "HSBC"
-                 },
+                {
+                    Id = 10,
+                    Name = "HSBC"
+                },
                 new BankType()
                 {
                     Id = 11,
@@ -156,10 +164,10 @@ namespace Model.Migrations
                     Name = "Maybank"
                 },
                 new BankType()
-                 {
-                     Id = 13,
-                     Name = "Metrobank"
-                 },
+                {
+                    Id = 13,
+                    Name = "Metrobank"
+                },
                 new BankType()
                 {
                     Id = 14,
@@ -195,36 +203,42 @@ namespace Model.Migrations
                     Id = 20,
                     Name = "Union Bank of the Philippines"
                 });
+            }
+
         }
 
         private void SeedAppUser(Model.ManagerDBContext context)
         {
-            context.AppUsers.AddOrUpdate(x => x.Id,
-                new AppUser()
-                {
-                    Id = 1,
-                    UserName = "Admin",
-                    CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
-                    EmailAddress = "proximacentauriofficial@gmail.com",
-                    TemporaryPin = "666666",
-                    IsAdmin = true
-                },
-                new AppUser()
-                {
-                    Id = 2,
-                    UserName = "Guest1",
-                    CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
-                    EmailAddress = "marvin.casagnap@gmail.com",
-                    TemporaryPin = "777777"
-                },
-                new AppUser()
-                {
-                    Id = 3,
-                    UserName = "Guest2",
-                    CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
-                    EmailAddress = "xx@gmail.com",
-                    TemporaryPin = "888888"
-                });
+            if (!context.AppUsers.Any())
+            {
+                // table is empty - seed default data
+                context.AppUsers.AddOrUpdate(x => x.Id,
+                    new AppUser()
+                    {
+                        Id = 1,
+                        UserName = "Admin",
+                        CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
+                        EmailAddress = "proximacentauriofficial@gmail.com",
+                        TemporaryPin = "666666",
+                        IsAdmin = true
+                    },
+                    new AppUser()
+                    {
+                        Id = 2,
+                        UserName = "Guest1",
+                        CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
+                        EmailAddress = "marvin.casagnap@gmail.com",
+                        TemporaryPin = "777777"
+                    },
+                    new AppUser()
+                    {
+                        Id = 3,
+                        UserName = "Guest2",
+                        CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
+                        EmailAddress = "xx@gmail.com",
+                        TemporaryPin = "888888"
+                    });
+            }
         }
     }
 }
