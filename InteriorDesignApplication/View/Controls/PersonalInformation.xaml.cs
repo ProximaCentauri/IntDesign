@@ -41,7 +41,7 @@ namespace View.Controls
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             viewModel = this.DataContext as IMainViewModel;
-            viewModel.PropertyChanged += viewModel_PropertyChanged;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;            
         }
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -61,9 +61,13 @@ namespace View.Controls
                 viewModel.CurrentPopupView = new WarningErrorNotificationPopup(notification);
             }
 
-            if(e.PropertyName.Equals("NonAdmin"))
+            if(e.PropertyName.Equals("NonAdmin") || viewModel.CurrentPopupView == null)
             {
-                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+                if (viewModel.CurrentAppUser != null)
+                {
+                    DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+                }
+                
             }
                 
         }
@@ -73,7 +77,7 @@ namespace View.Controls
             LastName.IsEnabled = FirstName.IsEnabled = MiddleName.IsEnabled = Religion.IsEnabled = Nationality.IsEnabled = ValidId.IsEnabled = CustomerImageBtn.IsEnabled =
                 Birthdate.IsEnabled = Birthplace.IsEnabled = StatusIndex.IsEnabled = Gender.IsEnabled = addDependent.IsEnabled = gridDependents.IsEnabled = MobileNum.IsEnabled =
                 LandlineNum.IsEnabled = EmailAd.IsEnabled = BuildingNum.IsEnabled = Street.IsEnabled = Village.IsEnabled = City.IsEnabled = State.IsEnabled = Country.IsEnabled =
-                ZipCode.IsEnabled= isAdmin;
+                ZipCode.IsEnabled = isAdmin;
         }
 
         private void CustomerImageBtn_Click(object sender, RoutedEventArgs e)

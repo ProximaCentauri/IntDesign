@@ -549,9 +549,6 @@ namespace ViewModel
                     LoadEntities();
                     OnPropertyChanged("SavedCustomer");
                     Log.Info("Successfully save the customer");
-
-                    if (!currentAppUser.IsAdmin)
-                        OnPropertyChanged("NonAdmin");
                 }
                 else
                 {
@@ -563,7 +560,9 @@ namespace ViewModel
                 ex.Entries.Single().Reload();
                 context.SaveChanges();
                 OnPropertyChanged("SavedCustomer");
-            }            
+            }
+            if (!currentAppUser.IsAdmin)
+                OnPropertyChanged("NonAdmin");
         }
        
         public void DeleteCustomer()
