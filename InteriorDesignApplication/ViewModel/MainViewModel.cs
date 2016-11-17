@@ -1141,11 +1141,6 @@ namespace ViewModel
             }
         }
 
-        private void UpdatePassword()
-        {
-            
-        }
-
         #endregion
         #region INotifyPropertyChanged Implementing
         public event PropertyChangedEventHandler PropertyChanged;
@@ -1682,19 +1677,7 @@ namespace ViewModel
                 return _editUpdatePaymentCommand;
             }
         }
-
-        ICommand _updatePasswordCommand;
-        public ICommand UpdatePasswordCommand
-        {
-            get
-            {
-                if (_updatePasswordCommand == null)
-                {
-                    _updatePasswordCommand = new RelayCommand(UpdatePassword);
-                }
-                return _updatePasswordCommand;
-            }
-        }
+       
         #endregion
 
         public void Dispose()
