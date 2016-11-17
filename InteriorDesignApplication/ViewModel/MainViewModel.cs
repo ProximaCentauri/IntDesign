@@ -549,6 +549,9 @@ namespace ViewModel
                     LoadEntities();
                     OnPropertyChanged("SavedCustomer");
                     Log.Info("Successfully save the customer");
+
+                    if (!currentAppUser.IsAdmin)
+                        OnPropertyChanged("NonAdmin");
                 }
                 else
                 {
@@ -619,6 +622,9 @@ namespace ViewModel
             if (currentAppUser != null)
             {
                 OnPropertyChanged("LoginSuccessful");
+
+                if (!currentAppUser.IsAdmin)
+                    OnPropertyChanged("NonAdmin");
             }
             else
             {
@@ -1126,7 +1132,7 @@ namespace ViewModel
         public AppUser CurrentAppUser
         {
             get
-            {
+            {               
                 return currentAppUser;
             }
             set

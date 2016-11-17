@@ -84,7 +84,7 @@
                         Watermark="This field is required"
                         WaterMarkForeground="Gray"
                         WatermarkBorderColor="LightGray">
-                        <controls:WatermarkTextBox.Style>
+                        <!--<controls:WatermarkTextBox.Style>
                             <Style
                                 TargetType="controls:WatermarkTextBox">
                                 <Setter 
@@ -99,7 +99,7 @@
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </controls:WatermarkTextBox.Style>
+                        </controls:WatermarkTextBox.Style>-->
                     </controls:WatermarkTextBox>
                 </StackPanel>
             </Grid>
@@ -154,6 +154,7 @@
                     <TextBox
                         Width="194"
                         Margin="0,0,10,0"
+                        Name="MiddleName"
                         Text="{Binding CurrentSelectedCustomer.MiddleName}">
                         <TextBox.Style>
                             <Style
@@ -186,6 +187,7 @@
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="Religion"
                         Width="150"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.Religion}">
@@ -220,6 +222,7 @@
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="Nationality"
                         Width="180"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.Nationality}">
@@ -254,6 +257,7 @@
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="ValidId"
                         Width="194"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.ValidId}">
@@ -289,6 +293,7 @@
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}" />
                     <DatePicker
+                        Name="Birthdate"
                         Width="150"
                         SelectedDateFormat="Short"
                         Focusable="False"
@@ -325,6 +330,7 @@
                         Width="85"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="Birthplace"
                         Width="180"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.BirthPlace}">
@@ -397,6 +403,7 @@
                         Width="50"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <ComboBox
+                        Name="Gender"
                         Width="70"
                         SelectedValue="{Binding CurrentSelectedCustomer.Gender}"
                         SelectedValuePath="Content">
@@ -720,6 +727,7 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="MobileNum"
                         Width="150"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.MobileNumber}">
@@ -754,6 +762,7 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="LandlineNum"
                         Width="180"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.LandLineNumber}">
@@ -788,6 +797,7 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="EmailAd"
                         Width="194"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.EmailAddress}">
@@ -854,6 +864,7 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="BuildingNum"
                         Width="150"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.NumBuilding}">
@@ -888,6 +899,7 @@
                         Width="75"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="Street"
                         Width="180"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.Street}">
@@ -922,6 +934,7 @@
                         Width="75"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="Village"
                         Width="270"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.VillageDistrict}">
@@ -956,6 +969,7 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="City"
                         Width="150"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.City}">
@@ -990,6 +1004,7 @@
                         Width="75"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="State"
                         Width="180"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.State}">
@@ -1024,6 +1039,7 @@
                         Width="75"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="Country"
                         Width="130"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.Country}">
@@ -1050,6 +1066,7 @@
                         Width="50"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="ZipCode"
                         Width="75"
                         Margin="0,0,10,0"
                         Text="{Binding CurrentSelectedCustomer.ZipCode}">

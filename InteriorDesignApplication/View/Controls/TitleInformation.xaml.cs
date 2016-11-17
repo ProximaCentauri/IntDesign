@@ -27,6 +27,8 @@ namespace View.Controls
     /// </summary>
     public partial class TitleInformation : UserControl
     {
+        IMainViewModel viewModel;
+
         public TitleInformation()
         {
             InitializeComponent();
@@ -39,6 +41,17 @@ namespace View.Controls
             if(viewModel.CurrentSelectedCustomer != null)
                 addressInfo.Text = viewModel.CurrentSelectedCustomer.Address;
         }
+
+        public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("CurrentPopupView"))
+            {
+
+            }
+
+            if (viewModel.CurrentAppUser != null)
+                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+        }     
 
         private void browseBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -54,8 +67,6 @@ namespace View.Controls
                 ScannedTitleText.Text = string.Empty;
             }
         }
-
-        IMainViewModel viewModel;
 
         private void ScannedTitleLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
@@ -75,7 +86,11 @@ namespace View.Controls
             {
                 viewModel.CurrentPopupView = new WarningErrorNotificationPopup(ex.Message);
             }
+        }
 
+        private void DisableControlForNonAdmin(bool isAdmin)
+        {
+            ReleaseDate.IsEnabled = ScannedTitle.IsEnabled = browseBtn.IsEnabled = isAdmin;
         }
     }
 }

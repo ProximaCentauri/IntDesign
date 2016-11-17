@@ -26,6 +26,8 @@ namespace View.Controls
     /// </summary>
     public partial class FitOutsInformation : UserControl
     {
+        IMainViewModel viewModel;
+
         public FitOutsInformation()
         {
             InitializeComponent();
@@ -49,9 +51,10 @@ namespace View.Controls
             {
 
             }
-        }
 
-        IMainViewModel viewModel;
+            if (viewModel.CurrentAppUser != null)
+                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+        }
 
         private void gridAppliances_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -94,6 +97,11 @@ namespace View.Controls
             Appliance applianceInfo = gridAppliances.SelectedItem as Appliance;
             entryInfo = applianceInfo.Description + " with model #: " + applianceInfo.ModelNumber;
             viewModel.CurrentPopupView = new DeleteConfirmationPopup(entryInfo);
+        }
+
+        private void DisableControlForNonAdmin(bool isAdmin)
+        {
+            FitOutCost.IsEnabled = FitOutBy.IsEnabled = Area.IsEnabled = StartDate.IsEnabled = EndDate.IsEnabled = isAdmin;
         }
     }
 }

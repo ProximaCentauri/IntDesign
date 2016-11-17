@@ -60,6 +60,20 @@ namespace View.Controls
                 notification = "A problem is encountered when trying to open customer's profile image. \n\nCheck that: \n 1. File exists in the specified location \n 2. File is not corrupted";
                 viewModel.CurrentPopupView = new WarningErrorNotificationPopup(notification);
             }
+
+            if(e.PropertyName.Equals("NonAdmin"))
+            {
+                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+            }
+                
+        }
+
+        private void DisableControlForNonAdmin(bool isAdmin)
+        {
+            LastName.IsEnabled = FirstName.IsEnabled = MiddleName.IsEnabled = Religion.IsEnabled = Nationality.IsEnabled = ValidId.IsEnabled = CustomerImageBtn.IsEnabled =
+                Birthdate.IsEnabled = Birthplace.IsEnabled = StatusIndex.IsEnabled = Gender.IsEnabled = addDependent.IsEnabled = gridDependents.IsEnabled = MobileNum.IsEnabled =
+                LandlineNum.IsEnabled = EmailAd.IsEnabled = BuildingNum.IsEnabled = Street.IsEnabled = Village.IsEnabled = City.IsEnabled = State.IsEnabled = Country.IsEnabled =
+                ZipCode.IsEnabled= isAdmin;
         }
 
         private void CustomerImageBtn_Click(object sender, RoutedEventArgs e)

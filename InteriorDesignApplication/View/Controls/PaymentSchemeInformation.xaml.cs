@@ -26,6 +26,8 @@ namespace View.Controls
     /// </summary>
     public partial class PaymentSchemeInformation : UserControl
     {
+        IMainViewModel viewModel;
+
         public PaymentSchemeInformation()
         {
             InitializeComponent();
@@ -43,9 +45,10 @@ namespace View.Controls
             {
 
             }
-        }
 
-        IMainViewModel viewModel;
+            if (viewModel.CurrentAppUser != null)
+                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+        }       
 
         private void addPayment_Click(object sender, RoutedEventArgs e)
         {
@@ -97,8 +100,12 @@ namespace View.Controls
             this.viewModel.CommandParameter = "DeletePayment";
             Payment paymentInfo = gridPayments.SelectedItem as Payment;
             entryInfo = "check number " + paymentInfo.ChequeNumber + " with the amount of " + string.Format("{0:0,0.00}", paymentInfo.Amount);
-            viewModel.CurrentPopupView = new DeleteConfirmationPopup(entryInfo);
-            
+            viewModel.CurrentPopupView = new DeleteConfirmationPopup(entryInfo);            
+        }
+
+        private void DisableControlForNonAdmin(bool isAdmin)
+        {
+            UnitCost.IsEnabled = isAdmin;
         }
     }
 }

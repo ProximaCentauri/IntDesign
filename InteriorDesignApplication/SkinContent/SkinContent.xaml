@@ -12,6 +12,9 @@
 
     <sys:Double
         x:Key="disabledButtonOpacity">0.50</sys:Double>
+    <sys:Double
+        x:Key="disabledButtonOpacityForSecondaryAction">0.30</sys:Double>
+    
 
     <!--fonts-->
     <FontFamily
@@ -465,6 +468,15 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger
+                Property="IsEnabled"
+                Value="False">
+                <Setter
+                    Property="Opacity"
+                    Value="{StaticResource disabledButtonOpacityForSecondaryAction}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style
         x:Key="iconButtonStyle"

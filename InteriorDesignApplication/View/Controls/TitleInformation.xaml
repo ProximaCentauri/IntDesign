@@ -69,6 +69,7 @@
                     Width="100"
                     Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                 <DatePicker
+                    Name="ReleaseDate"
                     Width="150"
                     Margin="0,0,10,0"
                     Focusable="False"
@@ -105,6 +106,7 @@
                     Width="75"
                     Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                 <TextBlock
+                    Name="ScannedTitle"
                     Width="260"
                     Background="#f4f4f4"
                     Margin="0,0,10,0"> 

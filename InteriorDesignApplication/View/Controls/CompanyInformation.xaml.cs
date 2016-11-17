@@ -26,6 +26,25 @@ namespace View.Controls
         public CompanyInformation()
         {
             InitializeComponent();
-        }        
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel = this.DataContext as IMainViewModel;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;
+        }
+
+        public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (viewModel.CurrentAppUser != null)
+                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+        }
+
+        private void DisableControlForNonAdmin(bool isAdmin)
+        {
+            CompanyName.IsEnabled = Address.IsEnabled = ContactNumber.IsEnabled = Website.IsEnabled = EmailAddress.IsEnabled = FacebookPage.IsEnabled = Notes.IsEnabled = isAdmin;
+        }
+
+        IMainViewModel viewModel;
     }
 }

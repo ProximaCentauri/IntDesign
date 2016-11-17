@@ -64,26 +64,10 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="FitOutCost"
                         Width="170"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.FitOut.Cost, StringFormat='{}{0:0,0.00}'}">
-                        <TextBox.Style>
-                            <Style
-                                TargetType="TextBox">
-                                <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                                <Style.Triggers>
-                                    <DataTrigger 
-                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
-                                        Value="False">
-                                        <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBox.Style>
+                        Text="{Binding CurrentSelectedCustomer.FitOut.Cost, StringFormat='{}{0:0,0.00}'}">                        
                     </TextBox>
                 </StackPanel>
             </Grid>
@@ -98,26 +82,10 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="FitOutBy"
                         Width="170"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.FitOut.Contractor}">
-                        <TextBox.Style>
-                            <Style
-                                TargetType="TextBox">
-                                <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                                <Style.Triggers>
-                                    <DataTrigger 
-                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
-                                        Value="False">
-                                        <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBox.Style>
+                        Text="{Binding CurrentSelectedCustomer.FitOut.Contractor}">                        
                     </TextBox>
                 </StackPanel>
             </Grid>
@@ -132,26 +100,10 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <TextBox
+                        Name="Area"
                         Width="194"
                         Margin="0,0,10,0"
-                        Text="{Binding CurrentSelectedCustomer.FitOut.Area}">
-                        <TextBox.Style>
-                            <Style
-                                TargetType="TextBox">
-                                <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                                <Style.Triggers>
-                                    <DataTrigger 
-                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
-                                        Value="False">
-                                        <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBox.Style>
+                        Text="{Binding CurrentSelectedCustomer.FitOut.Area}">                        
                     </TextBox>
                 </StackPanel>
             </Grid>
@@ -166,6 +118,7 @@
                         Width="100"
                         Style="{StaticResource mainLabelTextStyle}"></TextBlock>
                     <DatePicker
+                        Name="StartDate"
                         Width="170"
                         Focusable="False"
                         SelectedDateFormat="Long"

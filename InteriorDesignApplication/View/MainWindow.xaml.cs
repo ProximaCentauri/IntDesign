@@ -72,6 +72,9 @@ namespace View
             {
                 viewModel.CurrentPopupView = new SaveNotificationPopup("Password changed successfully.");
             }
+
+            if (viewModel.CurrentAppUser != null)
+                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -200,6 +203,11 @@ namespace View
                 logOutBtn.Command.Execute("LogoutUserCommand");
             }
             viewModel.PropertyChanged -= viewModel_PropertyChanged;            
-        }       
+        }
+
+        private void DisableControlForNonAdmin(bool isAdmin)
+        {
+            AddCustomerButton.IsEnabled = DeleteButton.IsEnabled = isAdmin;
+        }
     }
 }
