@@ -415,6 +415,10 @@ namespace ViewModel
         {
             get
             {
+                if (utilityCutOffDate == null)
+                {
+                    utilityCutOffDate = DateTime.Now;
+                }
                 return utilityCutOffDate;
             }
             set
@@ -1038,6 +1042,10 @@ namespace ViewModel
         {
             get
             {
+                if (warrantyEndDate == null)
+                {
+                    warrantyEndDate = DateTime.Now;
+                }
                 return warrantyEndDate;
             }
             set
@@ -1061,6 +1069,10 @@ namespace ViewModel
         {
             get
             {
+                if (fitOutDateCompletion == null)
+                {
+                    fitOutDateCompletion = DateTime.Now;
+                }
                 return fitOutDateCompletion;
             }
             set
