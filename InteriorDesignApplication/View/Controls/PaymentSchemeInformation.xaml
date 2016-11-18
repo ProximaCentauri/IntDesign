@@ -67,24 +67,7 @@
                         Name="UnitCost"
                         Width="170"
                         Margin="0,0,10,0"
-                        Text="{Binding UnitTotalCost, StringFormat='{}{0:0,0.00}', UpdateSourceTrigger=PropertyChanged}">
-                        <TextBox.Style>
-                            <Style
-                                TargetType="TextBox">
-                                <Setter 
-                                    Property="IsEnabled" 
-                                    Value="True" />
-                                <Style.Triggers>
-                                    <DataTrigger 
-                                        Binding="{Binding CurrentAppUser.IsAdmin}" 
-                                        Value="False">
-                                        <Setter 
-                                            Property="IsEnabled" 
-                                            Value="False" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBox.Style>
+                        Text="{Binding UnitTotalCost, StringFormat='{}{0:0,0.00}', UpdateSourceTrigger=PropertyChanged}">                        
                     </TextBox>
                 </StackPanel>
             </Grid>

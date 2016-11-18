@@ -36,8 +36,13 @@ namespace View.Controls
 
         public void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (viewModel.CurrentAppUser != null)
-                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+            if (e.PropertyName.Equals("NonAdmin") || viewModel.CurrentPopupView == null)
+            {
+                if (viewModel.CurrentAppUser != null)
+                {
+                    DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+                }
+            } 
         }
 
         private void DisableControlForNonAdmin(bool isAdmin)

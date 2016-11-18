@@ -36,7 +36,8 @@ namespace View.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
+            viewModel = this.DataContext as IMainViewModel;
+            viewModel.PropertyChanged += viewModel_PropertyChanged;    
             
             if(viewModel.CurrentSelectedCustomer != null)
                 addressInfo.Text = viewModel.CurrentSelectedCustomer.Address;
@@ -49,8 +50,15 @@ namespace View.Controls
 
             }
 
-            if (viewModel.CurrentAppUser != null)
-                DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+            if (e.PropertyName.Equals("NonAdmin") || viewModel.CurrentPopupView == null)
+            {
+                addressInfo.IsEnabled = false;
+
+                if (viewModel.CurrentAppUser != null)
+                {
+                    DisableControlForNonAdmin(viewModel.CurrentAppUser.IsAdmin);
+                } 
+            } 
         }     
 
         private void browseBtn_Click(object sender, RoutedEventArgs e)
