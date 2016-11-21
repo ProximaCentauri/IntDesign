@@ -214,6 +214,7 @@ namespace View
         {
             AddCustomerButton.IsEnabled = DeleteButton.IsEnabled = isAdmin;
             DeleteButton.Opacity = 0.50;
+            BankInfoTab.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
