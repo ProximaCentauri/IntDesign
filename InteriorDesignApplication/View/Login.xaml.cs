@@ -31,8 +31,10 @@ namespace View
             this.viewModel = viewModel;
             this.DataContext = viewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
-            viewModel.InitializeAndLoadEntities();     
+            viewModel.InitializeAndLoadEntities();
+            
         }
+
 
         private void forgotPassBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -95,6 +97,6 @@ namespace View
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();
-        }
+        }        
     }
 }

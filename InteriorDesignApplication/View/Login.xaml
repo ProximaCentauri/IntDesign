@@ -34,7 +34,7 @@
                     Margin="0,10,0,0"
                     Name="loginWarning"
                     Style="{StaticResource loginWarningTextStyle}"
-                    Text="Invalid login. Please check your email or password."
+                    Text="The user name or password is incorrect. Please try again."
                     Visibility="Collapsed"/>
                 <TextBlock
                     Text="User account"
@@ -61,7 +61,7 @@
                     WaterMarkForeground="Gray" 
                     PasswordMode="True"
                     MaxLength="30"
-                    PasswordChar="*"
+                    PasswordChar="*"                    
                     />
                 <controls:ImageButton
                     Name="LoginBtn"

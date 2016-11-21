@@ -13,6 +13,29 @@ namespace IntDesignControls
         {
             this.Loaded += TextBox_Loaded;
             this.IsEnabledChanged += TextBox_IsEnabledChanged;
+            DataObject.AddPastingHandler(this, OnPaste);
+        }
+
+        private bool IsOnPaste = false;
+        private string passText = string.Empty;
+
+        private void OnPaste(object sender, DataObjectPastingEventArgs e)
+        {
+            var isText = e.SourceDataObject.GetDataPresent(DataFormats.UnicodeText, true);
+            if (!isText) return;
+
+            var text = e.SourceDataObject.GetData(DataFormats.UnicodeText) as string;
+            if (PasswordMode && PasswordText.Length < MaxLength)
+            {   
+                foreach (char c in text)
+                {
+                    PasswordText += c;
+                    this.Text += PasswordChar;
+                    this.Select(this.Text.Length, this.Text.Length); // sets cursor in the left.
+                }
+                passText = text;
+                IsOnPaste = true;
+            }            
         }
 
         public override void OnApplyTemplate()
@@ -228,6 +251,11 @@ namespace IntDesignControls
                         break;
                     }
                 }
+            }
+            if (IsOnPaste)
+            {
+                this.Text = this.Text.Replace(this.passText, string.Empty);
+                SelectionStart = this.Text.Length;
             }
             base.OnTextChanged(e);
             ShowWatermark();           
