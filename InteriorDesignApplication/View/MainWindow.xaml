@@ -248,7 +248,8 @@
                         <viewsControls:CompanyInformation
                             x:Name="CompanyInfo" />
                     </TabItem>
-                    <TabItem>
+                    <TabItem
+                        Name="BankInfoTab">
                         <TabItem.Header>
                             <StackPanel
                                 Orientation="Horizontal">
