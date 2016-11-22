@@ -195,6 +195,9 @@ namespace Model.Helpers
 
         public static string Encrypt(string plainText)
         {
+            if (string.IsNullOrEmpty(plainText))
+                return string.Empty;
+            
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
 
             byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);

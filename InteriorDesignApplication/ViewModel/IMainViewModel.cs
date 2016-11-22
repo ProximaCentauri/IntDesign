@@ -9,7 +9,7 @@ namespace ViewModel
 {
     public interface IMainViewModel : INotifyPropertyChanged, IDisposable
     {
-        ICommand ActionCommand { get; set; }
+        //ICommand ActionCommand { get; set; }
     
         int SelectedIndex { get; set; }        
        
@@ -22,6 +22,7 @@ namespace ViewModel
         Customer CurrentSelectedCustomer { get; set; }
         AppUser CurrentAppUser { get; set; }
         bool ReadyToSave { get; set; }
+        string Password { get; set; }
 
     }
 }

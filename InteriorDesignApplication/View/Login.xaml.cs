@@ -96,13 +96,12 @@ namespace View
                 userName.NoOfErrorsOnScreen == 0)
             {
                 viewModel.CommandParameter = password.PasswordText;
-                this.userName.Text = string.Empty;
-                this.password.Text = string.Empty;
-                this.password.PasswordText = string.Empty;
+                this.userName.Text = this.password.Text = this.password.PasswordText = string.Empty;
                 loginWarning.Visibility = Visibility.Collapsed;                
             }
             else
-            {                
+            {
+                this.userName.Text = this.password.Text = this.password.PasswordText = string.Empty;
                 loginWarning.Visibility = Visibility.Visible;                
             }
         }
