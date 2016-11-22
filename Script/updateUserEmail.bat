@@ -5,7 +5,9 @@ set guest1Email=\"guest1@email.com\"
 set guest2Email=\"guest2@email.com\"
 
 set sqlstmt=update appusers set EmailAddress=%adminEmail% where UserName=\"Admin\"
+mysql -u root -pjasper -Ddbintdesign -ANe"%sqlstmt%"
 set sqlstmt=update appusers set EmailAddress=%guest1Email% where UserName=\"Guest1\"
+mysql -u root -pjasper -Ddbintdesign -ANe"%sqlstmt%"
 set sqlstmt=update appusers set EmailAddress=%guest2Email% where UserName="\"Guest2\"
 mysql -u root -pjasper -Ddbintdesign -ANe"%sqlstmt%"
 
