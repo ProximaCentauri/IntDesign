@@ -61,6 +61,7 @@
                     WaterMarkForeground="Gray" 
                     PasswordMode="True"
                     MaxLength="30"
+                    KeyDown="password_KeyDown"
                     PasswordChar="*"                    
                     />
                 <controls:ImageButton

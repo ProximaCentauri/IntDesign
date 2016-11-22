@@ -31,8 +31,20 @@ namespace View
             this.viewModel = viewModel;
             this.DataContext = viewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
-            viewModel.InitializeAndLoadEntities();
-            
+            viewModel.InitializeAndLoadEntities();         
+        }
+
+        private void password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals(Key.Enter))
+            {
+                if (LoginBtn.Command != null)
+                {
+                    LoginBtn_Click(this, null);
+                    LoginBtn.Command.Execute(null);                    
+                }
+                e.Handled = true;
+            }
         }
 
 
@@ -79,6 +91,8 @@ namespace View
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            userName.Focusable = true;
+            Keyboard.Focus(userName);
             if(password.NoOfErrorsOnScreen == 0 &&
                 userName.NoOfErrorsOnScreen == 0)
             {
@@ -89,14 +103,14 @@ namespace View
                 loginWarning.Visibility = Visibility.Collapsed;                
             }
             else
-            {
-                loginWarning.Visibility = Visibility.Visible;
+            {                
+                loginWarning.Visibility = Visibility.Visible;                
             }
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();
-        }        
+        }
     }
 }

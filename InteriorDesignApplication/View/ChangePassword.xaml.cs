@@ -87,7 +87,20 @@ namespace View
         {
             warning.Text = msg;
             warning.Visibility = Visibility.Visible;
-            OldPassword.Text = NewPassword.Text = ConfirmPassword.Text = string.Empty;            
+            OldPassword.PasswordText = NewPassword.PasswordText = ConfirmPassword.PasswordText = OldPassword.Text = NewPassword.Text = ConfirmPassword.Text = string.Empty;            
+        }
+
+        private void OldPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals(Key.Enter))
+            {
+                changePassBtn_Click(this, null);
+                if (changePassBtn.Command != null)
+                {                    
+                    changePassBtn.Command.Execute(null);
+                }
+                e.Handled = true;
+            }
         }
     }
 }
