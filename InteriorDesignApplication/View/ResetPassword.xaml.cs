@@ -67,6 +67,7 @@ namespace View
             {
                 if (!NewPassword.PasswordText.Equals(ConfirmPassword.PasswordText))
                 {
+                    NewPassword.Text = NewPassword.PasswordText = ConfirmPassword.Text = ConfirmPassword.PasswordText = string.Empty;
                     notification.Visibility = Visibility.Visible;
                     notification.Text = "New password doesn't match the confirmation. Please re-enter password.";                    
                 }
@@ -80,7 +81,7 @@ namespace View
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CommandParameter = "";
+            viewModel.CommandParameter = string.Empty;
             viewModel.CurrentPopupView = null;
         }
 
@@ -99,6 +100,19 @@ namespace View
                 resetPassBtn.Text = "Submit";
             }
             
+        }
+
+        private void NewPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals(Key.Enter))
+            {
+                resetPassBtn_Click(this, null);
+                if (resetPassBtn.Command != null)
+                {
+                    resetPassBtn.Command.Execute(null);
+                }
+                e.Handled = true;
+            }
         }
     }
 }

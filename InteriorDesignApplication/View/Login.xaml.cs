@@ -31,7 +31,7 @@ namespace View
             this.viewModel = viewModel;
             this.DataContext = viewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
-            viewModel.InitializeAndLoadEntities();         
+            viewModel.InitializeAndLoadEntities();            
         }
 
         private void password_KeyDown(object sender, KeyEventArgs e)
@@ -46,7 +46,6 @@ namespace View
                 e.Handled = true;
             }
         }
-
 
         private void forgotPassBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -111,6 +110,12 @@ namespace View
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            userName.Focusable = true;
+            Keyboard.Focus(userName);
         }
     }
 }
