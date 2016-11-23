@@ -1164,7 +1164,7 @@ namespace ViewModel
         #endregion
 
         #region Action Commands
-        //public ICommand ActionCommand { get; set; }
+        public ICommand ActionCommand { get; set; }
 
         ICommand _addCustomerCommand;
         public ICommand AddCustomerCommand
@@ -1688,26 +1688,6 @@ namespace ViewModel
                 return _editUpdatePaymentCommand;
             }
         }
-
-        ICommand actionCommand;
-        public ICommand ActionCommand
-        {
-            get
-            {
-                return actionCommand ??
-                    (actionCommand = new RelayCommand2(OnActionCommandChange));
-            }
-        }
-
-        public string Password { get; set; }
-
-        private void OnActionCommandChange(object command)
-        {
-            Type type = this.GetType();
-            object instance = Activator.CreateInstance(type);
-            MethodInfo method = type.GetMethod(command.ToString(), BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            method.Invoke(instance, null);            
-        }
        
         #endregion
 
@@ -1761,52 +1741,7 @@ namespace ViewModel
     }
     #endregion
 
-    public class RelayCommand2 : ICommand
-    {
-        #region Fields
-        readonly Action<object> _execute;
-        readonly Predicate<object> _canExecute;
-        #endregion
-
-        // Constructors 
-        #region Constructors
-        public RelayCommand2(Action<object> execute)
-            : this(execute, null)
-        {
-
-        }
-        public RelayCommand2(Action<object> execute, Predicate<object> canExecute)
-        {
-            if (execute == null) throw new ArgumentNullException("execute");
-            _execute = execute;
-            _canExecute = canExecute;
-        }
-        #endregion
-
-        //Members
-        #region ICommand Members [DebuggerStepThrough]
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute == null ? true : _canExecute(parameter);
-        }
-        public event EventHandler CanExecuteChanged
-        {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
-        public void Execute(object parameter)
-        {
-            _execute(parameter);
-        }
-        #endregion // ICommand Members
-    }
-
+    
     #region DBContext Queries
     public static class Extensions
     {
