@@ -31,7 +31,8 @@ namespace View
             this.viewModel = viewModel;
             this.DataContext = viewModel;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
-            viewModel.InitializeAndLoadEntities();            
+            viewModel.InitializeAndLoadEntities();
+            UserNameFocus();
         }
 
         private void password_KeyDown(object sender, KeyEventArgs e)
@@ -86,12 +87,12 @@ namespace View
             {
                 loginWarning.Visibility = Visibility.Collapsed;
             }
+            UserNameFocus();
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            userName.Focusable = true;
-            Keyboard.Focus(userName);
+            UserNameFocus();
             if(password.NoOfErrorsOnScreen == 0 &&
                 userName.NoOfErrorsOnScreen == 0)
             {
@@ -112,6 +113,11 @@ namespace View
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UserNameFocus();
+        }
+
+        private void UserNameFocus()
         {
             userName.Focusable = true;
             Keyboard.Focus(userName);

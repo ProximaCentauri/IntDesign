@@ -22,7 +22,6 @@ namespace ViewModel
         Customer CurrentSelectedCustomer { get; set; }
         AppUser CurrentAppUser { get; set; }
         bool ReadyToSave { get; set; }
-        string Password { get; set; }
-
+        
     }
 }
