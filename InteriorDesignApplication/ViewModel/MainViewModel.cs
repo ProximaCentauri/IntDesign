@@ -593,6 +593,7 @@ namespace ViewModel
             if (readyToSave)
             {
                 CurrentSelectedCustomer.Dependents.Add(Dependent);
+                context.Entry(Dependent).State = EntityState.Added;                
                 Dependent = null;
                 OnPropertyChanged("Dependents");
             }
@@ -821,7 +822,7 @@ namespace ViewModel
         private void DeleteBank()
         {
             CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
-            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;          
+            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;                               
             CurrentSelectedBank = null;            
             OnPropertyChanged("Banks");
         }
@@ -903,7 +904,10 @@ namespace ViewModel
                 CurrentSelectedUtility.UtilityCompany = CurrentSelectedUtilityCompany;
                 CurrentSelectedUtility.Receipt = UtilityReceipt;
                 CurrentSelectedUtility.CutoffDate = UtilityCutoffDate;
-                context.Entry(CurrentSelectedUtility).State = EntityState.Modified;                
+                if (CurrentSelectedUtility.Id > 0)
+                {
+                    context.Entry(CurrentSelectedUtility).State = EntityState.Modified;
+                }
                 Utilities = new ObservableCollection<Utility>(CurrentSelectedCustomer.Utilities);
             }
         }
@@ -1005,7 +1009,10 @@ namespace ViewModel
         {
             if (CurrentSelectedPayment != null)
             {
-                context.Entry(CurrentSelectedPayment).State = EntityState.Modified;                
+                if (CurrentSelectedPayment.Id > 0)
+                {
+                    context.Entry(CurrentSelectedPayment).State = EntityState.Modified;
+                }
                 OnPropertyChanged("Payments");
                 OnPropertyChanged("UnitTotalPayment");
                 OnPropertyChanged("UnitRemainingBalance");
@@ -1126,7 +1133,10 @@ namespace ViewModel
             if(CurrentSelectedAppliance != null)
             {
                 CurrentSelectedAppliance.WarrantyEndDate = WarrantyEndDate;
-                context.Entry(CurrentSelectedAppliance).State = EntityState.Modified;
+                if (CurrentSelectedAppliance.Id > 0)
+                {
+                    context.Entry(CurrentSelectedAppliance).State = EntityState.Modified;
+                }
                 OnPropertyChanged("Appliances");
             }
         }       
