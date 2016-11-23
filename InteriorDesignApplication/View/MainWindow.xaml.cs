@@ -205,7 +205,7 @@ namespace View
         {
             if (logOutBtn.Command != null)
             {
-                logOutBtn.Command.Execute("LogoutUserCommand");
+                logOutBtn.Command.Execute("LogoutUser");
             }
             viewModel.PropertyChanged -= viewModel_PropertyChanged;            
         }

@@ -812,7 +812,7 @@ namespace ViewModel
             }
         }
 
-        private void DeleteBank()
+        private void DeleteBankInfo()
         {
             CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
             context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
@@ -913,7 +913,7 @@ namespace ViewModel
             }            
         }
 
-        private void DeleteUtility()
+        private void DeleteUtilityBill()
         {
             CurrentSelectedCustomer.Utilities.Remove(CurrentSelectedUtility);
             context.Entry(CurrentSelectedUtility).State = EntityState.Deleted;         
@@ -1407,7 +1407,7 @@ namespace ViewModel
             {
                 if (_deleteUtilityCommand == null)
                 {
-                    _deleteUtilityCommand = new RelayCommand(DeleteUtility);
+                    _deleteUtilityCommand = new RelayCommand(DeleteUtilityBill);
                 }
                 return _deleteUtilityCommand;
             }
@@ -1499,7 +1499,7 @@ namespace ViewModel
             {
                 if (_deleteBankCommand == null)
                 {
-                    _deleteBankCommand = new RelayCommand(DeleteBank);
+                    _deleteBankCommand = new RelayCommand(DeleteBankInfo);
                 }
                 return _deleteBankCommand;
             }
@@ -1785,7 +1785,7 @@ namespace ViewModel
         }
         #endregion
 
-        //Members
+        //Membesr
         #region ICommand Members [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {

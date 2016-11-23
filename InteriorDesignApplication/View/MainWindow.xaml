@@ -73,7 +73,8 @@
                             Height="20"
                             Margin="0,2,10,2"
                             Text="Logout"
-                            Command="{Binding LogoutUserCommand}"
+                            Command="{Binding ActionCommand}"
+                            CommandParameter="LogoutUser"
                             Style="{StaticResource logoutButtonStyle}" />
                     </StackPanel>
                 </StackPanel>
@@ -102,7 +103,8 @@
                         Text="Search"
                         Width="120"
                         Margin="10,0,0,0"
-                        Command="{Binding SearchCustomerCommand}"
+                        Command="{Binding ActionCommand}"
+                        CommandParameter="SearchCustomer"
                         Click="SearchButton_Click"
                         Style="{StaticResource searchButtonStyle}" />
                     <controls:ImageButton

@@ -69,31 +69,32 @@ namespace View
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (viewModel.CommandParameter.Equals("DeleteCustomer"))
-            {
-                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteCustomerCommand"));
-            }
-            else if (viewModel.CommandParameter.Equals("DeleteDependent"))
-            {
-                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteDependentCommand"));
-            }
-            else if (viewModel.CommandParameter.Equals("DeleteBankInfo"))
-            {
-                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteBankCommand"));
-            }
-            else if (viewModel.CommandParameter.Equals("DeleteUtilityBill"))
-            {
-                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteUtilityCommand"));
-            }
-            else if(viewModel.CommandParameter.Equals("DeletePayment"))
-            {
-                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeletePaymentCommand"));
-            }
-            else if (viewModel.CommandParameter.Equals("DeleteAppliance"))
-            {
-                deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteApplianceCommand"));
-            }
+            //if (viewModel.CommandParameter.Equals("DeleteCustomer"))
+            //{                
+            //    deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteCustomerCommand"));
+            //}
+            //else if (viewModel.CommandParameter.Equals("DeleteDependent"))
+            //{
+            //    deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteDependentCommand"));
+            //}
+            //else if (viewModel.CommandParameter.Equals("DeleteBankInfo"))
+            //{
+            //    deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteBankCommand"));
+            //}
+            //else if (viewModel.CommandParameter.Equals("DeleteUtilityBill"))
+            //{
+            //    deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteUtilityCommand"));
+            //}
+            //else if(viewModel.CommandParameter.Equals("DeletePayment"))
+            //{
+            //    deleteButton.SetBinding(Button.CommandProperty, new Binding("DeletePaymentCommand"));
+            //}
+            //else if (viewModel.CommandParameter.Equals("DeleteAppliance"))
+            //{
+            //    deleteButton.SetBinding(Button.CommandProperty, new Binding("DeleteApplianceCommand"));
+            //}
 
+            deleteButton.CommandParameter = viewModel.CommandParameter;
             viewModel.CurrentPopupView = null;
         }
     }

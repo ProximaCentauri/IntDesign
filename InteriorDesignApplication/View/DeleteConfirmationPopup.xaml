@@ -43,6 +43,7 @@
                 Name="deleteButton"
                 Text="Delete"
                 Click="deleteButton_Click"
+                Command="{Binding ActionCommand}"
                 Style="{StaticResource mainButtonStyle}" />
         </StackPanel>
     </Grid>
