@@ -558,13 +558,13 @@ namespace ViewModel
                 {
                     OnPropertyChanged("EmptyFields");
                 }
-            }
+            }           
             catch (DbUpdateConcurrencyException ex)
             {                       
                 ex.Entries.Single().Reload();
                 context.SaveChanges();
                 OnPropertyChanged("SavedCustomer");
-            }
+            }           
             if (!currentAppUser.IsAdmin)
                 OnPropertyChanged("NonAdmin");
         }
@@ -806,7 +806,11 @@ namespace ViewModel
             if (CurrentSelectedBank != null)
             {
                 CurrentSelectedBank.BankType = CurrentSelectedBankType;
-                context.Entry(CurrentSelectedBank).State = EntityState.Modified;
+                if (CurrentSelectedBank.Id > 0)
+                {
+                    context.Entry(CurrentSelectedBank).State = EntityState.Modified;
+                }
+                                
                 CurrentSelectedBank = null;
                 currentSelectedBankType = null;
                 OnPropertyChanged("Banks");
@@ -817,7 +821,7 @@ namespace ViewModel
         private void DeleteBank()
         {
             CurrentSelectedCustomer.Banks.Remove(CurrentSelectedBank);
-            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;
+            context.Entry(CurrentSelectedBank).State = EntityState.Deleted;          
             CurrentSelectedBank = null;            
             OnPropertyChanged("Banks");
         }
