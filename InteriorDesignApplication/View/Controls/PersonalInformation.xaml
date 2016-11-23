@@ -1,0 +1,706 @@
+﻿<UserControl
+    x:Class="View.Controls.PersonalInformation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:local="clr-namespace:View"
+    xmlns:control="clr-namespace:View.Controls"
+    Height="Auto"
+    Width="1024"
+    Name="PersonalInfoControl"
+    Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid
+                Margin="0,0,0,10"
+                Grid.ColumnSpan="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="63*" />
+                    <ColumnDefinition
+                        Width="50*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Text="Identification"
+                    Style="{StaticResource mainHeaderStyle}"
+                    Grid.ColumnSpan="2" />
+                <Separator
+                    Style="{StaticResource mainSeparatorStyle}"
+                    Grid.ColumnSpan="2"
+                    Margin="5,0,10,0" />
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Last Name:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <controls:WatermarkTextBox
+                        x:Name="LastName"
+                        Width="150"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.LastName, UpdateSourceTrigger=Explicit}"
+                        Watermark="This field is required"
+                        WaterMarkForeground="Gray"
+                        WatermarkBorderColor="LightGray">                        
+                    </controls:WatermarkTextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="First Name:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <controls:WatermarkTextBox
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Name="FirstName"
+                        Text="{Binding CurrentSelectedCustomer.FirstName, 
+                        UpdateSourceTrigger=Explicit}"
+                        Watermark="This field is required"
+                        WatermarkBorderColor="LightGray"
+                        WaterMarkForeground="Gray">                        
+                    </controls:WatermarkTextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="2">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Middle Name:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Width="194"
+                        Margin="0,0,10,0"
+                        Name="MiddleName"
+                        Text="{Binding CurrentSelectedCustomer.MiddleName}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="0">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Religion:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="Religion"
+                        Width="150"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.Religion}">                       
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Nationality:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="Nationality"
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.Nationality}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="2">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Valid ID:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="ValidId"
+                        Width="194"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.ValidId}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.Column="0"
+                Height="30">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Birthdate:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}" />
+                    <DatePicker
+                        Name="Birthdate"
+                        Width="150"
+                        SelectedDateFormat="Short"
+                        Focusable="False"
+                        SelectedDate="{Binding CurrentSelectedCustomer.BirthDate}">                        
+                    </DatePicker>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.Column="1"
+                Height="30">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Birthplace:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="Birthplace"
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.BirthPlace}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.Column="2"
+                Height="30">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Status:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <ComboBox
+                        Width="70"
+                        SelectedValue="{Binding CurrentSelectedCustomer.Status}"
+                        SelectedValuePath="Content"
+                        Name="StatusIndex">
+                        <ComboBoxItem
+                            x:Name="Single"
+                            Content="Single"
+                            IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem
+                            x:Name="Married"
+                            Content="Married"></ComboBoxItem>
+                        <ComboBoxItem
+                            x:Name="Widow"
+                            Content="Widow"></ComboBoxItem>                        
+                    </ComboBox>
+                    <TextBlock
+                        Text="Gender:"
+                        Width="50"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <ComboBox
+                        Name="Gender"
+                        Width="70"
+                        SelectedValue="{Binding CurrentSelectedCustomer.Gender}"
+                        SelectedValuePath="Content">
+                        <ComboBoxItem
+                            IsSelected="True"
+                            Content="Male" />
+                        <ComboBoxItem
+                            Content="Female" />                        
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.Column="0">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Spouse Name:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Width="150"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.CustomerSpouse.LastName}"
+                        Name="SpouseName">
+                    </TextBox>
+                    <StackPanel.Style>
+                        <Style>
+                            <Setter
+                                Property="StackPanel.Visibility"
+                                Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ElementName=Married, Path=IsSelected}"
+                                    Value="True">
+                                    <Setter
+                                        Property="StackPanel.Visibility"
+                                        Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.Column="1">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Spouse Address:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Name="SpouseAddress"
+                        Text="{Binding CurrentSelectedCustomer.CustomerSpouse.City}"></TextBox>
+                    <StackPanel.Style>
+                        <Style>
+                            <Setter
+                                Property="StackPanel.Visibility"
+                                Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ElementName=Married, Path=IsSelected}"
+                                    Value="True">
+                                    <Setter
+                                        Property="StackPanel.Visibility"
+                                        Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.Column="2">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Birthdate:"
+                        Width="85"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <DatePicker
+                        Width="195"
+                        Focusable="False"
+                        SelectedDateFormat="Short"
+                        SelectedDate="{Binding CurrentSelectedCustomer.CustomerSpouse.BirthDate}"
+                        Name="SpouseBirthDate" />
+                    <StackPanel.Style>
+                        <Style>
+                            <Setter
+                                Property="StackPanel.Visibility"
+                                Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ElementName=Married, Path=IsSelected}"
+                                    Value="True">
+                                    <Setter
+                                        Property="StackPanel.Visibility"
+                                        Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Column="3"
+                Grid.Row="1"
+                Grid.RowSpan="4"
+                Width="Auto"
+                Margin="15,-5,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+                <Border
+                    BorderBrush="{StaticResource secondaryActionButtonBorderColorBrush}"
+                    BorderThickness="1">
+                    <Button
+                        Name="CustomerImageBtn"
+                        Height="115"
+                        Width="115"
+                        Click="CustomerImageBtn_Click">                        
+                        <Image
+                            Style="{StaticResource userImageIconStyle}" />                        
+                    </Button>
+                </Border>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="0">
+                <StackPanel
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Text="Dependents Information"
+                        Width="150"
+                        Style="{StaticResource mainSubHeaderStyle}"
+                        Margin="0,10,0,0" />
+                    <controls:ImageButton
+                        Name="addDependent"
+                        Width="30"
+                        Height="20"
+                        Margin="0,8,0,0"
+                        Click="addDependent_Click"
+                        Style="{StaticResource addEntryButtonStyle}">                        
+                    </controls:ImageButton>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="177.2" />
+                    <ColumnDefinition
+                        Width="782" />
+                    <ColumnDefinition
+                        Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <DataGrid
+                    Name="gridDependents"
+                    Height="90"
+                    HorizontalAlignment="Left"
+                    Width="935"
+                    Margin="24,0,0,-0.4"
+                    ItemsSource="{Binding Dependents}"
+                    SelectedItem="{Binding CurrentSelectedDependent}"
+                    SelectionChanged="gridDependents_SelectionChanged"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Last Name"
+                            Width="200"
+                            Binding="{Binding LastName}" />
+                        <DataGridTextColumn
+                            Header="First Name"
+                            Width="200"
+                            Binding="{Binding FirstName}" />
+                        <DataGridTextColumn
+                            Header="Address"
+                            Width="325"
+                            Binding="{Binding City}" />
+                        <DataGridTextColumn
+                            Header="Birthdate"
+                            Width="200"
+                            Binding="{Binding BirthDate, StringFormat=\{0:MM/dd/yyyy\}}" />
+                    </DataGrid.Columns>                    
+                </DataGrid>                
+                <controls:ImageButton
+                    Name="deleteEntry"
+                    Visibility="Collapsed"
+                    Width="30"
+                    Height="30"
+                    Grid.Column="1"
+                    Style="{StaticResource deleteEntryButtonStyle}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Click="deleteEntry_Click"
+                    Grid.ColumnSpan="3"
+                    Margin="781.8,30,0,29.6" />
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="341" />
+            </Grid.ColumnDefinitions>
+            <Grid
+                Margin="0,0,0,10"
+                Grid.ColumnSpan="5">
+                <TextBlock
+                    Text="Contact Information"
+                    Style="{StaticResource mainHeaderStyle}" />
+                <Separator
+                    Style="{StaticResource mainSeparatorStyle}" />
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Mobile Number:"
+                        Width="100"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="MobileNum"
+                        Width="150"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.MobileNumber}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Landline Number:"
+                        Width="100"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="LandlineNum"
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.LandLineNumber}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="2">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Email Address:"
+                        Width="100"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="EmailAd"
+                        Width="194"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.EmailAddress}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="Auto" />
+                <ColumnDefinition
+                    Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid
+                Margin="0,0,0,10"
+                Grid.ColumnSpan="5">
+                <TextBlock
+                    Text="Primary Address"
+                    Style="{StaticResource mainHeaderStyle}" />
+                <Separator
+                    Style="{StaticResource mainSeparatorStyle}" />
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Building/Unit #:"
+                        Width="100"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="BuildingNum"
+                        Width="150"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.NumBuilding}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Street:"
+                        Width="75"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="Street"
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.Street}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="2">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Village/District:"
+                        Width="75"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="Village"
+                        Width="270"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.VillageDistrict}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="0">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="City:"
+                        Width="100"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="City"
+                        Width="150"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.City}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="State:"
+                        Width="75"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="State"
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.State}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="2">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,5">
+                    <TextBlock
+                        Text="Country:"
+                        Width="75"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="Country"
+                        Width="130"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.Country}">                        
+                    </TextBox>
+                    <TextBlock
+                        Text="Zip Code:"
+                        Width="50"
+                        Style="{StaticResource mainLabelTextStyle}"></TextBlock>
+                    <TextBox
+                        Name="ZipCode"
+                        Width="75"
+                        Margin="0,0,10,0"
+                        Text="{Binding CurrentSelectedCustomer.ZipCode}">                        
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</UserControl>

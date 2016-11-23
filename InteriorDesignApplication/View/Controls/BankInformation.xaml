@@ -1,0 +1,97 @@
+﻿<UserControl
+    x:Class="View.Controls.BankInformation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:View"
+    Height="Auto"
+    Width="1024"
+    Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="0">
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock
+                    Text="Bank Information"
+                    Style="{StaticResource mainHeaderStyle}" />
+                <controls:ImageButton
+                    Name="addBankDetails"
+                    Width="30"
+                    Height="20"
+                    Click="addBankDetails_Click"
+                    Command="{Binding CreateBankCommand}"
+                    Style="{StaticResource addEntryButtonStyle}" />
+                <controls:ImageButton
+                    Name="editBankInfo"
+                    Visibility="Collapsed"
+                    Width="30"
+                    Height="20"
+                    Click="editBankInfo_Click"
+                    Command="{Binding EditBankCommand}"
+                    Style="{StaticResource editEntryButtonStyle}" />
+            </StackPanel>
+            <Separator
+                Margin="0,-5,0,0"
+                Style="{StaticResource mainSeparatorStyle}" />
+        </StackPanel>
+        <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid
+                    Name="gridBanks"
+                    Height="250"
+                    Width="950"
+                    HorizontalAlignment="Left"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Banks}"
+                    SelectedItem="{Binding CurrentSelectedBank}"
+                    SelectionChanged="gridBanks_SelectionChanged"
+                    Margin="10,0,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="Name of Bank"
+                        Width="150" 
+                        Binding="{Binding BankType.Name}"/>
+                    <DataGridTextColumn
+                        Header="Account Name"
+                        Width="200" 
+                        Binding="{Binding AccountName}"/>
+                    <DataGridTextColumn
+                        Header="Account Number"
+                        Width="200" 
+                        Binding="{Binding AccountNumber}"/>
+                    <DataGridTextColumn
+                        Header="Bank Address"
+                        Width="250" 
+                        Binding="{Binding Address}"/>
+                    <DataGridTextColumn
+                        Header="Swift Code"
+                        Width="150" 
+                        Binding="{Binding SwiftCode}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <controls:ImageButton
+                Name="deleteEntry"
+                Visibility="Collapsed"
+                Width="30"
+                Height="30"
+                Grid.Column="1"                
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Click="deleteEntry_Click"
+                Style="{StaticResource deleteEntryButtonStyle}" />
+        </Grid>
+    </Grid>
+</UserControl>

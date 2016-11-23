@@ -1,0 +1,1391 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Model.Controls;assembly=Model"
+    xmlns:control="clr-namespace:IntDesignControls;assembly=IntDesignControls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary
+            Source="Icons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <sys:Double
+        x:Key="disabledButtonOpacity">0.40</sys:Double>
+ 
+    <!--fonts-->
+    <FontFamily
+        x:Key="fontRegular">Calibri</FontFamily>
+
+    <!--color themes-->
+    <Color
+        x:Key="pathShadowGradientStartColor">Transparent</Color>
+    <Color
+        x:Key="popupShroudGradientStartColor">#B3000000</Color>
+    <Color
+        x:Key="popupShroudGradientStopColor">#00FFFFFF</Color>
+    <Color
+        x:Key="pathShadowGradientStopColor">#B3000000</Color>
+    <SolidColorBrush
+        x:Key="mainTextColorBrush"
+        Color="#737373" />
+    <SolidColorBrush
+        x:Key="mainHeaderTextColorBrush"
+        Color="White" />
+    <SolidColorBrush
+        x:Key="mainSubHeaderTextColorBrush"
+        Color="White" />
+    <SolidColorBrush
+        x:Key="mainButtonForegroundColorBrush"
+        Color="White" />
+    <SolidColorBrush
+        x:Key="mainButtonBackgroundColorBrush"
+        Color="#ad2d2d" />
+    <SolidColorBrush
+        x:Key="mainButtonIconColorBrush"
+        Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="tabItemBackgroundColorBrush"
+        Color="#7f0000" />
+    <SolidColorBrush
+        x:Key="tabItemSelectedBackgroundColorBrush"
+        Color="#DC002A" />
+    <SolidColorBrush
+        x:Key="borderColorBrush"
+        Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="popupBorderColorBrush"
+        Color="#b2b2b2" />
+    <SolidColorBrush
+        x:Key="secondaryActionButtonForegroundColorBrush"
+        Color="#717171" />
+    <SolidColorBrush
+        x:Key="secondaryActionButtonBackgroundColorBrush"
+        Color="#fafafa" />
+    <SolidColorBrush
+        x:Key="secondaryActionButtonBorderColorBrush"
+        Color="#b7b7b7" />
+    <SolidColorBrush
+        x:Key="photoImageBackgroundColorBrush"
+        Color="#ad2d2d" />
+    <SolidColorBrush
+        x:Key="confirmationTextForegroundColorBrush"
+        Color="#616161" />
+    <SolidColorBrush
+        x:Key="userImageBackgroundColorBrush"
+        Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="linkButtonForegroundColorBrush"
+        Color="#1583D0" />
+    <SolidColorBrush
+        x:Key="linkButtonBackgroundColorBrush"
+        Color="#FFFFFF" />
+    <SolidColorBrush
+        x:Key="loginWarningBackgroundColorBrush"
+        Color="#e8a5a5" />
+
+    <Color
+        x:Key="mainButtonClickBackgroundColorBrush">#deabab</Color>
+
+
+
+    <!-- main Styles-->
+    <Style
+        x:Key="mainFontRegular">
+        <Setter
+            Property="Control.FontFamily"
+            Value="{StaticResource fontRegular}" />
+        <Setter
+            Property="Control.Foreground"
+            Value="{StaticResource mainTextColorBrush}" />
+    </Style>
+    <Style
+        x:Key="TabItemStyle">
+        <Setter
+            Property="Control.FontSize"
+            Value="18" />
+        <Setter 
+            Property="Control.Foreground"
+            Value="White" />
+
+    </Style>
+
+    <Style
+        x:Key="tabItemFontStyle" 
+        TargetType="{x:Type TextBlock}">
+        <Setter
+            Property="Control.FontSize"
+            Value="17" />
+        <Setter
+            Property="Control.Foreground"
+            Value="White" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Margin"
+            Value="5,0,0,0" />
+    </Style>
+    <Style
+        x:Key="mainHeaderStyle"
+        TargetType="TextBlock">
+        <Setter
+            Property="FontFamily"
+            Value="{StaticResource fontRegular}" />
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="Margin"
+            Value="5,0,0,0" />
+        <Setter
+            Property="Foreground"
+            Value="#b20000" />
+    </Style>
+    <Style
+        x:Key="mainSubHeaderStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainHeaderStyle}">
+        <Setter
+            Property="FontSize"
+            Value="15" />
+    </Style>
+    <Style
+        x:Key="mainSeparatorStyle"
+        TargetType="Separator">
+        <Setter
+            Property="VerticalAlignment"
+            Value="Bottom" />
+        <Setter
+            Property="Background"
+            Value="#ffcccc" />
+        <Setter
+            Property="Margin"
+            Value="5,5,10,0" />
+    </Style>
+    <Style
+        x:Key="mainLabelTextStyle"
+        TargetType="TextBlock">
+        <Setter
+            Property="FontFamily"
+            Value="{StaticResource fontRegular}" />
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="Foreground"
+            Value="#737373" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Margin"
+            Value="0,0,5,0" />
+        <Setter
+            Property="TextAlignment"
+            Value="Right" />
+    </Style>
+    <Style
+        x:Key="mainPopupBorderStyle"
+        TargetType="Border">
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource popupBorderColorBrush}" />
+        <Setter
+            Property="BorderThickness"
+            Value="5" />
+    </Style>
+
+    <!-- styles-->
+    <Style
+        x:Key="popupLabelTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainLabelTextStyle}">
+        <Setter
+            Property="FontSize"
+            Value="15" />
+        <Setter
+            Property="Margin"
+            Value="0,8,8,0" />
+    </Style>
+    <Style
+        x:Key="popupHeaderTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainHeaderStyle}">
+        <Setter
+            Property="FontSize"
+            Value="21" />
+    </Style>
+    <Style
+        x:Key="popupTextBoxStyle"
+        TargetType="TextBox">
+        <Setter
+            Property="Width"
+            Value="275" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="Margin"
+            Value="0,8,0,0" />
+    </Style>
+    <Style
+        x:Key="popupConfirmationTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainHeaderStyle}">
+        <Setter
+            Property="FontSize"
+            Value="24" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="TextAlignment"
+            Value="Center" />
+        <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource confirmationTextForegroundColorBrush}" />
+        <Setter
+            Property="Margin"
+            Value="15,10" />
+    </Style>
+    <Style
+        x:Key="warningPopupTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource popupConfirmationTextStyle}">
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Top" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="TextAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="popupAddressTextBoxStyle"
+        TargetType="TextBox"
+        BasedOn="{StaticResource popupTextBoxStyle}">
+        <Setter
+            Property="Height"
+            Value="75" />
+        <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+    </Style>
+    <Style
+        x:Key="popupComboBoxStyle"
+        TargetType="ComboBox">
+        <Setter
+            Property="Width"
+            Value="275" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="Margin"
+            Value="0,8,0,0" />
+    </Style>
+    <Style
+        x:Key="searchByTextStyle"
+        TargetType="{x:Type TextBox}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="TextAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="searchByComboxBoxStyle"
+        TargetType="{x:Type ComboBox}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="TextBlock.TextAlignment"
+            Value="Center" />
+    </Style>
+    <Style
+        x:Key="mainButtonStyle"
+        TargetType="{x:Type control:ImageButton}">
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource mainButtonForegroundColorBrush}" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource mainButtonBackgroundColorBrush}" />
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="FontFamily"
+            Value="{StaticResource fontRegular}" />
+        <Setter
+            Property="Opacity"
+            Value="1" />
+        <Setter
+            Property="Cursor"
+            Value="Hand" />
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            x:Name="innerBorder"                            
+                            Background="{TemplateBinding Background}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            CornerRadius="2"
+                            BorderThickness="0" />
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger
+                            RoutedEvent="Button.Click">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="innerBorder"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource mainButtonClickBackgroundColorBrush}"
+                                            Duration="0:0:.3"
+                                            FillBehavior="Stop"
+                                            AccelerationRatio="0.3"
+                                            DecelerationRatio="0.7" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger
+                Property="IsEnabled"
+                Value="False">
+                <Setter
+                    Property="Opacity"
+                    Value="{StaticResource disabledButtonOpacity}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="mainButtonTextStyle"
+        TargetType="TextBlock">
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Margin"
+            Value="6,0,0,0" />
+    </Style>
+    <Style
+        x:Key="headerButtonTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainButtonTextStyle}">
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource mainButtonForegroundColorBrush}" />
+    </Style>
+    <Style
+        x:Key="secondaryActionButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource secondaryActionButtonForegroundColorBrush}" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource secondaryActionButtonBackgroundColorBrush}" />
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            x:Name="innerBorder"
+                            Background="{TemplateBinding Background}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            BorderBrush="{StaticResource secondaryActionButtonBorderColorBrush}"
+                            CornerRadius="2"
+                            BorderThickness="1" />
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger
+                            RoutedEvent="Button.Click">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="innerBorder"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource mainButtonClickBackgroundColorBrush}"
+                                            Duration="0:0:.3"
+                                            FillBehavior="Stop"
+                                            AccelerationRatio="0.3"
+                                            DecelerationRatio="0.7" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger
+                Property="IsEnabled"
+                Value="False">
+                <Setter
+                    Property="Opacity"
+                    Value="{StaticResource disabledButtonOpacity}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="iconButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="BorderThickness"
+            Value="2" />
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource mainButtonBackgroundColorBrush}" />
+    </Style>
+    <Style
+        x:Key="searchResultDataGridHeaderStyle"
+        TargetType="{x:Type DataGridColumnHeader}">
+        <Setter
+            Property="FontFamily"
+            Value="{StaticResource fontRegular}" />
+        <Setter
+            Property="FontSize"
+            Value="14" />
+        <Setter
+            Property="Foreground"
+            Value="White" />
+        <Setter
+            Property="Background"
+            Value="#b54242" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+
+    </Style>
+    <Style
+        x:Key="noIconButtonStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource mainButtonTextStyle}">
+        <Setter
+            Property="Margin"
+            Value="0,0,0,0" />
+    </Style>
+    <Style
+        x:Key="userImageButtonStyle"
+        TargetType="Button">
+        <Setter
+            Property="Background"
+            Value="{StaticResource userImageBackgroundColorBrush}" />
+    </Style>
+    <Style
+        x:Key="loginTitleTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="21" />
+        <Setter
+            Property="TextAlignment"
+            Value="Center" />
+    </Style>
+    <Style
+        x:Key="loginTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="18" />
+        <Setter
+            Property="TextAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="loginSeparatorTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource loginTextStyle}">
+        <Setter
+            Property="FontSize"
+            Value="14" />
+    </Style>
+    <Style
+        x:Key="passwordNotificationTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource loginTextStyle}">
+        <Setter
+            Property="FontSize"
+            Value="13" />
+        <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+        <Setter
+            Property="TextAlignment"
+            Value="Justify" />
+    </Style>
+    <Style
+        x:Key="loginBorderStyle"
+        TargetType="Border">
+        <Setter
+            Property="CornerRadius"
+            Value="12" />
+        <Setter
+            Property="BorderBrush"
+            Value="{StaticResource mainButtonBackgroundColorBrush}" />
+        <Setter
+            Property="BorderThickness"
+            Value="1" />
+    </Style>
+    <Style
+        x:Key="loginLinkButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource linkButtonForegroundColorBrush}" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource linkButtonBackgroundColorBrush}" />
+        <Setter
+            Property="FontSize"
+            Value="14" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="loginWarningTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="TextAlignment"
+            Value="Left" />
+        <Setter
+            Property="Padding"
+            Value="5" />
+        <Setter
+            Property="Foreground"
+            Value="Black" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Background"
+            Value="{StaticResource loginWarningBackgroundColorBrush}" />
+    </Style>
+    <Style
+        x:Key="requiredFieldNotificationTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="16" />
+        <Setter
+            Property="TextAlignment"
+            Value="Center" />
+        <Setter
+            Property="Foreground"
+            Value="Red" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+    </Style>
+
+    <!--icon styles-->
+    <Style
+        x:Key="searchButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-search}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="18,28" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="ImageVerticalAlignment"
+            Value="Center" />
+    </Style>
+    <Style
+        x:Key="addUserButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-user-add}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="18,28" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+        <Setter
+            Property="ImageVerticalAlignment"
+            Value="Center" />
+    </Style>
+    <Style
+        x:Key="addEntryButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-add}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="14,14" />
+        <Setter
+            Property="FontSize"
+            Value="16" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="Margin"
+            Value="6,0,0,0" />
+    </Style>
+    <Style
+        x:Key="editEntryButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-edit}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="13,13" />
+    </Style>
+    <Style
+        x:Key="closeButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-close-outline}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="20,20" />
+    </Style>
+    <Style
+        x:Key="saveUserDetailButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-user-save}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="30,30" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="deleteUserButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource secondaryActionButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-remove-account}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="30,30" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="cancelChangesButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource secondaryActionButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-cancel}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="25,25" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="warningIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-warning}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="25" />
+        <Setter
+            Property="Height"
+            Value="25" />
+    </Style>
+    <Style
+        x:Key="checkButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-check}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="18,18" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="personalInfoIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-user-tie}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="18" />
+        <Setter
+            Property="Height"
+            Value="18" />
+    </Style>
+    <Style
+        x:Key="userImageIconStyle"
+        TargetType="Image">
+        <Setter Property="Source"
+                Value="{Binding DataContext.CustomerImageSource, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+        <Setter
+            Property="Width"
+            Value="115" />
+        <Setter
+            Property="Height"
+            Value="115" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding DataContext.CustomerImageSource, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                         Value="{x:Null}">
+                <Setter Property="Source">
+                    <Setter.Value>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="{StaticResource photoImageBackgroundColorBrush}"
+                                                 Geometry="{StaticResource icon-user-tie}" />
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="companyDetailsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-graph-line-up}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="saveDetailsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-check-mark}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="50" />
+        <Setter
+            Property="Height"
+            Value="50" />
+    </Style>
+    <Style
+        x:Key="bankDetailsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-bank}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="utilityBillsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-lightbulb}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="titlesIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-map}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="fitOutsIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-list-check}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="paymentSchemeIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-money}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="20" />
+        <Setter
+            Property="Height"
+            Value="20" />
+    </Style>
+    <Style
+        x:Key="deleteEntryButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource iconButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-delete}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="18,18" />
+    </Style>
+    <Style
+        x:Key="alertIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-clock-alert}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="18" />
+        <Setter
+            Property="Height"
+            Value="18" />
+    </Style>
+    <Style
+        x:Key="popUpBorderStyle"
+        TargetType="Grid">
+        <Setter
+            Property="Background"
+            Value="White" />
+    </Style>
+    <Style
+        x:Key="unlockIconStyle"
+        TargetType="Image">
+        <Setter
+            Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonBackgroundColorBrush}"
+                            Geometry="{StaticResource icon-lock}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="30" />
+        <Setter
+            Property="Height"
+            Value="30" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+    </Style>
+    <Style
+        x:Key="emailSecureButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-email-secure}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="18,18" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Left" />
+    </Style>
+    <Style
+        x:Key="logoutButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-logout}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="12,12" />
+        <Setter
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Right" />
+    </Style>
+    <Style
+        x:Key="settingsButtonStyle"
+        TargetType="{x:Type control:ImageButton}"
+        BasedOn="{StaticResource mainButtonStyle}">
+        <Setter
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="Image">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing
+                            Brush="{StaticResource mainButtonIconColorBrush}"
+                            Geometry="{StaticResource icon-settings}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="ImageSize"
+            Value="13,13" />
+        <Setter
+            Property="ImageHorizontalAlignment"
+            Value="Right" />
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="ImageMargin"
+            Value="0,0,3,0" />
+    </Style>
+    <Style
+        x:Key="popupShroudStyle"
+        TargetType="Rectangle">
+        <Setter
+            Property="Fill">
+            <Setter.Value>
+                <LinearGradientBrush
+                    StartPoint="0,0"
+                    EndPoint="0,1">
+                    <GradientStop
+                        Color="{StaticResource popupShroudGradientStartColor}"
+                        Offset="0" />
+                    <GradientStop
+                        Color="{StaticResource popupShroudGradientStopColor}"
+                        Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="pathShadowStyle"
+        TargetType="Path">
+        <Setter
+            Property="Fill">
+            <Setter.Value>
+                <LinearGradientBrush
+                    StartPoint="0,0"
+                    EndPoint="0,1">
+                    <GradientStop
+                        Color="{StaticResource pathShadowGradientStartColor}"
+                        Offset="0" />
+                    <GradientStop
+                        Color="{StaticResource pathShadowGradientStopColor}"
+                        Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Opacity"
+            Value="0.30" />
+        <Setter
+            Property="Margin"
+            Value="4,4,0,0" />
+    </Style>
+    <Style
+        x:Key="pathShadowPopupStyle"
+        TargetType="Path"
+        BasedOn="{StaticResource pathShadowStyle}">
+        <Setter
+            Property="Margin"
+            Value="4,4,0,0" />
+    </Style>
+    <!-- DropShadowBorder Styles-->
+    <Style
+        x:Key="dropShadowStyle"
+        TargetType="controls:DropShadowBorder">
+        <Style.Resources>
+            <Style
+                TargetType="Path">
+                <Setter
+                    Property="Stroke"
+                    Value="{StaticResource borderColorBrush}" />
+                <Setter
+                    Property="StrokeThickness"
+                    Value="0.1" />
+                <Setter
+                    Property="Fill"
+                    Value="{StaticResource borderColorBrush}" />
+                <Setter
+                    Property="Opacity"
+                    Value="1" />
+                <Setter
+                    Property="Stretch"
+                    Value="Fill" />
+            </Style>
+        </Style.Resources>
+        <Setter
+            Property="ShowTip"
+            Value="False" />
+        <Setter
+            Property="TipOffSet"
+            Value="10" />
+        <Setter
+            Property="TipWidth"
+            Value="30" />
+        <Setter
+            Property="TipHeight"
+            Value="20" />
+        <Setter
+            Property="TipAlignment"
+            Value="Top" />
+        <Setter
+            Property="Offset"
+            Value="4" />
+        <Setter
+            Property="ShadowStyle"
+            Value="pathShadowPopupStyle" />
+    </Style>
+    <Style x:Key="ErrorStyle" TargetType="{x:Type control:WatermarkTextBox}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,2,40,2" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel LastChildFill="true">
+                        <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                            </TextBlock>
+                        </Border>
+                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                            <Border BorderBrush="red" BorderThickness="1" />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ControlValidationStyle" TargetType="{x:Type control:WatermarkTextBox}">
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Border BorderBrush="#FFCB2E2E" BorderThickness="1" Background="#11FF0000" IsHitTestVisible="False" x:Name="errorBorder"/>
+                        <AdornedElementPlaceholder x:Name="placeholder" />
+                        <Popup AllowsTransparency="True" HorizontalAlignment="Right" HorizontalOffset="0" VerticalOffset="0" PopupAnimation="Fade" Placement="Right" 
+                                   PlacementTarget="{Binding ElementName=errorBorder}" IsOpen="{Binding ElementName=placeholder, Path=AdornedElement.IsFocused, Mode=OneWay}">
+                            <StackPanel Orientation="Horizontal">
+                                <Polygon  VerticalAlignment="Center" Points="0,4 4,0 4,8" Fill="#FFCB2E2E" Stretch="Fill" Stroke="#FFCB2E2E"
+                                      StrokeThickness="2" />
+                                <Border Background="#FFCB2E2E" CornerRadius="4" Padding="4">
+                                    <TextBlock HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" Margin="2,0,0,0"
+                                                   Text="{Binding ElementName=placeholder, Path=AdornedElement.ToolTip, Mode=OneWay}" />
+                                </Border>
+                            </StackPanel>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

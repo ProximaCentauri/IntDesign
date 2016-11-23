@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteriorDesign", "InteriorDesign\InteriorDesign.csproj", "{7A78ED24-87CE-44DC-94E3-ECCCA5911F8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{9C12EE94-5565-4209-B99F-16FC1FD8AD80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{2E1B60B3-4244-4CD8-BBC4-7339F2CF0233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{B1B2E2F1-0C70-44F2-8353-EACAAB90738D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinContent", "SkinContent\SkinContent.csproj", "{24E3CA62-EA91-49D2-B94A-E192F0A37905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntDesignControls", "IntDesignControls\IntDesignControls.csproj", "{89959E91-3B86-46EB-99F1-44C151C2DEE1}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IntDesign", "..\Installer\IntDesign\IntDesign\IntDesign.vdproj", "{B784DE68-2AF1-4E60-A7AB-859C1CCB0A23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A78ED24-87CE-44DC-94E3-ECCCA5911F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A78ED24-87CE-44DC-94E3-ECCCA5911F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A78ED24-87CE-44DC-94E3-ECCCA5911F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A78ED24-87CE-44DC-94E3-ECCCA5911F8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C12EE94-5565-4209-B99F-16FC1FD8AD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C12EE94-5565-4209-B99F-16FC1FD8AD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C12EE94-5565-4209-B99F-16FC1FD8AD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C12EE94-5565-4209-B99F-16FC1FD8AD80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E1B60B3-4244-4CD8-BBC4-7339F2CF0233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E1B60B3-4244-4CD8-BBC4-7339F2CF0233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E1B60B3-4244-4CD8-BBC4-7339F2CF0233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E1B60B3-4244-4CD8-BBC4-7339F2CF0233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B2E2F1-0C70-44F2-8353-EACAAB90738D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B2E2F1-0C70-44F2-8353-EACAAB90738D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B2E2F1-0C70-44F2-8353-EACAAB90738D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B2E2F1-0C70-44F2-8353-EACAAB90738D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E3CA62-EA91-49D2-B94A-E192F0A37905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E3CA62-EA91-49D2-B94A-E192F0A37905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E3CA62-EA91-49D2-B94A-E192F0A37905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E3CA62-EA91-49D2-B94A-E192F0A37905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89959E91-3B86-46EB-99F1-44C151C2DEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89959E91-3B86-46EB-99F1-44C151C2DEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89959E91-3B86-46EB-99F1-44C151C2DEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89959E91-3B86-46EB-99F1-44C151C2DEE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B784DE68-2AF1-4E60-A7AB-859C1CCB0A23}.Debug|Any CPU.ActiveCfg = Debug
+		{B784DE68-2AF1-4E60-A7AB-859C1CCB0A23}.Debug|Any CPU.Build.0 = Debug
+		{B784DE68-2AF1-4E60-A7AB-859C1CCB0A23}.Release|Any CPU.ActiveCfg = Release
+		{B784DE68-2AF1-4E60-A7AB-859C1CCB0A23}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

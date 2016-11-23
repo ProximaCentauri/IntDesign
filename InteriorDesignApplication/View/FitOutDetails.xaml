@@ -1,0 +1,142 @@
+﻿<c:PopupView
+    x:Class="View.FitOutDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:Model.Controls;assembly=Model"
+    xmlns:controls="clr-namespace:IntDesignControls;assembly=IntDesignControls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Title="FitOutDetails"
+    Height="Auto"
+    Width="Auto"
+    Loaded="PopupView_Loaded"
+    Alignment="Center"
+    Background="White"
+    BackgroundType="Shroud">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto"></RowDefinition>
+            <RowDefinition
+                Height="Auto"></RowDefinition>
+            <RowDefinition
+                Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border
+            Style="{StaticResource mainPopupBorderStyle}"
+            Grid.RowSpan="3" />
+        <controls:ImageButton
+            Name="close"
+            Grid.Row="0"
+            Width="30"
+            Height="24"
+            Margin="0,8,5,0"
+            Click="close_Click"
+            HorizontalAlignment="Right"
+            Style="{StaticResource closeButtonStyle}" />
+        <Grid
+            Grid.Row="1"
+            Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto"></RowDefinition>
+                <RowDefinition
+                    Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock
+                Text="Fit Outs Information"
+                Style="{StaticResource popupHeaderTextStyle}" />
+            <Separator
+                Style="{StaticResource mainSeparatorStyle}" />
+            <StackPanel
+                Orientation="Vertical"
+                Margin="0,0,24,0"
+                Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="125"></ColumnDefinition>
+                        <ColumnDefinition
+                            Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Text="Cost of FIT Out:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Fit Out By:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="Area:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Date Started:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <DatePicker
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Width="200"
+                        Margin="0,8,0,0"
+                        Focusable="False"
+                        SelectedDateFormat="Long"
+                        HorizontalAlignment="Left"
+                        SelectedDate="{x:Static sys:DateTime.Today}" />
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Date Completed:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <DatePicker
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Width="200"
+                        Margin="0,8,0,0"
+                        Focusable="False"
+                        SelectedDateFormat="Long"
+                        HorizontalAlignment="Left"
+                        SelectedDate="{x:Static sys:DateTime.Today}" />
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Text="Warranty Status:"
+                        Style="{StaticResource popupLabelTextStyle}" />
+                    <TextBox
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Style="{StaticResource popupTextBoxStyle}" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <controls:ImageButton
+            Grid.Row="2"
+            Width="100"
+            Height="30"
+            Margin="20"
+            Text="Add"
+            Style="{StaticResource checkButtonStyle}" />
+    </Grid>
+</c:PopupView>
