@@ -560,11 +560,10 @@ namespace ViewModel
                 }
             }           
             catch (DbUpdateConcurrencyException ex)
-            {                       
-                ex.Entries.Single().Reload();
-                context.SaveChanges();
+            {
+                ex.Entries.Single().Reload();                
                 OnPropertyChanged("SavedCustomer");
-            }           
+            }
             if (!currentAppUser.IsAdmin)
                 OnPropertyChanged("NonAdmin");
         }
@@ -602,7 +601,7 @@ namespace ViewModel
         private void DeleteDependent()
         {
             CurrentSelectedCustomer.Dependents.Remove(CurrentSelectedDependent);
-            context.Entry(CurrentSelectedDependent).State = EntityState.Deleted;
+            context.Entry(CurrentSelectedDependent).State = EntityState.Deleted;            
             CurrentSelectedDependent = null;
             OnPropertyChanged("Dependents");
         }
