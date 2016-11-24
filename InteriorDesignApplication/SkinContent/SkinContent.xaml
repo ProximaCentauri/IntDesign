@@ -16,6 +16,8 @@
     <!--fonts-->
     <FontFamily
         x:Key="fontRegular">Calibri</FontFamily>
+    <FontFamily
+        x:Key="font">Arial</FontFamily>
 
     <!--color themes-->
     <Color
@@ -91,6 +93,15 @@
 
     <!-- main Styles-->
     <Style
+        x:Key="mainFont">
+        <Setter
+            Property="Control.FontFamily"
+            Value="{StaticResource font}" />
+        <Setter
+            Property="Control.Foreground"
+            Value="{StaticResource mainTextColorBrush}" />
+    </Style>
+    <Style
         x:Key="mainFontRegular">
         <Setter
             Property="Control.FontFamily"
@@ -100,19 +111,19 @@
             Value="{StaticResource mainTextColorBrush}" />
     </Style>
     <Style
-        x:Key="TabItemStyle">
+        x:Key="TabItemStyle"
+        BasedOn="{StaticResource mainFontRegular}">
         <Setter
             Property="Control.FontSize"
             Value="18" />
         <Setter 
             Property="Control.Foreground"
             Value="White" />
-
     </Style>
-
     <Style
         x:Key="tabItemFontStyle" 
-        TargetType="{x:Type TextBlock}">
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
         <Setter
             Property="Control.FontSize"
             Value="17" />
