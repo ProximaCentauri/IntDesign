@@ -604,7 +604,7 @@
         BasedOn="{StaticResource mainFontRegular}">
         <Setter
             Property="FontSize"
-            Value="12" />
+            Value="13" />
         <Setter
             Property="TextAlignment"
             Value="Left" />
@@ -620,6 +620,9 @@
         <Setter
             Property="VerticalAlignment"
             Value="Center" />
+        <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
         <Setter
             Property="Background"
             Value="{StaticResource loginWarningBackgroundColorBrush}" />
@@ -643,6 +646,29 @@
         <Setter
             Property="VerticalAlignment"
             Value="Center" />
+    </Style>
+    <Style
+        x:Key="instructionsTextStyle"
+        TargetType="{x:Type TextBlock}"
+        BasedOn="{StaticResource mainFontRegular}">
+        <Setter
+            Property="FontSize"
+            Value="13" />
+        <Setter
+            Property="TextAlignment"
+            Value="Center" />
+        <Setter
+            Property="Foreground"
+            Value="Gray" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+        <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
     </Style>
 
     <!--icon styles-->
