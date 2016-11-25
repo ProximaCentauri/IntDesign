@@ -93,7 +93,8 @@
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addBillType_Click"
-                            Command="{Binding CreateUtilityBillTypeCommand}"
+                            Command="{Binding ActionCommand}"
+                            CommandParameter="CreateUtilityBillType"
                             Style="{StaticResource addEntryButtonStyle}" />                        
                         <controls:ImageButton
                             Name="editBillType"
@@ -126,7 +127,8 @@
                             Height="20"
                             Margin="0,7,0,0"
                             Click="addCompanyName_Click"
-                            Command="{Binding CreateUtilityCompanyCommand}"
+                            Command="{Binding ActionCommand}"
+                            CommandParameter="CreateUtilityCompany"
                             Style="{StaticResource addEntryButtonStyle}" />                        
                         <controls:ImageButton
                             Name="editCompanyName"
@@ -368,6 +370,7 @@
                     Width="100"
                     Height="30"
                     Name="AddSaveUtilityBtn"
+                    Command="{Binding ActionCommand}"
                     Click="Button_Click"
                     Style="{StaticResource checkButtonStyle}" />
             </StackPanel>

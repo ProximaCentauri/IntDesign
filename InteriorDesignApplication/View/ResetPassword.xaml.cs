@@ -49,6 +49,7 @@ namespace View
                 notification.Text = string.Empty;
                 notification.Visibility = Visibility.Collapsed;
                 showInputPanel(false);
+                BindingOperations.ClearBinding(resetPassBtn, Button.CommandProperty);
             }
             else if (e.PropertyName.Equals("PasswordResetSuccessful"))
             {
@@ -73,6 +74,7 @@ namespace View
                 }
                 else
                 {
+                    resetPassBtn.SetBinding(Button.CommandProperty, new Binding("ActionCommand"));
                     resetPassBtn.CommandParameter = "ResetPassword";                    
                     viewModel.Password = NewPassword.PasswordText;                                        
                 }                

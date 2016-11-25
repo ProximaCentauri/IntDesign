@@ -93,11 +93,13 @@ namespace View
                 {
                     if (view == "add")
                     {
-                        this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCommand"));
+                        //this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCommand"));
+                        AddSaveUtilityBtn.CommandParameter = "AddUtility";
                     }
                     else if (view == "edit")
                     {
-                        this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
+                        //this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("EditUpdateUtilityCommand"));
+                        AddSaveUtilityBtn.CommandParameter = "EditUpdateUtility";
                     }
 
                     viewModel.CurrentPopupView = null;
@@ -113,7 +115,8 @@ namespace View
             {
                 UtilityBillTypeInput.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityBillTypeCommand"));
+                //this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityBillTypeCommand"));
+                AddSaveUtilityBtn.CommandParameter = "AddUtilityBillType";
                 ShowUtilityFormPanel();
                 return true;
             }
@@ -128,7 +131,8 @@ namespace View
                 UtilityCompanyInput.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 CompanyUtilityBillTypeSelection.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
 
-                this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCompanyCommand"));
+                //this.AddSaveUtilityBtn.SetBinding(Button.CommandProperty, new Binding("AddUtilityCompanyCommand"));
+                AddSaveUtilityBtn.CommandParameter = "AddUtilityCompany";
                 ShowUtilityFormPanel();
                 return true;
             }
