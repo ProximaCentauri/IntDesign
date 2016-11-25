@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ViewModel;
 using Model.Controls;
 using Model;
+using IntDesignControls;
 
 namespace View
 {
@@ -49,6 +50,7 @@ namespace View
                 notification.Text = string.Empty;
                 notification.Visibility = Visibility.Collapsed;
                 showInputPanel(false);
+                BindingOperations.ClearBinding(resetPassBtn, Button.CommandProperty);
             }
             else if (e.PropertyName.Equals("PasswordResetSuccessful"))
             {
