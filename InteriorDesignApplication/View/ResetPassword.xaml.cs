@@ -35,6 +35,7 @@ namespace View
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
             resetPassBtn.Text = "Submit";
+            
         }
 
         private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -116,5 +117,6 @@ namespace View
                 e.Handled = true;
             }
         }
+
     }
 }

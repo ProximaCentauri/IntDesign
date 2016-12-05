@@ -34,6 +34,7 @@ namespace View
         {
             this.DataContext = this.viewModel = (IMainViewModel)Application.Current.MainWindow.DataContext;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
+            //EmailAd.ClearValue(TextBox.TextProperty); 
         }
 
         private void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -72,5 +73,6 @@ namespace View
         {
             
         }
+
     }
 }
