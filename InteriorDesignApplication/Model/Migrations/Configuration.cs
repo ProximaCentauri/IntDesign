@@ -227,7 +227,7 @@ namespace Model.Migrations
                         Id = 2,
                         UserName = "Guest1",
                         CurrentPassword = "d9WqMpAMaDv14UJC0CFllw==",
-                        EmailAddress = "marvin.casagnap@gmail.com",
+                        EmailAddress = "yy@gmail.com",
                         TemporaryPin = "777777"
                     },
                     new AppUser()
