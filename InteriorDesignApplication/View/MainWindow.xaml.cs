@@ -213,7 +213,7 @@ namespace View
         private void DisableControlForNonAdmin(bool isAdmin)
         {
             AddCustomerButton.IsEnabled = DeleteButton.IsEnabled = isAdmin;
-            DeleteButton.Opacity = 0.50;
+            DeleteButton.Opacity = isAdmin? 1 : 0.50;
             BankInfoTab.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
         }
     }
